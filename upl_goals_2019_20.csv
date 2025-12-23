@@ -1,0 +1,476 @@
+Date,Time,League,Season,Match Day,home_team,away_team,goal_minute,team_side,player_name,goal_type
+05/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Kyetume FC Vs Busoga United FC,,10,home,Noel Nasasira,Regular
+05/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Kyetume FC Vs Busoga United FC,,80,away,Dan Ssewava,Regular
+05/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Kyetume FC Vs Busoga United FC,,90+2,home,Jonathan Mugabi,Regular
+09/10/2019,8:00 pm,Uganda Premier League,2019/20,8,SC Villa Vs Wakiso Giants FC,,55,home,Amir Kakomo,Regular
+09/10/2019,8:00 pm,Uganda Premier League,2019/20,8,SC Villa Vs Wakiso Giants FC,,74,home,David Owori,Regular
+22/10/2019,4:00 pm,Uganda Premier League,2019/20,3,Vipers FC Vs BUL FC,,21,home,Frank Tumwesigye,Regular
+22/10/2019,4:00 pm,Uganda Premier League,2019/20,3,Vipers FC Vs BUL FC,,26,home,Allan Thierry Kayiwa,Regular
+22/10/2019,4:00 pm,Uganda Premier League,2019/20,3,Vipers FC Vs BUL FC,,30,away,Deogratious Ojok,Regular
+18/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Express FC Vs Proline FC,,8,home,Dennis Serukwaya,Penalty
+18/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Express FC Vs Proline FC,,10,away,Arnold Sserunjoji,Own Goal
+18/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Express FC Vs Proline FC,,62,home,Ivan Ocholit,Regular
+28/02/2020,4:00 pm,Uganda Premier League,2019/20,24,SC Villa Vs Bright Stars FC,,16,away,Jamir Kalisa,Regular
+28/02/2020,4:00 pm,Uganda Premier League,2019/20,24,SC Villa Vs Bright Stars FC,,63,home,Emmanuel Alex Wasswa,Regular
+28/02/2020,4:00 pm,Uganda Premier League,2019/20,24,SC Villa Vs Bright Stars FC,,74,home,Benson Muhindo,Regular
+26/02/2020,4:00 pm,Uganda Premier League,2019/20,24,Police FC Vs KCCA FC,,20,away,Herbert Achayi,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,22,home,Mike Mutyaba,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,28,home,Mustafa Kizza,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,48,away,Steven Sande,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,49,home,Sam Ssenyonjo,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,65,home,Muzamiru Mutyaba,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,80,away,Dennis Lubowa,Regular
+23/11/2019,4:00 pm,Uganda Premier League,2019/20,5,KCCA FC Vs Kyetume FC,,86,home,Allan Okello,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Tooro United FC Vs Kyetume FC,,41,away,Sharif Saaka,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Tooro United FC Vs Kyetume FC,,90,away,Vincent Kayizzi,Regular
+01/10/2019,4:00 pm,Uganda Premier League,2019/20,6,Proline FC Vs Express FC,,18,away,Dissan Galiwango,Regular
+01/10/2019,4:00 pm,Uganda Premier League,2019/20,6,Proline FC Vs Express FC,,22,home,Noordin Saddic Bunjo,Regular
+01/10/2019,4:00 pm,Uganda Premier League,2019/20,6,Proline FC Vs Express FC,,81,home,Musitafa Mujuzi,Regular
+11/01/2020,3:00 pm,Uganda Premier League,2019/20,16,Wakiso Giants FC Vs Police FC,,2,away,Ben Ocen,Regular
+11/01/2020,3:00 pm,Uganda Premier League,2019/20,16,Wakiso Giants FC Vs Police FC,,10,home,Geofrey Serunkuma,Regular
+11/01/2020,3:00 pm,Uganda Premier League,2019/20,16,Wakiso Giants FC Vs Police FC,,68,away,Samson Andrew Kigozi,Regular
+02/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Busoga United FC Vs Vipers SC,,90+2,away,Bobosi Byaruhanga,Regular
+22/10/2019,4:30 pm,Uganda Premier League,2019/20,4,Kyetume FC Vs Proline FC,,52,home,Robert Ssentongo,Regular
+04/09/2019,8:00 pm,Uganda Premier League,2019/20,2,SC Villa Vs Mbarara City FC,,37,home,David Owori,Regular
+04/09/2019,8:00 pm,Uganda Premier League,2019/20,2,SC Villa Vs Mbarara City FC,,43,home,Emmanuel Kalyowa,Regular
+04/09/2019,8:00 pm,Uganda Premier League,2019/20,2,SC Villa Vs Mbarara City FC,,72,away,Brian Aheebwa,Regular
+04/09/2019,8:00 pm,Uganda Premier League,2019/20,2,SC Villa Vs Mbarara City FC,,74,home,Ambrose Kirya,Regular
+05/11/2019,1:15 pm,Uganda Premier League,2019/20,12,Express FC Vs Maroons FC,,13,home,Frank Kalanda,Penalty
+05/11/2019,1:15 pm,Uganda Premier League,2019/20,12,Express FC Vs Maroons FC,,29,home,Frank Ssenyondo,Regular
+05/11/2019,1:15 pm,Uganda Premier League,2019/20,12,Express FC Vs Maroons FC,,45,away,Fred Amaku,Regular
+05/11/2019,1:15 pm,Uganda Premier League,2019/20,12,Express FC Vs Maroons FC,,53,away,Steven Dese Mukwala,Regular
+02/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Express FC Vs Mbarara City FC,,54,away,Makueth Wol,Regular
+05/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Police FC Vs URA FC,,15,away,Brian Majwega,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Mbarara City FC Vs Maroons FC,,24,away,Pius Obuya,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Mbarara City FC Vs Maroons FC,,78,home,Jude Ssemugabi,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Mbarara City FC Vs Maroons FC,,90+3,away,Steven Dese Mukwala,Regular
+02/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Proline FC Vs Kyetume FC,,14,away,Robert Ssentongo,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Police FC Vs Wakiso Giants FC,,16,away,Viane Ssekajugo,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Police FC Vs Wakiso Giants FC,,62,home,Ben Ocen,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Police FC Vs Wakiso Giants FC,,90,home,Pius Kaggwa,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Proline FC Vs BUL FC,,1,away,Joseph Ssemujju,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Proline FC Vs BUL FC,,15,home,Musitafa Mujuzi,Penalty
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Proline FC Vs BUL FC,,46,home,Rodgers Mato Kassim,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Proline FC Vs BUL FC,,76,home,Rodgers Mato Kassim,Regular
+02/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Onduparaka FC Vs Wakiso Giants FC,,5,home,Faizul Ibrahim Annin,Regular
+16/11/2019,3:00 pm,Uganda Premier League,2019/20,15,KCCA FC Vs Vipers SC,,31,home,Muzamiru Mutyaba,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Tooro United FC Vs Express FC,,30 (p),home,Willy Kavuma,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Tooro United FC Vs Express FC,,62,away,Dissan Galiwango,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Tooro United FC Vs Express FC,,66,away,Dissan Galiwango,Regular
+12/10/2019,4:07 pm,Uganda Premier League,2019/20,9,URA FC Vs Mbarara City FC,,,,,
+14/01/2020,4:00 pm,Uganda Premier League,2019/20,17,SC Villa Vs Busoga United FC,,75,home,Player,Own Goal
+10/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Maroons FC Vs Proline FC,,14,away,Hamis Diego Kizza,Regular
+10/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Maroons FC Vs Proline FC,,20,away,Hamis Diego Kizza,Regular
+10/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Maroons FC Vs Proline FC,,53,home,Steven Dese Mukwala,Regular
+03/09/2019,4:00 pm,Uganda Premier League,2019/20,2,Vipers SC Vs Tooro United FC,,77,home,Fahad Bayo,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Bright Stars FC Vs Mbarara City FC,,54,away,Jude Ssemugabi,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Bright Stars FC Vs Mbarara City FC,,78,away,Jude Ssemugabi,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Bright Stars FC Vs Mbarara City FC,,86,away,Solomon Ali Okwalinga,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Bright Stars FC Vs Mbarara City FC,,90+6,home,Bernard Muwanga,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,KCCA FC Vs Police FC,,17,away,Ben Ocen,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,KCCA FC Vs Police FC,,21,home,Jackson Nunda,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,KCCA FC Vs Police FC,,24,away,Pius Kaggwa,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,KCCA FC Vs Police FC,,70,home,Jackson Nunda,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,KCCA FC Vs Police FC,,77,home,Erisa Ssekisambu,Regular
+14/09/2019,3:00 pm,Uganda Premier League,2019/20,5,Vipers SC Vs Mbarara City FC,,20,away,Ibrahim Orit,Regular
+14/09/2019,3:00 pm,Uganda Premier League,2019/20,5,Vipers SC Vs Mbarara City FC,,65,home,Fahad Bayo,Regular
+14/09/2019,3:00 pm,Uganda Premier League,2019/20,5,Vipers SC Vs Mbarara City FC,,80,home,Fahad Bayo,Regular
+14/09/2019,3:00 pm,Uganda Premier League,2019/20,5,Vipers SC Vs Mbarara City FC,,83,away,Hilary Panuel Mukundane,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Police FC Vs Tooro United FC,,31,home,Samson Andrew Kigozi,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Police FC Vs Tooro United FC,,43,home,Ben Ocen,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Police FC Vs Tooro United FC,,78,home,Samson Andrew Kigozi,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Police FC Vs Tooro United FC,,81,home,Musa Matovu,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,BUL FC Vs Maroons FC,,19,home,Robert Mukoghotya,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,BUL FC Vs Maroons FC,,89,home,Robert Mukoghotya,Regular
+05/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Maroons FC Vs Express FC,,65,away,Frank Kalanda,Regular
+10/09/2019,5:20 pm,Uganda Premier League,2019/20,4,Tooro United Vs Maroons FC,,7,away,Solomon Walusimbi,Regular
+10/09/2019,5:20 pm,Uganda Premier League,2019/20,4,Tooro United Vs Maroons FC,,68,away,Steven Dese Mukwala,Regular
+10/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Vipers SC Vs Kyetume FC,,9,home,Player,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Bright Stars FC Vs SC Villa,,18,away,Derrick Ndahiro,Regular
+07/03/2020,3:20 pm,Uganda Premier League,2019/20,25,Tooro United FC Vs SC villa,,39,away,Faizal Muwawu,Regular
+08/02/2020,4:00 pm,Uganda Premier League,2019/20,21,Kyetume FC Vs URA FC,,2,home,Robert Ssentongo,Penalty
+08/02/2020,4:00 pm,Uganda Premier League,2019/20,21,Kyetume FC Vs URA FC,,73,away,Saidi Kyeyune,Regular
+10/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Bright Stars FC Vs BUL FC,,74,home,Alfred Onek,Regular
+07/01/2020,4:00 pm,Uganda Premier League,2019/20,16,URA FC Vs SC Villa,,2,home,Daniel Isiagi Opolot,Regular
+07/01/2020,4:00 pm,Uganda Premier League,2019/20,16,URA FC Vs SC Villa,,64,home,Micheal Komunda Birungi,Regular
+03/12/2019,4:30 pm,Uganda Premier League,2019/20,12,Proline FC Vs KCCA FC,,45,away,Sam Ssenyonjo,Regular
+03/12/2019,4:30 pm,Uganda Premier League,2019/20,12,Proline FC Vs KCCA FC,,68,away,Nicholas Kasozi,Regular
+03/12/2019,4:30 pm,Uganda Premier League,2019/20,12,Proline FC Vs KCCA FC,,78,away,Allan Okello,Regular
+03/12/2019,4:30 pm,Uganda Premier League,2019/20,12,Proline FC Vs KCCA FC,,90+1,away,Allan Okello,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Mbarara City FC Vs Bright Stars FC,,,,,
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Vipers SC Vs URA FC,,64,home,Dan Muzeyi Sserunkuma,Regular
+17/01/2020,4:50 pm,Uganda Premier League,2019/20,18,KCCA FC Vs Tooro United,,16,home,Sunday Opio,Regular
+02/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Bright Stars FC Vs Onduparaka FC,,70,home,Muhammed Kyeyune,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Wakiso Giants FC Vs Kyetume FC,,2,away,Moses Ali Feni,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Wakiso Giants FC Vs Kyetume FC,,80,home,Wahab Gadaffi,Penalty
+31/08/2019,4:45 pm,Uganda Premier League,2019/20,1,Tooro United FC Vs Busoga United FC,,19,home,John Ssemazi,Regular
+31/08/2019,4:45 pm,Uganda Premier League,2019/20,1,Tooro United FC Vs Busoga United FC,,29,away,Dan Ssewava,Regular
+31/08/2019,4:45 pm,Uganda Premier League,2019/20,1,Tooro United FC Vs Busoga United FC,,55,home,Fredrick Nicholas Kigozi,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,7,home,Robert Ssentongo,Penalty
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,8,away,Brian Aheebwa,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,12,home,Deo Isejja,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,38,away,Brian Aheebwa,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,59,away,Stephen Othieno,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,68,home,Moses Ali Feni,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Kyetume FC Vs Mbarara City FC,,90+2,home,Robert Ssentongo,Regular
+06/09/2019,4:30 pm,Uganda Premier League,2019/20,3,URA FC Vs Kyetume FC,,,,,
+15/11/2019,4:30 pm,Uganda Premier League,2019/20,15,URA FC Vs Busoga United FC,,,,,
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Bright Stars FC Vs KCCA FC,,1,home,Joseph Janjali,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Bright Stars FC Vs KCCA FC,,44,away,Muzamiru Mutyaba,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Bright Stars FC Vs KCCA FC,,77,home,Ronald Ssempala,Regular
+15/01/2020,4:00 pm,Uganda Premier League,2019/20,17,Mbarara City FC Vs Wakiso Giants FC,,79,home,Brian Aheebwa,Regular
+03/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Tooro United FC Vs Mbaara City FC,,70,home,Godfrey Lwesibawa,Regular
+05/10/2019,1:25 pm,Uganda Premier League,2019/20,7,Busoga United FC Vs SC Villa,,18,home,Boban Bogere Zirintusa,Penalty
+05/10/2019,1:25 pm,Uganda Premier League,2019/20,7,Busoga United FC Vs SC Villa,,78,away,Emmanuel Alex Wasswa,Regular
+29/11/2019,4:00 pm,Uganda Premier League,2019/20,11,KCCA FC Vs SC Villa,,10,home,Joseph Kafumbe,Regular
+29/11/2019,4:00 pm,Uganda Premier League,2019/20,11,KCCA FC Vs SC Villa,,37,home,Erisa Ssekisambu,Regular
+29/11/2019,4:00 pm,Uganda Premier League,2019/20,11,KCCA FC Vs SC Villa,,62,home,Mustafa Kizza,Regular
+29/11/2019,4:00 pm,Uganda Premier League,2019/20,11,KCCA FC Vs SC Villa,,80,away,Amir Kakomo,Regular
+29/11/2019,4:00 pm,Uganda Premier League,2019/20,11,KCCA FC Vs SC Villa,,89,home,Allan Okello,Regular
+09/11/2019,3:00 pm,Uganda Premier League,2019/20,13,BUL FC Vs Mbarara City FC,,26,home,Musa Esenu,Regular
+09/11/2019,3:00 pm,Uganda Premier League,2019/20,13,BUL FC Vs Mbarara City FC,,32,home,Musa Esenu,Regular
+09/11/2019,3:00 pm,Uganda Premier League,2019/20,13,BUL FC Vs Mbarara City FC,,45+1,home,Musa Esenu,Regular
+29/01/2020,4:00 pm,Uganda Premier League,2019/20,19,SC Villa Vs Express FC,,70,home,Emmanuel Alex Wasswa,Regular
+12/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Mbarara City FC Vs Onduparaka FC,,18,home,Solomon Ali Okwalinga,Regular
+12/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Mbarara City FC Vs Onduparaka FC,,79,away,Rajab Kakooza,Regular
+12/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Mbarara City FC Vs Onduparaka FC,,90+4,home,Solomon Ali Okwalinga,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Mbarara City FC Vs Busoga United FC,,16,home,Brian Aheebwa,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Mbarara City FC Vs Busoga United FC,,45+1,home,Paul Mucureezi,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Mbarara City FC Vs Busoga United FC,,52,away,Ibrahim Mugulusi,Regular
+29/10/2019,4:00 pm,Uganda Premier League,2019/20,10,Kyetume FC Vs Vipers SC,,5,away,Fahad Bayo,Regular
+29/10/2019,4:00 pm,Uganda Premier League,2019/20,10,Kyetume FC Vs Vipers SC,,14,away,Dan Muzeyi Sserunkuma,Penalty
+29/10/2019,4:00 pm,Uganda Premier League,2019/20,10,Kyetume FC Vs Vipers SC,,56,home,Robert Ssentongo,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Police FC Vs Vipers SC,,27,home,Hood Kaweesa Ssebirumbi,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Police FC Vs Vipers SC,,43,away,Paul Willa,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Police FC Vs Vipers SC,,45,away,Halidi Lwaliwa,Regular
+09/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Police FC Vs Vipers SC,,80,away,AbdulKarim Watambala,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Busoga United FC Vs URA FC,,59,home,David Bagoole,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Busoga United FC Vs URA FC,,64,home,Nelson Mandela,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Busoga United FC Vs URA FC,,76,home,Lawrence Tezikya,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Onduparaka FC Vs Police FC,,,,,
+13/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Express FC Vs SC Villa,,72,away,Ambrose Kirya,Regular
+04/02/2020,4:00 pm,Uganda Premier League,2019/20,21,KCCA FC Vs Maroons FC,,21,home,Mike Mutyaba,Regular
+04/02/2020,4:00 pm,Uganda Premier League,2019/20,21,KCCA FC Vs Maroons FC,,38,home,Erisa Ssekisambu,Regular
+04/02/2020,4:00 pm,Uganda Premier League,2019/20,21,KCCA FC Vs Maroons FC,,66,home,Peter Magambo,Own Goal
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Kyetume FC Vs Wakiso Giants FC,,44,away,Amos Muwonge,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Kyetume FC Vs Wakiso Giants FC,,77,away,Abdul Karim Ndugwa,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Kyetume FC Vs Wakiso Giants FC,,90+2,away,Viane Ssekajugo,Regular
+10/09/2019,4:00 pm,Uganda Premier League,2019/20,4,Mbarara City FC Vs Express FC,,43,home,Hilary Panuel Mukundane,Regular
+10/09/2019,4:00 pm,Uganda Premier League,2019/20,4,Mbarara City FC Vs Express FC,,44,away,Hamdan Nsubuga,Regular
+10/09/2019,4:00 pm,Uganda Premier League,2019/20,4,Mbarara City FC Vs Express FC,,65,away,Frank Kalanda,Regular
+10/09/2019,4:00 pm,Uganda Premier League,2019/20,4,Mbarara City FC Vs Express FC,,81,home,Jude Ssemugabi,Regular
+10/09/2019,4:00 pm,Uganda Premier League,2019/20,4,Mbarara City FC Vs Express FC,,90+2,away,Daniel Shabene,Regular
+09/02/2020,4:05 pm,Uganda Premier League,2019/20,21,BUL FC Vs Vipers SC,,19,away,Tito Okello,Penalty
+09/02/2020,4:05 pm,Uganda Premier League,2019/20,21,BUL FC Vs Vipers SC,,28,away,Tito Okello,Regular
+09/02/2020,4:05 pm,Uganda Premier League,2019/20,21,BUL FC Vs Vipers SC,,30,home,Fredson Gwoto,Regular
+09/02/2020,4:05 pm,Uganda Premier League,2019/20,21,BUL FC Vs Vipers SC,,33,home,Robert Mukoghotya,Regular
+09/02/2020,4:05 pm,Uganda Premier League,2019/20,21,BUL FC Vs Vipers SC,,73,away,Tito Okello,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Bright Stars FC Vs Vipers SC,,28,home,Enock Walusimbi,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Bright Stars FC Vs Vipers SC,,48,away,Abraham Ndugwa,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Bright Stars FC Vs Vipers SC,,52,away,Dan Muzeyi Sserunkuma,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Bright Stars FC Vs Vipers SC,,90+1,away,Brian Nkuubi,Regular
+29/01/2020,4:00 pm,Uganda Premier League,2019/20,19,BUL FC Vs Wakiso Giants FC,,,,,
+31/01/2020,4:00 pm,Uganda Premier League,2019/20,20,URA FC Vs KCCA FC,,85,home,Cromwel Rwothomio Abang,Penalty
+31/01/2020,4:00 pm,Uganda Premier League,2019/20,20,URA FC Vs KCCA FC,,88,home,Saidi Kyeyune,Regular
+31/01/2020,4:00 pm,Uganda Premier League,2019/20,20,URA FC Vs KCCA FC,,90+1,away,Herbert Achayi,Regular
+18/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Maroons FC Vs BUL FC,,28,home,Fred Amaku,Regular
+18/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Maroons FC Vs BUL FC,,42,home,Steven Dese Mukwala,Penalty
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Bright Stars FC Vs URA FC,,,,,
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Express FC Vs Tooro United FC,,1,home,Frank Ssenyondo,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Express FC Vs Tooro United FC,,37,home,Frank Kalanda,Regular
+19/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Express FC Vs Tooro United FC,,84,away,Mike Kawooya,Regular
+02/10/2019,8:00 pm,Uganda Premier League,2019/20,6,SC Villa Vs Vipers SC,,,,,
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,8,home,Hamis Diego Kizza,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,11,away,Denis Mwemezi,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,13,away,Fahad Bayo,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,20,away,Denis Mwemezi,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,57,away,Fahad Bayo,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Proline FC Vs Vipers SC,,85,home,Hakim Kiwanuka,Regular
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Busoga United FC Vs Onduparaka FC,,44,away,Rajab Kakooza,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,BUL FC Vs Proline FC,,,,,
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Onduparaka FC Vs Maroons FC,,59,home,Julius Malingumu,Regular
+14/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Onduparaka FC Vs Maroons FC,,65,away,Patrick Bayiga,Regular
+05/02/2020,4:35 pm,Uganda Premier League,2019/20,21,Bright Stars FC Vs Busoga United FC,,25,home,Ronald Ssempala,Regular
+05/02/2020,4:35 pm,Uganda Premier League,2019/20,21,Bright Stars FC Vs Busoga United FC,,73,home,Jamir Kalisa,Regular
+05/02/2020,4:35 pm,Uganda Premier League,2019/20,21,Bright Stars FC Vs Busoga United FC,,77,home,Joseph Janjali,Regular
+01/11/2019,4:30 pm,Uganda Premier League,2019/20,11,BUL FC Vs Kyetume FC,,15,home,Richard Wandyaka,Regular
+01/11/2019,4:30 pm,Uganda Premier League,2019/20,11,BUL FC Vs Kyetume FC,,37,home,Musa Esenu,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Proline FC Vs Bright Stars FC,,33,home,Edrisa Lubega,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Proline FC Vs Bright Stars FC,,35,away,Augustine Gadaffi Kacancu,Penalty
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Proline FC Vs Bright Stars FC,,47,home,Hakim Kiwanuka,Regular
+11/10/2019,4:00 pm,Uganda Premier League,2019/20,9,KCCA FC Vs Onduparaka FC,,34,home,Sadat Happy Anaku Ada,Regular
+11/10/2019,4:00 pm,Uganda Premier League,2019/20,9,KCCA FC Vs Onduparaka FC,,52,home,Mike Mutyaba,Regular
+11/10/2019,4:00 pm,Uganda Premier League,2019/20,9,KCCA FC Vs Onduparaka FC,,68,home,Mike Mutyaba,Regular
+11/10/2019,4:00 pm,Uganda Premier League,2019/20,9,KCCA FC Vs Onduparaka FC,,76,home,Mike Mutyaba,Penalty
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,BUL FC Vs Express FC,,13,home,Deogratious Ojok,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,KCCA FC Vs Express FC,,26,home,Mustafa Kizza,Penalty
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,KCCA FC Vs Express FC,,45+2,away,Frank Kalanda,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,URA FC Vs Maroons FC,,15,home,Saidi Kyeyune,Regular
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,URA FC Vs Maroons FC,,52,away,Ronald Orombi,Own Goal
+30/08/2019,4:30 pm,Uganda Premier League,2019/20,1,URA FC Vs Maroons FC,,84,home,Ivan Ntege,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Busoga United FC Vs KCCA FC,,38,away,Mustafa Kizza,Regular
+17/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Vipers SC Vs SC Villa,,52,away,Bashir Mutanda,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Maroons FC Vs Wakiso Giants FC,,29,away,Abdul Karim Ndugwa,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Maroons FC Vs Wakiso Giants FC,,52,away,Viane Ssekajugo,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Maroons FC Vs Wakiso Giants FC,,64,home,Steven Dese Mukwala,Regular
+16/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Maroons FC Vs Wakiso Giants FC,,85,home,Steven Dese Mukwala,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,BUL FC Vs KCCA FC,,34,home,Richard Wandyaka,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,BUL FC Vs KCCA FC,,51,home,Robert Mukoghotya,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,BUL FC Vs KCCA FC,,79,home,Musa Esenu,Regular
+23/02/2020,4:00 pm,Uganda Premier League,2019/20,23,BUL FC Vs SC Villa,,13,away,Ronald Magwali,Regular
+23/02/2020,4:00 pm,Uganda Premier League,2019/20,23,BUL FC Vs SC Villa,,37,home,Joseph Ssemujju,Regular
+23/02/2020,4:00 pm,Uganda Premier League,2019/20,23,BUL FC Vs SC Villa,,80,home,Joseph Ssemujju,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Express FC Vs Busoga United FC,,13,away,Joel Madondo,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Express FC Vs Busoga United FC,,19,home,Frank Kalanda,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Express FC Vs Busoga United FC,,47,away,Boban Bogere Zirintusa,Regular
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Wakiso Giants FC Vs BUL FC,,45+2,home,Ibrahim Kiyemba,Own Goal
+07/09/2019,3:00 pm,Uganda Premier League,2019/20,3,Express FC Vs Onduparaka FC,,26,away,Gibson Adinho,Regular
+07/09/2019,3:00 pm,Uganda Premier League,2019/20,3,Express FC Vs Onduparaka FC,,58,away,Samson Ceasar Okhuti,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,BUL FC Vs Bright Stars FC,,53,home,James Otim,Regular
+29/10/2019,4:30 pm,Uganda Premier League,2019/20,10,BUL FC Vs Bright Stars FC,,79,away,Joseph Janjali,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,URA FC VS BUL FC,,10,home,Shafik Kuchi Kagimu,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,URA FC VS BUL FC,,90,away,Deogratious Ojok,Regular
+08/01/2020,4:00 pm,Uganda Premier League,2019/20,16,KCCA FC Vs Mbarara City FC,,50,home,Fillbert Obenchan,Regular
+30/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Onduparaka FC Vs Tooro United FC,,19,home,Julius Malingumu,Regular
+30/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Onduparaka FC Vs Tooro United FC,,45+1,home,Wahab Gadaffi,Penalty
+30/10/2019,4:30 pm,Uganda Premier League,2019/20,10,Onduparaka FC Vs Tooro United FC,,61,home,Gibson Adinho,Regular
+28/01/2020,4:00 pm,Uganda Premier League,2019/20,19,Mbarara City Vs Vipers SC,,,,,
+20/11/2019,4:00 pm,Uganda Premier League,2019/20,4,KCCA FC Vs URA FC,,8,away,Ashraf Mandela,Regular
+20/11/2019,4:00 pm,Uganda Premier League,2019/20,4,KCCA FC Vs URA FC,,57,home,Allan Okello,Regular
+29/08/2019,8:00 pm,Uganda Premier League,2019/20,1,Kyetume FC Vs SC Villa,,22,home,Cephas Kambugu,Regular
+15/11/2019,1:10 pm,Uganda Premier League,2019/20,15,Bright Stars FC Vs Police FC,,24,away,Ben Ocen,Penalty
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Kyetume FC Vs KCCA FC,,9,away,Sadat Happy Anaku Ada,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Kyetume FC Vs KCCA FC,,44,away,Erisa Ssekisambu,Regular
+13/09/2019,4:30 pm,Uganda Premier League,2019/20,5,URA FC Vs Tooro United FC,,47,home,Brian Majwega,Penalty
+13/09/2019,4:30 pm,Uganda Premier League,2019/20,5,URA FC Vs Tooro United FC,,67,away,John Byamukama,Regular
+13/09/2019,4:30 pm,Uganda Premier League,2019/20,5,URA FC Vs Tooro United FC,,82,away,Willy Kavuma,Penalty
+25/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Proline FC Vs Tooro United FC,,17,home,Bright Anukani,Regular
+25/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Proline FC Vs Tooro United FC,,73,home,Bright Anukani,Regular
+25/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Proline FC Vs Tooro United FC,,86,away,Mike Kawooya,Penalty
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Wakiso Giants FC Vs URA FC,,2,home,Tom Ssemuwemba Masiko,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Wakiso Giants FC Vs URA FC,,8,away,Shafik Kuchi Kagimu,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Wakiso Giants FC Vs URA FC,,74,home,Abdul Karim Ndugwa,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Wakiso Giants FC Vs URA FC,,79,home,Abdul Karim Ndugwa,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Maroons FC Vs Onduparaka FC,,64,away,Wahab Gadaffi,Penalty
+12/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Bright Stars FC Vs Kyetume FC,,63,away,Sharif Saaka,Regular
+10/01/2020,4:00 pm,Uganda Premier League,2019/20,16,Busoga United FC Vs Express FC,,48,home,Ivan Wani Adebo Vita,Regular
+10/01/2020,4:00 pm,Uganda Premier League,2019/20,16,Busoga United FC Vs Express FC,,79,home,Boban Bogere Zirintusa,Penalty
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Maroons FC Vs Bright Stars FC,,6,home,Abraham Tusubira Kakensa,Regular
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Maroons FC Vs Bright Stars FC,,59,home,Ayub Rashid Agau,Regular
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Maroons FC Vs Bright Stars FC,,66,away,Augustine Gadaffi Kacancu,Regular
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Maroons FC Vs Bright Stars FC,,76,away,Sulaiman Sekagya Ssebbunza,Penalty
+14/09/2019,4:00 pm,Uganda Premier League,2019/20,5,Maroons FC Vs Bright Stars FC,,81,home,Steven Dese Mukwala,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,15,home,Dissan Galiwango,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,25,away,Timothy Oyamo,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,31,home,Frank Kalanda,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,40,home,Frank Kalanda,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,45+1,away,Ben Ocen,Penalty
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,69,home,Frank Ssenyondo,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,80,away,Ben Ocen,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,90+4,home,Tonny Kyamera,Regular
+04/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Express FC Vs Police FC,,90+5,home,Ivan Ocholit,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Bright Stars FC Vs Tooro United FC,,,,,
+02/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Wakiso Giants FC Vs Bright Stars FC,,43,away,James Angu,Regular
+02/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Wakiso Giants FC Vs Bright Stars FC,,54,away,Andrew Kyambadde,Own Goal
+08/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Wakiso Giants FC Vs Busoga United FC,,22,away,Abubaker Otwau,Regular
+08/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Wakiso Giants FC Vs Busoga United FC,,45+3,home,Viane Ssekajugo,Regular
+08/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Wakiso Giants FC Vs Busoga United FC,,72,home,Abdul Karim Ndugwa,Regular
+01/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Kyetume FC Vs Police FC,,45,away,Ben Ocen,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Tooro United FC Vs Proline FC,,30,home,Yafeesi Mubiru,Regular
+09/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Tooro United FC Vs Proline FC,,67,away,James Penz Begisa,Regular
+15/11/2019,4:30 pm,Uganda Premier League,2019/20,15,Mbarara City FC Vs Kyetume FC,,65,away,Dennis Lubowa,Own Goal
+15/11/2019,4:30 pm,Uganda Premier League,2019/20,15,Mbarara City FC Vs Kyetume FC,,90+2,home,Ibrahim Orit,Regular
+22/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Maroons FC Vs Vipers SC,,45+2,home,Fred Amaku,Regular
+22/11/2019,4:00 pm,Uganda Premier League,2019/20,13,Maroons FC Vs Vipers SC,,62,away,Fahad Bayo,Penalty
+06/03/2020,4:30 pm,Uganda Premier League,2019/20,25,URA FC Vs Police FC,,10,away,Derrick Kakooza,Regular
+06/03/2020,4:30 pm,Uganda Premier League,2019/20,25,URA FC Vs Police FC,,22,home,Hassan Kalega,Regular
+06/03/2020,4:30 pm,Uganda Premier League,2019/20,25,URA FC Vs Police FC,,79,away,Ben Ocen,Regular
+11/09/2019,4:00 pm,Uganda Premier League,2019/20,4,BUL FC Vs Busoga United FC,,72,away,Boban Bogere Zirintusa,Penalty
+11/09/2019,4:00 pm,Uganda Premier League,2019/20,4,BUL FC Vs Busoga United FC,,80,away,Joel Madondo,Regular
+11/09/2019,4:00 pm,Uganda Premier League,2019/20,4,BUL FC Vs Busoga United FC,,90+3,away,Lawrence Tezikya,Regular
+31/08/2019,3:15 pm,Uganda Premier League,2019/20,1,KCCA FC Vs Wakiso Giants FC,,15,home,Allan Okello,Regular
+05/11/2019,4:00 pm,Uganda Premier League,2019/20,12,Vipers SC Vs Wakiso Giants FC,,,,,
+18/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Onduparaka FC Vs SC Villa,,5,away,Emmanuel Kalyowa,Regular
+18/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Onduparaka FC Vs SC Villa,,14,home,Rashid Muhamed,Own Goal
+18/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Onduparaka FC Vs SC Villa,,66,home,Julius Malingumu,Regular
+18/11/2019,4:00 pm,Uganda Premier League,2019/20,15,Onduparaka FC Vs SC Villa,,90+2,away,Fahad Bardiro,Regular
+21/02/2020,4:30 pm,Uganda Premier League,2019/20,23,Maroons FC Vs Busoga United FC,,86,away,Paul Ssekulima,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,SC Villa Vs Tooro United FC,,4,home,Ambrose Kirya,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,SC Villa Vs Tooro United FC,,21,home,Ambrose Kirya,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,SC Villa Vs Tooro United FC,,57,home,Faizal Muwawu,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,SC Villa Vs Tooro United FC,,65,away,Yafeesi Mubiru,Regular
+06/11/2019,4:30 pm,Uganda Premier League,2019/20,12,SC Villa Vs Tooro United FC,,88,home,Nicholas Kabonge,Regular
+19/01/2020,4:00 pm,Uganda Premier League,2019/20,18,Wakiso Giants FC Vs Onduparaka FC,,43,home,Viane Ssekajugo,Regular
+26/11/2019,4:30 pm,Uganda Premier League,2019/20,11,URA FC Vs Proline FC,,43,home,Saidi Kyeyune,Regular
+26/11/2019,4:30 pm,Uganda Premier League,2019/20,11,URA FC Vs Proline FC,,73,away,Edrisa Lubega,Regular
+26/11/2019,4:30 pm,Uganda Premier League,2019/20,11,URA FC Vs Proline FC,,90+1,home,Cromwel Rwothomio Abang,Regular
+12/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Maroons FC Vs SC Villa,,,,,
+06/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Wakiso Giants FC Vs Tooro United FC,,63,home,Viane Ssekajugo,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Express FC Vs Bright Stars FC,,3,home,Frank Ssenyondo,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Express FC Vs Bright Stars FC,,39,away,Joseph Janjali,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Kyetume FC Vs Express FC,,43,away,Frank Ssenyondo,Regular
+01/02/2020,3:30 pm,Uganda Premier League,2019/20,20,Busoga United FC Vs BUL FC,,15,away,Musa Walangalira,Regular
+01/02/2020,3:30 pm,Uganda Premier League,2019/20,20,Busoga United FC Vs BUL FC,,17,home,David Bagoole,Regular
+01/02/2020,3:30 pm,Uganda Premier League,2019/20,20,Busoga United FC Vs BUL FC,,44,home,Lawrence Tezikya,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Police Vs Bright Stars FC,,52,away,Sulaiman Sekagya Ssebbunza,Penalty
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Police Vs Bright Stars FC,,68,away,Muwadda Mawejje,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Police Vs Bright Stars FC,,87,home,Hood Kaweesa Ssebirumbi,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Wakiso Giants FC Vs Maroons FC,,65,away,David Ndihabwe,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Wakiso Giants FC Vs Maroons FC,,87,home,Tom Ssemuwemba Masiko,Regular
+18/02/2020,4:30 pm,Uganda Premier League,2019/20,22,Wakiso Giants FC Vs Maroons FC,,90+1,home,Viane Ssekajugo,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,BUL FC Vs URA FC,,25,away,Saidi Kyeyune,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,BUL FC Vs URA FC,,47,away,Cromwel Rwothomio Abang,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,BUL FC Vs URA FC,,78,home,Hamisi Tibita,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,BUL FC Vs URA FC,,88,away,Cromwel Rwothomio Abang,Regular
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Vipers SC Vs Maroons FC,,45+1,home,Allan Thierry Kayiwa,Regular
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Vipers SC Vs Maroons FC,,50,home,Brian Nkuubi,Regular
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Vipers SC Vs Maroons FC,,64,home,Milton Karisa,Regular
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Vipers SC Vs Maroons FC,,76,home,Paul Mucureezi,Regular
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Vipers SC Vs Maroons FC,,78,home,Abraham Ndugwa,Regular
+15/01/2020,4:55 pm,Uganda Premier League,2019/20,17,Kyetume FC Vs Tooro United FC,,7,home,Cephas Kambugu,Penalty
+15/01/2020,4:55 pm,Uganda Premier League,2019/20,17,Kyetume FC Vs Tooro United FC,,52,away,Yafeesi Mubiru,Regular
+05/10/2019,4:40 pm,Uganda Premier League,2019/20,7,Vipers SC Vs Proline FC,,53,home,Fahad Bayo,Regular
+31/01/2020,4:30 pm,Uganda Premier League,2019/20,20,Maroons FC Vs Tooro FC,,5,home,Steven Dese Mukwala,Regular
+31/01/2020,4:30 pm,Uganda Premier League,2019/20,20,Maroons FC Vs Tooro FC,,43,away,James kasibante,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,SC Villa Vs BUL FC,,74,away,Richard Wandyaka,Regular
+13/11/2019,4:30 pm,Uganda Premier League,2019/20,14,SC Villa Vs BUL FC,,76,home,David Owori,Regular
+05/11/2019,4:30 pm,Uganda Premier League,2019/20,12,Onduparaka FC Vs BUL FC,,,,,
+22/10/2019,4:30 pm,Uganda Premier League,2019/20,3,Maroons FC Vs KCCA FC,,42,away,Mike Mutyaba,Regular
+22/10/2019,4:30 pm,Uganda Premier League,2019/20,3,Maroons FC Vs KCCA FC,,68,home,Solomon Walusimbi,Regular
+22/10/2019,4:30 pm,Uganda Premier League,2019/20,3,Maroons FC Vs KCCA FC,,89,away,Mustafa Kizza,Penalty
+22/10/2019,4:30 pm,Uganda Premier League,2019/20,3,Maroons FC Vs KCCA FC,,90+4,away,John Egbuonu Odumegwu,Regular
+08/10/2019,4:00 pm,Uganda Premier League,2019/20,8,Proline FC Vs Busoga United FC,,34,away,Isma Kawawulo,Regular
+21/02/2020,4:00 pm,Uganda Premier League,2019/20,23,URA FC Vs Vipers SC,,14,home,Saidi Kyeyune,Regular
+21/02/2020,4:00 pm,Uganda Premier League,2019/20,23,URA FC Vs Vipers SC,,18,home,Daniel Isiagi Opolot,Regular
+21/02/2020,4:00 pm,Uganda Premier League,2019/20,23,URA FC Vs Vipers SC,,50,away,Fahad Bayo,Penalty
+21/02/2020,4:00 pm,Uganda Premier League,2019/20,23,URA FC Vs Vipers SC,,74,home,Cromwel Rwothomio Abang,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Bright Stars FC Vs Proline FC,,82,home,Joseph Janjali,Regular
+31/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Mbarara City FC Vs Proline FC,,29,home,Paul Mucureezi,Regular
+31/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Mbarara City FC Vs Proline FC,,55,home,Brian Aheebwa,Regular
+31/08/2019,4:30 pm,Uganda Premier League,2019/20,1,Mbarara City FC Vs Proline FC,,83,home,Paul Mucureezi,Penalty
+08/02/2020,3:50 pm,Uganda Premier League,2019/20,21,SC Villa Vs Proline FC,,18,away,Hamis Diego Kizza,Regular
+08/02/2020,3:50 pm,Uganda Premier League,2019/20,21,SC Villa Vs Proline FC,,76,home,Ambrose Kirya,Penalty
+08/02/2020,3:50 pm,Uganda Premier League,2019/20,21,SC Villa Vs Proline FC,,90+2,home,Benson Muhindo,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,BUL FC Vs Onduparaka FC,,18,away,Denis Ojobile Andama,Own Goal
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,BUL FC Vs Onduparaka FC,,30,home,Musa Walangalira,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,BUL FC Vs Onduparaka FC,,47,home,Fredson Gwoto,Regular
+04/03/2020,4:00 pm,Uganda Premier League,2019/20,25,BUL FC Vs Onduparaka FC,,78,home,Joseph Ssemujju,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Tooro United FC Vs Police FC,,4,home,Charles Musiige,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Tooro United FC Vs Police FC,,72,home,John Byamukama,Regular
+01/11/2019,4:00 pm,Uganda Premier League,2019/20,10,SC Villa Vs URA FC,,20,away,Brian Majwega,Penalty
+01/11/2019,4:00 pm,Uganda Premier League,2019/20,10,SC Villa Vs URA FC,,90+3,home,Ambrose Kirya,Penalty
+04/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Proline FC Vs Onduparaka FC,,73,home,Edrisa Lubega,Regular
+25/02/2020,4:00 pm,Uganda Premier League,2019/20,24,Express FC Vs URA FC,,15,away,Mikidadi Ssenyonga,Regular
+25/02/2020,4:00 pm,Uganda Premier League,2019/20,24,Express FC Vs URA FC,,49,away,Anwar Mustafa Ntege,Regular
+25/02/2020,4:00 pm,Uganda Premier League,2019/20,24,Express FC Vs URA FC,,72,home,Frank Kalanda,Regular
+07/02/2020,4:30 pm,Uganda Premier League,2019/20,21,Mbarara City FC Vs Police FC,,90+3,home,Brian Aheebwa,Regular
+13/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Express FC Vs KCCA FC,,13,away,Sadat Happy Anaku Ada,Regular
+13/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Express FC Vs KCCA FC,,18,away,Mike Mutyaba,Regular
+13/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Express FC Vs KCCA FC,,72,home,Muhammad Yiga,Own Goal
+13/11/2019,4:00 pm,Uganda Premier League,2019/20,14,Express FC Vs KCCA FC,,75,home,Frank Kalanda,Penalty
+13/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Wakiso Giants FC Vs Proline FC,,8,home,Viane Ssekajugo,Regular
+13/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Wakiso Giants FC Vs Proline FC,,39,away,Bright Anukani,Regular
+13/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Wakiso Giants FC Vs Proline FC,,90+1,home,Viane Ssekajugo,Penalty
+03/03/2020,4:00 pm,Uganda Premier League,2019/20,25,KCCA FC VS Proline FC,,,,,
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Proline FC Vs SC Villa,,,,,
+10/09/2019,4:30 pm,Uganda Premier League,2019/20,4,SC Villa Vs Police FC,,34,home,Emmanuel Kalyowa,Regular
+10/09/2019,4:30 pm,Uganda Premier League,2019/20,4,SC Villa Vs Police FC,,58,away,Johnson Odongo,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Busoga United FC Vs Maroons  FC,,70,away,Steven Dese Mukwala,Regular
+12/11/2019,4:30 pm,Uganda Premier League,2019/20,14,Busoga United FC Vs Maroons  FC,,90+6,home,Boban Bogere Zirintusa,Penalty
+29/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Bright Stars FC Vs Maroons FC,,2,home,Ronald Nkonge,Regular
+29/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Bright Stars FC Vs Maroons FC,,43,away,Abraham Tusubira Kakensa,Regular
+29/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Bright Stars FC Vs Maroons FC,,89,home,Sulaiman Sekagya Ssebbunza,Penalty
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Onduparaka FC Vs Busoga United FC,,25,home,Julius Malingumu,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Onduparaka FC Vs Busoga United FC,,28,away,Nelson Mandela,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Onduparaka FC Vs Busoga United FC,,68,home,Rashid Okocha,Regular
+26/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Mbarara City FC Vs KCCA FC,,19,away,Sam Ssenyonjo,Regular
+26/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Mbarara City FC Vs KCCA FC,,28,home,Ibrahim Orit,Regular
+26/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Mbarara City FC Vs KCCA FC,,71,home,Bebe Swaliki Ssegujja,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,1,home,Pius Kaggwa,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,6,home,Derrick Kakooza,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,20,home,Derrick Kakooza,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,45,home,Pius Kaggwa,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,66,home,Ben Ocen,Regular
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,83,away,Peter Mutebi,Own Goal
+15/01/2020,4:30 pm,Uganda Premier League,2019/20,17,Police FC Vs Express FC,,90,away,Dissan Galiwango,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Onduparaka FC Vs Mbarara City FC,,8,away,Brian Aheebwa,Regular
+22/02/2020,4:00 pm,Uganda Premier League,2019/20,23,Onduparaka FC Vs Mbarara City FC,,81,home,Julius Malingumu,Penalty
+28/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Kyetume FC Vs Onduparaka FC,,27,home,Baker Buyala,Regular
+28/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Kyetume FC Vs Onduparaka FC,,50,away,Rajab Kakooza,Regular
+28/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Kyetume FC Vs Onduparaka FC,,63,home,Robert Ssentongo,Penalty
+28/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Kyetume FC Vs Onduparaka FC,,83,away,Julius Malingumu,Penalty
+28/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Kyetume FC Vs Onduparaka FC,,90+2,home,Robert Ssentongo,Penalty
+18/01/2020,4:10 pm,Uganda Premier League,2019/20,18,URA FC Vs Bright Stars FC,,33,home,Cromwel Rwothomio Abang,Regular
+17/01/2020,1:00 pm,Uganda Premier League,2019/20,18,Police FC Vs kyetume FC,,90+3,home,Hassan Wasswa,Penalty
+02/10/2019,4:30 pm,Uganda Premier League,2019/20,6,Tooro United FC Vs KCCA FC,,77,home,Charles Musiige,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Proline FC Vs Police FC,,4,home,Musitafa Mujuzi,Penalty
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Proline FC Vs Police FC,,11,away,Derrick Kakooza,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Proline FC Vs Police FC,,14,home,Musitafa Mujuzi,Penalty
+03/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Police FC Vs SC Villa,,15,away,Bashir Mutanda,Regular
+03/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Police FC Vs SC Villa,,42,home,Samson Andrew Kigozi,Regular
+03/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Police FC Vs SC Villa,,45,away,Nicholas Kabonge,Regular
+03/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Police FC Vs SC Villa,,78,home,Fahad Kizito,Regular
+03/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Maroons FC Vs Kyetume FC,,11,home,Ayub Rashid Agau,Regular
+22/11/2019,4:30 pm,Uganda Premier League,2019/20,5,Police FC Vs Proline FC,,14,away,Hamis Diego Kizza,Regular
+22/11/2019,4:30 pm,Uganda Premier League,2019/20,5,Police FC Vs Proline FC,,25,home,Ben Ocen,Penalty
+07/01/2020,4:30 pm,Uganda Premier League,2019/20,16,Tooro United FC Vs Onduparaka FC,,,,,
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Busoga United FC Vs Bright Stars FC,,2,home,Joel Madondo,Regular
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Busoga United FC Vs Bright Stars FC,,56,home,Ibrahim Mugulusi,Regular
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Busoga United FC Vs Bright Stars FC,,90+3,home,Isaac Isinde,Own Goal
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Busoga United FC Vs Bright Stars FC,,90,home,Dan Ssewava,Regular
+11/10/2019,4:30 pm,Uganda Premier League,2019/20,9,Tooro United FC Vs BUL FC,,38,home,Yafeesi Mubiru,Regular
+11/10/2019,4:30 pm,Uganda Premier League,2019/20,9,Tooro United FC Vs BUL FC,,62,away,Musa Esenu,Regular
+11/10/2019,4:30 pm,Uganda Premier League,2019/20,9,Tooro United FC Vs BUL FC,,83,away,Robert Mukoghotya,Regular
+26/10/2019,3:00 pm,Uganda Premier League,2019/20,4,Onduparaka FC Vs Vipers SC,,,,,
+25/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Busoga United FC Vs Wakiso Giants FC,,16,home,Shariph Sheen Kimbowa,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Wakiso Giants FC Vs Mbarara City FC,,4,home,Tom Ssemuwemba Masiko,Penalty
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Wakiso Giants FC Vs Mbarara City FC,,45,home,Kirizestom Ntambi,Regular
+05/10/2019,4:00 pm,Uganda Premier League,2019/20,7,Wakiso Giants FC Vs Mbarara City FC,,60,away,Ibrahim Orit,Regular
+05/02/2020,4:30 pm,Uganda Premier League,2019/20,21,Tooro United FC Vs Wakiso Giants FC,,56,home,Yafeesi Mubiru,Regular
+05/02/2020,4:30 pm,Uganda Premier League,2019/20,21,Tooro United FC Vs Wakiso Giants FC,,79,home,Yafeesi Mubiru,Regular
+05/02/2020,4:30 pm,Uganda Premier League,2019/20,21,Tooro United FC Vs Wakiso Giants FC,,90+3,away,Amos Muwonge,Regular
+04/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Police FC Vs BUL FC,,13,away,Deogratious Ojok,Regular
+04/09/2019,4:30 pm,Uganda Premier League,2019/20,2,Police FC Vs BUL FC,,68,away,Walter Ochora,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Onduparaka FC Vs URA FC,,31,away,Cromwel Rwothomio Abang,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Onduparaka FC Vs URA FC,,51,away,Cromwel Rwothomio Abang,Regular
+08/10/2019,4:30 pm,Uganda Premier League,2019/20,8,Onduparaka FC Vs URA FC,,90+2,home,Wahab Gadaffi,Penalty
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Tooro United FC Vs URA FC,,54,away,Micheal Komunda Birungi,Regular
+28/01/2020,4:30 pm,Uganda Premier League,2019/20,19,Tooro United FC Vs URA FC,,64,home,Charles Musiige,Regular
+12/10/2019,3:00 pm,Uganda Premier League,2019/20,9,Vipers SC Vs Express FC,,9,home,Fahad Bayo,Regular
+12/10/2019,3:00 pm,Uganda Premier League,2019/20,9,Vipers SC Vs Express FC,,72,home,Fahad Bayo,Regular
+12/10/2019,3:00 pm,Uganda Premier League,2019/20,9,Vipers SC Vs Express FC,,89,home,Brian Kalumba,Regular
+07/02/2020,4:00 pm,Uganda Premier League,2019/20,21,onduparaka FC Vs Express FC,,85,away,Frank Ssenyondo,Regular
+02/02/2020,4:00 pm,Uganda Premier League,2019/20,20,Vipers SC Vs Onduparaka FC,,57,home,Geoffrey Wasswa,Regular
+06/03/2020,4:00 pm,Uganda Premier League,2019/20,25,Wakiso Giants FC Vs Vipers SC,,,,,
+26/02/2020,4:30 pm,Uganda Premier League,2019/20,24,Mbarara City FC Vs BUL FC,,76,home,Hilary Panuel Mukundane,Regular
+19/02/2020,4:00 pm,Uganda Premier League,2019/20,22,SC Villa Vs Onduparaka FC,,48,home,Ambrose Kirya,Regular
+23/11/2019,3:00 pm,Uganda Premier League,2019/20,13,URA FC Vs Express FC,,,,,
+02/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Maroons FC Vs Police FC,,53,away,Ben Ocen,Regular
+02/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Maroons FC Vs Police FC,,86,home,Steven Dese Mukwala,Regular
+02/11/2019,4:00 pm,Uganda Premier League,2019/20,11,Maroons FC Vs Police FC,,88,home,Steven Dese Mukwala,Regular
+02/11/2019,3:00 pm,Uganda Premier League,2019/20,11,Wakiso Giants FC Vs Express FC,,13,away,Dissan Galiwango,Regular
+02/11/2019,3:00 pm,Uganda Premier League,2019/20,11,Wakiso Giants FC Vs Express FC,,26,away,Frank Kalanda,Regular
+02/11/2019,3:00 pm,Uganda Premier League,2019/20,11,Wakiso Giants FC Vs Express FC,,66,away,Frank Ssenyondo,Regular
+12/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Busoga United FC Vs Police FC,,4,home,Boban Bogere Zirintusa,Regular
+12/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Busoga United FC Vs Police FC,,20,away,Samson Andrew Kigozi,Regular
+12/10/2019,4:00 pm,Uganda Premier League,2019/20,9,Busoga United FC Vs Police FC,,54,home,Julius Moro Awuya Debbo,Penalty
+07/09/2019,4:00 pm,Uganda Premier League,2019/20,3,Police FC Vs Mbarara City FC,,,,,
+11/09/2019,4:50 pm,Uganda Premier League,2019/20,4,Bright Stars FC Vs Wakiso Giants FC,,3,away,Tom Ssemuwemba Masiko,Penalty
+19/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Proline FC Vs Maroons FC,,8,home,Edrisa Lubega,Regular
+19/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Proline FC Vs Maroons FC,,35,home,Musitafa Mujuzi,Penalty
+19/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Proline FC Vs Maroons FC,,57,away,Steven Dese Mukwala,Regular
+19/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Proline FC Vs Maroons FC,,82,home,Hamis Diego Kizza,Regular
+19/11/2019,4:00 pm,Uganda Premier League,2019/20,10,Proline FC Vs Maroons FC,,85,away,Solomon Walusimbi,Regular
+03/03/2020,4:30 pm,Uganda Premier League,2019/20,25,Busoga United FC Vs Kyetume FC,,29,home,Lawrence Tezikya,Penalty
+05/10/2019,3:00 pm,Uganda Premier League,2019/20,7,KCCA FC Vs Bright Stars FC,,59,away,Joseph Janjali,Regular
+05/10/2019,3:00 pm,Uganda Premier League,2019/20,7,KCCA FC Vs Bright Stars FC,,63,home,Steven Sserwadda,Regular
+18/02/2020,4:00 pm,Uganda Premier League,2019/20,22,Vipers SC Vs KCCA FC,,,,,
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,20,home,Julius Malingumu,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,42,away,Deo Isejja,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,51,home,Jamal Malish,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,55,home,Jamal Malish,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,61,home,Julius Malingumu,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,67,home,Jamal Malish,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,78,home,Julius Malingumu,Regular
+08/11/2019,4:30 pm,Uganda Premier League,2019/20,13,Onduparaka FC Vs Kyetume FC,,757,home,AbdulMlik Vitalis Tabu,Regular
+18/01/2020,3:00 pm,Uganda Premier League,2019/20,18,Busoga United FC Vs Mbarara City FC,,63,home,Lawrence Tezikya,Regular

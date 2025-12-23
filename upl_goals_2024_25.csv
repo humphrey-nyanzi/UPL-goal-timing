@@ -1,0 +1,535 @@
+Date      , Time   , League               , Season , Match Day, home_team              , away_team              , goal_minute, team_side, player_name                 , goal_type
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Mbarara City FC        , Kitara FC              , 84         , home     , Ronald Edwok                , Regular
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Mbarara City FC        , Kitara FC              , 90         , away     , Henry Patrick Kaddu         , Regular
+01/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, URA FC                 , Kitara FC              , 40         , home     , Shariph Sheen Kimbowa       , Regular
+01/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, URA FC                 , Kitara FC              , 45+5       , home     , Ivan Ahimbisibwe            , Penalty
+30/12/2024, 3:00 pm, Uganda Premier League, 2024/25,        13, Mbarara City FC        , Wakiso Giants FC       ,            ,          ,                             , 
+27/09/2024, 4:03 pm, Uganda Premier League, 2024/25,         3, Wakiso Giants FC       , Mbale Heroes FC        , 16         , home     , Habert Asiimwe              , Regular
+30/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, Vipers SC              , Kitara FC              ,            ,          ,                             , 
+13/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, Express FC             , URA FC                 , 41         , away     , Enock Walusimbi             , Regular
+13/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, Express FC             , URA FC                 , 49         , away     , Ivan Ahimbisibwe            , Regular
+13/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, Express FC             , URA FC                 , 60         , home     , Samuel Ssenyonjo            , Penalty
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Maroons FC             , Express FC             , 90+4       , home     , Borris Onegi                , Regular
+06/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         8, Wakiso Giants FC       , Lugazi FC              ,            ,          ,                             , 
+04/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Police FC              , Wakiso Giants FC       , 14         , home     , Isaac Ogwang                , Regular
+04/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Police FC              , Wakiso Giants FC       , 29         , away     , Abdul Ssemakula             , Regular
+04/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Police FC              , Wakiso Giants FC       , 34         , home     , Brian James Obedi           , Regular
+22/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Kitara FC              , UPDF FC                , 14         , home     , Fred Amaku                  , Penalty
+22/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Kitara FC              , UPDF FC                , 24         , home     , Living Kabon                , Regular
+22/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Kitara FC              , UPDF FC                , 45         , home     , Living Kabon                , Regular
+22/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Kitara FC              , UPDF FC                , 48         , home     , George Senkaaba             , Regular
+16/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Lugazi FC              , Mbale Heroes FC        , 10         , away     , Gideon Andrew Etou          , Regular
+16/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Lugazi FC              , Mbale Heroes FC        , 36         , home     , Derrick Mwanje              , Regular
+19/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Kitara FC              , NEC FC                 , 50         , away     , Enock Ssebagala             , Regular
+19/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Kitara FC              , NEC FC                 , 69         , home     , Living Kabon                , Penalty
+19/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Kitara FC              , NEC FC                 , 79         , away     , Wahab Gadaffi               , Regular
+26/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Wakiso Giants FC       , BUL FC                 , 8          , away     , Najib Fesali                , Regular
+26/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Wakiso Giants FC       , BUL FC                 , 11         , home     , Hudson Mbalire              , Regular
+26/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Wakiso Giants FC       , BUL FC                 , 55         , home     , Marvin Mukiibi              , Own Goal
+08/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         8, Express FC             , SC Villa               , 78         , home     , Joseph Zziwa                , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Wakiso Giants FC       , Police FC              , 49         , away     , Umaru Kasumba               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Wakiso Giants FC       , Police FC              , 56         , away     , Reagan Steven Male          , Regular
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Kitara FC              , KCCA FC                , 22         , home     , Henry Patrick Kaddu         , Regular
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Kitara FC              , KCCA FC                , 38         , home     , Jude Ssemugabi              , Regular
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Kitara FC              , KCCA FC                , 51         , home     , David Ndihabwe              , Regular
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Kitara FC              , KCCA FC                , 70         , home     , Living Kabon                , Regular
+23/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Soltilo Bright Stars FC, Mbarara City FC        , 44         , away     , Seiri Arigumaho             , Regular
+25/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, NEC FC                 , Mbale Heroes FC        , 32         , home     , James Jarieko               , Regular
+25/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, NEC FC                 , Mbale Heroes FC        , 49         , home     , Cromwel Rwothomio Abang     , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, BUL FC                 , Vipers SC              , 90+3       , home     , Reagan Kalyowa              , Regular
+03/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, Lugazi FC              , BUL FC                 , 22         , away     , Isaac Wagoina               , Regular
+03/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, Lugazi FC              , BUL FC                 , 37         , home     , Abdul Kalanzi               , Regular
+03/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, Lugazi FC              , BUL FC                 , 90+2       , away     , Isaac Wagoina               , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Mbale Heroes FC        , Maroons FC             , 27         , away     , Norman Borniface Odipio     , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Soltilo Bright Stars FC, SC Villa               , 8          , away     , Aslam Ssemakula             , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Soltilo Bright Stars FC, SC Villa               , 20         , away     , Charles Lwanga              , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Soltilo Bright Stars FC, SC Villa               , 41         , home     , Nelson Senkatuka            , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Soltilo Bright Stars FC, SC Villa               , 69         , away     , Patrick Jonah Kakande       , Regular
+04/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, BUL FC                 , SC Villa               , 21         , home     , Jeromy Kirya                , Regular
+24/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, Express FC             , UPDF FC                , 26         , away     , Joseph Janjali              , Regular
+24/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, Express FC             , UPDF FC                , 34         , away     , Samuel Kayongo Ssekamatte   , Regular
+24/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, Express FC             , UPDF FC                , 60         , home     , Samuel Ssenyonjo            , Regular
+24/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, Express FC             , UPDF FC                , 85         , home     , Geofrey Gagganga            , Regular
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, UPDF FC                , Maroons FC             , 17         , away     , Rogers Kiwanuka             , Penalty
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, UPDF FC                , Maroons FC             , 76         , home     , Samuel Kayongo Ssekamatte   , Penalty
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, UPDF FC                , Maroons FC             , 90         , home     , Samuel Kayongo Ssekamatte   , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, SC Villa               , Lugazi FC              , 14         , home     , Charles Lwanga              , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, SC Villa               , Lugazi FC              , 53         , away     , Abdul Kalanzi               , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Kitara FC              , Mbarara City FC        , 47         , home     , Henry Patrick Kaddu         , Penalty
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Kitara FC              , Mbarara City FC        , 77         , away     , Henry Kitegenyi             , Penalty
+03/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Express FC             , NEC FC                 , 5          , home     , Geofrey Gagganga            , Regular
+03/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Express FC             , NEC FC                 , 9          , home     , Ronald Mawa Andabati        , Regular
+03/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Express FC             , NEC FC                 , 62         , away     , Cromwel Rwothomio Abang     , Regular
+29/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, URA FC                 , Mbale Heroes FC        , 25         , home     , Ivan Ahimbisibwe            , Regular
+29/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, URA FC                 , Mbale Heroes FC        , 46         , away     , Robert Eseru                , Regular
+29/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, URA FC                 , Mbale Heroes FC        , 48         , home     , Norman Namanya              , Regular
+29/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, URA FC                 , Mbale Heroes FC        , 58         , home     , Ivan Ahimbisibwe            , Penalty
+29/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, URA FC                 , Mbale Heroes FC        , 83         , away     , Jesse Kajuba                , Regular
+06/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        15, Vipers SC              , Maroons FC             , 18         , home     , Moses Waiswa Ndhondhi       , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, UPDF FC                , KCCA FC                , 7          , away     , Arafat Kiza Usama           , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, UPDF FC                , KCCA FC                , 69         , away     , Sadat Happy Anaku Ada       , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, UPDF FC                , KCCA FC                , 80         , home     , Samson Andrew Kigozi        , Regular
+13/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, UPDF FC                , Kitara FC              ,            ,          ,                             , 
+13/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        16, NEC FC                 , KCCA FC                , 8          , home     , Enock Ssebagala             , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 15         , away     , Henry Patrick Kaddu         , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 18         , away     , George Senkaaba             , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 22         , away     , Rogers Mugisha              , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 58         , home     , Robert Eseru                , Penalty
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 63         , away     , Solomon Ali Okwalinga       , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 80         , away     , David Kasaija               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Mbale Heroes FC        , Kitara FC              , 87         , away     , Rogers Mugisha              , Regular
+14/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        20, Vipers SC              , Wakiso Giants FC       , 54         , home     , Kenneth Kimera              , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Wakiso Giants FC       , URA FC                 , 29         , away     , Godfrey Sekibengo           , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Wakiso Giants FC       , URA FC                 , 57         , away     , Ivan Ahimbisibwe            , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Wakiso Giants FC       , URA FC                 , 64         , away     , Ivan Ahimbisibwe            , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Maroons FC             , NEC FC                 , 12         , away     , Enock Ssebagala             , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Maroons FC             , NEC FC                 , 20         , away     , Paul Mucureezi              , Penalty
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Maroons FC             , NEC FC                 , 25         , home     , Rogers Kiwanuka             , Penalty
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Maroons FC             , NEC FC                 , 45+1       , away     , Emmanuel Ajo                , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Soltilo Bright Stars FC, Express FC             , 65         , away     , Daniel Shabene              , Regular
+24/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, Police FC              , Soltilo Bright Stars FC, 35         , home     , Isaac Ogwang                , Regular
+24/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, Police FC              , Soltilo Bright Stars FC, 72         , away     , Noordin Saddic Bunjo        , Regular
+26/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        25, KCCA FC                , Mbarara City FC        , 66         , home     , Arafat Kiza Usama           , Regular
+06/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        19, Lugazi FC              , Express FC             , 44         , home     , Sharif Saaka                , Regular
+03/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Soltilo Bright Stars FC, Police FC              , 7          , home     , Noordin Saddic Bunjo        , Regular
+03/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Soltilo Bright Stars FC, Police FC              , 9          , home     , Nelson Senkatuka            , Regular
+03/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Soltilo Bright Stars FC, Police FC              , 31         , home     , Nelson Senkatuka            , Regular
+03/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Soltilo Bright Stars FC, Police FC              , 77         , away     , Daniel Jakony               , Regular
+05/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Mbale Heroes FC        , Wakiso Giants FC       , 53         , away     , Timothy Oyamo               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Vipers SC              , Soltilo Bright Stars FC, 62         , away     , John Kokas Alou             , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Vipers SC              , Soltilo Bright Stars FC, 68         , home     , Allan Okello                , Penalty
+07/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, SC Villa               , KCCA FC                , 22         , away     , Emmanuel Anyama             , Regular
+07/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, SC Villa               , KCCA FC                , 36         , home     , Charles Lwanga              , Regular
+07/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, SC Villa               , KCCA FC                , 45+1       , home     , Reagan Mpande               , Penalty
+07/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, SC Villa               , KCCA FC                , 52         , away     , Emmanuel Anyama             , Regular
+07/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, URA FC                 , UPDF FC                , 11         , home     , Moses Aliro Okabo           , Regular
+07/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, URA FC                 , UPDF FC                , 61         , away     , Rashid Faridi               , Regular
+07/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, URA FC                 , UPDF FC                , 66         , home     , Abraham Tusubira Kakensa    , Regular
+17/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, Kitara FC              , Soltilo Bright Stars FC, 22         , home     , Living Kabon                , Regular
+17/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, Kitara FC              , Soltilo Bright Stars FC, 89         , home     , Henry Patrick Kaddu         , Regular
+15/09/2024, 6:00 pm, Uganda Premier League, 2024/25,         1, NEC FC                 , Vipers SC              , 11         , home     , Muzamiru Mutyaba            , Regular
+15/09/2024, 6:00 pm, Uganda Premier League, 2024/25,         1, NEC FC                 , Vipers SC              , 25         , away     , Livingstone Mulondo         , Regular
+15/09/2024, 6:00 pm, Uganda Premier League, 2024/25,         1, NEC FC                 , Vipers SC              , 59         , home     , Cromwel Rwothomio Abang     , Regular
+15/09/2024, 6:00 pm, Uganda Premier League, 2024/25,         1, NEC FC                 , Vipers SC              , 60         , home     , Paul Mucureezi              , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 8          , home     , Arnold Odong                , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 19         , home     , Elivis Ngonde               , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 46         , home     , Patrick Jonah Kakande       , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 57         , home     , Hakim Kiwanuka              , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 80         , away     , Seiri Arigumaho             , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, SC Villa               , Mbarara City FC        , 90+1       , away     , Paul Busolo                 , Regular
+05/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Mbarara City FC        , Maroons FC             , 4          , away     , Mujahid Ogama               , Regular
+05/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Mbarara City FC        , Maroons FC             , 52         , away     , Mujahid Ogama               , Regular
+05/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Mbarara City FC        , Maroons FC             , 65         , away     , Godwin Daniel Kitagenda     , Regular
+29/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        21, Mbarara City FC        , BUL FC                 ,            ,          ,                             , 
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, SC Villa               , Soltilo Bright Stars FC, 12         , home     , Patrick Jonah Kakande       , Penalty
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, SC Villa               , Soltilo Bright Stars FC, 21         , home     , Charles Lwanga              , Regular
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, SC Villa               , Soltilo Bright Stars FC, 60         , away     , Paskali Oketcho             , Regular
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, SC Villa               , Soltilo Bright Stars FC, 86         , away     , Khasim Mustapha             , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Mbale Heroes FC        , UPDF FC                , 22         , away     , Samuel Kayongo Ssekamatte   , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Mbale Heroes FC        , UPDF FC                , 24         , away     , Samuel Kayongo Ssekamatte   , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Mbale Heroes FC        , UPDF FC                , 65         , away     , Samuel Kayongo Ssekamatte   , Regular
+29/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Mbarara City FC        , Vipers SC              , 45+3       , away     , Allan Okello                , Penalty
+29/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Mbarara City FC        , Vipers SC              , 53         , away     , Allan Okello                , Penalty
+29/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Mbarara City FC        , Vipers SC              , 56         , home     , Latif Ssenkubuge            , Regular
+29/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Mbarara City FC        , Vipers SC              , 71         , away     , Yunus Junior Ssentamu       , Regular
+21/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Soltilo Bright Stars FC, Maroons FC             , 73         , away     , Fredrick Nicholas Kigozi    , Regular
+13/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        20, Express FC             , Police FC              , 48         , away     , Brian James Obedi           , Regular
+13/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        20, Express FC             , Police FC              , 68         , away     , Reagan Steven Male          , Regular
+13/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        20, Express FC             , Police FC              , 87         , home     , Conrad Ssenjogera           , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, UPDF FC                , Police FC              , 8          , home     , Aggrey Kiirya               , Own Goal
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, UPDF FC                , Police FC              , 13         , home     , Bashir Kabuye               , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, UPDF FC                , Police FC              , 28         , away     , Allan Bukenya               , Regular
+27/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, UPDF FC                , Police FC              , 55         , home     , Bashir Kabuye               , Regular
+24/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, UPDF FC                , URA FC                 ,            ,          ,                             , 
+18/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, BUL FC                 , NEC FC                 , 37         , away     , Cromwel Rwothomio Abang     , Regular
+18/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, BUL FC                 , NEC FC                 , 90         , home     , Nicholas Mwere              , Regular
+04/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        14, NEC FC                 , Mbarara City FC        , 84         , home     , Paul Mucureezi              , Penalty
+31/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Wakiso Giants FC       , Express FC             ,            ,          ,                             , 
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Mbale Heroes FC        , Lugazi FC              , 3          , away     , Sam Ssemugugu               , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Mbale Heroes FC        , Lugazi FC              , 31         , away     , Hussein Ssenoga             , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Mbale Heroes FC        , Lugazi FC              , 56         , home     , Robert Eseru                , Regular
+13/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, Mbale Heroes FC        , Lugazi FC              , 78         , away     , Sharif Saaka                , Regular
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Mbarara City FC        , KCCA FC                , 56         , away     , Emmanuel Anyama             , Regular
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Mbarara City FC        , KCCA FC                , 70         , away     , Etienne Katenga Openga      , Regular
+24/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Maroons FC             , Vipers SC              , 47         , away     , Allan Okello                , Penalty
+21/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, BUL FC                 , Express FC             , 24         , home     , Walter Ochora               , Regular
+21/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, BUL FC                 , Express FC             , 89         , away     , Samuel Ssenyonjo            , Regular
+11/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, NEC FC                 , Soltilo Bright Stars FC, 74         , home     , Paul Mucureezi              , Penalty
+31/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, KCCA FC                , Maroons FC             , 3          , home     , Ashraf Mugume               , Regular
+31/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, KCCA FC                , Maroons FC             , 42         , home     , Abubaker Mayanja            , Regular
+31/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, KCCA FC                , Maroons FC             , 45+1       , home     , Saidi Mayanja               , Regular
+31/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, KCCA FC                , Maroons FC             , 65         , home     , Shafik Nana Kwikiriza       , Regular
+31/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         7, KCCA FC                , Maroons FC             , 80         , home     , Sadat Happy Anaku Ada       , Regular
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Police FC              , Mbarara City FC        , 19         , home     , Umaru Kasumba               , Regular
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Police FC              , Mbarara City FC        , 80         , home     , Augustine Gadaffi Kacancu   , Regular
+06/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        19, Police FC              , Vipers SC              , 48         , away     , Yunus Junior Ssentamu       , Regular
+07/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        11, KCCA FC                , Express FC             , 30         , away     , Emmanuel Alex Wasswa        , Regular
+30/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Lugazi FC              , NEC FC                 , 70         , home     , Sam Ssemugugu               , Regular
+02/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        14, Express FC             , Soltilo Bright Stars FC, 6          , away     , Ashiraf Mulindi             , Regular
+02/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        14, Express FC             , Soltilo Bright Stars FC, 55         , home     , Conrad Ssenjogera           , Regular
+02/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        14, Express FC             , Soltilo Bright Stars FC, 64         , home     , Conrad Ssenjogera           , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Maroons FC             , Mbarara City FC        , 21         , home     , Ivan Mayanja                , Penalty
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Maroons FC             , Mbarara City FC        , 90+1       , away     , Martin Owalamu              , Own Goal
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, BUL FC                 , URA FC                 , 9          , home     , Martin Aprem                , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, BUL FC                 , URA FC                 , 40         , away     , Laban Tibiita               , Regular
+14/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        20, BUL FC                 , URA FC                 , 89         , home     , Lawrence Tezikya            , Regular
+04/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, UPDF FC                , NEC FC                 ,            ,          ,                             , 
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Maroons FC             , Kitara FC              , 9          , away     , Fred Amaku                  , Regular
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Maroons FC             , Kitara FC              , 11         , away     , Ronald Otti                 , Regular
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Maroons FC             , Kitara FC              , 29         , away     , Jude Ssemugabi              , Regular
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Maroons FC             , Kitara FC              , 90+2       , away     , Jude Ssemugabi              , Regular
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Lugazi FC              , Mbarara City FC        , 59         , away     , Latif Ssenkubuge            , Regular
+12/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, Lugazi FC              , Mbarara City FC        , 86         , home     , Ali Arshavin Bayo           , Regular
+10/11/2024, 3:00 pm, Uganda Premier League, 2024/25,         8, Mbale Heroes FC        , BUL FC                 ,            ,          ,                             , 
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 13         , home     , Charles Lwanga              , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 31         , home     , Patrick Jonah Kakande       , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 50         , home     , Hakim Kiwanuka              , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 57         , away     , Blanchar Mulamba            , Penalty
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 64         , home     , Charles Lwanga              , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 76         , home     , Reagan Mpande               , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, SC Villa               , Wakiso Giants FC       , 86         , home     , David Owori                 , Regular
+22/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         9, URA FC                 , Vipers SC              , 57         , away     , Milton Karisa               , Regular
+22/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         9, URA FC                 , Vipers SC              , 65         , away     , Allan Okello                , Regular
+05/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         8, NEC FC                 , Police FC              ,            ,          ,                             , 
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, BUL FC                 , Wakiso Giants FC       , 61         , away     , Hudson Mbalire              , Regular
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, BUL FC                 , Wakiso Giants FC       , 75         , home     , Ibrahim Mugulusi            , Regular
+01/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, SC Villa               , UPDF FC                , 1          , away     , Aggrey Kiirya               , Own Goal
+01/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, SC Villa               , UPDF FC                , 11         , home     , Charles Lwanga              , Regular
+01/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, SC Villa               , UPDF FC                , 14         , home     , Charles Lwanga              , Regular
+01/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, SC Villa               , UPDF FC                , 51         , home     , Charles Lwanga              , Regular
+01/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, SC Villa               , UPDF FC                , 71         , home     , Charles Lwanga              , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, URA FC                 , Soltilo Bright Stars FC, 16         , home     , Joseph Ssemujju             , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, URA FC                 , Soltilo Bright Stars FC, 39         , home     , Bruno Junior Bunyaga        , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, URA FC                 , Soltilo Bright Stars FC, 57         , home     , Moses Aliro Okabo           , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, URA FC                 , Soltilo Bright Stars FC, 89         , home     , Bruno Junior Bunyaga        , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Police FC              , URA FC                 , 71         , home     , Umaru Kasumba               , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Police FC              , URA FC                 , 74         , home     , Umaru Kasumba               , Regular
+15/09/2024, 3:00 pm, Uganda Premier League, 2024/25,         1, Maroons FC             , UPDF FC                , 82         , home     , Jackson Nunda               , Regular
+15/09/2024, 3:00 pm, Uganda Premier League, 2024/25,         1, Maroons FC             , UPDF FC                , 88         , away     , Hussein Hassan Zzinda       , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Express FC             , KCCA FC                , 30         , away     , Julius Poloto               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Express FC             , KCCA FC                , 52         , away     , Julius Poloto               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Express FC             , KCCA FC                , 86         , away     , Emmanuel Anyama             , Regular
+22/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Mbale Heroes FC        , SC Villa               , 85         , home     , Cosia Waiswa                , Regular
+03/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        22, Vipers SC              , Lugazi FC              , 66         , home     , AbdulKarim Watambala        , Regular
+04/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Mbarara City FC        , URA FC                 , 17         , away     , Ivan Ahimbisibwe            , Regular
+04/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        22, Mbarara City FC        , URA FC                 , 79         , away     , Bruno Junior Bunyaga        , Regular
+25/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, Vipers SC              , Police FC              , 8          , home     , Allan Okello                , Regular
+25/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, Vipers SC              , Police FC              , 45+1       , away     , Brian James Obedi           , Regular
+25/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, Vipers SC              , Police FC              , 81         , home     , Allan Okello                , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Mbarara City FC        , Lugazi FC              , 56         , home     , Paul Busolo                 , Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Kitara FC              , Vipers SC              , 14         , away     , Gusto Wa Ilungo Mulongo     , Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Kitara FC              , Vipers SC              , 68         , away     , Yunus Junior Ssentamu       , Regular
+04/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, SC Villa               , URA FC                 , 62         , home     , Francis Onekalit            , Regular
+19/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, UPDF FC                , Lugazi FC              , 76         , home     , Samson Andrew Kigozi        , Regular
+11/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, UPDF FC                , Mbale Heroes FC        , 18         , home     , Samuel Kayongo Ssekamatte   , Penalty
+11/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, UPDF FC                , Mbale Heroes FC        , 84         , away     , Hilary Adima                , Regular
+19/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Police FC              , Maroons FC             , 6          , home     , Isaac Ogwang                , Regular
+19/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Police FC              , Maroons FC             , 24         , away     , Ivan Asaba                  , Penalty
+19/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Police FC              , Maroons FC             , 53         , away     , Ivan Asaba                  , Regular
+07/01/2025, 7:00 pm, Uganda Premier League, 2024/25,        15, URA FC                 , Police FC              , 80         , home     , Joseph Ssemujju             , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Kitara FC              , Wakiso Giants FC       ,            ,          ,                             , 
+30/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Police FC              , Mbale Heroes FC        , 23         , home     , Ben Ocen                    , Regular
+30/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Police FC              , Mbale Heroes FC        , 49         , away     , Umar Kyebatala              , Regular
+30/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, Police FC              , Mbale Heroes FC        , 85         , home     , Isaac Ogwang                , Regular
+29/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, NEC FC                 , SC Villa               , 57         , home     , Paul Mucureezi              , Regular
+29/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, NEC FC                 , SC Villa               , 72         , away     , Hakim Kiwanuka              , Regular
+29/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, NEC FC                 , SC Villa               , 86         , home     , Cromwel Rwothomio Abang     , Regular
+20/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        13, KCCA FC                , SC Villa               , 63         , home     , Sadat Happy Anaku Ada       , Regular
+20/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        13, KCCA FC                , SC Villa               , 68         , away     , Patrick Jonah Kakande       , Regular
+26/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, NEC FC                 , Wakiso Giants FC       , 53         , home     , Muzamiru Mutyaba            , Regular
+26/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, NEC FC                 , Wakiso Giants FC       , 86         , home     , James Jarieko               , Regular
+26/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, SC Villa               , BUL FC                 , 18         , home     , Ronald Ssekiganda           , Regular
+26/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, SC Villa               , BUL FC                 , 48         , home     , Hakim Kiwanuka              , Regular
+26/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, SC Villa               , BUL FC                 , 68         , away     , Dickson Mataama             , Regular
+21/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         9, KCCA FC                , NEC FC                 , 20         , away     , Muzamiru Mutyaba            , Regular
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Kitara FC              , SC Villa               , 90+1       , home     , Marvin Nyanzi               , Regular
+24/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Maroons FC             , SC Villa               , 7          , away     , David Owori                 , Regular
+24/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Maroons FC             , SC Villa               , 77         , home     , Jackson Nunda               , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Lugazi FC              , Soltilo Bright Stars FC, 8          , away     , Noordin Saddic Bunjo        , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Lugazi FC              , Soltilo Bright Stars FC, 72         , home     , Alvin Twiine Birungi        , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Lugazi FC              , Soltilo Bright Stars FC, 74         , home     , Moses Ojoaza Buga           , Regular
+25/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, Lugazi FC              , Soltilo Bright Stars FC, 80         , home     , Alvin Twiine Birungi        , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Maroons FC             , Wakiso Giants FC       , 5          , away     , Marvin Oshaba               , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Maroons FC             , Wakiso Giants FC       , 32         , away     , Habert Asiimwe              , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Maroons FC             , Wakiso Giants FC       , 66         , home     , Mujahid Ogama               , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Maroons FC             , Wakiso Giants FC       , 72         , away     , Tevin Kevin Kyeyune         , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Maroons FC             , Wakiso Giants FC       , 76         , home     , Mujahid Ogama               , Regular
+12/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        16, Express FC             , BUL FC                 , 13         , home     , Emmanuel Alex Wasswa        , Own Goal
+12/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        16, Express FC             , BUL FC                 , 40         , away     , Pascal Ngobi                , Regular
+03/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Express FC             , Wakiso Giants FC       , 15         , home     , Samuel Ssenyonjo            , Penalty
+03/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Express FC             , Wakiso Giants FC       , 65         , away     , Moses Oloya                 , Regular
+03/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Express FC             , Wakiso Giants FC       , 70         , home     , Richard Basangwa            , Regular
+03/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Express FC             , Wakiso Giants FC       , 89         , home     , Samuel Ssenyonjo            , Regular
+03/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Express FC             , Wakiso Giants FC       , 90+2       , home     , Samuel Ssenyonjo            , Regular
+28/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Mbale Heroes FC        , Soltilo Bright Stars FC, 55         , home     , Cosia Waiswa                , Regular
+28/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, KCCA FC                , Soltilo Bright Stars FC, 18         , home     , Bright Anukani              , Regular
+28/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, KCCA FC                , Soltilo Bright Stars FC, 32         , home     , Arafat Kiza Usama           , Regular
+28/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, KCCA FC                , Soltilo Bright Stars FC, 36         , home     , Saidi Mayanja               , Regular
+28/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, KCCA FC                , Soltilo Bright Stars FC, 39         , home     , Bright Anukani              , Regular
+28/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, KCCA FC                , Soltilo Bright Stars FC, 90+2       , home     , Joao Gabriel Esteves Cardoso, Regular
+22/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         6, Express FC             , Lugazi FC              , 24         , away     , Sam Ssemugugu               , Regular
+29/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Maroons FC             , BUL FC                 ,            ,          ,                             , 
+02/03/2025, 3:00 pm, Uganda Premier League, 2024/25,        18, UPDF FC                , SC Villa               , 13         , home     , Daniel Kitara               , Regular
+02/03/2025, 3:00 pm, Uganda Premier League, 2024/25,        18, UPDF FC                , SC Villa               , 77         , home     , Brian Kalumba               , Regular
+15/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, Soltilo Bright Stars FC, Wakiso Giants FC       ,            ,          ,                             , 
+26/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Mbale Heroes FC        , KCCA FC                , 30         , away     , Bright Anukani              , Regular
+18/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         5, URA FC                 , BUL FC                 , 4          , away     , Pascal Ngobi                , Regular
+09/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         8, Vipers SC              , KCCA FC                , 44         , home     , Milton Karisa               , Regular
+09/11/2024, 7:00 pm, Uganda Premier League, 2024/25,         8, Vipers SC              , KCCA FC                , 90+3       , away     , Ashraf Mugume               , Regular
+16/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        24, URA FC                 , KCCA FC                , 79         , home     , John Innocent Kisolo        , Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, BUL FC                 , Maroons FC             , 25         , home     , Abdul Karim Ndugwa          , Regular
+07/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Soltilo Bright Stars FC, Vipers SC              , 16         , away     , Gusto Wa Ilungo Mulongo     , Regular
+07/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Soltilo Bright Stars FC, Vipers SC              , 20         , away     , Allan Okello                , Regular
+07/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Soltilo Bright Stars FC, Vipers SC              , 30         , home     , Warren Buule                , Regular
+02/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, Vipers SC              , Mbarara City FC        , 66         , home     , Allan Okello                , Penalty
+27/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         3, KCCA FC                , Kitara FC              , 11         , home     , Saidi Mayanja               , Regular
+27/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         3, KCCA FC                , Kitara FC              , 43         , home     , Derrick Paul Nsibambi       , Regular
+04/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, BUL FC                 , UPDF FC                , 26         , away     , Christopher Kamagu          , Regular
+04/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, BUL FC                 , UPDF FC                , 87         , away     , Brian Kalumba               , Regular
+18/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Soltilo Bright Stars FC, UPDF FC                , 30         , home     , Warren Buule                , Regular
+18/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Soltilo Bright Stars FC, UPDF FC                , 32         , home     , Ashiraf Mulindi             , Regular
+18/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Soltilo Bright Stars FC, UPDF FC                , 45+4       , away     , Samuel Kayongo Ssekamatte   , Penalty
+08/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        19, Mbarara City FC        , Soltilo Bright Stars FC,            ,          ,                             , 
+28/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        21, Lugazi FC              , Maroons FC             , 19         , away     , Abel Micheal Eturude        , Regular
+29/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        26, Vipers SC              , UPDF FC                , 73         , home     , Gusto Wa Ilungo Mulongo     , Regular
+13/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         1, KCCA FC                , URA FC                 , 29         , home     , Saidi Mayanja               , Regular
+26/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        25, SC Villa               , Kitara FC              ,            ,          ,                             , 
+15/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, Kitara FC              , Lugazi FC              ,            ,          ,                             , 
+28/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, URA FC                 , Mbarara City FC        , 58         , away     , Seiri Arigumaho             , Regular
+28/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, URA FC                 , Mbarara City FC        , 62         , home     , Moses Aliro Okabo           , Regular
+06/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, Maroons FC             , Police FC              , 26         , home     , Ivan Mayanja                , Regular
+11/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Lugazi FC              , UPDF FC                , 14         , away     , Samuel Kayongo Ssekamatte   , Regular
+11/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Lugazi FC              , UPDF FC                , 50         , home     , Sam Ssemugugu               , Penalty
+11/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Lugazi FC              , UPDF FC                , 52         , home     , Emmanuel Obua               , Regular
+11/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Lugazi FC              , UPDF FC                , 69         , away     , Joseph Janjali              , Regular
+19/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         2, Vipers SC              , Express FC             , 21         , home     , Milton Karisa               , Regular
+19/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         2, Vipers SC              , Express FC             , 75         , home     , Milton Karisa               , Regular
+19/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         2, Vipers SC              , Express FC             , 84         , home     , Fumador Asiwome             , Regular
+28/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, Express FC             , Mbarara City FC        , 22         , home     , Abdulahi Rashid Kawawa      , Regular
+28/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, Express FC             , Mbarara City FC        , 37         , away     , Seiri Arigumaho             , Regular
+28/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, Express FC             , Mbarara City FC        , 41         , home     , Abdulahi Rashid Kawawa      , Regular
+28/11/2024, 7:00 pm, Uganda Premier League, 2024/25,        10, Express FC             , Mbarara City FC        , 65         , home     , Samuel Ssenyonjo            , Regular
+15/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, SC Villa               , Express FC             , 54         , home     , Patrick Jonah Kakande       , Penalty
+05/10/2024, 4:20 pm, Uganda Premier League, 2024/25,         4, Mbale Heroes FC        , URA FC                 , 10         , away     , Ivan Ahimbisibwe            , Regular
+05/10/2024, 4:20 pm, Uganda Premier League, 2024/25,         4, Mbale Heroes FC        , URA FC                 , 17         , away     , Ivan Ahimbisibwe            , Regular
+05/10/2024, 4:20 pm, Uganda Premier League, 2024/25,         4, Mbale Heroes FC        , URA FC                 , 33         , away     , Ivan Ahimbisibwe            , Regular
+05/10/2024, 4:20 pm, Uganda Premier League, 2024/25,         4, Mbale Heroes FC        , URA FC                 , 58         , away     , Amisi Bwangani              , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 23         , home     , Abdul Ssemakula             , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 38         , away     , Mujahid Ogama               , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 43         , away     , Brian Nkuubi                , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 47         , away     , Raymond Walugembe           , Regular
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 71         , home     , Marvin Oshaba               , Penalty
+09/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, Wakiso Giants FC       , Maroons FC             , 74         , home     , Hudson Mbalire              , Regular
+08/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, KCCA FC                , Mbale Heroes FC        , 21         , home     , Arafat Kiza Usama           , Regular
+08/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, KCCA FC                , Mbale Heroes FC        , 26         , home     , Shafik Nana Kwikiriza       , Regular
+08/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, KCCA FC                , Mbale Heroes FC        , 40         , home     , Sadat Happy Anaku Ada       , Regular
+08/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, KCCA FC                , Mbale Heroes FC        , 72         , home     , Yian Gatbel                 , Regular
+08/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, KCCA FC                , Mbale Heroes FC        , 75         , home     , Sharifu Ssengendo           , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Mbarara City FC        , NEC FC                 , 53         , away     , Allan Mugalu                , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Mbarara City FC        , NEC FC                 , 84         , home     , Seiri Arigumaho             , Regular
+30/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, Mbarara City FC        , NEC FC                 , 90+1       , away     , Jacob Okao                  , Regular
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, SC Villa               , Mbale Heroes FC        , 27         , home     , Simon Kato Ssemayange       , Regular
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, SC Villa               , Mbale Heroes FC        , 48         , away     , Samson Kasozi               , Own Goal
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, SC Villa               , Mbale Heroes FC        , 76         , away     , Robert Eseru                , Regular
+10/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        23, SC Villa               , Mbale Heroes FC        , 87         , home     , Patrick Jonah Kakande       , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, Lugazi FC              , SC Villa               , 51         , away     , Hassan Mubiru               , Regular
+14/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, Vipers SC              , BUL FC                 , 4          , away     , Pascal Ngobi                , Regular
+14/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        12, Vipers SC              , BUL FC                 , 28         , home     , Allan Okello                , Penalty
+11/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Wakiso Giants FC       , SC Villa               , 23         , away     , Aslam Ssemakula             , Regular
+11/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Wakiso Giants FC       , SC Villa               , 60         , home     , Hudson Mbalire              , Regular
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, BUL FC                 , Police FC              ,            ,          ,                             , 
+28/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        21, Wakiso Giants FC       , UPDF FC                , 74         , away     , Samuel Kayongo Ssekamatte   , Regular
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, Mbale Heroes FC        , Express FC             , 22         , away     , Muhammed Kagawa Ssenoga     , Regular
+08/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         8, Soltilo Bright Stars FC, Kitara FC              , 33         , home     , Nelson Senkatuka            , Regular
+30/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Lugazi FC              , KCCA FC                , 48         , away     , Sadat Happy Anaku Ada       , Regular
+30/11/2024, 4:00 pm, Uganda Premier League, 2024/25,        10, Lugazi FC              , KCCA FC                , 77         , home     , Derrick Mwanje              , Regular
+06/10/2024, 3:50 pm, Uganda Premier League, 2024/25,         4, Maroons FC             , Lugazi FC              , 90+1       , home     , Brian Junior Omirambe       , Penalty
+09/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         8, Maroons FC             , URA FC                 , 2          , home     , Mujahid Ogama               , Regular
+09/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         8, Maroons FC             , URA FC                 , 62         , home     , Brian Junior Omirambe       , Penalty
+09/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         8, Maroons FC             , URA FC                 , 63         , away     , Bruno Junior Bunyaga        , Regular
+05/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        11, URA FC                 , NEC FC                 , 23         , home     , Godfrey Sekibengo           , Regular
+05/12/2024, 7:00 pm, Uganda Premier League, 2024/25,        11, URA FC                 , NEC FC                 , 70         , away     , Paul Mucureezi              , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, KCCA FC                , Wakiso Giants FC       , 20         , home     , Ashraf Mugume               , Penalty
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, KCCA FC                , Wakiso Giants FC       , 48         , home     , Joao Gabriel Esteves Cardoso, Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, KCCA FC                , Wakiso Giants FC       , 75         , home     , Umar Lutalo                 , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, KCCA FC                , Wakiso Giants FC       , 78         , home     , Bright Anukani              , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, KCCA FC                , Wakiso Giants FC       , 79         , home     , Yian Gatbel                 , Regular
+01/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         4, Soltilo Bright Stars FC, KCCA FC                , 30         , away     , Derrick Paul Nsibambi       , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Kitara FC              , Maroons FC             , 82         , home     , Titus Ssematimba            , Regular
+29/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, BUL FC                 , Lugazi FC              , 27         , home     , Abdul Karim Ndugwa          , Regular
+29/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, BUL FC                 , Lugazi FC              , 49         , home     , Abdul Karim Ndugwa          , Regular
+29/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, BUL FC                 , Lugazi FC              , 61         , home     , Ibrahim Orit                , Regular
+29/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        26, BUL FC                 , Lugazi FC              , 68         , home     , Hillary Onek                , Regular
+05/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Vipers SC              , SC Villa               , 36         , away     , Hakim Kiwanuka              , Regular
+05/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Vipers SC              , SC Villa               , 38         , home     , Yunus Junior Ssentamu       , Regular
+05/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         4, Vipers SC              , SC Villa               , 54         , home     , Rogers Ochaki Torach        , Regular
+23/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Mbarara City FC        , Mbale Heroes FC        , 55         , home     , Joseph Akandwanaho          , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, UPDF FC                , BUL FC                 , 26         , away     , Abdul Karim Ndugwa          , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, UPDF FC                , BUL FC                 , 57         , home     , Samuel Kayongo Ssekamatte   , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, UPDF FC                , BUL FC                 , 75         , away     , Thomas Ochungo              , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, UPDF FC                , BUL FC                 , 90         , home     , Samuel Kayongo Ssekamatte   , Penalty
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, UPDF FC                , BUL FC                 , 90+1       , away     , Swabir Mpasa                , Regular
+15/09/2024, 3:00 pm, Uganda Premier League, 2024/25,         1, Wakiso Giants FC       , Soltilo Bright Stars FC, 36         , home     , Habert Asiimwe              , Regular
+15/09/2024, 3:00 pm, Uganda Premier League, 2024/25,         1, Wakiso Giants FC       , Soltilo Bright Stars FC, 68         , away     , John Kokas Alou             , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, BUL FC                 , KCCA FC                , 60         , away     , Ashraf Mugume               , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, BUL FC                 , KCCA FC                , 73         , home     , Jeromy Kirya                , Regular
+16/10/2024, 4:10 pm, Uganda Premier League, 2024/25,         5, Police FC              , Express FC             , 33         , home     , Isaac Ogwang                , Regular
+16/10/2024, 4:10 pm, Uganda Premier League, 2024/25,         5, Police FC              , Express FC             , 48         , away     , Samuel Ssenyonjo            , Regular
+16/10/2024, 4:10 pm, Uganda Premier League, 2024/25,         5, Police FC              , Express FC             , 80         , away     , Samuel Ssenyonjo            , Regular
+16/10/2024, 4:10 pm, Uganda Premier League, 2024/25,         5, Police FC              , Express FC             , 90+3       , home     , Isaac Ogwang                , Penalty
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, URA FC                 , Express FC             , 31         , home     , Ivan Ahimbisibwe            , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, URA FC                 , Express FC             , 53         , home     , Ivan Ahimbisibwe            , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, URA FC                 , Express FC             , 55         , home     , Norman Namanya              , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, URA FC                 , Express FC             , 80         , home     , Faizo Matovu                , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, URA FC                 , Express FC             , 88         , home     , Ivan Ahimbisibwe            , Regular
+11/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        28, Police FC              , SC Villa               , 25         , away     , Aslam Ssemakula             , Regular
+11/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        28, Police FC              , SC Villa               , 40         , away     , Reagan Mpande               , Regular
+11/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        28, Police FC              , SC Villa               , 49         , home     , Umaru Kasumba               , Regular
+11/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        28, Police FC              , SC Villa               , 84         , away     , Sula Matovu                 , Regular
+16/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, Police FC              , BUL FC                 ,            ,          ,                             , 
+11/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, Express FC             , Vipers SC              , 14         , home     , Emmanuel Alex Wasswa        , Regular
+11/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, Express FC             , Vipers SC              , 26         , home     , Emmanuel Alex Wasswa        , Regular
+11/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, Express FC             , Vipers SC              , 52         , away     , Allan Okello                , Regular
+11/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, Express FC             , Vipers SC              , 90+4       , away     , Gusto Wa Ilungo Mulongo     , Regular
+16/02/2025, 3:00 pm, Uganda Premier League, 2024/25,        17, Police FC              , NEC FC                 , 45         , away     , Cromwel Rwothomio Abang     , Regular
+16/02/2025, 3:00 pm, Uganda Premier League, 2024/25,        17, Police FC              , NEC FC                 , 90         , home     , Emmanuel Mugume             , Regular
+01/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        18, Kitara FC              , URA FC                 , 37         , home     , Frank Tumwesigye            , Regular
+20/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         2, Soltilo Bright Stars FC, URA FC                 , 45+1       , away     , Ivan Ahimbisibwe            , Regular
+31/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         7, BUL FC                 , Soltilo Bright Stars FC, 10         , home     , Anwar Mustafa Ntege         , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 2          , home     , George Senkaaba             , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 21         , home     , Jude Ssemugabi              , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 37         , home     , Fred Amaku                  , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 58         , home     , George Senkaaba             , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 77         , home     , George Senkaaba             , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 79         , home     , Jude Ssemugabi              , Regular
+21/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Kitara FC              , Express FC             , 87         , home     , David Ndihabwe              , Regular
+06/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        19, BUL FC                 , Kitara FC              , 54         , home     , Jeromy Kirya                , Regular
+09/03/2025, 3:00 pm, Uganda Premier League, 2024/25,        19, SC Villa               , Maroons FC             , 10         , away     , Raymond Walugembe           , Regular
+09/03/2025, 3:00 pm, Uganda Premier League, 2024/25,        19, SC Villa               , Maroons FC             , 79         , away     , Abel Micheal Eturude        , Regular
+27/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        21, Police FC              , Kitara FC              , 54         , away     , Jude Ssemugabi              , Regular
+02/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, Maroons FC             , Mbale Heroes FC        , 11         , home     , Ivan Mayanja                , Penalty
+13/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Mbale Heroes FC        , Mbarara City FC        , 80         , away     , Henry Kitegenyi             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Mbarara City FC        , Express FC             , 47         , home     , Bernard Ndifuna             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Mbarara City FC        , Express FC             , 76         , home     , Nasur Almahad Sadik         , Regular
+03/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         4, Kitara FC              , Police FC              , 29         , away     , Augustine Gadaffi Kacancu   , Regular
+19/10/2024, 7:00 pm, Uganda Premier League, 2024/25,         5, KCCA FC                , UPDF FC                ,            ,          ,                             , 
+20/11/2024, 4:00 pm, Uganda Premier League, 2024/25,         9, Police FC              , Lugazi FC              ,            ,          ,                             , 
+06/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Express FC             , Kitara FC              , 56         , home     , Abdulahi Rashid Kawawa      , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 9          , away     , Cromwel Rwothomio Abang     , Penalty
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 32         , away     , Emmanuel Ajo                , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 51         , away     , Emmanuel Ajo                , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 73         , home     , Shafic Kakande              , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 78         , away     , Emmanuel Kulanga            , Regular
+10/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        28, Soltilo Bright Stars FC, NEC FC                 , 90+2       , away     , James Jarieko               , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, URA FC                 , Wakiso Giants FC       , 20         , home     , Joseph Ssemujju             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, URA FC                 , Wakiso Giants FC       , 26         , home     , Ivan Ahimbisibwe            , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, URA FC                 , Wakiso Giants FC       , 29         , home     , Joseph Ssemujju             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, URA FC                 , Wakiso Giants FC       , 43         , away     , Hudson Mbalire              , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, URA FC                 , Wakiso Giants FC       , 86         , home     , Bruno Junior Bunyaga        , Regular
+07/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        19, Wakiso Giants FC       , NEC FC                 ,            ,          ,                             , 
+12/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, KCCA FC                , BUL FC                 , 29         , away     , Jeromy Kirya                , Regular
+12/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, KCCA FC                , BUL FC                 , 84         , away     , Abdul Karim Ndugwa          , Regular
+12/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, KCCA FC                , BUL FC                 , 90+3       , home     , Ashraf Mugume               , Regular
+26/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         3, Lugazi FC              , Vipers SC              ,            ,          ,                             , 
+02/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         4, BUL FC                 , Mbarara City FC        , 39         , away     , Seiri Arigumaho             , Regular
+02/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         4, BUL FC                 , Mbarara City FC        , 60         , away     , Seiri Arigumaho             , Regular
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, Mbarara City FC        , SC Villa               , 48         , away     , Aslam Ssemakula             , Regular
+16/04/2025, 4:00 pm, Uganda Premier League, 2024/25,        24, Mbarara City FC        , SC Villa               , 74         , home     , Martin Owalamu              , Own Goal
+16/02/2025, 3:00 pm, Uganda Premier League, 2024/25,        17, Lugazi FC              , Wakiso Giants FC       , 54         , home     , Abdul Kalanzi               , Regular
+25/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Kitara FC              , BUL FC                 , 2          , away     , Martin Aprem                , Regular
+25/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Kitara FC              , BUL FC                 , 10         , away     , Walter Ochora               , Regular
+25/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Kitara FC              , BUL FC                 , 28         , home     , Arthur Kiggundu             , Regular
+25/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         6, Kitara FC              , BUL FC                 , 74         , away     , Dickson Mataama             , Regular
+06/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Soltilo Bright Stars FC, Lugazi FC              , 41         , away     , Nelson Mandela              , Regular
+06/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Soltilo Bright Stars FC, Lugazi FC              , 62         , home     , Alex Mandera                , Regular
+12/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Maroons FC             , Soltilo Bright Stars FC, 55         , home     , Felix Okot                  , Regular
+12/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Maroons FC             , Soltilo Bright Stars FC, 79         , away     , Warren Buule                , Regular
+29/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        26, KCCA FC                , Police FC              , 8          , home     , Shafik Nana Kwikiriza       , Regular
+29/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        26, KCCA FC                , Police FC              , 24         , away     , Umaru Kasumba               , Penalty
+29/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        26, KCCA FC                , Police FC              , 71         , home     , Arafat Kiza Usama           , Regular
+02/03/2025, 3:00 pm, Uganda Premier League, 2024/25,        18, Maroons FC             , KCCA FC                ,            ,          ,                             , 
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, NEC FC                 , Maroons FC             , 49         , home     , Jacob Okao                  , Own Goal
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, NEC FC                 , Maroons FC             , 58         , home     , Paul Mucureezi              , Penalty
+18/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, NEC FC                 , Maroons FC             , 73         , home     , Muzamiru Mutyaba            , Regular
+06/11/2024, 4:20 pm, Uganda Premier League, 2024/25,         8, UPDF FC                , Mbarara City FC        , 17         , home     , Frank Gladison Mugisa       , Regular
+06/11/2024, 4:20 pm, Uganda Premier League, 2024/25,         8, UPDF FC                , Mbarara City FC        , 45         , home     , Bernard Muwanga             , Penalty
+06/11/2024, 4:20 pm, Uganda Premier League, 2024/25,         8, UPDF FC                , Mbarara City FC        , 64         , away     , Henry Kitegenyi             , Regular
+07/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, Mbale Heroes FC        , NEC FC                 , 34         , away     , Enock Ssebagala             , Regular
+05/01/2025, 6:00 pm, Uganda Premier League, 2024/25,        14, Wakiso Giants FC       , Kitara FC              ,            ,          ,                             , 
+15/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        17, URA FC                 , Maroons FC             , 30         , home     , Moses Aliro Okabo           , Regular
+06/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, Wakiso Giants FC       , Mbarara City FC        , 82         , away     , Peter Onzima                , Regular
+27/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, NEC FC                 , Express FC             , 4          , home     , Muzamiru Mutyaba            , Regular
+27/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, NEC FC                 , Express FC             , 24         , home     , Paul Mucureezi              , Regular
+27/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, NEC FC                 , Express FC             , 82         , home     , Allan Mugalu                , Regular
+27/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        21, NEC FC                 , Express FC             , 82         , away     , Conrad Ssenjogera           , Regular
+17/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        24, Vipers SC              , NEC FC                 , 23         , home     , Hilary Panuel Mukundane     , Regular
+17/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        24, Vipers SC              , NEC FC                 , 42         , home     , Allan Okello                , Regular
+17/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        24, Vipers SC              , NEC FC                 , 45+1       , home     , Isaac Ogwang                , Regular
+17/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        24, Vipers SC              , NEC FC                 , 84         , away     , Paul Mucureezi              , Penalty
+10/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, NEC FC                 , Kitara FC              , 10         , away     , Living Kabon                , Regular
+10/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, NEC FC                 , Kitara FC              , 11         , home     , Muzamiru Mutyaba            , Regular
+10/04/2025, 7:00 pm, Uganda Premier League, 2024/25,        23, NEC FC                 , Kitara FC              , 87         , home     , Marvin Kavuma               , Regular
+24/05/2025, 3:00 pm, Uganda Premier League, 2024/25,        30, NEC FC                 , URA FC                 , 49         , home     , Emmanuel Ajo                , Regular
+01/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        18, Mbale Heroes FC        , Police FC              , 75         , away     , Gerald Ogweti               , Regular
+01/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        18, Mbale Heroes FC        , Police FC              , 90         , home     , Cosia Waiswa                , Regular
+15/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Police FC              , UPDF FC                , 82         , home     , Umaru Kasumba               , Penalty
+24/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         3, NEC FC                 , UPDF FC                , 85         , home     , Rashid Okocha               , Regular
+01/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         4, UPDF FC                , Wakiso Giants FC       , 60         , home     , Samuel Kayongo Ssekamatte   , Penalty
+01/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, NEC FC                 , Lugazi FC              , 58         , home     , Gideon Odongo               , Regular
+01/03/2025, 7:00 pm, Uganda Premier League, 2024/25,        18, NEC FC                 , Lugazi FC              , 81         , home     , Emmanuel Ajo                , Regular
+14/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, Lugazi FC              , Kitara FC              , 25         , away     , Frank Tumwesigye            , Regular
+14/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, Lugazi FC              , Kitara FC              , 42         , away     , Jude Ssemugabi              , Regular
+14/09/2024, 4:00 pm, Uganda Premier League, 2024/25,         1, Lugazi FC              , Kitara FC              , 64         , away     , Jude Ssemugabi              , Regular
+28/09/2024, 7:00 pm, Uganda Premier League, 2024/25,         3, Express FC             , Maroons FC             ,            ,          ,                             , 
+13/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, SC Villa               , Police FC              , 24         , home     , Patrick Jonah Kakande       , Penalty
+13/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        12, SC Villa               , Police FC              , 82         , away     , Brian James Obedi           , Penalty
+19/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, URA FC                 , Lugazi FC              , 24         , home     , Ivan Ahimbisibwe            , Regular
+06/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, UPDF FC                , Express FC             , 54         , away     , Conrad Ssenjogera           , Regular
+06/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        15, UPDF FC                , Express FC             , 66         , away     , Samuel Ssenyonjo            , Penalty
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, KCCA FC                , Lugazi FC              , 27         , home     , Emmanuel Anyama             , Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, KCCA FC                , Lugazi FC              , 29         , home     , Joao Gabriel Esteves Cardoso, Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, KCCA FC                , Lugazi FC              , 37         , home     , Joao Gabriel Esteves Cardoso, Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, KCCA FC                , Lugazi FC              , 52         , home     , Emmanuel Anyama             , Regular
+14/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, KCCA FC                , Lugazi FC              , 75         , home     , Steven Munguchi             , Regular
+17/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Wakiso Giants FC       , Vipers SC              , 34         , away     , Allan Okello                , Penalty
+17/10/2024, 4:00 pm, Uganda Premier League, 2024/25,         5, Wakiso Giants FC       , Vipers SC              , 63         , away     , Milton Karisa               , Regular
+17/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, Mbarara City FC        , UPDF FC                , 51         , away     , Emmanuel Manu Ochen         , Regular
+20/09/2024, 4:14 pm, Uganda Premier League, 2024/25,         2, Mbarara City FC        , Police FC              ,            ,          ,                             , 
+29/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        21, SC Villa               , Vipers SC              , 40         , home     , Charles Lwanga              , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, NEC FC                 , BUL FC                 , 22         , away     , Abdul Karim Ndugwa          , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, NEC FC                 , BUL FC                 , 86         , home     , Cromwel Rwothomio Abang     , Regular
+02/01/2025, 4:00 pm, Uganda Premier League, 2024/25,        14, Police FC              , KCCA FC                ,            ,          ,                             , 
+06/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, Lugazi FC              , URA FC                 , 89         , away     , Bruno Junior Bunyaga        , Regular
+01/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        18, Soltilo Bright Stars FC, BUL FC                 , 59         , away     , Walter Ochora               , Regular
+01/03/2025, 4:00 pm, Uganda Premier League, 2024/25,        18, Soltilo Bright Stars FC, BUL FC                 , 89         , away     , Abdul Karim Ndugwa          , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 27         , home     , Fred Amaku                  , Penalty
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 43         , home     , George Senkaaba             , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 46         , home     , Jude Ssemugabi              , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 57         , home     , Fred Amaku                  , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 73         , home     , Marvin Nyanzi               , Regular
+06/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        11, Kitara FC              , Mbale Heroes FC        , 87         , home     , Jude Ssemugabi              , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 11         , away     , Peter Ssenkungu             , Own Goal
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 20         , away     , Abudul Malik Bironse        , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 41         , home     , John Kokas Alou             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 56         , home     , John Kokas Alou             , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 90+1       , home     , Nelson Senkatuka            , Regular
+16/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        29, Soltilo Bright Stars FC, Mbale Heroes FC        , 90+2       , home     , Shafic Kakande              , Regular
+11/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        16, Vipers SC              , URA FC                 , 54         , home     , Allan Okello                , Penalty
+11/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        16, Vipers SC              , URA FC                 , 74         , home     , Enock Luyima                , Regular
+12/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        16, Lugazi FC              , Police FC              , 69         , home     , Abdul Kalanzi               , Penalty
+16/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, BUL FC                 , Mbale Heroes FC        , 23         , home     , Hillary Onek                , Regular
+16/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, BUL FC                 , Mbale Heroes FC        , 61         , home     , Nicholas Mwere              , Regular
+16/02/2025, 4:00 pm, Uganda Premier League, 2024/25,        17, BUL FC                 , Mbale Heroes FC        , 64         , home     , Abdul Karim Ndugwa          , Regular
+06/05/2025, 4:00 pm, Uganda Premier League, 2024/25,        27, UPDF FC                , Soltilo Bright Stars FC, 1          , home     , Joseph Janjali              , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 22         , home     , Milton Karisa               , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 30         , home     , Yunus Junior Ssentamu       , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 42         , home     , Allan Okello                , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 70         , home     , Milton Karisa               , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 73         , home     , Mohamed Salem Ekbad         , Regular
+07/05/2025, 7:00 pm, Uganda Premier League, 2024/25,        27, Vipers SC              , Mbale Heroes FC        , 79         , home     , Kenneth Kimera              , Regular
+16/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        17, KCCA FC                , Vipers SC              , 28         , away     , Yunus Junior Ssentamu       , Regular
+16/02/2025, 7:00 pm, Uganda Premier League, 2024/25,        17, KCCA FC                , Vipers SC              , 30         , away     , Allan Okello                , Regular
+20/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Mbale Heroes FC        , Vipers SC              , 10         , away     , Milton Karisa               , Regular
+20/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Mbale Heroes FC        , Vipers SC              , 46         , away     , Allan Okello                , Regular
+20/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Mbale Heroes FC        , Vipers SC              , 74         , away     , Allan Okello                , Regular
+20/12/2024, 4:00 pm, Uganda Premier League, 2024/25,        13, Mbale Heroes FC        , Vipers SC              , 76         , away     , Milton Karisa               , Regular
