@@ -1,0 +1,25 @@
+[project]
+name = "upl-goal-analysis"
+version = "0.1.0"
+description = "Premier League of Uganda (UPL) Goal Data Analysis and Visualization"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.5",
+    "beautifulsoup4>=4.14.3",
+    "pandas>=2.3.3",
+    "numpy>=2.4.0",
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
+    "plotly>=6.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.0.0",
+    "jupyter>=1.0.0",
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
