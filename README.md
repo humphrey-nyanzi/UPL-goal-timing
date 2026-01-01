@@ -4,11 +4,13 @@
 
 This project analyzes goal-scoring data from the Premier League of Uganda (UPL) across multiple seasons (2019/20 - 2024/25). The pipeline includes:
 
-1. **Data Scraping** (`notebooks/scraping.ipynb`): Web scraping UPL match data from official website
-2. **Data Cleaning** (`notebooks/cleaning.ipynb`): Consolidating, standardizing, and enriching data
-3. **Analysis & Visualization** (`notebooks/analysis.ipynb`): Exploratory analysis and reporting
+1. **Data Scraping** (`scripts/01_scraping.py`): Web scraping UPL match data from official website
+2. **Data Cleaning** (`scripts/02_cleaning.py`): Consolidating, standardizing, and enriching data
+3. **Analysis & Visualization** (`scripts/03_analysis.py`): Exploratory analysis and reporting
 
-## Recent Improvements (Phase 1 & 2 Refactoring)
+> **Note:** Notebooks have been archived in `notebooks_archive/` for reference. All production work uses Python scripts.
+
+## Recent Improvements (Phase 1, 2, & 3 Refactoring)
 
 This project has been refactored to follow best practices:
 
@@ -27,6 +29,12 @@ This project has been refactored to follow best practices:
 - Type hints for better IDE support
 - Error handling for robustness
 
+### ✅ Production Python Scripts (Phase 3)
+- **No import path issues** - scripts are self-contained
+- **CLI arguments** - parameterize season, skip steps, etc.
+- **Orchestrator** - run full pipeline in one command
+- **Uniform format** - all code in production Python files
+
 ## Project Organization
 
 ```
@@ -43,10 +51,17 @@ This project has been refactored to follow best practices:
 │
 ├── models/            <- Trained models, predictions
 │
-├── notebooks/         <- Jupyter notebooks (in execution order)
-│   ├── scraping.ipynb    <- Fetch UPL data from web
-│   ├── cleaning.ipynb    <- Clean, standardize, enrich
-│   └── analysis.ipynb    <- Exploratory analysis & visualizations
+├── scripts/           <- Production Python scripts (replaces notebooks)
+│   ├── __init__.py
+│   ├── 01_scraping.py    <- Fetch UPL data from web
+│   ├── 02_cleaning.py    <- Clean, standardize, enrich
+│   ├── 03_analysis.py    <- Exploratory analysis & visualizations
+│   └── run_pipeline.py   <- Orchestrate all steps
+│
+├── notebooks_archive/ <- Archived Jupyter notebooks (reference only)
+│   ├── scraping.ipynb
+│   ├── cleaning.ipynb
+│   └── analysis.ipynb
 │
 ├── src/               <- Reusable Python modules
 │   ├── __init__.py
@@ -88,23 +103,48 @@ This project has been refactored to follow best practices:
 
 ### Running the Pipeline
 
-Each notebook should be run in order:
+The project has been converted to production Python scripts for reliability and consistency. Run steps individually or use the orchestrator:
 
-1. **Scraping** (`notebooks/scraping.ipynb`)
+#### Option 1: Run Full Pipeline
+```bash
+python scripts/run_pipeline.py
+```
+Executes scraping → cleaning → analysis in sequence.
+
+#### Option 2: Run Individual Steps
+```bash
+python scripts/01_scraping.py --season 2025-26     # Scrape a specific season
+python scripts/02_cleaning.py                      # Clean & consolidate all seasons
+python scripts/03_analysis.py                      # Generate analysis & visualizations
+```
+
+#### Option 3: Run Pipeline with Skips
+```bash
+python scripts/run_pipeline.py --skip scraping     # Skip scraping, run cleaning & analysis
+python scripts/run_pipeline.py --skip cleaning     # Run scraping & analysis only
+```
+
+#### What Each Step Does:
+
+1. **Scraping** (`scripts/01_scraping.py`)
    - Fetches current season match data from UPL website
+   - `--season YYYY-YY` parameter specifies which season (default: 2025-26)
    - Outputs to `data/raw/upl_goals_YYYY_YY.csv`
 
-2. **Cleaning** (`notebooks/cleaning.ipynb`)
+2. **Cleaning** (`scripts/02_cleaning.py`)
    - Consolidates all season files from `data/raw/`
-   - Standardizes team names, cleans goal data
+   - Standardizes team names, cleans goal data, adds derived features
    - Outputs to `data/processed/upl_goals_2019_2025_cleaned.csv`
 
-3. **Analysis** (`notebooks/analysis.ipynb`)
+3. **Analysis** (`scripts/03_analysis.py`)
    - Loads cleaned data from `data/processed/`
-   - Generates visualizations and statistics
-   - Outputs figures to `reports/figures/`
+   - Generates summary statistics and 5 visualization PNG files
+   - Outputs figures to `reports/figures/` (01-05 charts)
+   - Prints team patterns and insights to console
 
 ### Using the Modules Programmatically
+
+If you want to use the modules directly in your own code:
 
 ```python
 from src.config import RAW_SEASON_FILES, CLEANED_CSV
@@ -128,17 +168,17 @@ plot_goals_by_team(df_clean)
 ## Data Flow
 
 ```
-scraping.ipynb
+scripts/01_scraping.py
     ↓ (saves to data/raw/)
 data/raw/upl_goals_*.csv
     ↓
-cleaning.ipynb
+scripts/02_cleaning.py
     ├─ Load from data/raw/
     ├─ Consolidate + clean
     ↓ (saves to data/processed/)
 data/processed/upl_goals_2019_2025_cleaned.csv
     ↓
-analysis.ipynb
+scripts/03_analysis.py
     ├─ Load from data/processed/
     ├─ Analyze + visualize
     ↓ (saves to reports/figures/)
