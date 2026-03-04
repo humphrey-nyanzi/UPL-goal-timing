@@ -104,3 +104,4 @@ target/
 # /data/
 *.pbix
 *.gitkeep
+AGENTS.md
