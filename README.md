@@ -143,4 +143,4 @@ Yiannakos, A., & Armatas, V. (2006). Evaluation of the goal scoring patterns in 
 
 **Humphrey Nyanzi**  
 Sports Scientist & Data Analyst   
-[GitHub](https://github.com/your-username) · [Substack](https://your-substack.com) · [X](https://x.com/your-handle)
+[GitHub](https://github.com/humphrey-nyanzi) · [Substack](https://humphreyn-substack.com) · [X](https://x.com/phreyn)
