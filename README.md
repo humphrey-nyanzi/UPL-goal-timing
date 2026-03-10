@@ -72,8 +72,7 @@ The 16–30 window is used as the reference because it represents the most predi
 | 2023/24 | 505 | 90.3% | 1.06 |
 | 2024/25 | 506 | 89.5% | 0.95 |
 
-The Late Goal Ratio fluctuates around 1.0 with no clear directional trend. Four of six seasons sit at or above 1.0. The practical read: UPL matches stay live to the end. A lead held at 70 minutes is not a safe lead.
-
+The Late Goal Ratio fluctuates around 1.0 with no clear directional trend. Four of six seasons sit at or above 1.0. The practical read: late goals in UPL are not rare events. The final 15 minutes produce goals at roughly the same rate as the most organised phase of the first half.
 ---
 
 ## Why the UPL Pattern Might Differ from European Research
