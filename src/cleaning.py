@@ -40,17 +40,10 @@ def split_combined_teams(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
-    # Handle 'Vs' format
-    df["home_team"] = df["home_team"].str.replace(r"\s+Vs\s+", "|", regex=True)
-    split_teams = df["home_team"].str.split("|", expand=True)
+    split_teams = df["home_team"].str.split(r"\s+(?i:vs)\s+", n=1, expand=True)
     df["home_team"] = split_teams[0].str.strip()
-    df.loc[split_teams[1].notna(), "away_team"] = split_teams[1].str.strip()
-
-    # Handle 'VS' format
-    df["home_team"] = df["home_team"].str.replace(r"\s+VS\s+", "|", regex=True)
-    split_teams = df["home_team"].str.split("|", expand=True)
-    df["home_team"] = split_teams[0].str.strip()
-    df.loc[split_teams[1].notna(), "away_team"] = split_teams[1].str.strip()
+    if split_teams.shape[1] > 1:
+        df.loc[split_teams[1].notna(), "away_team"] = split_teams[1].str.strip()
 
     return df
 
@@ -163,6 +156,23 @@ def fix_known_goal_minute_errors(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
+    goal_minute_text = df["goal_minute"].astype("string")
+
+    penalty_mask = goal_minute_text.str.contains(r"\(\s*p\s*\)", case=False, regex=True, na=False)
+    own_goal_mask = goal_minute_text.str.contains(r"\bog\b", case=False, regex=True, na=False)
+
+    df.loc[penalty_mask, "goal_type"] = "Penalty"
+    df.loc[own_goal_mask, "goal_type"] = "Own Goal"
+
+    # Strip common inline annotations so minute parsing is uniform across seasons.
+    df["goal_minute"] = (
+        goal_minute_text
+        .str.replace(r"\(\s*p\s*\)", "", case=False, regex=True)
+        .str.replace(r"\bog\b", "", case=False, regex=True)
+        .str.replace("'", "", regex=False)
+        .str.strip()
+    )
+
     # Known fixes with source data information
     df.loc[df["goal_minute"] == "247", "goal_minute"] = "90"
     # Note: Busoga United vs BUL FC MD24 2023/04/21
@@ -172,9 +182,6 @@ def fix_known_goal_minute_errors(df: pd.DataFrame) -> pd.DataFrame:
 
     df.loc[df["goal_minute"] == "757", "goal_minute"] = "80"
     # Note: Onduparaka vs Kyetume MD13 2019-11-08
-
-    df.loc[df["goal_minute"] == "30 (p)", "goal_minute"] = "30"
-    df.loc[df["goal_minute"] == "30 (p)", "goal_type"] = "Penalty"
 
     return df
 
@@ -205,7 +212,18 @@ def convert_minute_to_numeric(val: str) -> Optional[int]:
     if pd.isna(val):
         return np.nan
 
-    val = str(val)
+    val = (
+        str(val)
+        .replace("'", "")
+        .replace("(P)", "")
+        .replace("(p)", "")
+        .replace("OG", "")
+        .replace("og", "")
+        .strip()
+    )
+    if val == "":
+        return np.nan
+
     if "+" in val:
         base, added = val.split("+")
         return int(base) + int(added)
@@ -282,7 +300,11 @@ def add_derived_features(df: pd.DataFrame) -> pd.DataFrame:
     # Add match_id
     def team_code(name: str) -> str:
         """Extract 3-letter team code from team name."""
+        if pd.isna(name):
+            return "UNK"
         return name.replace(" ", "")[:3].upper()
+
+    match_dates = pd.to_datetime(df["Date"], dayfirst=True, errors="coerce").dt.strftime("%d-%m").fillna("unknown")
 
     df["match_id"] = (
         "UPL"
@@ -292,7 +314,7 @@ def add_derived_features(df: pd.DataFrame) -> pd.DataFrame:
         + "/"
         + df["away_team"].apply(team_code)
         + "/"
-        + pd.to_datetime(df["Date"]).dt.strftime("%d-%m")
+        + match_dates
     )
 
     # Add round designation
@@ -331,41 +353,41 @@ def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
     # Step 1: Split combined teams
     df = split_combined_teams(df)
-    print("✓ Split combined team names")
+    print("[ok] Split combined team names")
 
     # Step 2: Apply corrections
     df = apply_team_name_corrections(df)
-    print("✓ Applied team name corrections")
+    print("[ok] Applied team name corrections")
 
     # Step 3: Normalize team names
     df = normalize_team_names(df)
-    print("✓ Normalized team names")
+    print("[ok] Normalized team names")
 
     # Step 4: Fix goal minute errors
     df = fix_known_goal_minute_errors(df)
-    print("✓ Fixed known goal minute errors")
+    print("[ok] Fixed known goal minute errors")
 
     # Step 5: Add goal minute features
     df = add_goal_minute_features(df)
-    print("✓ Added goal minute features")
+    print("[ok] Added goal minute features")
 
     # Step 6: Add derived features
     df = add_derived_features(df)
-    print("✓ Added derived features")
+    print("[ok] Added derived features")
 
     # Step 7: Standardize column names
     df.columns = df.columns.str.strip().str.lower().str.replace(r"\s+", "_", regex=True)
-    print("✓ Standardized column names")
+    print("[ok] Standardized column names")
 
     # Step 8: Convert date column
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], format="%d/%m/%Y", errors="coerce")
-    print("✓ Converted date column")
+    print("[ok] Converted date column")
 
     # Remove League column if it exists
     if "league" in df.columns:
         df = df.drop(columns=["league"])
-    print("✓ Removed unnecessary columns")
+    print("[ok] Removed unnecessary columns")
 
     print(f"\nCleaning complete! Final shape: {df.shape}")
 

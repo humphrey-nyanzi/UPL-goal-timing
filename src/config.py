@@ -1,5 +1,5 @@
 """
-Configuration and constants for the UPL Goal Data Analysis project.
+Configuration and constants for the UPL Event Data Analysis project.
 
 This module centralizes file paths, constants, and configuration settings
 to avoid hardcoding values in notebooks and scripts.
@@ -13,16 +13,14 @@ PROJECT_ROOT = Path(__file__).parent.parent
 # Data directories
 DATA_DIR = PROJECT_ROOT / "data"
 DATA_RAW = DATA_DIR / "raw"
+LEGACY_RAW_ARCHIVE_DIR = DATA_RAW / "Goal_scraper_V1_data"
 DATA_PROCESSED = DATA_DIR / "processed"
-DATA_EXTERNAL = DATA_DIR / "external"
-DATA_INTERIM = DATA_DIR / "interim"
+DATA_CACHE = DATA_DIR / "cache"
 
 # Report directories
 REPORTS_DIR = PROJECT_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
 
-# Models directory
-MODELS_DIR = PROJECT_ROOT / "models"
 
 # Notebooks directory
 NOTEBOOKS_DIR = PROJECT_ROOT / "notebooks"
@@ -52,8 +50,14 @@ UPL_CALENDAR_URL = f"{UPL_BASE_URL}/calendar/{{season}}-fixtures-results/"
 UPL_EVENT_URL_PREFIX = f"{UPL_BASE_URL}/event/"
 
 # Scraping configuration
-REQUEST_TIMEOUT = 10
+REQUEST_TIMEOUT = 60 # seconds
 SCRAPE_RETRY_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 1.5
+RATE_LIMIT_SECONDS = 0.75
+MAX_CONCURRENT_REQUESTS = 4
+CHECKPOINT_EVERY = 25
+USE_HTML_CACHE = True
+SCRAPER_STATUS_FORCELIST = (429, 500, 502, 503, 504)
 
 # Team name corrections mapping
 CLUB_NAME_CORRECTIONS = {
@@ -86,3 +90,35 @@ SIDE_AWAY = "away"
 
 # Analysis constants
 SEASONS = ["2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"]
+
+RAW_TABLE_FILE_PREFIXES = {
+    "matches": "upl_matches",
+    "events": "upl_events",
+    "lineups": "upl_lineups",
+    "staff": "upl_staff",
+    "officials": "upl_officials",
+    "stats": "upl_stats",
+}
+
+FAILED_MATCHES_FILE_PREFIX = "upl_failed_matches"
+
+
+def season_key(season: str) -> str:
+    """Convert a season like '2025-26' or '2025/26' to '2025_26'."""
+    return season.replace("-", "_").replace("/", "_")
+
+
+def raw_season_dir(season: str) -> Path:
+    """Return the raw-data directory for one season."""
+    return DATA_RAW / season_key(season)
+
+
+def raw_season_file(season: str, table_name: str) -> Path:
+    """Return the CSV path for one scraped table in its season subfolder."""
+    prefix = RAW_TABLE_FILE_PREFIXES[table_name]
+    return raw_season_dir(season) / f"{prefix}_{season_key(season)}.csv"
+
+
+def raw_season_failed_matches_file(season: str) -> Path:
+    """Return the per-season CSV that tracks failed match URLs."""
+    return raw_season_dir(season) / f"{FAILED_MATCHES_FILE_PREFIX}_{season_key(season)}.csv"

@@ -106,3 +106,4 @@ target/
 *.gitkeep
 AGENTS.md
 /.github
+/data
