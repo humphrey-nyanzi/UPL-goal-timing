@@ -1,0 +1,535 @@
+# UPL Match Intelligence Roadmap
+
+## Purpose
+
+This document is the working plan for evolving the project from a goal timing
+analysis into a full-stack Uganda Premier League data platform.
+
+The goal is not to copy the official UPL website. The official site provides
+match pages and source data. This project should turn that data into searchable,
+modeled, and meaningful football intelligence.
+
+The final shape should demonstrate:
+
+- Web scraping and incremental data collection.
+- Data cleaning, validation, and modeling.
+- Postgres database design.
+- FastAPI backend development.
+- React frontend development.
+- Scheduled automation with GitHub Actions.
+- Notebook-based research that can be promoted into product features.
+
+## North Star
+
+Build an open-source UPL data observatory where users can explore matches,
+teams, players, discipline, goal timing, lineups, officials, and match trends
+across seasons.
+
+The project should support two audiences:
+
+- **Analytical users** who want to understand patterns in the league.
+- **Portfolio/recruiting reviewers** who want to see clear engineering range:
+  data engineering, backend, frontend, automation, and analytical storytelling.
+
+## Core Product Question
+
+What can this project reveal about the Uganda Premier League that individual
+match pages cannot?
+
+Examples:
+
+- Which teams are most dangerous after halftime?
+- Which teams concede late most often?
+- Which teams are most disciplined or card-prone?
+- How do yellow and red cards affect match outcomes?
+- Which players are regular starters, impact substitutes, or frequent scorers?
+- Which officials produce high-card or high-penalty matches?
+- Which teams have strong home advantage?
+- Which matches had the most dramatic timelines?
+- How has the league changed season by season?
+
+## Architecture Overview
+
+The project should be split into three tracks.
+
+### 1. Data Platform
+
+Responsible for getting data from the source to trustworthy storage.
+
+Responsibilities:
+
+- Scrape UPL calendar and match pages.
+- Persist raw scrape outputs.
+- Normalize team, player, event, venue, official, and match data.
+- Load data into Postgres.
+- Run validation checks.
+- Support incremental updates for the current season.
+- Log failed or incomplete matches.
+
+### 2. Research Lab
+
+Responsible for discovery.
+
+Responsibilities:
+
+- Use notebooks for exploratory analysis.
+- Test relationships and hypotheses.
+- Create prototype charts.
+- Document interesting findings.
+- Decide which findings deserve promotion into the app.
+
+Rule: notebooks are for research, not production serving.
+
+### 3. Public Product
+
+Responsible for user-facing exploration.
+
+Responsibilities:
+
+- Expose clean data through FastAPI.
+- Present insights in a React app.
+- Make team, player, match, season, event, and discipline data easier to browse.
+- Turn validated notebook findings into polished dashboard features.
+
+Preferred production flow:
+
+```text
+Scraper -> raw files/cache -> cleaning/modeling -> Postgres -> FastAPI -> React
+```
+
+Preferred user request flow:
+
+```text
+React component -> FastAPI route -> query/service layer -> Postgres -> JSON -> chart/table
+```
+
+## Current Data Assets
+
+The current scraper collects structured per-match data into these tables:
+
+- `matches`
+- `events`
+- `lineups`
+- `staff`
+- `officials`
+- `stats`
+- `failed_matches`
+
+The older goal timing work is Feature 1 / the pilot project. It should stay
+visible as the first proof that the platform can turn raw UPL match data into a
+clear football insight. The new data expands the project beyond goals into team
+behavior, discipline, players, officials, match stats, and lineups.
+
+## Phase 0 - Stabilize The Current Scraper
+
+Objective: Make the current scraper output reliable enough to become the source
+for database ingestion.
+
+Tasks:
+
+- Confirm the scraper writes all expected per-season CSVs consistently.
+- Confirm `match_id` is stable and present across all tables.
+- Confirm each table has predictable columns, even when a match lacks timeline,
+  lineups, officials, or stats.
+- Confirm failed matches are written with enough context for retrying.
+- Add lightweight schema documentation for each raw table.
+- Decide which values should be normalized during scraping versus during
+  staging/modeling.
+- Preserve HTML caching behavior so repeated development does not hammer the
+  source site.
+
+Acceptance criteria:
+
+- Running the scraper for one season creates all expected raw tables.
+- Missing sections produce empty rows/tables safely rather than breaking the
+  pipeline.
+- Failed matches can be retried or inspected.
+- The raw schema is documented.
+
+Suggested validation:
+
+- Run one completed historical season.
+- Run the current season.
+- Compare counts across `matches`, `events`, `lineups`, `officials`, and
+  `stats`.
+
+## Phase 1 - Postgres Foundation
+
+Objective: Move from CSV-only storage toward a real relational data model.
+
+Database choice:
+
+- Use Postgres as the target database.
+- Do not introduce SQLite/DuckDB as the main app database unless the user
+  explicitly changes this decision.
+
+Recommended modeling layers:
+
+- `raw`: records as scraped, preserving source shape.
+- `staging`: cleaned and normalized records.
+- `analytics`: facts, dimensions, summaries, and views for API/dashboard use.
+
+Possible schemas:
+
+```text
+raw.*
+staging.*
+analytics.*
+```
+
+Early tables:
+
+- `raw_matches`
+- `raw_events`
+- `raw_lineups`
+- `raw_staff`
+- `raw_officials`
+- `raw_stats`
+- `raw_failed_matches`
+
+Core modeled tables:
+
+- `dim_seasons`
+- `dim_teams`
+- `dim_players`
+- `dim_officials`
+- `dim_venues`
+- `fact_matches`
+- `fact_events`
+- `fact_lineups`
+- `fact_match_stats`
+- `fact_staff_assignments`
+- `fact_official_assignments`
+
+Useful analytics views:
+
+- `team_match_summary`
+- `team_season_summary`
+- `player_season_summary`
+- `goal_timing_summary`
+- `discipline_summary`
+- `official_discipline_summary`
+- `match_timeline_summary`
+
+Tasks:
+
+- Add `database/schema.sql` or a migration system.
+- Define primary keys and unique constraints.
+- Add indexes for common filters: season, match_id, team, player, event_type,
+  match_day, date.
+- Create a local `.env.example` documenting database variables.
+- Add a database connection module under `src/db/`.
+- Write a loading script that imports current raw CSVs into Postgres.
+- Make ingestion idempotent with upserts or truncate/reload by season.
+
+Acceptance criteria:
+
+- A developer can create the Postgres schema from documented commands.
+- Raw CSV output can be loaded into Postgres.
+- Re-running ingestion does not duplicate records.
+- Basic SQL queries can answer match, team, event, and card questions.
+
+## Phase 2 - Cleaning, Validation, And Analytics Models
+
+Objective: Make the database trustworthy and useful for analysis.
+
+Tasks:
+
+- Move reusable cleaning rules into Python modules under `src/` as the platform
+  grows. Keep the current goal-timing cleaning helpers available for Feature 1
+  until they are deliberately refactored.
+- Normalize team names using centralized config.
+- Parse dates and times consistently.
+- Standardize event types.
+- Parse event minutes into numeric minute, added-time flag, and interval bands.
+- Create match result fields: home win, away win, draw, goal difference.
+- Create event-derived fields: goal, yellow card, red card, substitution.
+- Create home/away perspective features for team analysis.
+- Add data quality checks.
+
+Useful validation checks:
+
+- Every event references an existing match.
+- Every lineup row references an existing match.
+- Match score agrees with goal events where timeline data exists.
+- No duplicate match IDs in `fact_matches`.
+- Event minute values are parseable or explicitly marked unknown.
+- Team names are normalized consistently.
+- Required columns are present for each raw table.
+
+Acceptance criteria:
+
+- Cleaned/model tables can be rebuilt from raw tables.
+- Known data issues are logged instead of silently ignored.
+- Analytics views can support the first API endpoints.
+
+## Phase 3 - FastAPI Backend
+
+Objective: Expose the modeled data through a clean read API.
+
+Initial endpoints:
+
+- `GET /health`
+- `GET /seasons`
+- `GET /matches`
+- `GET /matches/{match_id}`
+- `GET /teams`
+- `GET /teams/{team_id}`
+- `GET /teams/{team_id}/summary`
+- `GET /players`
+- `GET /players/{player_id}`
+- `GET /events`
+- `GET /officials`
+- `GET /officials/{official_id}/summary`
+- `GET /stats/match/{match_id}`
+
+First insight endpoints:
+
+- `GET /insights/goal-timing`
+- `GET /insights/discipline`
+- `GET /insights/team-form`
+- `GET /insights/official-cards`
+
+Implementation guidance:
+
+- Keep route functions thin.
+- Put SQL/query logic in service or repository modules.
+- Use typed response models.
+- Support filters such as season, team, event type, date range, and home/away.
+- Add pagination for list endpoints.
+- Return consistent error shapes.
+
+Acceptance criteria:
+
+- API can run locally.
+- Health endpoint confirms DB connectivity.
+- Match, team, event, and season endpoints return real Postgres data.
+- OpenAPI docs are usable for development.
+
+## Phase 4 - React Frontend
+
+Objective: Build a real interactive product, not another notebook dashboard.
+
+Initial pages:
+
+- **League Overview**
+  - Total matches, goals, cards, teams, seasons.
+  - Current-season status.
+  - Key trend cards.
+
+- **Goal Timing Explorer**
+  - Goal distribution by interval.
+  - Filters by season, team, home/away, event type.
+  - Link back to original goal timing research.
+
+- **Discipline Dashboard**
+  - Yellow/red cards by team and season.
+  - Card timing.
+  - Red card match impact.
+  - Officials card rates where data supports it.
+
+- **Team Profile**
+  - Results summary.
+  - Goal timing profile.
+  - Discipline profile.
+  - Home/away split.
+  - Most-used players.
+
+- **Match Explorer**
+  - Search and filter matches.
+  - Match detail page with timeline, lineups, officials, and stats.
+
+Frontend principles:
+
+- Design for scanning, comparison, and repeated use.
+- Do not simply reproduce raw match pages.
+- Use readable labels, not raw database column names.
+- Keep filters obvious and useful.
+- Prefer a small polished product over many unfinished pages.
+
+Acceptance criteria:
+
+- React app reads from FastAPI, not CSV.
+- Users can browse matches and teams.
+- At least one flagship insight is presented interactively.
+- The app can run locally with documented commands.
+
+## Phase 5 - Automation With GitHub Actions
+
+Objective: Keep the current season updated without manual scraping.
+
+Target weekly flow:
+
+1. Run current-season scraper.
+2. Detect new or changed matches.
+3. Scrape missing/stale match pages.
+4. Load new raw records.
+5. Rebuild staging/analytics models.
+6. Run validation checks.
+7. Report failures in logs/artifacts.
+
+Important design requirement:
+
+- The update process must be idempotent. Running it twice should not create
+  duplicate matches, events, lineups, or stats.
+
+GitHub Actions tasks:
+
+- Add scheduled workflow.
+- Add manual dispatch option.
+- Configure secrets for database connection only when needed.
+- Save logs or failed-match artifacts.
+- Avoid committing scraped data unless the project explicitly decides to track
+  small public snapshots.
+
+Acceptance criteria:
+
+- Workflow can be triggered manually.
+- Weekly schedule is configured.
+- Failed runs provide enough logs to debug.
+- Successful runs update the database or produce a clearly documented artifact.
+
+## Phase 6 - Promote Notebook Research Into Product Features
+
+Objective: Build a repeatable path from exploratory analysis to dashboard
+feature.
+
+Promotion process:
+
+1. Explore a question in a notebook.
+2. Validate that the pattern is real and useful.
+3. Write down the finding and caveats.
+4. Create a SQL view or API query that reproduces it.
+5. Add an API endpoint.
+6. Add a React visualization.
+7. Update documentation.
+
+Candidate research tracks:
+
+- Goal timing and halftime vulnerability.
+- Discipline and card impact.
+- Home advantage by team/season.
+- Comebacks and late equalizers/winners.
+- First-goal importance.
+- Substitution impact.
+- Lineup stability.
+- Player continuity across seasons.
+- Officials and card/penalty patterns.
+- Match stat predictors of winning.
+
+Acceptance criteria:
+
+- Dashboard insights can be traced back to reproducible notebook or SQL work.
+- Caveats are documented, especially where source data is incomplete.
+
+## Phase 7 - Deployment And Portfolio Polish
+
+Objective: Make the project understandable and usable by people outside the
+local machine.
+
+Tasks:
+
+- Add a clear README section for the new architecture.
+- Document local setup for Postgres, API, and frontend.
+- Add screenshots or a demo GIF once the frontend exists.
+- Add deployment notes.
+- Consider Docker Compose for local development.
+- Consider hosted Postgres plus hosted API/frontend.
+- Add a short project case study explaining the engineering and analytical
+  choices.
+
+Possible deployment options:
+
+- Frontend: Vercel, Netlify, Render, or similar.
+- API: Render, Railway, Fly.io, or similar.
+- Database: Supabase, Neon, Railway Postgres, or similar.
+
+Acceptance criteria:
+
+- A reviewer can understand the project in under five minutes.
+- A developer can run the core app locally from documented commands.
+- The portfolio story is clear: source data to database to API to product.
+
+## Analysis Backlog
+
+### Discipline
+
+- Cards by team and season.
+- Cards per match.
+- Cards by minute interval.
+- Home vs away card rates.
+- Referee card rates.
+- Red card impact on result.
+- Cards before/after goals.
+- Team discipline trend over time.
+
+### Goals And Match State
+
+- Goal timing by team.
+- First-goal win rate.
+- Late goals, winners, and equalizers.
+- Comebacks.
+- Goals after substitutions.
+- Goals after cards.
+- Home/away scoring patterns.
+- Added-time goals, if reliable.
+
+### Teams
+
+- Home advantage.
+- Team style profiles.
+- Strong starters vs strong finishers.
+- Teams that concede after halftime.
+- Teams with high rotation.
+- Team form by match day.
+
+### Players
+
+- Top scorers.
+- Most starts.
+- Most appearances.
+- Man of the match counts.
+- Impact substitutes.
+- Player movement/continuity across clubs.
+
+### Officials
+
+- Match assignments.
+- Cards per match.
+- Penalty/red-card frequency, if available.
+- Home/away card balance.
+
+### Match Stats
+
+- Stats most associated with winning.
+- Shot efficiency.
+- Possession versus result.
+- Corners versus goals.
+- Team stat profiles.
+
+## Key Engineering Decisions
+
+- Use Postgres as the main database.
+- Use FastAPI for the backend.
+- Use React for the frontend.
+- Use GitHub Actions for automation.
+- Keep notebooks as research, not production.
+- Keep CSVs as raw/intermediate artifacts, not the long-term serving layer.
+- Build incrementally and keep each phase runnable.
+
+## Near-Term Next Steps
+
+The next best implementation sequence is:
+
+1. Document raw scraper table schemas.
+2. Add a Postgres schema draft.
+3. Add local database configuration documentation.
+4. Build a first CSV-to-Postgres ingestion script.
+5. Add basic validation checks.
+6. Add a minimal FastAPI app with `/health`, `/seasons`, and `/matches`.
+7. Add a minimal React app that consumes `/matches`.
+8. Promote Feature 1 goal timing into the app as the first public analysis.
+9. Expand toward discipline and other Feature 2+ analyses.
+
+This sequence creates a useful vertical slice before the project becomes too
+large.

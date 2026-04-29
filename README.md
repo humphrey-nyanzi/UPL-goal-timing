@@ -1,145 +1,234 @@
-# Uganda Premier League Goal Timing Analysis
+# UPL Match Intelligence
 
-Six seasons. 3,222 goals. One finding that contradicts what most football research says about when matches are decided.
+An open-source Uganda Premier League data platform for collecting, modeling,
+analyzing, and presenting official UPL match data.
 
----
+This project began as a focused goal timing analysis. It is now evolving into a
+full-stack football intelligence system: Python scraping and cleaning, Postgres
+storage, FastAPI access, React presentation, notebook-based research, and
+scheduled updates.
 
-## What This Project Is
+## What This Project Is Becoming
 
-This is a longitudinal analysis of goal-scoring patterns in the Uganda Premier League covering every available match from 2019/20 through 2024/25. The data was collected from the official UPL website, cleaned through a documented pipeline, and analysed to answer three questions:
+The official UPL website is the source archive. UPL Match Intelligence is the
+analysis layer on top of it.
 
-1. When in a match are goals most likely to be scored in Ugandan top-flight football?
-2. Has the proportion of goals created through open play changed over six seasons?
-3. Are decisive late goals becoming more or less common relative to the rest of the match?
+The long-term goal is to answer questions that are difficult to answer from
+individual match pages:
 
-The project was built independently using publicly available data. All code is in this repository.
+- Which teams are most dangerous after halftime?
+- Which clubs concede late most often?
+- Which teams are most disciplined or most card-prone?
+- How do cards affect match outcomes?
+- Which players are regular starters or impact substitutes?
+- Which officials produce high-card matches?
+- How do team profiles change across seasons?
+- Which matches had the most dramatic timelines?
 
----
+## Feature 1: Goal Timing Pilot
 
-## The Main Finding
+The first completed analysis in this project is the original UPL goal timing
+study. It remains the pilot feature for the wider platform.
 
-Every coaching manual points to the final 15 minutes as the danger zone. Research on European football backs this up: the 76–90 minute window is consistently the highest-scoring period in elite competition, driven by physical fatigue and tactical desperation in the closing stages.
+The pilot covered six completed seasons from 2019/20 through 2024/25 and found
+that the most dangerous regular-time period in UPL matches was not the final 15
+minutes, but the first 15 minutes after halftime.
 
-The Uganda Premier League tells a different story.
+Across 3,222 regular-time goals, the 46-60 minute interval accounted for 17.9%
+of goals. At finer resolution, the 51-60 minute window was the highest-volume
+10-minute block, and the 56-60 minute window was the highest-volume five-minute
+block.
 
-Across six seasons and 3,222 goals, **the 15 minutes immediately after halftime (46–60') is the most dangerous period in a UPL match**, accounting for 17.9% of all regular-time goals. The late-game surge that dominates European research is present in the UPL, but it is secondary. The halftime restart, not the final whistle, is when teams are most exposed.
+![Goal Timing Distribution](outputs/features/feature_01_goal_timing/goal_timing_upl.png)
 
-At finer resolution, the peak sharpens further. The 51–60 minute window is the highest-volume 10-minute block in the dataset. The 56–60 window is the highest-volume five-minute block. The concentration is not spread evenly across the second half. It sits in the second half of the first ten minutes after the restart.
-
-![Goal Timing Distribution](outputs/goal_timing_upl.png)
-
----
-
-## Goal Distribution by Interval
+### Pilot Finding: Goal Distribution By Interval
 
 | Interval | Goals | Share | Note |
 |----------|-------|-------|------|
-| 0–15' | 413 | 14.5% | Settling phase |
-| 16–30' | 488 | 17.1% | Organised, settled play |
-| 31–45' | 441 | 15.4% | Late first half |
-| **46–60'** | **517** | **17.9%** | **Peak — second-half restart** |
-| 61–75' | 480 | 16.6% | Mid second half |
-| 76–90' | 504 | 17.4% | Final phase |
+| 0-15' | 413 | 14.5% | Settling phase |
+| 16-30' | 488 | 17.1% | Organised, settled play |
+| 31-45' | 441 | 15.4% | Late first half |
+| **46-60'** | **517** | **17.9%** | **Peak: second-half restart** |
+| 61-75' | 480 | 16.6% | Mid second half |
+| 76-90' | 504 | 17.4% | Final phase |
 
-*Regular-time goals only. Added-time goals excluded from interval analysis.*
+Regular-time goals only. Added-time goals are separated from interval analysis.
 
----
+![Seasonal Trends](outputs/features/feature_01_goal_timing/gqr_gtsi_trends.png)
 
-## How the League Has Changed Over Six Seasons
+### Pilot Research Questions
 
-Beyond the static distribution, this project tracks two measures of how the UPL's goal-scoring character has evolved season by season.
+The pilot analysis answered:
 
-### Open Play Goal Rate
+1. When in a match are goals most likely to be scored in Ugandan top-flight
+   football?
+2. Has the proportion of open-play goals changed across seasons?
+3. Are decisive late goals becoming more or less common relative to the rest of
+   the match?
 
-The percentage of goals that come from genuine attacking play, excluding penalties and own goals. A penalty is a referee decision. An own goal is a defensive error. Neither tells you much about the quality of attacking build-up. Tracking only open-play goals gives a cleaner read on whether teams are creating better chances through competitive sequences.
+The next phase is to keep this analysis as Feature 1 and promote its most useful
+findings into the future API and React dashboard.
 
-The rate has risen from 87.6% in 2019/20 to 89.5% in 2024/25, with 2023/24 recording the six-season high at 90.3%. Five of six seasons sit above the opening benchmark. Roughly 1 in 8 goals came from penalties or own goals in 2019/20. By 2023/24 that had fallen to fewer than 1 in 10.
+## Platform Architecture
 
-### Late Goal Ratio
+Target flow:
 
-A comparison of how many goals are scored in the decisive final phase of a match (76–90') against how many are scored in the settled mid-first-half phase (16–30'). A value above 1.0 means more goals in the late decisive window than in the organised baseline. Below 1.0 means the opposite.
+```text
+official UPL website
+  -> Python scraper
+  -> raw files/cache
+  -> cleaning and validation
+  -> Postgres
+  -> FastAPI
+  -> React web app
+```
 
-The 16–30 window is used as the reference because it represents the most predictable, organised phase of a match: past the opening scramble, not yet near the break.
+The project is organized into three tracks.
 
-![Seasonal Trends](outputs/gqr_gtsi_trends.png)
+### 1. Data Platform
 
-| Season | Goals | Open Play Rate | Late Goal Ratio |
-|--------|-------|----------------|-----------------|
-| 2019/20 | 437 | 87.6% | 1.19 |
-| 2020/21 | 596 | 88.8% | 0.94 |
-| 2021/22 | 563 | 86.7% | 0.98 |
-| 2022/23 | 425 | 89.7% | 1.07 |
-| 2023/24 | 505 | 90.3% | 1.06 |
-| 2024/25 | 506 | 89.5% | 0.95 |
+Responsible for scraping, cleaning, loading, validating, and updating data.
 
-The Late Goal Ratio fluctuates around 1.0 with no clear directional trend. Four of six seasons sit at or above 1.0. The practical read: late goals in UPL are not rare events. The final 15 minutes produce goals at roughly the same rate as the most organised phase of the first half.
----
+Current scraper output includes:
 
-## Why the UPL Pattern Might Differ from European Research
+- `matches`
+- `events`
+- `lineups`
+- `staff`
+- `officials`
+- `stats`
+- `failed_matches`
 
-This analysis documents the pattern. It does not have sufficient data to confirm the cause. Three explanations are worth investigating:
+### 2. Research Lab
 
-**Halftime tactical disruption.** If UPL teams struggle to implement defensive changes effectively during the interval, the opening minutes of the second half become structurally exposed before organisation is restored. This would explain why the peak sits specifically in the 50–60 window rather than being distributed evenly across the second half.
+Responsible for exploratory analysis in notebooks.
 
-**Physical environment.** Heat, humidity, and pitch conditions in Uganda may accelerate when physical stress becomes acute in a match, shifting the fatigue-driven vulnerability window earlier than what European research documents.
+Notebook work is where new questions are tested before becoming production
+features. The goal timing study is Feature 1. Future features may include
+discipline analysis, home advantage, comeback analysis, player impact, official
+profiles, and team style summaries.
 
-**Coaching adjustment quality.** If opposing teams are systematically more effective at acting on halftime insights than the defending team is at implementing them, the 46–60 window becomes habitually exploitable.
+### 3. Public Product
 
-Resolving which of these drives the pattern requires GPS load data, real-time match state records, or controlled cross-league comparisons. The data in this project establishes that the pattern is real and consistent. The cause is the next research question.
+Responsible for the user-facing API and dashboard.
 
----
-
-## Dataset
-
-- **Source:** Official Uganda Premier League website (upl.co.ug)
-- **Seasons:** 2019/20 through 2024/25 (six complete seasons)
-- **Collection:** Automated web scraping via Python (BeautifulSoup + requests)
-- **Coverage:** 16 clubs per season; 15 in 2022/23 following Kyetume FC's license withdrawal
-- **Missing data:** 6.9% of matches had incomplete goal records and were excluded
-- **Exclusion:** Added-time goals separated from regular-time goals for all interval analyses
-- **Cleaned dataset:** 3,222 regular-time goals across 2,846 goal records after validation
-
----
+The future React app should consume FastAPI endpoints backed by Postgres. It
+should not read CSV files directly.
 
 ## Repository Structure
 
-```
+```text
 upl-goal-timing/
 ├── README.md
+├── AGENTS.md
 ├── requirements.txt
-├── src/
-│   ├── config.py             ← paths, constants, team name mappings
-│   ├── dataset.py            ← data loading and consolidation
-│   └── cleaning.py           ← full cleaning pipeline
+├── api/
+│   └── routers/
+├── database/
+│   ├── migrations/
+│   └── seeds/
+├── docs/
+│   └── PROJECT_ROADMAP.md
+├── frontend/
+├── notebooks/
+│   └── features/
+│       └── feature_01_goal_timing/
+│           ├── analysis.ipynb
+│           └── analysis_v2.ipynb
+├── outputs/
+│   └── features/
+│       └── feature_01_goal_timing/
+│           ├── goal_timing_upl.png
+│           ├── gqr_gtsi_trends.png
+│           └── gqr_gtsi_trends_notebook.png
 ├── scripts/
-│   ├── 01_scraping.py        ← scrape by season
-│   ├── 02_cleaning.py        ← run cleaning pipeline
-│   └── 03_analysis.py        ← generate visualisations
-└── outputs/
-    ├── goal_timing_upl.png
-    └── gqr_gtsi_trends.png
+│   ├── data_platform/
+│   │   └── scrape_upl_matches.py
+│   └── features/
+│       └── feature_01_goal_timing/
+│           └── build_goal_timing_dataset.py
+└── src/
+    ├── analytics/
+    ├── db/
+    ├── features/
+    │   └── feature_01_goal_timing/
+    ├── scraping/
+    ├── validation/
+    ├── cleaning.py
+    ├── config.py
+    └── dataset.py
 ```
 
----
+Some folders are intentionally empty for now. They reserve the approved
+architecture for future implementation.
+
+## Current Commands
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Scrape a season:
+
+```bash
+python scripts/data_platform/scrape_upl_matches.py --season 2025-26
+```
+
+Build the Feature 1 goal timing dataset:
+
+```bash
+python scripts/features/feature_01_goal_timing/build_goal_timing_dataset.py
+```
+
+Open the Feature 1 research notebooks:
+
+```text
+notebooks/features/feature_01_goal_timing/
+```
+
+## Roadmap
+
+The detailed implementation plan lives in
+[docs/PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md).
+
+Near-term phases:
+
+1. Stabilize the structured scraper outputs.
+2. Add Postgres schema and ingestion.
+3. Add validation and analytics models.
+4. Build a read-first FastAPI backend.
+5. Build a React frontend with the goal timing pilot as Feature 1.
+6. Add GitHub Actions for scheduled current-season updates.
+7. Promote new notebook analyses into dashboard features.
 
 ## Data Note
 
-Raw data is not committed to this repository. The source is the official UPL website and the data was collected for analytical purposes. The full scraping pipeline is in `scripts/01_scraping.py` — anyone applying this methodology to another league or season can adapt it directly. Pre-processed data is available on request.
-
----
+Raw and processed data are not committed to this repository. The data is
+collected from the official UPL website for analytical purposes. The scraper and
+analysis pipeline are included so the methodology can be inspected and reused.
 
 ## References
 
-Armatas, V., & Pollard, R. (2014). Home advantage in Greek football. *Journal of Sports Sciences*, 32(12), 1210–1218.
+Armatas, V., & Pollard, R. (2014). Home advantage in Greek football. *Journal of
+Sports Sciences*, 32(12), 1210-1218.
 
-Lago-Ballesteros, J., & Lago-Peñas, C. (2010). Performance in team sports: Identifying the keys to success in soccer. *Journal of Human Kinetics*, 25, 85–91.
+Lago-Ballesteros, J., & Lago-Penas, C. (2010). Performance in team sports:
+Identifying the keys to success in soccer. *Journal of Human Kinetics*, 25,
+85-91.
 
-Njororai, W. W. S. (2013). Analysis of goals scored in the 2010 World Cup soccer tournament held in South Africa. *Journal of Physical Education and Sport*, 13(1), 6–13.
+Njororai, W. W. S. (2013). Analysis of goals scored in the 2010 World Cup soccer
+tournament held in South Africa. *Journal of Physical Education and Sport*,
+13(1), 6-13.
 
-Yiannakos, A., & Armatas, V. (2006). Evaluation of the goal scoring patterns in European Championship in Portugal 2004. *International Journal of Performance Analysis in Sport*, 6(1), 178–188.
+Yiannakos, A., & Armatas, V. (2006). Evaluation of the goal scoring patterns in
+European Championship in Portugal 2004. *International Journal of Performance
+Analysis in Sport*, 6(1), 178-188.
 
 ---
 
 **Humphrey Nyanzi**  
-Sports Scientist & Data Analyst   
-[GitHub](https://github.com/humphrey-nyanzi) · [Substack](https://humphreyn-substack.com) · [X](https://x.com/phreyn)
+Sports Scientist & Data Analyst  
+[GitHub](https://github.com/humphrey-nyanzi) ·
+[Substack](https://humphreyn-substack.com) · [X](https://x.com/phreyn)

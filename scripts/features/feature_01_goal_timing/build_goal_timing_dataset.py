@@ -3,7 +3,7 @@
 Clean and consolidate UPL goal data from all seasons.
 
 Usage:
-    python scripts/02_cleaning.py
+    python scripts/features/feature_01_goal_timing/build_goal_timing_dataset.py
 """
 
 import sys
@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 
 # Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.config import RAW_SEASON_FILES, CLEANED_CSV

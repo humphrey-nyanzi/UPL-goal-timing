@@ -1,7 +1,55 @@
-pandas>=1.3.0
-matplotlib>=3.4.0
-numpy>=1.21.0
-seaborn>=0.11.0
-scipy>=1.7.0
-plotly>=5.0.0
-jupyter>=1.0.0
+# UPL Match Intelligence Python dependencies
+#
+# Install:
+#   python -m pip install --upgrade pip
+#   python -m pip install -r requirements.txt
+#
+# Note: React/frontend dependencies will live in frontend/package.json once the
+# frontend app is created. This file is for Python data, API, automation, and
+# notebook work.
+
+# Core data analysis
+numpy>=2.1.0
+pandas>=2.2.0
+scipy>=1.14.0
+
+# Visualization and notebook research
+matplotlib>=3.9.0
+seaborn>=0.13.0
+plotly>=5.24.0
+jupyter>=1.1.0
+ipykernel>=6.29.0
+nbformat>=5.10.0
+
+# Web scraping and parsing
+requests>=2.32.0
+beautifulsoup4>=4.12.0
+lxml>=5.3.0
+urllib3>=2.2.0
+python-dotenv>=1.0.0
+
+# Postgres and database modeling
+sqlalchemy>=2.0.0
+psycopg[binary]>=3.2.0
+alembic>=1.14.0
+
+# FastAPI backend
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.10.0
+pydantic-settings>=2.6.0
+
+# Data validation and pipeline quality checks
+pandera>=0.21.0
+great-expectations>=1.2.0
+
+# Testing and developer tooling
+pytest>=8.3.0
+pytest-cov>=6.0.0
+ruff>=0.8.0
+black>=24.10.0
+mypy>=1.13.0
+
+# GitHub Actions / automation helpers
+tenacity>=9.0.0
+tqdm>=4.67.0

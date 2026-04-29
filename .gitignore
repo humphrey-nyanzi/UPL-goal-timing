@@ -103,7 +103,4 @@ target/
 # exclude data from source control by default
 # /data/
 *.pbix
-*.gitkeep
-AGENTS.md
-/.github
 /data

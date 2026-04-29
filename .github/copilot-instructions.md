@@ -1,40 +1,262 @@
-<!-- Generated/updated by GitHub Copilot assistant -->
 # Repository-specific Copilot / AI Agent Instructions
 
-Purpose: Short, actionable guidance so AI coding agents can be immediately useful in this repository.
+## Big Picture
 
-**Big Picture**
-- **Primary structure:** This repo is notebook-driven data work — the root contains analysis notebooks (`scraping.ipynb`, `cleaning.ipynb`, `analysis.ipynb`) and multiple CSV datasets (`upl_goals_*.csv`).
-- **Data flow (inferred from filenames):** `scraping.ipynb` collects raw data -> `cleaning.ipynb` transforms into `*_cleaned.csv` -> `analysis.ipynb` produces final outputs (`*_final.csv`) and figures.
+This repository is evolving from a UPL goal timing notebook project into **UPL
+Match Intelligence**: an open-source Uganda Premier League data platform.
 
-**What to edit and why**
-- Prefer editing the notebook that owns a step: change scraping logic in `scraping.ipynb`, cleaning rules in `cleaning.ipynb`, and aggregation/plots in `analysis.ipynb`.
-- When you change a notebook that writes a CSV, update the corresponding CSV file in the repo root (e.g., modifying `cleaning.ipynb` should produce `upl_goals_2019_2025_cleaned.csv`).
-- Filenames follow a pattern: `upl_goals_<startYear>_<endYear>[_suffix].csv` with common suffixes `_cleaned` and `_final`. Keep that pattern when adding new datasets.
+The target architecture is:
 
-**Developer workflows / commands**
-- Open and iterate locally with Jupyter: `jupyter lab` or `jupyter notebook` from the repo root.
-- Export or share results: `jupyter nbconvert --to html analysis.ipynb` to generate a readable HTML snapshot.
-- To clear outputs before committing: `jupyter nbconvert --clear-output --inplace <notebook.ipynb>` (recommended to keep diffs small).
+```text
+scraper -> raw data/cache -> cleaning/modeling -> Postgres -> FastAPI -> React
+```
 
-**Conventions and patterns observed**
-- Notebooks are the primary source of truth and typically contain both code and narrative steps. Changes that affect downstream CSVs must be reflected by committing the updated CSV(s).
-- No package manifest, tests, or build system detected; assume the environment is ad-hoc. Check notebook top cells for `pip`/`conda` setup instructions or imports.
+Notebooks remain the research lab. They are where analysis ideas are explored
+and validated before becoming SQL views, API endpoints, or React dashboard
+features.
 
-**Safety and secrets**
-- Inspect the top cells of `scraping.ipynb` for API keys, tokens, or credentials before executing. Do not add secrets to tracked notebooks — use environment variables and document them in a separate `README` or `.env` (not present currently).
+Read `AGENTS.md` and `docs/PROJECT_ROADMAP.md` before making large changes.
 
-**When merging or refactoring**
-- If you convert notebook logic to scripts (recommended for reproducibility), keep the notebooks as lightweight orchestration/analysis and place reusable code in a new `scripts/` or `src/` folder. Update notebooks to import those scripts.
-- If a file with the same dataset name exists, prefer creating a new versioned file (e.g., `upl_goals_2019_2025_cleaned_v2.csv`) rather than silently overwriting without provenance.
+## Current Project State
 
-**What an AI agent should do first (checklist)**
-- Open `scraping.ipynb`, `cleaning.ipynb`, and `analysis.ipynb` to confirm the pipeline and identify where to make changes.
-- Search for dataset filenames (e.g., `upl_goals_2019_2025_cleaned.csv`) and link them to the notebook that produces/consumes them.
-- Run notebooks interactively before proposing or committing transformations. If long-running, document inputs and expected outputs in the notebook metadata or a short `README`.
+- `scripts/data_platform/scrape_upl_matches.py` scrapes official UPL match
+  pages.
+- Current raw tables include:
+  - `matches`
+  - `events`
+  - `lineups`
+  - `staff`
+  - `officials`
+  - `stats`
+  - `failed_matches`
+- Raw per-season CSVs are written under `data/raw/<season>/`.
+- Older processed goal-only outputs remain under `data/processed/`.
+- Notebook analysis remains useful, especially Feature 1: the original goal
+  timing pilot under `notebooks/features/feature_01_goal_timing/`.
+- Raw and processed data are gitignored.
 
-**Examples from this repo**
-- Update example: change cleaning rules in `cleaning.ipynb` -> regenerate `upl_goals_2019_2025_cleaned.csv` -> update `analysis.ipynb` if aggregations change.
-- Snapshot example: use `jupyter nbconvert --to html analysis.ipynb` to produce an analysis snapshot for review.
+## Product Direction
 
-If anything here is unclear or you want the instructions more prescriptive (for example: recommended Python environment, dependency file, or an automated run command), tell me which parts to expand and I will iterate.
+Do not treat the app as a simple clone of the official UPL website. The official
+site is the source/archive. This project should add an intelligence layer:
+
+- Goal timing patterns.
+- Discipline trends.
+- Cards and match outcomes.
+- Team profiles.
+- Player appearances and impact.
+- Officials summaries.
+- Match timeline exploration.
+- Season-over-season league changes.
+
+Prefer features that answer questions a user cannot easily answer from
+individual match pages.
+
+## Planned Tracks
+
+### Data Platform
+
+Owns scraping, cleaning, loading, validation, and scheduled updates.
+
+Expected future pieces:
+
+- Postgres schema/migrations.
+- CSV-to-Postgres ingestion.
+- Idempotent current-season update script.
+- Data quality checks.
+- GitHub Actions workflow.
+
+### Research Lab
+
+Owns exploration.
+
+Use notebooks to:
+
+- Prototype relationships.
+- Create rough visualizations.
+- Validate findings.
+- Document caveats.
+
+Do not make notebooks responsible for production serving.
+
+### Public Product
+
+Owns API and frontend.
+
+Expected future pieces:
+
+- FastAPI backend.
+- React frontend.
+- Interactive match, team, player, discipline, and goal timing pages.
+
+The React app should call FastAPI. It should not read CSV files directly.
+
+## Preferred Repository Evolution
+
+Grow toward this shape gradually:
+
+```text
+scripts/
+  data_platform/
+    scrape_upl_matches.py
+    load_to_postgres.py
+    update_current_season.py
+  features/
+    feature_01_goal_timing/
+      build_goal_timing_dataset.py
+
+src/
+  scraping/
+  cleaning/
+  db/
+  validation/
+  analytics/
+  config.py
+  dataset.py
+
+database/
+  schema.sql
+  migrations/
+  seeds/
+
+api/
+  main.py
+  routers/
+
+frontend/
+  React app
+
+notebooks/
+  features/
+    feature_01_goal_timing/
+
+docs/
+  PROJECT_ROADMAP.md
+```
+
+Do not create empty architecture for its own sake. Add structure when a phase
+needs it.
+
+## Current Commands
+
+- Install Python deps: `pip install -r requirements.txt`
+- Run scraper: `python scripts/data_platform/scrape_upl_matches.py --season 2025-26`
+- Build Feature 1 goal timing dataset: `python scripts/features/feature_01_goal_timing/build_goal_timing_dataset.py`
+- Work with Feature 1 notebooks from `notebooks/features/feature_01_goal_timing/`.
+
+No formal test suite exists yet. Validate by running the relevant script,
+notebook, API endpoint, or frontend view end to end.
+
+## Future Commands To Document When Added
+
+When these pieces are introduced, update this file and `AGENTS.md`:
+
+- Postgres setup command.
+- Database migration command.
+- Database ingestion command.
+- FastAPI dev server command.
+- React dev server command.
+- Scheduled update workflow behavior.
+
+## Coding Guidance
+
+- Keep constants, paths, URLs, and team-name corrections centralized in
+  `src/config.py` or a clear config module.
+- Use lowercase, underscore-separated column names.
+- Prefer typed Python functions.
+- Use NumPy-style docstrings for public Python functions.
+- Copy DataFrames before mutation: `df = df.copy()`.
+- Prefer reusable modules under `src/` over notebook-only logic.
+- Preserve source IDs such as `match_id`, team URLs, player URLs, and match URLs
+  when modeling relationships.
+- Keep scraping, cleaning, database loading, API, and frontend concerns
+  separate.
+
+## Database Guidance
+
+Postgres is the intended production database.
+
+Use layered modeling:
+
+- `raw` for source-shaped scraped records.
+- `staging` for cleaned and normalized records.
+- `analytics` for facts, dimensions, summaries, and views.
+
+Likely modeled tables:
+
+- `dim_seasons`
+- `dim_teams`
+- `dim_players`
+- `dim_officials`
+- `dim_venues`
+- `fact_matches`
+- `fact_events`
+- `fact_lineups`
+- `fact_match_stats`
+
+Ingestion should be idempotent. Re-running a season import must not duplicate
+matches, events, lineups, officials, or stats.
+
+## API Guidance
+
+FastAPI should start read-only.
+
+Good first endpoints:
+
+- `GET /health`
+- `GET /seasons`
+- `GET /matches`
+- `GET /matches/{match_id}`
+- `GET /teams`
+- `GET /teams/{team_id}/summary`
+- `GET /events`
+
+Keep route handlers thin. Put query/service logic in separate modules when it
+grows.
+
+## Frontend Guidance
+
+Build a real React analytical app, not another Streamlit-style notebook
+dashboard.
+
+Good first pages:
+
+- League overview.
+- Goal timing explorer.
+- Discipline dashboard.
+- Team profile.
+- Match explorer.
+
+Use readable labels and football language. Avoid exposing raw database column
+names to users.
+
+## Automation Guidance
+
+GitHub Actions is the preferred automation path.
+
+The future scheduled workflow should:
+
+1. Run the current-season scraper.
+2. Detect new or changed matches.
+3. Load updates into Postgres idempotently.
+4. Run validation checks.
+5. Log failed matches and errors clearly.
+
+## Agent Checklist
+
+Before making non-trivial changes:
+
+- Read `AGENTS.md`.
+- Read `docs/PROJECT_ROADMAP.md`.
+- Inspect the current files touched by the task.
+- Check whether the task belongs to data platform, research lab, or public
+  product.
+- Keep the change phase-appropriate.
+
+Do not:
+
+- Move production serving into notebooks.
+- Make the future frontend read CSVs directly.
+- Introduce a different primary database without user approval.
+- Hardcode team names, source URLs, or paths in random modules.
+- Add broad architecture scaffolding with no runnable value.

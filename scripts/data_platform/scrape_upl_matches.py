@@ -3,7 +3,7 @@
 Scrape structured UPL match data from the official website.
 
 Usage:
-    python scripts/01_scraping.py --season 2025-26
+    python scripts/data_platform/scrape_upl_matches.py --season 2025-26
 """
 
 import sys
@@ -26,7 +26,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 # Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.config import (
