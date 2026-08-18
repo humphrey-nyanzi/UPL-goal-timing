@@ -161,7 +161,10 @@ def get_season_overview(season: str | None = None) -> dict[str, Any] | None:
         + counts_by_type.get("penalty_goal", 0)
     )
 
-    overview["goal_count"] = timeline_goal_count
+    # ``goal_count`` is the general scoring total used by Overview, so it must
+    # follow the final scoreline contract. Timeline goals remain separately
+    # named for event-led analysis and coverage comparisons.
+    overview["goal_count"] = overview["scoreline_goal_count"]
     overview["timeline_goal_count"] = timeline_goal_count
     overview["event_count"] = sum(counts_by_type.values())
     overview["yellow_card_count"] = counts_by_type.get("yellow_card", 0)

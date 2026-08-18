@@ -93,9 +93,9 @@ insights belong in `/insights`.
 |---|---|---|---|---|
 | `GET /health` | API and database health | Shell, About, Methodology | `status`, `database`, `latest_staging_completed_at` | existing |
 | `GET /seasons` | Available seasons and coverage | Overview, filters, detail pages | `season`, `match_count`, `first_match_date`, `last_match_date`, `team_count` | existing |
-| `GET /seasons/overview` | Season aggregate summary | Overview, Methodology | `match_count`, `team_count`, `timeline_goal_count`, `scoreline_goal_count`, `event_breakdown` | extended |
+| `GET /seasons/overview` | Season aggregate summary | Overview, Methodology | `match_count`, `team_count`, `goal_count`, `timeline_goal_count`, `scoreline_goal_count`, `event_breakdown` | extended |
 | `GET /overview/intelligence` | Editorial overview modules | Overview | `season_pulse`, `things_to_notice`, `recent_signal_matches`, `team_signals`, `data_quality` | new |
-| `GET /trends/seasons` | Season trend charts and comparison table | Trends, Overview teasers | `goals_per_match`, `cards_per_match`, `home_win_share`, `draw_share`, `high_scoring_match_share`, `timeline_coverage_share`, `data_quality_status` | new |
+| `GET /trends/seasons` | Season trend charts and comparison table | Trends, Overview teasers | `goals_per_match`, `timeline_goals_per_match`, `cards_per_match`, `home_win_share`, `draw_share`, `high_scoring_match_share`, `timeline_coverage_share`, `data_quality_status` | extended |
 | `GET /matches` | Basic match list | Simple match lists and fallbacks | `match_id`, `home_team`, `away_team`, `result`, `timeline_status`, `match_url` | existing |
 | `GET /matches/intelligence` | Match triage with computed signals | Matches, Overview signal cards | `interest_score`, `primary_signal`, `signal_labels`, `event_count`, `late_goal_count`, `final_15_goal_count` | new |
 | `GET /matches/{match_id}` | Match intelligence brief | Match Detail | `intelligence_summary`, `key_moments`, `event_phase_summary`, `score_progression`, `events`, `officials`, `stats` | extended |
@@ -106,7 +106,7 @@ insights belong in `/insights`.
 | `GET /players/{player_slug}` | Player contribution profile | Player Detail | `season_breakdown`, `recent_matches`, `season_trend`, `data_quality_note` | extended |
 | `GET /events` | Event browse/supporting data | Secondary detail views, debugging | `event_type`, `minute_total`, `minute_period`, `team_name`, `player_name` | existing |
 | `GET /officials` | Officials browse/supporting data | Match Detail, debugging | `role`, `official_name`, `match_id` | existing |
-| `GET /insights/goal-timing` | Promoted Feature 1 insight | Insights, Goal Timing, Overview | `intervals`, `peak_interval`, `total_regular_time_goals`, `scope_key` | existing |
+| `GET /insights/goal-timing` | Promoted Feature 1 insight | Insights, Goal Timing, Overview | `intervals`, `peak_interval`, `total_regular_time_goals`, `scoreline_goal_count`, `timeline_goal_count`, timeline status and mismatch counts | extended |
 
 Frontend rules:
 
@@ -121,6 +121,18 @@ Frontend rules:
 - When the backend contract changes, update this section,
   `frontend/src/api/types.ts`, `frontend/src/api/client.ts`, and the affected
   page guidance below.
+
+Metric-source contract:
+
+- `goal_count`, `goals_per_match`, team GF/GA/GD, and result-based team
+  superlatives use final scorelines.
+- `timeline_goal_count` and `timeline_goals_per_match` describe goal events
+  found in match timelines and must retain timeline coverage context.
+- `total_regular_time_goals` is the Goal Timing subset after added-time and
+  out-of-window exclusions. The Goal Timing response also exposes scoreline,
+  timeline, status, and mismatch counts so the frontend can explain the subset.
+- `official_points` equals sporting points plus a recorded adjustment.
+  `points_note` explains any adjustment visible in the public table.
 
 ## Source Record Vs Intelligence Layer
 

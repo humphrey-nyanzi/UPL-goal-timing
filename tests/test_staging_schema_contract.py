@@ -113,6 +113,7 @@ def test_schema_sql_includes_team_season_summary_migration() -> None:
     assert r"\i migrations/008_add_admin_results_and_official_points.sql" in schema_sql
     assert r"\i migrations/009_backfill_team_summary_admin_fields.sql" in schema_sql
     assert r"\i migrations/010_add_timeline_coverage_fields.sql" in schema_sql
+    assert r"\i migrations/012_reconcile_scoreline_goal_contract.sql" in schema_sql
 
 
 def test_admin_result_migration_adds_official_points_contract() -> None:
@@ -127,6 +128,21 @@ def test_admin_result_migration_adds_official_points_contract() -> None:
     assert "official_points" in sql
     assert "points_note" in sql
     assert "administrative_matches" in sql
+
+
+def test_scoreline_contract_migration_reconciles_goals_and_points() -> None:
+    """The release contract should use scorelines and record Buhimba's deduction."""
+
+    sql = (
+        PROJECT_ROOT / "database" / "migrations" / "012_reconcile_scoreline_goal_contract.sql"
+    ).read_text(encoding="utf-8")
+
+    assert "'Buhimba United Saints FC'" in sql
+    assert "-3" in sql
+    assert "12 official points" in sql
+    assert "COALESCE(home_score, 0)::integer AS goals_for" in sql
+    assert "COALESCE(away_score, 0)::integer AS goals_against" in sql
+    assert "FROM staging.events" not in sql
 
 
 def test_actions_loader_can_refresh_analytics_tables() -> None:

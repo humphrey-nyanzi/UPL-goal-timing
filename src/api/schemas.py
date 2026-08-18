@@ -53,6 +53,14 @@ class GoalTimingInsightResponse(ApiModel):
     season_count: int
     first_match_date: date | None = None
     last_match_date: date | None = None
+    match_count: int
+    scoreline_goal_count: int
+    timeline_goal_count: int
+    timeline_complete_match_count: int
+    timeline_partial_match_count: int
+    timeline_unavailable_match_count: int
+    timeline_administrative_result_count: int
+    timeline_mismatch_match_count: int
     total_regular_time_goals: int
     peak_interval: str | None = None
     intervals: list[GoalTimingInterval]
@@ -84,6 +92,7 @@ class SeasonTrendRow(ApiModel):
     scoreline_goal_count: int
     timeline_goal_count: int
     goals_per_match: float | None = None
+    timeline_goals_per_match: float | None = None
     yellow_card_count: int
     red_card_count: int
     total_card_count: int
@@ -115,6 +124,7 @@ class SeasonTrendsSummary(ApiModel):
     total_timeline_goals: int
     total_cards: int
     average_goals_per_match: float | None = None
+    average_timeline_goals_per_match: float | None = None
     average_cards_per_match: float | None = None
     earliest_season: str | None = None
     latest_season: str | None = None

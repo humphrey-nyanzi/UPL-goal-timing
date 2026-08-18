@@ -64,7 +64,7 @@ def _overview_notices(row: dict[str, Any]) -> list[dict[str, Any]]:
             {
                 "key": "scoring_rate",
                 "title": "Scoring rate",
-                "text": f"Available timeline data shows {row['goals_per_match']} goals per match.",
+                "text": f"Recorded scorelines show {row['goals_per_match']} goals per match.",
                 "tone": "neutral",
                 "link_path": "/trends",
             }
@@ -117,4 +117,3 @@ def _team_signals(teams: list[dict[str, Any]]) -> list[dict[str, Any]]:
             }
         )
     return signals
-

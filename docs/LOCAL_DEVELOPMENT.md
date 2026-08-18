@@ -142,6 +142,34 @@ Use this table to avoid guessing.
 | API response shape used by React | Verify the endpoint and run `npm run build`. |
 | Deployment config | Check the local build command and the relevant deployment runbook before changing hosted settings. |
 
+### Verify the scoreline and timeline goal contracts
+
+For the frozen 2025/26 retrospective, verify these sources separately:
+
+```text
+Scorelines -> standings GF/GA/GD, general goals per match, team superlatives
+Timelines  -> event-led goal counts and timing analysis
+Goal Timing -> regular-time timeline subset after documented exclusions
+```
+
+After applying migrations and rebuilding analytics summaries, check:
+
+- `/seasons/overview?season=2025_26`: `goal_count` and
+  `scoreline_goal_count` agree; `timeline_goal_count` remains separate.
+- `/trends/seasons`: `goals_per_match` uses scoreline goals and
+  `timeline_goals_per_match` preserves the event-derived comparison.
+- `/teams?season=2025_26`: GF, GA, GD, and rate-based superlatives agree with
+  scorelines; Buhimba has 15 sporting points, a `-3` adjustment, 12 official
+  points, and an explanatory note.
+- `/insights/goal-timing?season=2025_26`: the regular-time subset is shown
+  alongside scoreline goals, timeline goals, timeline status counts, and
+  mismatch counts.
+
+The release-candidate snapshot reproduced on 18 August 2026 contains 240
+matches, 505 scoreline goals, 496 timeline goals, 462 regular-time Goal Timing
+goals, seven partial timelines, one administrative-result timeline, and four
+scoreline/timeline goal-count mismatches.
+
 ## Testing A Pull Request Before Merge
 
 Use this when you want to test work that is still in a PR before it reaches

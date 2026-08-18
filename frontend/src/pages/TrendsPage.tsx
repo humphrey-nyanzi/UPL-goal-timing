@@ -193,8 +193,8 @@ function TrendsChartGrid({
       <article className="panel trends-chart-panel">
         <MiniTrendLineChart
           data={goalsData}
-          description="Line shows timeline-recorded goals per match. Muted dots mark seasons with limited timeline evidence."
-          emptyLabel="Timeline scoring-rate data is not available yet."
+          description="Line shows final scoreline goals per recorded match."
+          emptyLabel="Scoreline scoring-rate data is not available yet."
           height="regular"
           title="Scoring over time"
           valueFormatter={(value) => value.toFixed(2)}
@@ -351,7 +351,7 @@ function TrendsSeasonTable({
               <th scope="col">Season</th>
               <th scope="col">Matches</th>
               <th scope="col">Teams</th>
-              <th scope="col">Timeline goals/match</th>
+              <th scope="col">Scoreline goals/match</th>
               <th scope="col">Cards/match</th>
               <th scope="col">Home / Draw / Away</th>
               <th scope="col">High-scoring</th>
@@ -376,7 +376,7 @@ function TrendsSeasonTable({
                   </td>
                   <td data-label="Matches">{formatNumber(row.match_count)}</td>
                   <td data-label="Teams">{formatNumber(row.team_count)}</td>
-                  <td data-label="Timeline goals/match">
+                  <td data-label="Scoreline goals/match">
                     {formatRate(row.goals_per_match)}
                   </td>
                   <td data-label="Cards/match">
@@ -466,11 +466,8 @@ export function TrendsPage({
       key: row.season,
       label: formatSeason(row.season),
       value: row.goals_per_match ?? 0,
-      secondaryValue: row.timeline_goal_count,
-      tone:
-        row.data_quality_status === "limited"
-          ? ("muted" as const)
-          : ("green" as const),
+      secondaryValue: row.scoreline_goal_count,
+      tone: "green" as const,
     }));
 
   const cardsData = rows

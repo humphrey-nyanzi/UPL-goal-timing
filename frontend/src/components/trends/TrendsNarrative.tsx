@@ -51,8 +51,9 @@ function describeRateExtremes(
   rows: SeasonTrendRow[],
   key: "cards_per_match" | "goals_per_match",
   noun: string,
+  excludeLimited = true,
 ) {
-  const usable = comparableRows(rows, key, true);
+  const usable = comparableRows(rows, key, excludeLimited);
   if (usable.length === 0) {
     return `Timeline coverage is too limited to rank ${noun} across seasons.`;
   }
@@ -193,7 +194,8 @@ export function deriveTrendsNarrative(
     scoring: describeRateExtremes(
       rows,
       "goals_per_match",
-      "timeline goals per match",
+      "scoreline goals per match",
+      false,
     ),
   };
 }
