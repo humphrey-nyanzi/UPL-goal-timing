@@ -25,6 +25,15 @@ export function GoalTimingPage({
       .reduce((total, interval) => total + interval.goals, 0) ?? 0;
   const secondHalfShare = goalTiming && goalTiming.total_regular_time_goals > 0 ? secondHalfGoals / goalTiming.total_regular_time_goals : 0;
   const scopeLabel = goalTiming ? formatSeasonScope(goalTiming.scope_key, goalTiming.season_count) : "the selected scope";
+  const hasMetricContext =
+    goalTiming?.match_count !== undefined &&
+    goalTiming.scoreline_goal_count !== undefined &&
+    goalTiming.timeline_goal_count !== undefined &&
+    goalTiming.timeline_complete_match_count !== undefined &&
+    goalTiming.timeline_partial_match_count !== undefined &&
+    goalTiming.timeline_unavailable_match_count !== undefined &&
+    goalTiming.timeline_administrative_result_count !== undefined &&
+    goalTiming.timeline_mismatch_match_count !== undefined;
 
   return (
     <>
@@ -74,19 +83,28 @@ export function GoalTimingPage({
               <div className="section-heading compact">
                 <div>
                   <h2>Worth noting</h2>
-                  <p>
-                    These six windows use {goalTiming.total_regular_time_goals.toLocaleString()} regular-time goals from{" "}
-                    {goalTiming.timeline_goal_count.toLocaleString()} recorded timeline goals. Scorelines record{" "}
-                    {goalTiming.scoreline_goal_count.toLocaleString()} goals across {goalTiming.match_count.toLocaleString()} matches.
-                    Added-time goals are excluded from this chart.
-                  </p>
-                  <p>
-                    Timeline quality: {goalTiming.timeline_complete_match_count.toLocaleString()} complete,{" "}
-                    {goalTiming.timeline_partial_match_count.toLocaleString()} partial,{" "}
-                    {goalTiming.timeline_administrative_result_count.toLocaleString()} administrative, and{" "}
-                    {goalTiming.timeline_unavailable_match_count.toLocaleString()} unavailable.{" "}
-                    {goalTiming.timeline_mismatch_match_count.toLocaleString()} matches have different scoreline and timeline goal counts.
-                  </p>
+                  {hasMetricContext ? (
+                    <>
+                      <p>
+                        These six windows use {goalTiming.total_regular_time_goals.toLocaleString()} regular-time goals from{" "}
+                        {goalTiming.timeline_goal_count?.toLocaleString()} recorded timeline goals. Scorelines record{" "}
+                        {goalTiming.scoreline_goal_count?.toLocaleString()} goals across {goalTiming.match_count?.toLocaleString()} matches.
+                        Added-time goals are excluded from this chart.
+                      </p>
+                      <p>
+                        Timeline quality: {goalTiming.timeline_complete_match_count?.toLocaleString()} complete,{" "}
+                        {goalTiming.timeline_partial_match_count?.toLocaleString()} partial,{" "}
+                        {goalTiming.timeline_administrative_result_count?.toLocaleString()} administrative, and{" "}
+                        {goalTiming.timeline_unavailable_match_count?.toLocaleString()} unavailable.{" "}
+                        {goalTiming.timeline_mismatch_match_count?.toLocaleString()} matches have different scoreline and timeline goal counts.
+                      </p>
+                    </>
+                  ) : (
+                    <p>
+                      Added-time goals are excluded from this comparison, and the chart only uses goals available in the
+                      cleaned event timeline. Detailed scoreline and timeline context will appear after the updated API is deployed.
+                    </p>
+                  )}
                 </div>
               </div>
             </section>
