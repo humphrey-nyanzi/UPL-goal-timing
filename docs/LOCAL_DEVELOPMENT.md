@@ -387,6 +387,18 @@ that code change before the season can run routinely. Unknown seasons fail
 closed until their reviewed maximum is added. The current HTTP response and its
 JSON artifact never mutate this baseline.
 
+Before switching `CURRENT_SEASON` during a rollover, run source-health against
+the candidate season without hosted database writes:
+
+```powershell
+.venv\Scripts\python.exe scripts\data_platform\update_hosted_data.py --season-scope custom --custom-seasons 2026-27 --run-type source-health
+```
+
+Only update the current season after that run proves the official calendar URL
+is live, canonical, structurally valid, non-empty, and at or below the reviewed
+league maximum. A 404, zero-link page, malformed page, non-canonical response,
+or over-maximum response is a blocked rollover, not an operator override case.
+
 The normal hosted command should not use the override:
 
 ```powershell

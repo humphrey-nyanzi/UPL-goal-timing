@@ -132,6 +132,37 @@ def test_early_season_calendar_can_pass_without_rotating_baseline(tmp_path) -> N
     assert TRUSTED_SEASON_CALENDAR_BASELINES["2025_26"] == trusted_before
 
 
+def test_reviewed_2026_27_baseline_accepts_early_calendar(
+    monkeypatch, tmp_path
+) -> None:
+    """The next season can start below 240 once a reviewed baseline exists."""
+
+    monkeypatch.setitem(
+        TRUSTED_SEASON_CALENDAR_BASELINES,
+        "2026_27",
+        {
+            "expected_match_count": UPL_MAX_SEASON_MATCH_COUNT,
+            "version": "test-2026-27",
+            "evidence": "validated official 2026-27 calendar source-health artifact",
+        },
+    )
+    report_path = tmp_path / "source.json"
+
+    urls = fetch_match_urls(
+        FakeClient(_valid_calendar_html(8, season="2026-27")),
+        "2026-27",
+        report_path=report_path,
+    )
+
+    payload = json.loads(report_path.read_text(encoding="utf-8"))
+    assert len(urls) == 8
+    assert payload["status"] == "passed"
+    assert payload["observed_link_count"] == 8
+    assert payload["expected_match_count"] == UPL_MAX_SEASON_MATCH_COUNT
+    assert payload["minimum_link_count"] == 1
+    assert payload["baseline_version"] == "test-2026-27"
+
+
 def test_configured_baseline_above_league_maximum_fails_closed(monkeypatch) -> None:
     """A typo above the 240-match UPL ceiling must not authorize a scrape."""
 

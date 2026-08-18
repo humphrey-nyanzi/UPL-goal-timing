@@ -55,10 +55,10 @@ flowchart TD
         PREFLIGHT -->|"blocked"| SOURCEFAIL
         SCRAPER -->|"match failure after retries"| FAILED
 
-        CSV[("📁 data/raw/2025_26/\nmatches · events · lineups\nstaff · officials · stats\nsource-preflight contract")]
+        CSV[("📁 data/raw/<season>/\nmatches · events · lineups\nstaff · officials · stats\nsource-preflight contract")]
 
         SOURCEFAIL["⛔ source-health failure\nraw · staging · analytics\nwrites skipped"]
-        FAILED[("📁 upl_failed_matches\n_2025_26.csv\nmatch_url · attempt_count\nlast_error · timestamp")]
+        FAILED[("📁 upl_failed_matches\n_<season>.csv\nmatch_url · attempt_count\nlast_error · timestamp")]
     end
 
     WEB -->|"GET /event/<id>/\nGET /calendar/"| SCRAPER
