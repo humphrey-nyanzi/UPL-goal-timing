@@ -241,32 +241,37 @@ Check:
 - `ALLOWED_ORIGINS` in `.env` includes `http://127.0.0.1:5173`.
 - after changing `frontend/.env`, restart `npm run dev`.
 
-For hosted deployments, privacy extensions such as Ghostery can block direct
-browser calls from `upl-lens.pages.dev` to the `onrender.com` API domain and
-surface as `net::ERR_BLOCKED_BY_CLIENT` or a blocked `/health` request. The
-production frontend should therefore use the same-origin Cloudflare Pages proxy
-with `VITE_API_BASE_URL=/api`, not the direct Render URL. Verify in a private
-or guest profile to separate extension behavior from real API outages.
+For historical hosted deployments, privacy extensions such as Ghostery could
+block direct browser calls from `upl-lens.pages.dev` to the `onrender.com` API
+domain and surface as `net::ERR_BLOCKED_BY_CLIENT` or a blocked `/health`
+request. The retained Cloudflare Pages proxy avoided that while the public app
+was active.
 
-Current hosted deployment names:
+### Hosted URLs
+
+Under #108, Humphrey has approved retiring both public Cloudflare sites, the
+Cloudflare API proxy, and unrestricted Render FastAPI exposure. The
+Frontend-Orchestrator is executing that retirement. Until verified completion
+evidence exists, treat these as historical/retained URLs that may still respond,
+not as URLs to share or rely on as active public entrypoints.
 
 - Shared frontend URL: `https://upl-lens.pages.dev/`
 - Legacy frontend fallback: `https://upl-match-intelligence.pages.dev/`
 - Browser-facing API proxy: `https://upl-lens.pages.dev/api/`
 - Backend origin API: `https://upl-match-intelligence-api.onrender.com/`
 
-The Render project display name may use UPL Lens, but the API slug can remain
-`upl-match-intelligence-api` until there is a planned URL migration.
+Retirement preserves source code, tests, Git history, Supabase, ingestion, and
+read-only research access. No static public archive is planned now.
 
 ### Hosted frontend API proxy
 
-Production Cloudflare Pages builds should set:
+Historical production Cloudflare Pages builds used:
 
 ```text
 VITE_API_BASE_URL=/api
 ```
 
-The `frontend/functions/api/[[path]].js` Cloudflare Pages Function proxies `/api/*` to the Render API:
+The retained `frontend/functions/api/[[path]].js` Cloudflare Pages Function proxies `/api/*` to the Render API while the historical hosted path exists:
 
 ```text
 https://upl-lens.pages.dev/api/health -> https://upl-match-intelligence-api.onrender.com/health
@@ -311,7 +316,7 @@ Official UPL site
   -> verify raw counts
   -> rebuild staging.*
   -> verify staging outputs
-  -> expose app-safe data through FastAPI
+  -> close with case outputs, or expose app-safe data through FastAPI only when approved
 ```
 
 The normal orchestration command is:
@@ -555,7 +560,7 @@ pressure comes from public traffic, routine refreshes, or manual rebuilds.
 
 First checks:
 
-- Open `https://upl-lens.pages.dev/api/health` and confirm the response includes
+- While #108 retirement is still awaiting verified completion, opening `https://upl-lens.pages.dev/api/health` may confirm whether the retained proxy still responds. If checked, confirm the response includes
   `x-upl-lens-cache`. Repeat safe public requests and look for cache `HIT`
   behavior after the first request.
 - Keep routine hosted refreshes on `season_scope=current`,

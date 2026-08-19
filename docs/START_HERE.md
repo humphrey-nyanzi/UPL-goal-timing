@@ -1,70 +1,77 @@
 # Start Here
 
 This is the first orientation document for the **UPL Lens** repository. The
-project began as a goal-timing / UPL Match Intelligence research build, but the
-unified project and product name is now **UPL Lens**. Backend, data-platform,
-research, API, frontend, and operations work all live in this repository.
+project began as a Goal Timing / UPL Match Intelligence research build, then
+became a public full-stack football-intelligence product. As of 2026-08-19, the
+public software-product phase is frozen and preserved as a completed chapter.
 
-The docs are now consolidated into seven maintained Markdown files. Do not add
-a new doc unless the topic cannot fit cleanly into one of these owners. Active
-work now belongs in GitHub Issues once it exceeds a small quick fix, needs
-planning, affects documentation, or should be resumable by another agent.
+UPL Lens now continues as a maintained Uganda Premier League analytical data
+foundation and practical casework system. Backend, data-platform, research, API,
+frontend, and operations code still live in this repository, but new UPL work no
+longer assumes an automatic notebook-to-API-to-React destination.
+
+The docs are consolidated into seven maintained Markdown files. Do not add a new
+doc unless the topic cannot fit cleanly into one of these owners. Active work
+belongs in GitHub Issues once it exceeds a small quick fix, needs planning,
+affects documentation, or should be resumable by another agent.
 
 ## The Project In One Minute
 
-UPL Lens turns official Uganda Premier League match pages into a football
-intelligence product.
+UPL Lens maintains trustworthy UPL source acquisition, Postgres contracts,
+validation, reproducible read-only research access, and bounded analytical
+cases.
 
 ```text
 Official UPL website
-  -> scraper
-  -> raw files and cache
-  -> Postgres raw/staging/analytics schemas
-  -> FastAPI
-  -> React dashboard
+  -> scraper and source records
+  -> maintained Postgres raw/staging/analytics contracts
+  -> read-only notebooks and checks
+  -> practical analytical cases with findings, outputs, caveats, and endpoints
 ```
 
-The browser-facing contract is:
+The active foundation is maintained Postgres plus case-specific reproducibility
+records. Do not describe the project as a single centrally frozen analytical
+snapshot. Each case should carry its own coverage/snapshot record, checks,
+notebook evidence, outputs, caveats, and hard endpoint.
 
-```text
-React UI -> FastAPI endpoint -> Postgres query/view -> JSON -> chart/table
-```
-
-React must not read CSV files, notebooks, exported notebook images, or local
-database files. Notebooks are the research lab. Postgres plus FastAPI is the
-production path.
+React and FastAPI are retained legacy assets from the software-product phase.
+They may be used for demonstration, review, retained public surfaces, or a
+future explicitly approved presentation path, but they are not mandatory
+destinations for new research.
 
 ## Current Release Phase
 
-UPL Lens is in v1.0 public-release hardening. The core production path exists:
-the scraper loads Postgres, FastAPI exposes read endpoints, React consumes
-FastAPI JSON, the public frontend is hosted on Cloudflare Pages, and routine
-hosted refresh runs through GitHub Actions.
+UPL Lens is in strategic transition from public-product hardening to maintained
+data foundation plus practical UPL casework.
 
-The intelligence-layer frontend build order from June is now historical. The
-merged app has:
+Current active work should focus on:
 
-- synced frontend API client/types for the current intelligence endpoints
-- reusable intelligence primitives for charts, comparisons, signals, timelines,
-  form strips, and data-quality notes
-- product pages for Overview, Matches, Match Detail, Teams, Team Detail,
-  Players, Player Detail, Insights, Trends, Goal Timing, and About/Methodology
-- cross-route QA guidance for future Product Experience PRs
+1. Maintaining official-source acquisition, Postgres raw/staging/analytics
+   contracts, validation, reproducibility, and read-only research access.
+2. Defining the practical UPL case workflow in the owning research/casework docs
+   and GitHub Issues.
+3. Preserving the useful lessons from the completed product phase without
+   treating v1 release packaging or frontend polish as the default next step.
+4. Keeping deployment disposition, project-board semantics, and architecture
+   boundary changes in their own decision-gated Issues.
 
-Current release work should focus on:
+Status labels used across the transition:
 
-1. Owner review and browser QA for the public frontend.
-2. Data Reliability & Operations hardening for hosted refresh behavior,
-   cache/proxy safety, observability, and routine-versus-admin workflow
-   separation.
-3. Documentation and release notes that describe what is actually merged.
-4. Feature 2 research planning, most likely discipline/card intelligence, after
-   public-release blockers are handled.
+- **Active**: source acquisition, Postgres contracts, validation, operations,
+  read-only notebooks, bounded UPL analytical cases, GitHub Issue/branch/draft
+  PR discipline, and owner-approved closure.
+- **Retained/frozen**: FastAPI, React, Cloudflare/Render deployment knowledge,
+  frontend design rules, API contracts, and the completed public-product
+  lessons. These remain useful references and code assets.
+- **Historical**: the v1 public-release push, old frontend build order, UPL
+  Match Intelligence naming, and Goal Timing as the first productized analysis.
+- **Separately decision-gated**: public deployment retain/restrict/retire
+  decisions, project-board/workflow changes, architecture-boundary rewrites, and
+  any future software promotion from a case into API/frontend.
 
-Do not treat unmerged PRs as shipped behavior. Use GitHub Issues and PRs for
-the live task board; the frontend guide owns durable rules and launch
-acceptance, not day-to-day status.
-
+Do not continue v1 release packaging, frontend build-order documentation, public
+product polish, or automatic notebook-to-API-to-React promotion unless a current
+Issue and owner instruction explicitly reopens that path.
 ## GitHub-Native Workflow
 
 Use this operating rule:
@@ -110,11 +117,11 @@ Beginner defaults:
 | Doc | Owner | Open it when |
 |-----|-------|--------------|
 | [START_HERE.md](START_HERE.md) | Orientation, doc map, current phase, recent history | You are new, returning, or deciding where work belongs. |
-| [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) | Product identity and decision rules | You are planning product-facing work or checking scope. |
-| [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md) | Planning, GitHub workflow, milestones, strengths, gaps, priorities | You need the current implementation order, work-management rules, or historical roadmap context. |
-| [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md) | Research workflow and notebook-to-product promotion | You are working in notebooks or promoting a football insight. |
+| [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) | Active project identity, retained product-phase lessons, and decision rules | You are checking what UPL Lens is now or whether product-era guidance is active, retained, historical, or decision-gated. |
+| [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md) | Planning, GitHub workflow, strengths, gaps, priorities, and historical roadmap context | You need current transition priorities, work-management rules, or a clearly labelled history of the product phase. |
+| [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md) | Research/case workflow, feature history, and exceptional software-promotion rules | You are working in notebooks, starting a bounded UPL case, or checking whether software promotion is explicitly approved. |
 | [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md) | Local setup, verification, operations, automation, troubleshooting | You need to run, validate, refresh, deploy, or debug the system. |
-| [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md) | Frontend design, API contract, page requirements, wireframes, seed issue list | You are changing UI, routes, frontend data flow, charts, or public product pages. |
+| [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md) | Retained frontend design, API contract, page requirements, wireframes, seed issue list | You are maintaining retained UI/API assets or working on an explicitly approved frontend/presentation Issue. |
 | [diagram_collection.md](diagram_collection.md) | Visual architecture reference | You need architecture, data-flow, API-flow, database, scraper, or frontend diagrams. |
 
 `visual_inspo.png` remains in `docs/` as a visual asset, not a standalone doc.
@@ -198,7 +205,7 @@ clear product plan.
 
 ### Product Experience
 
-Purpose: turn trusted data and validated research into a useful public app.
+Purpose: maintain retained FastAPI/React assets and support explicitly approved presentation work. It is no longer the default destination for every validated analysis.
 
 Read first:
 
@@ -228,6 +235,19 @@ which doc to read first, a command depends on hidden local setup, or a feature
 decision exists in code but not in docs.
 
 ## Recent History
+
+### 2026-08-19
+
+- Reoriented UPL Lens from active public-product hardening to a maintained UPL
+  analytical data foundation and practical casework system.
+- Preserved the completed software-product phase as historical and retained:
+  scraper, Postgres, FastAPI, React, hosted operations, documentation ownership,
+  GitHub-native execution, validation, and owner-review lessons still matter.
+- Replaced central frozen-snapshot wording with maintained Postgres contracts
+  plus case-specific reproducibility records.
+- Clarified that Goal Timing is the historical first analysis and retained
+  product example, while Cards & Discipline and other ideas are case candidates,
+  not automatic Feature 2/product-roadmap commitments.
 
 ### 2026-07-16
 

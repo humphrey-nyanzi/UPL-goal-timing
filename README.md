@@ -1,28 +1,48 @@
 # UPL Lens
 
-An open-source Uganda Premier League data platform that turns official match
-pages into structured data, API access, and a public football intelligence
-dashboard.
+An open-source Uganda Premier League analytical data foundation and practical
+casework system.
 
-The project demonstrates a full data-to-product path:
+UPL Lens maintains source acquisition, Postgres data contracts, validation,
+reproducible read-only research access, and bounded football investigations
+grounded in official Uganda Premier League source records. The former public
+software-product phase proved the full path from official source pages through
+scraping, Postgres, FastAPI, React, scheduled operations, QA, and public
+presentation. That code and the lessons from that phase are retained, but the
+public app is no longer the automatic destination for every successful
+analysis.
+
+The active project flow is:
 
 ```text
 Official UPL website
   -> Python scraper
-  -> Postgres raw/staging/analytics schemas
-  -> FastAPI
-  -> React dashboard
+  -> maintained Postgres raw/staging/analytics contracts
+  -> read-only research access
+  -> practical analytical cases with reproducibility records
 ```
 
 The goal is not to mirror the official UPL website. The official site is the
-source archive; this project is the analysis layer on top of it.
+source archive; this project is the analytical foundation and casework layer on
+top of it.
 
-The product identity is documented in
-[docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md): the public product is now
-called **UPL Lens**, an independent football intelligence platform rather than
-a fixtures clone or developer-portfolio landing page.
+The current project identity is documented in
+[docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md). The former public-product
+strategy is preserved there as historical context and as retained design
+knowledge for any future owner-approved presentation work.
 
-## Live Demo
+## Retained Hosted Surfaces
+
+Under #108, Humphrey has approved retiring both public Cloudflare sites, the
+Cloudflare API proxy, and unrestricted Render FastAPI exposure. The retirement
+work is in execution by the Frontend-Orchestrator until verified completion
+evidence is available. Do not treat the URLs below as guaranteed public entry
+points, and do not claim they are retired until #108 verification confirms it.
+
+Retirement preserves source code, tests, Git history, Supabase, ingestion, and
+read-only research access. No static public archive is planned now.
+
+Historical/retained URLs from the public-product phase:
 
 - Frontend: [UPL Lens](https://upl-lens.pages.dev/)
 - App API proxy: [UPL Lens API via Cloudflare](https://upl-lens.pages.dev/api/health)
@@ -32,16 +52,15 @@ a fixtures clone or developer-portfolio landing page.
 - API/database health check:
   [`/health`](https://upl-match-intelligence-api.onrender.com/health)
 
-The backend runs on a free Render service, so the first API request after an
-idle period can be slow while the service wakes up.
+## Retained Public App And API
 
-The older Cloudflare Pages URL remains available as a fallback during the
-rename transition, but `https://upl-lens.pages.dev/` is the URL to share.
+The hosted frontend and API are retained legacy assets from the completed
+software-product phase. They may remain useful for demonstration, review, or a
+future explicitly approved presentation surface, but they are not the default
+destination for new casework.
 
-## Intelligence-layer API
-
-The backend now supports routine intelligence modules for the public frontend,
-so UPL Lens can show football meaning instead of only archive records.
+The backend supports routine intelligence modules for the retained public
+frontend, so the app can show football meaning instead of only archive records.
 
 These endpoints support season trend charts, attack/defence comparison, team
 profile signals, match interest scoring, key moments, player contribution
@@ -60,33 +79,34 @@ leaderboards, and visible data-quality caveats:
 For the current frontend-facing contract, see
 [docs/FRONTEND_DESIGN_SYSTEM.md](docs/FRONTEND_DESIGN_SYSTEM.md).
 
-## What It Shows
+## What It Investigates
 
-UPL Lens is built to answer football questions that are difficult
-to answer from individual match pages:
+UPL Lens is now used to answer bounded football questions that are difficult to
+answer from individual match pages:
 
 - Which teams score or concede most in different match periods?
 - Which clubs are most disciplined or card-prone?
 - How do cards, lineups, officials, and match events shape outcomes?
 - Which teams, players, and matches stand out across seasons?
 
-Highlighted analyses belong in the dashboard and
-[research playbook](docs/FEATURE_PROMOTION_WORKFLOW.md) rather than in this README. The first
-promoted analysis is the goal-timing explorer, which started as a notebook
-finding and now runs through Postgres, FastAPI, and React.
+New UPL work should end as a closed analytical case: question, source snapshot
+or coverage record, checks, notebook, findings or report, outputs, caveats, and
+a hard endpoint. Goal Timing is the historical first analysis and retained
+product example, not a standing promise that every case becomes a dashboard.
 
-## Current Product
+## Current System
 
-The deployed app currently proves the production path end to end:
+The repository currently contains:
 
-- React frontend hosted on Cloudflare Pages.
-- FastAPI backend hosted on Render.
-- Supabase Postgres database with `raw`, `staging`, `analytics`, and `app_meta`
-  schemas.
-- Dashboard and detail routes read FastAPI JSON, not CSV files or notebook
-  exports.
-- Current-season data refresh is automated through GitHub Actions.
-- Notebook research can be promoted into API endpoints and dashboard surfaces.
+- Source acquisition and current-season refresh scripts.
+- Supabase Postgres database contracts with `raw`, `staging`, `analytics`, and
+  `app_meta` schemas.
+- Validation, operation summaries, run artifacts, and fail-closed refresh
+  behavior.
+- Read-only research access patterns for notebooks and analytical cases.
+- Retained FastAPI and React code from the public-product phase.
+- GitHub Issues, branches, draft PRs, and owner review as the work-management
+  model.
 
 ## Technical Highlights
 
@@ -98,13 +118,13 @@ For portfolio and recruiting review, this repository demonstrates:
   tables, analytics-ready objects, migrations, and least-privilege roles.
 - **Validation and operations**: row-count verification, staging validation
   issues, run summaries, logs, artifacts, and escalation rules.
-- **Backend development**: read-first FastAPI routes backed by a query/service
-  layer under `src/api/`.
-- **Frontend development**: React product routes for overview, trends, matches,
-  teams, players, insights, goal timing, methodology, loading states, and API
-  status.
-- **Research workflow**: notebooks, research briefs, product plans, and a
-  single research playbook for moving useful analysis into production.
+- **Backend development**: retained read-first FastAPI routes backed by a
+  query/service layer under `src/api/`.
+- **Frontend development**: retained React product routes for overview, trends,
+  matches, teams, players, insights, goal timing, methodology, loading states,
+  and API status.
+- **Research workflow**: notebooks, case records, research briefs, caveats, and
+  reproducible evidence for bounded UPL questions.
 - **Deployment**: Cloudflare Pages, Render, Supabase, GitHub Actions, CORS, and
   environment-based configuration.
 
@@ -114,19 +134,22 @@ For portfolio and recruiting review, this repository demonstrates:
 flowchart LR
     A["Official UPL website"] --> B["Python scraper"]
     B --> C["Postgres raw/staging/analytics"]
-    C --> D["FastAPI"]
-    D --> E["React dashboard"]
+    C --> D["Read-only research access"]
+    D --> E["Closed analytical cases"]
+    C -. "retained optional path" .-> F["FastAPI"]
+    F -. "retained optional path" .-> G["React dashboard"]
 ```
 
-The browser-facing contract is:
+The retained browser-facing contract is:
 
 ```text
 React UI -> FastAPI endpoint -> Postgres query/view -> JSON -> chart/table
 ```
 
 The frontend must not read raw CSV files, notebooks, or exported notebook
-images. Research happens in notebooks; production data is served through
-Postgres and FastAPI.
+images. For new UPL work, the default deliverable is a reproducible case record
+over maintained Postgres data. Software promotion is exceptional and
+decision-gated.
 
 Main repository areas:
 
@@ -181,14 +204,13 @@ Use these docs instead of trying to learn the whole repository from the README:
 | Need | Start here |
 |------|------------|
 | First orientation | [docs/START_HERE.md](docs/START_HERE.md) |
-| Product identity and strategy | [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) |
+| Project identity, retained product lessons, and decision rules | [docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) |
 | Local setup, common commands, and operations | [docs/LOCAL_DEVELOPMENT.md](docs/LOCAL_DEVELOPMENT.md) |
 | Visual codebase overview | [docs/diagram_collection.md](docs/diagram_collection.md) |
 | Which doc to open | [docs/START_HERE.md](docs/START_HERE.md) |
 | Roadmap and current priorities | [docs/PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md) |
-| Notebook-to-product feature workflow | [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md) |
-| Research ideas, feature status, and promotion rules | [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md) |
-| Frontend, API contract, UX requests, and approved design rules | [docs/FRONTEND_DESIGN_SYSTEM.md](docs/FRONTEND_DESIGN_SYSTEM.md) |
+| Research/case workflow and exceptional promotion rules | [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md) |
+| Retained frontend/API contract and design rules | [docs/FRONTEND_DESIGN_SYSTEM.md](docs/FRONTEND_DESIGN_SYSTEM.md) |
 
 ## Data Note
 
