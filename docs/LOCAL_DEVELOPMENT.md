@@ -170,6 +170,18 @@ matches, 505 scoreline goals, 496 timeline goals, 462 regular-time Goal Timing
 goals, seven partial timelines, one administrative-result timeline, and four
 scoreline/timeline goal-count mismatches.
 
+The 462 Goal Timing total includes Geofrey Gagganga's 34th-minute SC Villa goal
+in match `31655`. July 2026 hosted raw artifacts recorded its minute as `334`
+and therefore produced the earlier 461 subset count. The owning reconciliation,
+artifact links, and source limitation are documented in
+`notebooks/features/feature_01_goal_timing/research_brief.md`.
+
+For the Buhimba points adjustment, the official standings source captured on
+16 July 2026 was `https://upl.co.ug/season/2025-26/`; Issue #104 preserves the
+dated audit evidence because that URL later changed content. Migration 012
+keeps the public note factual: 15 sporting points, a three-point deduction, and
+12 official points.
+
 ## Testing A Pull Request Before Merge
 
 Use this when you want to test work that is still in a PR before it reaches

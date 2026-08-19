@@ -140,6 +140,8 @@ def test_scoreline_contract_migration_reconciles_goals_and_points() -> None:
     assert "'Buhimba United Saints FC'" in sql
     assert "-3" in sql
     assert "12 official points" in sql
+    assert "https://upl.co.ug/season/2025-26/" in sql
+    assert "https://github.com/humphrey-nyanzi/upl-lens/issues/104" in sql
     assert "COALESCE(home_score, 0)::integer AS goals_for" in sql
     assert "COALESCE(away_score, 0)::integer AS goals_against" in sql
     assert "FROM staging.events" not in sql

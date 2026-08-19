@@ -189,6 +189,16 @@ Do not add player-level timing or match drama score in this request.
 
 ## Implementation History
 
+### 2026-08-19
+
+- What changed: reconciled the 2025/26 regular-time total from 461 to 462.
+- Data evidence: identified Geofrey Gagganga's match `31655` goal as a
+  minute-`334` source typo; the paired assist, complete timeline, and 1-4
+  scoreline support minute `34`.
+- Product contract: retained the 1-90 non-added-time definition and documented
+  the source limitation in `research_brief.md`.
+
+
 ### 2026-05-21
 
 - What changed: promoted the first season-level goal timing slice into the app.

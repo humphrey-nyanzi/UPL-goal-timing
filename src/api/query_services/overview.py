@@ -51,7 +51,9 @@ def get_overview_intelligence(season: str | None = None) -> dict[str, Any] | Non
     }
 
 
-def _select_trend_row(rows: list[dict[str, Any]], season: str | None) -> dict[str, Any] | None:
+def _select_trend_row(
+    rows: list[dict[str, Any]], season: str | None
+) -> dict[str, Any] | None:
     if season is not None:
         return next((row for row in rows if row["season"] == season), None)
     return rows[-1] if rows else None
@@ -69,7 +71,10 @@ def _overview_notices(row: dict[str, Any]) -> list[dict[str, Any]]:
                 "link_path": "/trends",
             }
         )
-    if row["high_scoring_match_share"] is not None and row["high_scoring_match_share"] >= 0.35:
+    if (
+        row["high_scoring_match_share"] is not None
+        and row["high_scoring_match_share"] >= 0.35
+    ):
         notices.append(
             {
                 "key": "high_scoring_share",
@@ -98,22 +103,46 @@ def _team_signals(teams: list[dict[str, Any]]) -> list[dict[str, Any]]:
         return signals
 
     top_attack = max(teams, key=lambda row: row["goals_for"])
-    tight_defence = min(teams, key=lambda row: row["conceded_per_match"] if row["conceded_per_match"] is not None else 999)
+    lowest_goals_against = min(row["goals_against"] for row in teams)
+    tight_defences = [
+        row for row in teams if row["goals_against"] == lowest_goals_against
+    ]
     points_leader = max(teams, key=lambda row: row["official_points"])
     goal_diff_leader = max(teams, key=lambda row: row["goal_difference"])
     for row, signal, metric, label in [
         (points_leader, "Points leader", points_leader["official_points"], "points"),
         (top_attack, "Top attack", top_attack["goals_for"], "goals for"),
-        (tight_defence, "Tightest defence", tight_defence["conceded_per_match"], "conceded per match"),
-        (goal_diff_leader, "Goal-difference leader", goal_diff_leader["goal_difference"], "goal difference"),
+        (
+            goal_diff_leader,
+            "Goal-difference leader",
+            goal_diff_leader["goal_difference"],
+            "goal difference",
+        ),
     ]:
         signals.append(
             {
                 "team_name": row["team_name"],
                 "team_slug": row["team_slug"],
                 "signal": signal,
-                "metric_value": None if metric is None else round(metric, 4) if isinstance(metric, float) else metric,
+                "metric_value": (
+                    None
+                    if metric is None
+                    else round(metric, 4) if isinstance(metric, float) else metric
+                ),
                 "metric_label": label,
+            }
+        )
+    defence_signal = (
+        "Tightest defence (tie)" if len(tight_defences) > 1 else "Tightest defence"
+    )
+    for row in tight_defences:
+        signals.append(
+            {
+                "team_name": row["team_name"],
+                "team_slug": row["team_slug"],
+                "signal": defence_signal,
+                "metric_value": row["goals_against"],
+                "metric_label": "goals against",
             }
         )
     return signals

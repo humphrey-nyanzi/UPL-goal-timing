@@ -5,14 +5,16 @@ from __future__ import annotations
 from contextlib import nullcontext
 
 from src.api.query_services import insights, seasons
-from src.api.query_services.overview import _overview_notices
+from src.api.query_services.overview import _overview_notices, _team_signals
 from src.api.query_services.trends import _shape_season_trend_row
 
 
 def test_season_overview_uses_scoreline_goals_for_general_total(monkeypatch) -> None:
     """Overview's general goal count should not silently mean timeline goals."""
 
-    monkeypatch.setattr(seasons, "get_api_psycopg_connection", lambda: nullcontext(object()))
+    monkeypatch.setattr(
+        seasons, "get_api_psycopg_connection", lambda: nullcontext(object())
+    )
     monkeypatch.setattr(
         seasons,
         "_fetch_one",
@@ -81,6 +83,55 @@ def test_overview_scoring_notice_names_scoreline_source() -> None:
     )
 
     assert notices[0]["text"] == "Recorded scorelines show 2.1042 goals per match."
+
+
+def test_overview_preserves_tied_tightest_defences() -> None:
+    """Overview must not turn a shared defensive lead into a sole winner."""
+
+    teams = [
+        {
+            "team_name": "SC Villa",
+            "team_slug": "sc-villa",
+            "goals_for": 40,
+            "goals_against": 17,
+            "official_points": 50,
+            "goal_difference": 23,
+            "conceded_per_match": 17 / 30,
+        },
+        {
+            "team_name": "Vipers SC",
+            "team_slug": "vipers-sc",
+            "goals_for": 50,
+            "goals_against": 17,
+            "official_points": 69,
+            "goal_difference": 33,
+            "conceded_per_match": 17 / 30,
+        },
+        {
+            "team_name": "NEC FC",
+            "team_slug": "nec-fc",
+            "goals_for": 38,
+            "goals_against": 20,
+            "official_points": 52,
+            "goal_difference": 18,
+            "conceded_per_match": 20 / 30,
+        },
+    ]
+
+    defence_signals = [
+        signal
+        for signal in _team_signals(teams)
+        if signal["signal"].startswith("Tightest defence")
+    ]
+
+    assert {signal["team_name"] for signal in defence_signals} == {
+        "SC Villa",
+        "Vipers SC",
+    }
+    assert {signal["signal"] for signal in defence_signals} == {
+        "Tightest defence (tie)"
+    }
+    assert {signal["metric_value"] for signal in defence_signals} == {17}
 
 
 def test_goal_timing_exposes_subset_and_timeline_coverage(monkeypatch) -> None:

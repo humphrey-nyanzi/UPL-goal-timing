@@ -14,6 +14,7 @@ import { ScatterComparisonPlot } from "../components/intelligence/ScatterCompari
 import { SignalChip, SignalChipGroup, type SignalChipItem, type SignalTone as ComponentSignalTone } from "../components/intelligence/SignalChip";
 import { formatSeason } from "../utils/format";
 import { getSelectedSeasonLabel } from "../utils/seasonScope";
+import { formatTeamNames, getExtremeItems } from "../utils/superlatives";
 import { formatGoalDifference, getTeamFixtureNote, getTeamPoints, getTeamPointsNote, getTeamSlug } from "../utils/teams";
 
 type TeamBoardSortKey =
@@ -266,7 +267,8 @@ export function TeamInsightsPage({ data, loadState, onRefresh, selectedSeason, s
   }, [teams, sortKey, teamQuery]);
 
   const topAttack = getTopTeam(teams, (team) => team.goals_per_match);
-  const tightestDefence = getTopTeam(teams, (team) => team.conceded_per_match, "asc");
+  const tightestDefences = getExtremeItems(teams, (team) => team.goals_against, "asc");
+  const tightestDefence = tightestDefences.at(0);
   const bestGoalDifference = getTopTeam(teams, (team) => team.goal_difference);
   const bestPointsPerMatch = getTopTeam(teams, (team) => team.points_per_match);
   const mostOpenProfile = getTopTeam(teams, (team) =>
@@ -397,9 +399,13 @@ export function TeamInsightsPage({ data, loadState, onRefresh, selectedSeason, s
             ) : null}
             {tightestDefence ? (
               <MetricDelta
-                label="Tightest defence"
-                value={formatRate(tightestDefence.conceded_per_match)}
-                context={`${tightestDefence.team_name}, ${tightestDefence.goals_against} conceded.`}
+                label={tightestDefences.length > 1 ? "Tightest defences" : "Tightest defence"}
+                value={tightestDefence.goals_against}
+                context={
+                  tightestDefences.length > 1
+                    ? `${formatTeamNames(tightestDefences.map((team) => team.team_name))} are tied, ${tightestDefence.goals_against} conceded each.`
+                    : `${tightestDefence.team_name}, ${tightestDefence.goals_against} conceded.`
+                }
                 tone="positive"
               />
             ) : null}

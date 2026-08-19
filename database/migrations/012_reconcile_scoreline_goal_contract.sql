@@ -1,5 +1,10 @@
 -- Issue #104: make the official scoreline the standings and general scoring
 -- contract while keeping event rows for explicitly timeline-led analysis.
+-- Buhimba source record captured on 16 July 2026:
+-- https://upl.co.ug/season/2025-26/
+-- Durable audit context: https://github.com/humphrey-nyanzi/upl-lens/issues/104
+-- The official URL later changed content, so the dated Issue evidence is part
+-- of the provenance for the three-point deduction retained below.
 
 INSERT INTO analytics.team_season_point_adjustments (
     season,
