@@ -321,7 +321,8 @@ release foundation. It is no longer the active build-order list.
 
 ### Frozen v1.0 Release Focus
 
-This retained release lane was hardening and owner review, not another frontend`r`nrebuild. Use current GitHub Issues and PRs for any reopened status. The release-hardening foundation is now merged on `main`:
+This retained release lane was hardening and owner review, not another frontend
+rebuild. Use current GitHub Issues and PRs for any reopened status. The release-hardening foundation is now merged on `main`:
 
 - API proxy cache-header safety for credentialed bypasses shipped in PR #101,
   including no-store handling for credentialed or bypassed responses and a CI
@@ -1320,7 +1321,7 @@ packaging.
 3. **Data Reliability & Operations**: continue maintaining source acquisition,
    Postgres contracts, validation, fail-closed refresh behavior, and read-only
    research access.
-4. **Retained Product Experience**: maintain or change FastAPI/React/public deployment only when a current Issue explicitly keeps retained software in scope. Under #108, Humphrey has approved retiring both public Cloudflare sites, the Cloudflare API proxy, and unrestricted Render FastAPI exposure; execution belongs to the Frontend-Orchestrator until verified completion evidence exists.
+4. **Retained Product Experience**: maintain or change FastAPI/React/public deployment only when a current Issue explicitly keeps retained software in scope. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed.
 
 This keeps the project growing in stable loops: trustworthy data, bounded
 football cases, retained software knowledge, and documentation that remains

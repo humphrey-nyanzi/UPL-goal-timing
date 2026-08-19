@@ -249,19 +249,20 @@ was active.
 
 ### Hosted URLs
 
-Under #108, Humphrey has approved retiring both public Cloudflare sites, the
-Cloudflare API proxy, and unrestricted Render FastAPI exposure. The
-Frontend-Orchestrator is executing that retirement. Until verified completion
-evidence exists, treat these as historical/retained URLs that may still respond,
-not as URLs to share or rely on as active public entrypoints.
+Under #108, owner disposition is under reconsideration. The public Cloudflare
+sites, Cloudflare API proxy, and unrestricted Render FastAPI exposure remain
+live for now. A dormant/archive demonstration option is being evaluated because
+the hosted surfaces currently cost nothing. No retirement or archive provider
+change has been completed or authorized, and no static public archive is
+currently authorized or completed.
 
 - Shared frontend URL: `https://upl-lens.pages.dev/`
 - Legacy frontend fallback: `https://upl-match-intelligence.pages.dev/`
 - Browser-facing API proxy: `https://upl-lens.pages.dev/api/`
 - Backend origin API: `https://upl-match-intelligence-api.onrender.com/`
 
-Retirement preserves source code, tests, Git history, Supabase, ingestion, and
-read-only research access. No static public archive is planned now.
+The reconsideration preserves source code, tests, Git history, Supabase,
+ingestion, and read-only research access.
 
 ### Hosted frontend API proxy
 
@@ -560,7 +561,7 @@ pressure comes from public traffic, routine refreshes, or manual rebuilds.
 
 First checks:
 
-- While #108 retirement is still awaiting verified completion, opening `https://upl-lens.pages.dev/api/health` may confirm whether the retained proxy still responds. If checked, confirm the response includes
+- While #108 disposition is under reconsideration and public surfaces remain live, opening `https://upl-lens.pages.dev/api/health` may confirm whether the retained proxy still responds. If checked, confirm the response includes
   `x-upl-lens-cache`. Repeat safe public requests and look for cache `HIT`
   behavior after the first request.
 - Keep routine hosted refreshes on `season_scope=current`,

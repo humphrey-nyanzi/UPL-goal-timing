@@ -39,7 +39,7 @@ They may be used for demonstration, review, retained public surfaces, or a
 future explicitly approved presentation path, but they are not mandatory
 destinations for new research.
 
-## Current Release Phase
+## Current Project Phase
 
 UPL Lens is in strategic transition from public-product hardening to maintained
 data foundation plus practical UPL casework.

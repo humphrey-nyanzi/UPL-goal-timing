@@ -456,4 +456,4 @@ GitHub Actions is the preferred automation path for portfolio visibility.
   deployment shape, or known gaps, check whether
   [docs/diagram_collection.md](docs/diagram_collection.md) needs an update.
 - Copilot instructions also exist at `.github/copilot-instructions.md`.
-- Under #108, Humphrey has approved retiring both public Cloudflare sites, the Cloudflare API proxy, and unrestricted Render FastAPI exposure. The Frontend-Orchestrator owns provider execution. Do not claim URLs are retired until verified completion evidence exists, and do not present the old public URLs as active share targets.
+- Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. Do not alter providers or claim a final disposition until #108 is decided.

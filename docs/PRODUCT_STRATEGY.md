@@ -78,8 +78,8 @@ handoffs consistent during and after the transition.
 | Available data | A cautious phrase meaning the project is reporting from collected and validated records, not claiming official completeness. | Writing player, lineup, event, leaderboard, or case findings. |
 | Staging data | Cleaned app/research-facing Postgres tables under `staging.*`. | Discussing trusted inputs for research, API, and casework. |
 | Analytics data | Stable reusable summaries, facts, views, or tables under `analytics.*`. | Describing reusable metrics or derived contracts. |
-| Browser-facing API proxy | Historical/retained Cloudflare Pages `/api/*` path from the product phase. Retirement is owner-approved under #108 and in execution until verified. | Understanding retained code or historical hosted behavior. |
-| Backend origin API | Historical/retained Render-hosted FastAPI origin. Unrestricted public exposure is owner-approved for retirement under #108 and in execution until verified. | Understanding retained backend code or historical deployment behavior. |
+| Browser-facing API proxy | Historical/retained Cloudflare Pages `/api/*` path from the product phase. #108 disposition is under reconsideration; the surface remains live while a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained code or historical hosted behavior. |
+| Backend origin API | Historical/retained Render-hosted FastAPI origin. Unrestricted public exposure remains live while #108 disposition is under reconsideration and a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained backend code or historical deployment behavior. |
 
 ## Strategic Change
 

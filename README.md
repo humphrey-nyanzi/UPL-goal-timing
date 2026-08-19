@@ -33,14 +33,15 @@ knowledge for any future owner-approved presentation work.
 
 ## Retained Hosted Surfaces
 
-Under #108, Humphrey has approved retiring both public Cloudflare sites, the
-Cloudflare API proxy, and unrestricted Render FastAPI exposure. The retirement
-work is in execution by the Frontend-Orchestrator until verified completion
-evidence is available. Do not treat the URLs below as guaranteed public entry
-points, and do not claim they are retired until #108 verification confirms it.
+Under #108, owner disposition is under reconsideration. The public Cloudflare
+sites, Cloudflare API proxy, and unrestricted Render FastAPI exposure remain
+live for now. A dormant/archive demonstration option is being evaluated because
+the hosted surfaces currently cost nothing. No retirement or archive provider
+change has been completed or authorized, and no static public archive is
+currently authorized or completed.
 
-Retirement preserves source code, tests, Git history, Supabase, ingestion, and
-read-only research access. No static public archive is planned now.
+The reconsideration preserves source code, tests, Git history, Supabase,
+ingestion, and read-only research access.
 
 Historical/retained URLs from the public-product phase:
 

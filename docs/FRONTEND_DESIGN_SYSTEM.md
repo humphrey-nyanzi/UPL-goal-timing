@@ -3,7 +3,7 @@
 This document is the retained product implementation guide for the UPL Lens
 frontend and browser-facing API contract.
 
-The public software-product phase is frozen as of 2026-08-19. Under #108, Humphrey has approved retiring both public Cloudflare sites, the Cloudflare API proxy, and unrestricted Render FastAPI exposure; retirement is in execution until verified completion evidence exists. The React app,
+The public software-product phase is frozen as of 2026-08-19. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. The React app,
 FastAPI contract, visual rules, launch decisions, page requirements, and QA
 lessons remain useful retained assets, but they are no longer the automatic
 next destination for every UPL analysis. New practical UPL cases should close
@@ -226,9 +226,7 @@ These surfaces were approved and implemented as part of the completed public-pro
 - Discipline Dashboard as a future promoted or routine intelligence surface
   after research and endpoint needs are clear
 
-The current deployed app is now the v1.0 release foundation. Future work should
-polish, verify, or extend these surfaces rather than restart the page build
-sequence.
+Historically, the deployed app became the v1.0 product-phase foundation. That is retained evidence, not an active release instruction. Future polish, verification, extension, dormancy, archival, or retirement decisions must come from current owner-approved Issues.
 ## Page Roles And Requirements
 
 These roles replace the older split launch-doc structure:
@@ -788,11 +786,9 @@ where analytical meaning, not dashboard decoration, leads the page.
   horizontal scrolling. Record the routes and states checked, run `npm run
   build`, and include browser findings in the PR.
 
-## UPL Lens Public Launch Acceptance Checklist
+## Historical Public Launch Acceptance Checklist
 
-Use this checklist to confirm a release build is ready for the UPL Lens public
-launch. Every item marked as required must be satisfied or carry an explicit
-acceptance note in the release PR.
+This checklist is retained as historical product-phase evidence. Do not use it as an active public-release instruction unless a current owner-approved Issue reopens public launch or retained frontend QA work.
 
 - Theme and tokens:
   - Editorial Light is implemented as the default theme and matches the
@@ -820,8 +816,7 @@ acceptance note in the release PR.
     document.
   - Mobile-first layouts validated at typical narrow widths.
 
-Document any approved exceptions in the release PR and link the approving
-note or ticket.
+Historically, approved exceptions were documented in the release PR with a link to the approving note or ticket.
 
 ### League Overview Mockup Checklist
 
@@ -870,7 +865,7 @@ frontend. Do not treat this table as the live task tracker.
 | Cross-season aggregation and fixed featured-insight framing | implemented | Season-aware API responses and promoted insight scope | All Seasons support is clear, while featured insights keep their research scope. |
 | Improve Insights Library and insight exploration surfaces | implemented | Existing insight endpoint plus static registry until more insight metadata exists | Insights reads as a promoted research library, not a sparse placeholder. |
 | Expand Trends into a multi-visualization surface | implemented | `/trends/seasons` | Trends shows scoring, discipline, result share, high-scoring match share, and data coverage across seasons. |
-| Public deployment retirement | approved/in execution under #108 | Public Cloudflare sites, Cloudflare API proxy, unrestricted Render FastAPI exposure | Frontend-Orchestrator owns provider execution; docs should not claim URLs are retired until verified completion evidence exists. |
+| Public deployment disposition | under reconsideration in #108 | Public Cloudflare sites, Cloudflare API proxy, unrestricted Render FastAPI exposure | Public surfaces remain live; a dormant/archive demonstration option is being evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. |
 
 Historical implementation order, now complete on `main`:
 
