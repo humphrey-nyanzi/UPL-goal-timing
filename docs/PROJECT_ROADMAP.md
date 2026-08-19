@@ -419,7 +419,9 @@ Owns:
 - validation checks and issue severity
 - stage logs, run summaries, and workflow artifacts
 - current-season automation through GitHub Actions
-- deployment health, CORS, hosted database limits, and database roles
+- retained deployment health, CORS, hosted database limits, and database roles
+  only when a current Issue scopes retained software or public-surface
+  disposition work
 - unit tests around high-risk data parsing and pipeline orchestration
 
 Current strengths:
@@ -435,7 +437,9 @@ Current strengths:
   staging rebuilds
 - validation runs and validation issues are stored in staging
 - current-season automation exists locally and in GitHub Actions
-- deployment uses hosted React, FastAPI, and Postgres services
+- the retained hosted React/API/Postgres stack remains live pending #108
+  disposition, but public-app reliability is no longer an automatic active-work
+  priority
 
 Known weaknesses:
 
@@ -443,7 +447,9 @@ Known weaknesses:
 - validation coverage is useful but still early
 - stage logs and run summaries should become more consistent
 - unit tests are not yet a real safety net
-- free-tier backend/database behavior can affect public reliability
+- free-tier backend/database behavior can affect retained public surfaces if
+  #108 keeps them live or dormant; this is disposition-scoped work, not a
+  default product-polish priority
 
 Next useful work:
 
@@ -508,23 +514,26 @@ Escalate when:
 - a feature depends on raw data or CSVs without a clear reason
 - the source data caveats are too large to present without explanation
 
-### 3. Product Experience
+### 3. Retained Software Stewardship
 
-Purpose: make the API and React app useful, understandable, and polished for
-people exploring the league.
+Purpose: preserve the FastAPI and React implementation as retained software
+assets, and maintain them only when a current owner-approved Issue explicitly
+scopes maintenance, demonstration, disposition, or exceptional software
+promotion.
 
 Owns:
 
-- FastAPI routes and response models
+- retained FastAPI routes and response models
 - query/service functions under `src/api/`
-- React pages, filters, charts, tables, and loading states
+- retained React pages, filters, charts, tables, and loading states
 - frontend API client and response types
 - browser-facing error handling for API offline states and free-tier cold starts
-- product navigation and UI/UX quality
+  when retained deployment behavior is in scope
+- API contract, test, build, and browser integrity when retained code is touched
 - frontend change requests, visual-system guidance, API contract notes, and
   approved frontend behavior in `docs/FRONTEND_DESIGN_SYSTEM.md`
 
-Current strengths:
+Current retained strengths:
 
 - FastAPI exposes seasons, overview, trends, matches, match intelligence, team
   profiles, player leaderboards, events, officials, health, and goal timing
@@ -537,36 +546,47 @@ Current strengths:
 - merged routes now cover Overview, Matches, Match Detail, Teams, Team Detail,
   Players, Player Detail, Insights, Trends, Goal Timing, and About/Methodology.
 - the deployed app proves the full public request flow through Cloudflare Pages,
-  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres.
+  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres; those
+  surfaces remain live while #108 disposition is under owner reconsideration.
 - cross-route QA guidance exists for hierarchy, imagery, navigation, state
   handling, data trust, and responsive/browser verification.
 
-Known weaknesses:
+Current constraints and risks:
 
-- the public app still needs owner release QA across common desktop and mobile
-  routes before v1.0 is accepted.
+- #108 remains open and owner disposition is under reconsideration; dormant or
+  archived demonstration is only being evaluated.
+- no provider retirement, archive provider change, static public archive, public
+  product expansion, or browser-facing polish is authorized by default.
 - discipline/card intelligence remains a research candidate, not a promoted
-  insight or finished dashboard feature.
-- some public polish work remains active in GitHub Issues and should not be
-  treated as complete until reviewed and merged.
-- free-tier backend/database behavior can still affect perceived reliability,
-  so cache/proxy behavior and hosted health need continued attention.
+  insight or finished dashboard feature, unless a separate Issue explicitly
+  approves software promotion.
+- free-tier backend/database behavior remains relevant only when retained
+  deployment behavior is in scope.
+- retained FastAPI/React code can drift if touched without API contract checks,
+  tests, and frontend build verification.
 
 Next useful work:
 
-- finish v1.0 release-hardening PRs and record owner/browser QA evidence.
-- keep Product Experience follow-up tied to GitHub Issues with route-specific
-  acceptance criteria and cross-route QA notes.
-- promote the next football insight only after notebook evidence and product
-  planning support it.
-- add or change API endpoints only when a real product surface needs the data.
+- do not start public-app polish, release packaging, or insight promotion by
+  default.
+- change FastAPI, React, or public-surface behavior only from a current
+  owner-approved Issue with explicit scope.
+- when retained software is touched, verify API contracts, tests, frontend
+  build, and any affected browser-facing states.
+- promote analytical casework into software only after a separate approval says
+  that promotion is the intended destination.
+- use #108 for provider-disposition evidence and avoid provider actions in
+  documentation-only transition work.
 
 Escalate when:
 
+- retained software work is requested without a current approved Issue
 - React starts duplicating durable SQL or backend logic
 - the frontend needs data that no API endpoint exposes cleanly
 - API response changes can break the dashboard
 - UI presentation makes incomplete data look certain
+- #108 provider disposition is described as complete without verified evidence
+
 ### 4. Developer Experience & Documentation
 
 Purpose: keep the project readable, runnable, and teachable for a junior
@@ -1298,13 +1318,15 @@ Acceptance criteria:
 
 ## Key Engineering Decisions
 
-- Use Postgres as the main database.
-- Use FastAPI for the backend.
-- Use React for the frontend.
-- Use GitHub Actions for automation.
-- Keep notebooks as research, not production.
+- Use Postgres as the maintained data foundation.
+- Use GitHub Actions for source acquisition, validation, and operational
+  automation.
+- Keep notebooks as research and casework evidence, not production.
 - Keep CSVs as raw/intermediate artifacts, not the long-term serving layer.
 - Build incrementally and keep each continuous area runnable.
+- Use FastAPI and React only when a current owner-approved Issue explicitly
+  scopes retained software maintenance, demonstration, disposition, or
+  exceptional promotion.
 
 ## Near-Term Next Steps
 
