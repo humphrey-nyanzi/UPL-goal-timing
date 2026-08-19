@@ -1,7 +1,7 @@
--- Read-only role template for notebook research.
+-- Read-only role template for analytical cases and notebook research.
 --
 -- Run this manually with a Supabase/Postgres admin credential after the normal
--- schema migrations have already created raw, staging, and analytics schemas.
+-- schema migrations have created app_meta, raw, staging, and analytics schemas.
 -- Do not commit a real password. Replace the placeholder only inside the
 -- Supabase SQL editor or another secure admin session.
 
@@ -38,6 +38,7 @@ $$;
 GRANT USAGE ON SCHEMA raw TO upl_research_reader;
 GRANT USAGE ON SCHEMA staging TO upl_research_reader;
 GRANT USAGE ON SCHEMA analytics TO upl_research_reader;
+GRANT USAGE ON SCHEMA app_meta TO upl_research_reader;
 
 GRANT SELECT
 ON ALL TABLES IN SCHEMA raw
@@ -49,6 +50,11 @@ TO upl_research_reader;
 
 GRANT SELECT
 ON ALL TABLES IN SCHEMA analytics
+TO upl_research_reader;
+
+-- Case provenance needs only the applied migration filenames and timestamps.
+GRANT SELECT
+ON app_meta.schema_migrations
 TO upl_research_reader;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA raw

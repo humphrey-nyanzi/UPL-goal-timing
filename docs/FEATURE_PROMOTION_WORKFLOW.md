@@ -255,6 +255,120 @@ Use `analytics.*` when:
 - multiple endpoints or components need the same logic
 - the query is complex enough to deserve a named database contract
 
+## Maintained Database Trust And Case Reproducibility
+
+The maintained Postgres database is the default analytical foundation for UPL
+casework. A completed season does not require a permanent frozen export before
+it can be analysed.
+
+Use this path by default:
+
+```text
+maintained Postgres
+  -> read-only case query
+  -> case-specific coverage and quality checks
+  -> analysis
+```
+
+### Trust Boundaries
+
+Treat the schemas differently:
+
+- `raw.*` preserves source-shaped evidence. Use it to diagnose acquisition or
+  transformation problems, not as the normal analytical contract.
+- `staging.*` contains cleaned and normalized source facts. Core match identity,
+  season, teams, dates, scorelines, and results may be treated as generally
+  reliable only after their owning migration, staging validation, and
+  case-specific checks pass.
+- Events, timelines, cards, lineups, staff, officials, and stats are
+  coverage-dependent. Check relevant row counts, status fields, nulls,
+  mismatches, exclusions, and `staging.validation_issues` before using them.
+- `analytics.*` contains reusable derived contracts. Reuse one only when its
+  grain, source tables, metric semantics, exclusions, correction rules, refresh
+  behavior, and regression evidence are documented.
+- Corrections and exceptions must remain queryable and sourced through database
+  fields or tables, validation evidence, migrations, and their owning Issue or
+  source record. Do not hide a manual correction inside notebook code.
+
+Passing a general staging verification does not prove that every domain is
+complete enough for every case. Each case still owns the checks material to its
+question.
+
+### Minimum Case Data-State Record
+
+Every practical case should record:
+
+- case ID or title and analysis date
+- season or seasons used
+- tables, views, material fields, and row grain
+- query filters, joins, exclusions, and missing-data treatment
+- Git commit plus notebook, script, or SQL revision
+- applied migration state when it affects interpretation
+- latest relevant staging validation run and issue counts
+- case-specific coverage checks and their results
+- known corrections, source anomalies, limitations, and unresolved semantics
+- whether the maintained database or an immutable extract was queried
+
+The case package structure is owned separately by the practical-case workflow.
+This section defines the data record that package must preserve.
+
+The read-only research role may inspect `app_meta.schema_migrations` as well as
+the three data schemas. The helper in `src.research` also rejects write SQL and
+sets the transaction read-only. Record migration and validation state with
+queries such as:
+
+```python
+from src.research import read_sql
+
+migrations = read_sql(
+    """
+    SELECT filename, applied_at
+    FROM app_meta.schema_migrations
+    ORDER BY filename
+    """
+)
+
+latest_validation = read_sql(
+    """
+    SELECT run_id, seasons, row_counts, issue_counts, completed_at
+    FROM staging.validation_runs
+    ORDER BY completed_at DESC
+    LIMIT 1
+    """
+)
+```
+
+After a migration, season rollover, or meaningful pipeline change, rerun the
+relevant staging verification and case-specific coverage queries. A reusable
+`analytics.*` object also needs focused regression evidence and a freshness
+check appropriate to its refresh contract.
+
+### When An Immutable Extract Is Required
+
+Keep querying maintained Postgres when the case can be responsibly revisited
+from its recorded code, migration state, validation run, and query scope.
+
+Create a case-specific immutable extract only when at least one of these is
+material:
+
+- publication, audit, assessment, or handoff requires the exact reviewed rows
+- the source database may change before another reviewer can reproduce the work
+- a third party cannot receive controlled read-only database access
+- the result depends on an exceptional correction or exclusion that needs a
+  preserved evidence package
+- rerunning against corrected maintained data would answer a meaningfully
+  different question
+
+An extract must be limited to the required rows and fields, exclude credentials
+and private operational material, and record its query, schema, creation time,
+source commit/migration state, row count, and cryptographic checksum. Do not
+commit raw working datasets or create a central frozen season snapshot by
+default.
+
+When maintained data changes, an older conclusion remains tied to its recorded
+state. Re-running it creates a new case result or version; it does not silently
+rewrite the historical conclusion.
+
 ## Analytics Promotion Decisions
 
 Use this rule:
