@@ -1,8 +1,18 @@
-
 # UPL Lens - Mermaid Diagram Collection
 
-Status: **visual system overview / maintained architecture reference**. These
-diagrams describe the repo's data platform, API, and UPL Lens public frontend.
+Status: **visual system overview / retained architecture reference**. Some
+existing diagrams describe the completed public-product phase: data platform,
+FastAPI, and the UPL Lens React frontend. Treat those as retained architecture
+references unless a current Issue explicitly updates the active architecture.
+
+The active transition model is:
+
+```text
+source record -> maintained Postgres foundation -> practical analytical case
+```
+
+Do not read old public-product diagrams as a requirement that every new case be
+promoted into FastAPI or React.
 
 Use this file when you need a high-level visual map of the codebase, data
 pipeline, database shape, API flow, or scraper lifecycle. Keep it accurate when
@@ -15,7 +25,7 @@ continuous development areas and concise recent-history context.
 ---
 
 ## Diagram 1 — Detailed Two-Flow Data Pipeline
-> Solid lines = primary automated flow. Dashed lines = research/promotion flow.
+> Solid lines = primary automated or maintained flow. Dashed lines = retained research/promotion or optional software flow.
 > ⚠️ marks known gaps or areas worth improving.
 
 ```mermaid

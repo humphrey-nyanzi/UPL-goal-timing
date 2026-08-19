@@ -1,25 +1,42 @@
 # Feature Promotion Workflow
 
-This document is the research playbook for the repository's Research &
-Football Intelligence lane and the product surfaces that now ship as UPL
-Lens.
+This document is the research and practical-casework playbook for the
+repository's Research & Football Intelligence lane.
 
-It is the single source of truth for:
+It now owns:
 
 - research idea capture
-- feature lifecycle status
+- practical UPL case lifecycle status
+- historical feature lifecycle status
 - notebook package workflow
 - notebook data-source rules
-- promotion decisions for `staging.*` versus `analytics.*`
-- how notebook findings become FastAPI and React product features
+- case-specific reproducibility records
+- decisions for `staging.*` versus `analytics.*`
+- exceptional, owner-approved software promotion into FastAPI or React
 
 Use this doc with [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md) and
 [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md).
 
 ## Core Rule
 
-Notebook research can be exploratory. Product features must follow the
-production path:
+Notebook research can be exploratory. Practical UPL cases must close with a
+bounded evidence package:
+
+```text
+football question
+  -> source coverage/snapshot record
+  -> read-only notebook and SQL checks over maintained Postgres
+  -> findings/report and outputs
+  -> caveats
+  -> hard endpoint
+```
+
+The active data foundation is maintained Postgres plus case-specific
+reproducibility records. Do not replace that with a frozen central snapshot
+model.
+
+Software promotion is now exceptional. If a current Issue and owner instruction
+explicitly approve presentation work, use the retained product path:
 
 ```text
 Postgres staging/analytics
@@ -31,12 +48,12 @@ Postgres staging/analytics
 React must not read CSV files, notebook outputs, exported notebook images, or
 local database files directly.
 
-Active research work should be tracked as GitHub Issues when it moves beyond a
-quick note. Use the `Research / Football Intelligence` Issue template for
-notebook-first questions, including discipline questions such as goal-scoring
-patterns after red cards. This document owns the durable research lifecycle and
-feature registry; Issues own active work, comments, handoffs, and owner review.
-
+Active research or casework should be tracked as GitHub Issues when it moves
+beyond a quick note. Use the Research / Football Intelligence Issue template
+for notebook-first questions, including discipline questions such as
+goal-scoring patterns after red cards. This document owns the durable research
+and case lifecycle; Issues own active work, comments, handoffs, and owner
+review.
 ## Reading Order
 
 When working in Research & Football Intelligence, read in this order:
@@ -47,7 +64,7 @@ When working in Research & Football Intelligence, read in this order:
 4. the feature folder under `notebooks/features/`
 5. [START_HERE.md](START_HERE.md) if you need recent repo context
 
-## Feature Lifecycle
+## Research And Case Lifecycle
 
 Use these statuses consistently for research ideas and feature packages.
 These statuses describe the research feature itself. GitHub Project columns
@@ -59,11 +76,12 @@ describe active workflow state across all work areas.
 | `candidate` | Plausible next research topic. Needs prioritization. | Compare it against other football questions. |
 | `selected` | Chosen as the next feature package, but not created yet. | Copy the template and start a notebook package. |
 | `researching` | Notebook work has started. | Keep experimenting in `analysis.ipynb`. |
-| `validated` | Research produced a useful finding, metric, or chart. | Write `research_brief.md`. |
-| `promotion_ready` | Ready for product planning and implementation. | Ask an AI agent or engineer to promote it. |
-| `promoted` | The feature is available through FastAPI and React. | Track follow-up work in `product_plan.md`. |
+| `validated` | Research produced a useful finding, metric, chart, or case answer. | Write `research_brief.md` and record checks/caveats. |
+| `promotion_ready` | Historical/exceptional status: ready for owner-approved software planning and implementation. | Ask an AI agent or engineer to promote it only when a current Issue explicitly approves software work. |
+| `promoted` | Historical/exceptional status: the feature is available through FastAPI and React. | Track retained follow-up work in `product_plan.md`. |
 | `needs_revision` | The feature exists, but the logic, caveats, data, or UI need review. | Add change requests before more implementation. |
-| `parked` | Keep the idea, but do not work on it soon. | Leave it documented but inactive. |
+| closed_case | The bounded case has ended with findings/report, outputs, caveats, and endpoint. | Reopen only through a new Issue. |
+| parked | Keep the idea, but do not work on it soon. | Leave it documented but inactive. |
 | `rejected` | Do not pursue unless revived later. | Keep only as historical context. |
 
 ## Standard Feature Package
@@ -126,12 +144,12 @@ It should answer:
 
 ### `product_plan.md`
 
-This is the product and implementation handoff.
+This is the retained product history, exceptional promotion, and implementation handoff.
 
 It has three jobs:
 
-- Promotion plan: what the first app version should do
-- Change requests: what should change after the feature already exists
+- Case endpoint or exceptional promotion plan: what the case outputs or approved app version should do
+- Change requests: what should change after the case or feature already exists
 - Implementation history: what has already been built and verified
 
 ### `outputs/`
@@ -311,7 +329,7 @@ Before promoting notebook logic, decide:
 - Does the SQL avoid hardcoded seasons, team names, or notebook-only files?
 - Does the frontend still receive JSON from FastAPI instead of reading CSVs?
 
-## Research Backlog
+## Research And Case Backlog
 
 This section replaces the old separate research-backlog and feature-registry
 docs.
@@ -319,7 +337,7 @@ docs.
 ### Priority Queue
 
 ```text
-1. Card Trends And Discipline - candidate
+1. Card Trends And Discipline - case candidate
 2. Match Explorer Data Questions - candidate
 3. Team Profiles And Home/Away Strength - idea
 ```
@@ -328,8 +346,8 @@ docs.
 
 | Feature | Status | Feature Package | Research Source | Production Source | API Endpoint | Frontend Surface | Notes |
 |---------|--------|-----------------|-----------------|-------------------|--------------|------------------|-------|
-| Feature 1 - Goal Timing | `promoted` | `notebooks/features/feature_01_goal_timing/` | `staging.events` via notebook and API query | direct query on `staging.events`; no `analytics.*` view yet | `GET /insights/goal-timing?season=...` | Goal Timing Explorer | First promoted research-to-product slice. Counts regular-time goal events by 15-minute interval and excludes added time. |
-| Feature 2 - Card Trends And Discipline | `candidate` | none yet | likely `staging.events`, `staging.matches`, `staging.officials` | choose during promotion | none yet | Discipline Dashboard, Team Insights, League Overview insight card | Strong next candidate if card coverage is consistent enough across seasons. |
+| Feature 1 - Goal Timing | `promoted` (historical/retained) | `notebooks/features/feature_01_goal_timing/` | `staging.events` via notebook and API query | direct query on `staging.events`; no `analytics.*` view yet | `GET /insights/goal-timing?season=...` | Goal Timing Explorer | Historical first research-to-product slice and retained product example. Counts regular-time goal events by 15-minute interval and excludes added time. |
+| Card Trends And Discipline Case | `candidate` | none yet | likely `staging.events`, `staging.matches`, `staging.officials` | choose during promotion | none yet | case report/output first; software surface only if separately approved | Strong case candidate if card coverage is consistent enough across seasons; not an automatic Feature 2 product commitment. |
 | Feature XX - Template | `idea` | `notebooks/features/_feature_template/` | `staging.*` by default | choose during promotion | none yet | none yet | Copy this package when starting a new experimental feature. |
 
 ### Active Research Ideas
@@ -442,7 +460,7 @@ Confirm which official role should count as the main referee and watch for
 small-sample distortion.
 ```
 
-## Human Workflow
+## Human Case Workflow
 
 1. Start with a `selected` or explicitly approved idea in this document.
 2. Copy the notebook template folder.
@@ -451,14 +469,14 @@ small-sample distortion.
 5. Work in `analysis.ipynb`.
 6. Write `research_brief.md`.
 7. Fill in the promotion plan and readiness notes in `product_plan.md`.
-8. Change the feature table row to `promotion_ready`.
-9. Ask an AI agent to promote the feature.
-10. After implementation, change the row to `promoted` or `needs_revision`.
+8. Close the case with findings/report, outputs, caveats, and hard endpoint, or mark it `promotion_ready` only when software promotion is explicitly approved.
+9. Ask an AI agent to promote the feature only when the owner has approved software promotion.
+10. After implementation or case closure, change the row to `closed_case`, `promoted`, or `needs_revision`.
 
-## Suggested Promotion Prompt
+## Historical/Exceptional Promotion Prompt
 
 ```text
-Promote notebooks/features/feature_02_card_trends into a product feature.
+Promote notebooks/features/feature_02_card_trends into a product feature only if a current Issue explicitly approves software promotion.
 
 Read:
 - docs/FEATURE_PROMOTION_WORKFLOW.md
@@ -481,7 +499,7 @@ feature table in docs/FEATURE_PROMOTION_WORKFLOW.md.
 
 ## AI Agent Workflow
 
-When asked to promote or modify a research feature, an AI agent should:
+When asked to work on a research feature, practical case, or explicitly approved promotion, an AI agent should:
 
 1. Read `AGENTS.md`, `.github/copilot-instructions.md`, and this workflow doc.
 2. Read [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md).
@@ -493,10 +511,10 @@ When asked to promote or modify a research feature, an AI agent should:
    `analytics.*`.
 6. Identify the production-safe Postgres source.
 7. Choose direct query, analytics view, or stored table deliberately.
-8. Add query logic in the backend query/service layer.
-9. Add or extend a thin FastAPI route.
-10. Add typed response models and frontend response types.
-11. Add a responsive dashboard component.
+8. For normal casework, document the final query/checks and endpoint. For approved software promotion, add query logic in the backend query/service layer.
+9. Add or extend a thin FastAPI route only for approved software promotion.
+10. Add typed response models and frontend response types only for approved software promotion.
+11. Add a responsive dashboard component only for approved software promotion.
 12. Update `product_plan.md`, this workflow doc's feature table, and any
     affected docs.
 13. Run relevant verification commands.

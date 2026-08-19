@@ -2,56 +2,49 @@
 
 ## Purpose
 
-This document is the working plan for evolving **UPL Lens** from a goal-timing
-analysis into a full-stack Uganda Premier League data platform.
+This document is the planning map for **UPL Lens**. It now tracks the transition
+from a completed public software-product phase into a maintained Uganda Premier
+League analytical data foundation and practical casework system.
 
-The initial launch build moved through a set of phases so each layer could be
-created in order. That launch foundation now exists at a basic public-product
-level. Future work should be planned through four continuous development areas,
-not through the old phase sequence.
+The launch build proved the full path from official UPL source pages through
+scraping, Postgres, FastAPI, React, scheduled operations, QA, public deployment,
+GitHub-native work management, and documentation ownership. That phase is
+preserved as historical and retained knowledge. It is not the active roadmap for
+all future work.
 
-The goal is not to copy the official UPL website. The official site provides
-match pages and source data. This project should turn that data into searchable,
-modeled, and meaningful football intelligence.
+The active roadmap is to maintain the data foundation and use it for bounded UPL
+football questions that close with reproducible evidence, outputs, caveats, and
+a hard endpoint. Future software presentation is exceptional and
+owner/Issue-gated.
 
-The product identity and positioning rules live in
+The current identity and decision rules live in
 [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md). Use that document when deciding
-what the public app should feel like, what it should not become, which audience
-comes first, and how product strategy should guide technical work.
-
-The final shape should demonstrate:
-
-- Web scraping and incremental data collection.
-- Data cleaning, validation, and modeling.
-- Postgres database design.
-- FastAPI backend development.
-- React frontend development.
-- Scheduled automation with GitHub Actions.
-- Notebook-based research that can be promoted into product features.
+whether guidance is active, retained/frozen, historical, or separately
+decision-gated.
 
 ## North Star
 
-Build an open-source UPL data observatory where users can explore matches,
-teams, players, discipline, goal timing, lineups, officials, and match trends
-across seasons.
+Maintain a trustworthy UPL analytical data foundation and use it to answer real,
+bounded football questions with reproducible casework.
 
-**UPL Lens** is an independent statistical observatory
-for people who want to understand the league beyond fixtures, results, and
-tables. It should lead with curated insight, then offer deeper analytical
-drilldowns. The former UPL Match Intelligence name is historical context only.
+The active flow is:
 
-The project should support two audiences:
+```text
+source record -> maintained Postgres foundation -> practical analytical case
+```
 
-- **Analytical users** who want to understand patterns in the league.
-- **Portfolio/recruiting reviewers** who want to see clear engineering range:
-  data engineering, backend, frontend, automation, and analytical storytelling.
+Each practical case should carry its own question, source coverage/snapshot
+record, checks, notebook, findings or report, outputs, caveats, and hard
+endpoint. The maintained Postgres foundation remains live; do not describe the
+new model as a single centrally frozen analytical snapshot.
 
-## Core Product Question
+## Core Planning Question
 
-What can this project reveal about the Uganda Premier League that individual
-match pages cannot?
+What bounded UPL football question is worth answering now, and what evidence is
+needed to close it honestly?
 
-Examples:
+Examples remain useful as candidate questions, not automatic product-roadmap
+commitments:
 
 - Which teams are most dangerous after halftime?
 - Which teams concede late most often?
@@ -63,6 +56,9 @@ Examples:
 - Which matches had the most dramatic timelines?
 - How has the league changed season by season?
 
+Goal Timing is the historical first analysis and retained product example.
+Cards & Discipline is a strong case candidate, but not a committed Feature 2
+product roadmap item unless a current Issue approves that transition.
 ## GitHub-Native Work Management
 
 UPL Lens now uses GitHub as the active work-management layer while the seven
@@ -262,7 +258,7 @@ Use these labels for filtering and agent handoffs:
 | Priority | `priority: critical`, `priority: high`, `priority: medium`, `priority: low` |
 | Status | `status: needs-triage`, `status: ready`, `status: blocked`, `status: needs-review`, `status: validated` |
 
-### Initial Milestones
+### Historical Milestones
 
 - `v0.2 Intelligence API Client Sync`
 - `v0.3 Trends + Team Intelligence`
@@ -270,7 +266,7 @@ Use these labels for filtering and agent handoffs:
 - `v0.5 Feature 2 Discipline Research`
 - `v1.0 Public UPL Lens Release`
 
-Milestones are release goals, not arbitrary deadlines.
+These milestones describe the former public-product release plan. New transition milestones or Project semantics should be changed only through the project-system transition Issue.
 
 ### Definition Of Ready
 
@@ -301,7 +297,7 @@ Use Issues to give agents bounded coworker roles:
 - **QA / Release Agent**: release Issues; acceptance criteria, verification,
   known limitations, and release notes.
 
-## Intelligence-Layer Frontend Maturation
+## Historical Intelligence-Layer Frontend Maturation
 
 This June/July phase moved UPL Lens from a pilot dashboard into the v1.0 public
 release foundation. It is no longer the active build-order list.
@@ -323,10 +319,10 @@ release foundation. It is no longer the active build-order list.
   [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md) for future Product
   Experience PRs.
 
-### Current v1.0 Release Focus
+### Frozen v1.0 Release Focus
 
-The current release lane is hardening and owner review, not another frontend
-rebuild. Use GitHub Issues and PRs for live status. The release-hardening foundation is now merged on `main`:
+This retained release lane was hardening and owner review, not another frontend
+rebuild. Use current GitHub Issues and PRs for any reopened status. The release-hardening foundation is now merged on `main`:
 
 - API proxy cache-header safety for credentialed bypasses shipped in PR #101,
   including no-store handling for credentialed or bypassed responses and a CI
@@ -339,71 +335,72 @@ rebuild. Use GitHub Issues and PRs for live status. The release-hardening founda
   locked to the routine-refresh mode, while the other modes remain explicit
   manual operations.
 
-Remaining release work is owner QA, browser evidence, and release documentation;
-use GitHub Issues and PRs for the live task status.
+Any remaining public release, deployment, browser QA, or release-documentation work is separately decision-gated. Use #108 or current GitHub Issues for disposition instead of continuing v1 release packaging by default.
 
-### Next Product Experience Loop
+### Retained Product Experience Loop
 
-After v1.0 release blockers are handled, Product Experience work should be
-selected from owner QA findings, public usability gaps, or research-backed
-feature promotion. The durable page roles, API contract, and launch acceptance
+Future Product Experience work should come only from owner-approved retained-maintenance needs, deployment disposition decisions, public usability findings that remain relevant, or explicitly approved software promotion. The durable page roles, API contract, and launch acceptance
 checks live in [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md).
 
 ## Architecture Overview
 
-The project should be split into three tracks.
+The active system is split into active foundation work, practical casework, and
+retained software assets.
 
-### 1. Data Platform
+### 1. Maintained Data Foundation
 
-Responsible for getting data from the source to trustworthy storage.
+Responsible for getting official source data into trustworthy maintained
+storage.
 
 Responsibilities:
 
 - Scrape UPL calendar and match pages.
-- Persist raw scrape outputs.
+- Persist raw scrape outputs and source records.
 - Normalize team, player, event, venue, official, and match data.
-- Load data into Postgres.
-- Run validation checks.
+- Load and maintain Postgres raw/staging/analytics contracts.
+- Run validation checks and record issues.
 - Support incremental updates for the current season.
 - Log failed or incomplete matches.
+- Provide read-only access for notebooks and casework.
 
-### 2. Research Lab
+### 2. Practical UPL Casework
 
-Responsible for discovery.
-
-Responsibilities:
-
-- Use notebooks for exploratory analysis.
-- Test relationships and hypotheses.
-- Create prototype charts.
-- Document interesting findings.
-- Decide which findings deserve promotion into the app.
-
-Rule: notebooks are for research, not production serving.
-
-### 3. Public Product
-
-Responsible for user-facing exploration.
+Responsible for bounded football investigations.
 
 Responsibilities:
 
-- Expose clean data through FastAPI.
-- Present insights in a React app.
-- Make team, player, match, season, event, and discipline data easier to browse.
-- Turn validated notebook findings into polished dashboard features.
+- Start from a real football question.
+- Record the source coverage or snapshot used by the case.
+- Use read-only notebooks and SQL over the maintained foundation.
+- Run checks and document caveats.
+- Produce findings, reports, and outputs.
+- End with a hard endpoint so the case does not grow indefinitely.
 
-Preferred production flow:
+Rule: notebooks are for research and evidence, not production serving.
 
-```text
-Scraper -> raw files/cache -> cleaning/modeling -> Postgres -> FastAPI -> React
-```
+### 3. Retained Software Assets
 
-Preferred user request flow:
+Responsible for preserving and maintaining useful code from the public-product
+phase when explicitly needed.
+
+Responsibilities:
+
+- Keep FastAPI and React code understandable as retained assets.
+- Maintain frontend/API contracts only when a current Issue requires it.
+- Preserve the source-record/intelligence-layer lessons from the public app.
+- Avoid treating every validated case as a product feature.
+
+Retained browser-facing flow:
 
 ```text
 React component -> FastAPI route -> query/service layer -> Postgres -> JSON -> chart/table
 ```
 
+Active casework flow:
+
+```text
+source record -> maintained Postgres -> read-only notebook/checks -> closed case
+```
 ## Continuous Development Areas
 
 Use these four areas for new planning, review, and prioritization.
@@ -422,7 +419,9 @@ Owns:
 - validation checks and issue severity
 - stage logs, run summaries, and workflow artifacts
 - current-season automation through GitHub Actions
-- deployment health, CORS, hosted database limits, and database roles
+- retained deployment health, CORS, hosted database limits, and database roles
+  only when a current Issue scopes retained software or public-surface
+  disposition work
 - unit tests around high-risk data parsing and pipeline orchestration
 
 Current strengths:
@@ -438,7 +437,9 @@ Current strengths:
   staging rebuilds
 - validation runs and validation issues are stored in staging
 - current-season automation exists locally and in GitHub Actions
-- deployment uses hosted React, FastAPI, and Postgres services
+- the retained hosted React/API/Postgres stack remains live pending #108
+  disposition, but public-app reliability is no longer an automatic active-work
+  priority
 
 Known weaknesses:
 
@@ -446,7 +447,9 @@ Known weaknesses:
 - validation coverage is useful but still early
 - stage logs and run summaries should become more consistent
 - unit tests are not yet a real safety net
-- free-tier backend/database behavior can affect public reliability
+- free-tier backend/database behavior can affect retained public surfaces if
+  #108 keeps them live or dormant; this is disposition-scoped work, not a
+  default product-polish priority
 
 Next useful work:
 
@@ -480,29 +483,29 @@ Owns:
 - metric definitions and source-data caveats
 - feature registry status
 - direct API query versus `analytics.*` view decisions
-- promotion from notebook finding to API and React
+- explicit decision on whether a case stops as evidence/report/output or is separately promoted into software
 
 Current strengths:
 
-- Feature 1 goal timing is promoted into FastAPI and React
+- Feature 1 Goal Timing is the historical first promoted analysis and retained software example
 - feature templates and registry exist
 - notebook data-access rules prefer cleaned Postgres `staging.*`
 - analytics promotion rules exist for reusable metrics
 
 Known weaknesses:
 
-- only one insight has been promoted so far
+- the former promotion model should not define the active casework model
 - the next football feature needs research validation before UI work
 - caveats need to stay visible when source data is incomplete
 
 Next useful work:
 
-- start Feature 2, likely discipline/card trends
+- scope the next practical UPL case from a bounded football question, with Cards & Discipline only as a candidate
 - use `docs/FEATURE_PROMOTION_WORKFLOW.md` to compare candidate football
   questions before creating a feature package
 - validate a second useful football question in a notebook
 - decide whether the metric should use a direct API query or `analytics.*` view
-- promote the validated metric into FastAPI and React
+- close the case with reproducible evidence, outputs, caveats, and a hard endpoint; promote to software only if a separate Issue approves it
 
 Escalate when:
 
@@ -511,23 +514,26 @@ Escalate when:
 - a feature depends on raw data or CSVs without a clear reason
 - the source data caveats are too large to present without explanation
 
-### 3. Product Experience
+### 3. Retained Software Stewardship
 
-Purpose: make the API and React app useful, understandable, and polished for
-people exploring the league.
+Purpose: preserve the FastAPI and React implementation as retained software
+assets, and maintain them only when a current owner-approved Issue explicitly
+scopes maintenance, demonstration, disposition, or exceptional software
+promotion.
 
 Owns:
 
-- FastAPI routes and response models
+- retained FastAPI routes and response models
 - query/service functions under `src/api/`
-- React pages, filters, charts, tables, and loading states
+- retained React pages, filters, charts, tables, and loading states
 - frontend API client and response types
 - browser-facing error handling for API offline states and free-tier cold starts
-- product navigation and UI/UX quality
+  when retained deployment behavior is in scope
+- API contract, test, build, and browser integrity when retained code is touched
 - frontend change requests, visual-system guidance, API contract notes, and
   approved frontend behavior in `docs/FRONTEND_DESIGN_SYSTEM.md`
 
-Current strengths:
+Current retained strengths:
 
 - FastAPI exposes seasons, overview, trends, matches, match intelligence, team
   profiles, player leaderboards, events, officials, health, and goal timing
@@ -540,36 +546,47 @@ Current strengths:
 - merged routes now cover Overview, Matches, Match Detail, Teams, Team Detail,
   Players, Player Detail, Insights, Trends, Goal Timing, and About/Methodology.
 - the deployed app proves the full public request flow through Cloudflare Pages,
-  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres.
+  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres; those
+  surfaces remain live while #108 disposition is under owner reconsideration.
 - cross-route QA guidance exists for hierarchy, imagery, navigation, state
   handling, data trust, and responsive/browser verification.
 
-Known weaknesses:
+Current constraints and risks:
 
-- the public app still needs owner release QA across common desktop and mobile
-  routes before v1.0 is accepted.
+- #108 remains open and owner disposition is under reconsideration; dormant or
+  archived demonstration is only being evaluated.
+- no provider retirement, archive provider change, static public archive, public
+  product expansion, or browser-facing polish is authorized by default.
 - discipline/card intelligence remains a research candidate, not a promoted
-  insight or finished dashboard feature.
-- some public polish work remains active in GitHub Issues and should not be
-  treated as complete until reviewed and merged.
-- free-tier backend/database behavior can still affect perceived reliability,
-  so cache/proxy behavior and hosted health need continued attention.
+  insight or finished dashboard feature, unless a separate Issue explicitly
+  approves software promotion.
+- free-tier backend/database behavior remains relevant only when retained
+  deployment behavior is in scope.
+- retained FastAPI/React code can drift if touched without API contract checks,
+  tests, and frontend build verification.
 
 Next useful work:
 
-- finish v1.0 release-hardening PRs and record owner/browser QA evidence.
-- keep Product Experience follow-up tied to GitHub Issues with route-specific
-  acceptance criteria and cross-route QA notes.
-- promote the next football insight only after notebook evidence and product
-  planning support it.
-- add or change API endpoints only when a real product surface needs the data.
+- do not start public-app polish, release packaging, or insight promotion by
+  default.
+- change FastAPI, React, or public-surface behavior only from a current
+  owner-approved Issue with explicit scope.
+- when retained software is touched, verify API contracts, tests, frontend
+  build, and any affected browser-facing states.
+- promote analytical casework into software only after a separate approval says
+  that promotion is the intended destination.
+- use #108 for provider-disposition evidence and avoid provider actions in
+  documentation-only transition work.
 
 Escalate when:
 
+- retained software work is requested without a current approved Issue
 - React starts duplicating durable SQL or backend logic
 - the frontend needs data that no API endpoint exposes cleanly
 - API response changes can break the dashboard
 - UI presentation makes incomplete data look certain
+- #108 provider disposition is described as complete without verified evidence
+
 ### 4. Developer Experience & Documentation
 
 Purpose: keep the project readable, runnable, and teachable for a junior
@@ -1301,33 +1318,33 @@ Acceptance criteria:
 
 ## Key Engineering Decisions
 
-- Use Postgres as the main database.
-- Use FastAPI for the backend.
-- Use React for the frontend.
-- Use GitHub Actions for automation.
-- Keep notebooks as research, not production.
+- Use Postgres as the maintained data foundation.
+- Use GitHub Actions for source acquisition, validation, and operational
+  automation.
+- Keep notebooks as research and casework evidence, not production.
 - Keep CSVs as raw/intermediate artifacts, not the long-term serving layer.
 - Build incrementally and keep each continuous area runnable.
+- Use FastAPI and React only when a current owner-approved Issue explicitly
+  scopes retained software maintenance, demonstration, disposition, or
+  exceptional promotion.
 
 ## Near-Term Next Steps
 
-The next best implementation sequence should use the four continuous areas and
-current GitHub Issues rather than the completed June frontend build order:
+The next implementation sequence should use current GitHub Issues and the active
+transition boundaries, not the completed June frontend build order or v1 release
+packaging.
 
-1. **Data Reliability & Operations**: finish release-hardening work around API
-   proxy cache safety, hosted refresh observability, and routine-versus-admin
-   workflow-mode separation. Do not treat open PR or Issue work as shipped until
-   it merges.
-2. **Product Experience**: run owner/browser QA against the public routes,
-   record route-specific findings, and address only the highest-risk follow-up
-   Issues before v1.0.
-3. **Developer Experience & Documentation**: keep `docs/START_HERE.md`,
-   `README.md`, this roadmap, agent instructions, diagrams, and operations docs
-   aligned with merged behavior.
-4. **Research & Football Intelligence**: start Feature 2 only after release
-   blockers are clear, likely with a discipline/card-trends package using the
-   feature workflow.
+1. **Developer Experience & Documentation**: complete Issue #114 by aligning
+   identity, strategy, roadmap, and agent guidance around the maintained data
+   foundation and practical casework model.
+2. **Research & Football Intelligence**: define the practical analytical-case
+   workflow in the owning docs and Issues. Cards & Discipline can be considered
+   as a case candidate, not as an automatic Feature 2 product commitment.
+3. **Data Reliability & Operations**: continue maintaining source acquisition,
+   Postgres contracts, validation, fail-closed refresh behavior, and read-only
+   research access.
+4. **Retained Product Experience**: maintain or change FastAPI/React/public deployment only when a current Issue explicitly keeps retained software in scope. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed.
 
-This keeps the project growing in stable loops: trustworthy data, validated
-football ideas, useful product surfaces, and documentation that remains
+This keeps the project growing in stable loops: trustworthy data, bounded
+football cases, retained software knowledge, and documentation that remains
 navigable.

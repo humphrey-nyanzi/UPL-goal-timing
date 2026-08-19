@@ -2,25 +2,31 @@
 
 ## Project Direction
 
-This repository contains the **UPL Lens** data platform, research lab, API, and
-frontend. It began as a UPL goal-timing / UPL Match Intelligence project, but
-the unified project and product name is now **UPL Lens**.
+This repository contains **UPL Lens**, a maintained Uganda Premier League
+analytical data foundation and practical casework system. It began as a UPL
+Goal Timing / UPL Match Intelligence project, then proved a full public
+software-product path through scraper, Postgres, FastAPI, React, hosted
+operations, QA, documentation, Issues, and PRs.
 
-Keep historical operational and research context where it explains current
-decisions; current frontend design and launch direction should follow the UPL
-Lens frontend docs (see `docs/FRONTEND_DESIGN_SYSTEM.md`).
+That public-product phase is now frozen and retained as historical knowledge
+and useful code. The active direction is to maintain source acquisition,
+raw/staging/analytics Postgres contracts, validation, reproducibility, and
+read-only research access, then answer bounded real UPL football questions as
+closed analytical cases.
 
-The long-term goal is to collect official UPL match data, store it in Postgres,
-clean and model it for analysis, expose it through a FastAPI backend, and present
-the best insights in a React web app. Notebooks remain the research lab where new
-questions are explored before they become dashboard features.
+New UPL work should not assume automatic notebook-to-API-to-React promotion.
+React and FastAPI remain retained assets for maintenance, demonstration, or a
+future owner-approved presentation path. Goal Timing is the historical first
+analysis and retained product example. Cards & Discipline and other ideas are
+case candidates, not standing product-roadmap commitments.
 
 Use [docs/START_HERE.md](docs/START_HERE.md) as the first orientation document,
-[docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) as the product identity
-and positioning reference, and [docs/PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md)
-as the main planning reference. The old launch phases are historical context;
-new work should be planned through the four continuous development areas.
-
+[docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md) as the current identity
+and retained product-lessons reference, and
+[docs/PROJECT_ROADMAP.md](docs/PROJECT_ROADMAP.md) as the main planning
+reference. The old launch phases are historical context; new work should be
+planned through active maintenance/casework priorities and current GitHub
+Issues.
 ## Current State
 
 - `scripts/data_platform/scrape_upl_matches.py` is the scraper command
@@ -39,33 +45,43 @@ new work should be planned through the four continuous development areas.
 
 ## Target Architecture
 
-Keep the system split into three connected tracks:
+Keep the system split into active foundation work, practical casework, and
+retained software assets:
 
-1. **Data Platform**
+1. **Maintained Data Foundation**
    - Scrape official UPL data.
    - Detect new or changed matches.
    - Normalize team, player, venue, official, event, and match data.
    - Load modeled data into Postgres.
    - Validate data quality and log failures.
+   - Provide read-only access for notebooks and casework.
 
-2. **Research Lab**
-   - Use notebooks for exploratory analysis.
-   - Test statistical relationships and visual ideas.
-   - Promote only useful, validated analyses into SQL views/API endpoints.
+2. **Practical UPL Casework**
+   - Start from a bounded football question.
+   - Record source coverage or snapshot state for the case.
+   - Use notebooks, SQL, and checks over maintained Postgres data.
+   - End with findings/report, outputs, caveats, and a hard endpoint.
 
-3. **Public Product**
-   - Serve data through FastAPI.
-   - Build a React frontend for interactive exploration.
-   - Focus on insights the official website does not provide.
+3. **Retained Software Assets**
+   - Keep FastAPI and React code understandable and maintainable when in scope.
+   - Use software promotion only when a current Issue and owner instruction
+     explicitly approve it.
+   - Preserve product-phase lessons without making product polish the default
+     destination.
 
-Preferred request flow for the future app:
+Active casework flow:
+
+```text
+source record -> maintained Postgres -> read-only notebook/checks -> closed case
+```
+
+Retained browser-facing flow:
 
 ```text
 React UI -> FastAPI endpoint -> Postgres query/view -> JSON -> chart/table
 ```
 
 The frontend should not read CSV files directly.
-
 ## Planned Repository Shape
 
 The exact structure may evolve, but future work should move toward:
@@ -152,9 +168,8 @@ Use these areas for planning, review, and scoping:
 1. **Data Reliability & Operations** - scraper behavior, Postgres, staging
    validation, automation, deployment health, logs, tests, and escalation.
 2. **Research & Football Intelligence** - notebooks, football questions,
-   feature packages, metric definitions, caveats, and promotion decisions.
-3. **Product Experience** - FastAPI endpoints, query/service logic, React pages,
-   UI/UX, filters, tables, charts, and browser-facing states.
+   feature/case packages, metric definitions, caveats, reproducibility records, and exceptional promotion decisions.
+3. **Retained Product Experience** - FastAPI endpoints, query/service logic, React pages, UI/UX, filters, tables, charts, and browser-facing states when a current Issue explicitly keeps them in scope.
 4. **Developer Experience & Documentation** - onboarding, setup instructions,
    command guides, troubleshooting, repo conventions, and documentation
    navigation.
@@ -165,14 +180,15 @@ user explicitly changes the scope.
 
 ## Feature Promotion Workflow
 
-Research & Football Intelligence notebook experiments should use the feature
-package workflow documented in
+Research & Football Intelligence notebook experiments and practical UPL cases
+should use the feature/case package workflow documented in
 [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md).
-That document also owns notebook data-source rules, feature lifecycle tracking,
-research backlog notes, and the decision guide for when stable notebook metrics
-should become `analytics.*` views.
+That document also owns notebook data-source rules, feature/case lifecycle
+tracking, research backlog notes, case-specific reproducibility records, and
+the decision guide for when stable metrics should become `analytics.*` views or
+exceptional software work.
 
-When starting a new experimental feature, copy:
+When starting a new experimental feature or case, copy:
 
 ```text
 notebooks/features/_feature_template/
@@ -184,31 +200,26 @@ into a numbered feature folder such as:
 notebooks/features/feature_02_card_trends/
 ```
 
-Each feature package should contain:
+Each feature or case package should contain:
 
 - `analysis.ipynb` for exploratory research.
-- `research_brief.md` for the football question, metric definitions, finding, and
-  caveats.
-- `product_plan.md` for the promotion plan, later change requests, desired
-  React UI, validation plan, and implementation history.
+- `research_brief.md` for the football question, metric definitions, finding,
+  and caveats.
+- `product_plan.md` for retained promotion history, exceptional software plans,
+  validation notes, and implementation history.
 - `outputs/` for reference notebook exports only.
-
-When creating a feature package, add it to the feature table in
-`docs/FEATURE_PROMOTION_WORKFLOW.md` and update its lifecycle status as it moves
-from research to promotion.
 
 For notebook data access, default to cleaned Postgres `staging.*` tables through
 `src.research.read_sql`. Use `raw.*` only for source-data debugging, CSVs only
 for legacy comparison, and `analytics.*` for stable promoted views or summaries.
 
-Use a direct API query for small first slices. Use an `analytics.*` view when a
-metric becomes stable, reusable, or complex enough to deserve a named database
+Use SQL/notebook evidence for casework. Use an `analytics.*` view when a metric
+becomes stable, reusable, or complex enough to deserve a named database
 contract. Use stored analytics tables or materialized views only when a normal
 view is too slow or snapshot history is required.
 
-When promoting or modifying a feature, treat `research_brief.md` and
-`product_plan.md` as the source of truth, then use the notebook as
-supporting evidence. Keep the promoted product path as:
+Use the retained product path only when software promotion is explicitly
+approved:
 
 ```text
 Postgres staging/analytics -> FastAPI endpoint -> JSON -> React dashboard
@@ -307,7 +318,7 @@ manual database edits.
 
 ## API Guidance
 
-FastAPI should remain read-first for public product use.
+FastAPI should remain read-first as a retained public-product asset.
 
 Current endpoint families include:
 
@@ -332,7 +343,7 @@ Keep business logic out of route functions when it grows. Use service/query
 modules so endpoints remain thin.
 ## Frontend Guidance
 
-Build the React app as an analytical product, not a marketing site.
+When React work is explicitly in scope, maintain it as an analytical product, not a marketing site.
 
 Current product routes include:
 
@@ -445,6 +456,4 @@ GitHub Actions is the preferred automation path for portfolio visibility.
   deployment shape, or known gaps, check whether
   [docs/diagram_collection.md](docs/diagram_collection.md) needs an update.
 - Copilot instructions also exist at `.github/copilot-instructions.md`.
-- Shared production frontend URL: `https://upl-lens.pages.dev/`. The older
-  Cloudflare Pages URL may remain live as a fallback during the rename
-  transition, but do not present it as the primary product URL.
+- Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. Do not alter providers or claim a final disposition until #108 is decided.

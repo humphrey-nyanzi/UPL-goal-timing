@@ -1,120 +1,126 @@
 # Product Strategy
 
-This document defines the product principles for the repository. NOTE: the
-public frontend product has been rebranded to **UPL Lens**. This strategy
-document continues to describe product priorities and should be read together
-with [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md) for frontend,
-API-contract, page-requirement, and launch direction.
+This document now owns two related things:
 
-Use this document before major UI, API, research-promotion, or documentation
-changes. It should help a human contributor or AI agent understand the kind of
-project they are working on before deciding what to build.
+1. the current UPL Lens identity as a maintained Uganda Premier League
+   analytical data foundation and practical casework system;
+2. the retained lessons from the completed public software-product phase.
 
-## Product Definition
+Read this before changing project identity, public-facing language, research
+case direction, API/frontend presentation, or documentation scope. The former
+public-product strategy is preserved here because it explains many design,
+trust, source-record, and engineering decisions, but it is no longer the active
+north star for all new work.
 
-The public product is now called **UPL Lens**. UPL Lens is an independent
-statistical observatory for the Uganda Premier League (the project previously
-described public-facing work as "UPL Match Intelligence"). The consolidation
-into the UPL Lens brand preserves the same data-to-product philosophy while
-bringing a focused frontend redesign and new naming.
+## Current Project Definition
 
-It turns official match data into trustworthy football intelligence: curated
-statistical findings, reusable analytical features, and deeper exploration for
-people who want to understand the league beyond fixtures, results, and tables.
+UPL Lens is a maintained UPL analytical data foundation and practical casework
+system. It acquires official Uganda Premier League source data, preserves and
+validates it in Postgres, keeps raw/staging/analytics contracts understandable,
+provides reproducible read-only research access, and supports bounded football
+questions as closed analytical cases.
 
-The short version:
+The active project question is:
 
 ```text
-Official UPL match data -> trusted database -> statistical insight -> public
-football intelligence product
+What can trustworthy UPL source data answer when a real football question is
+scoped, checked, reproduced, caveated, and closed deliberately?
 ```
 
-The product question remains the same:
+The active flow is:
+
+```text
+Official UPL source record
+  -> maintained Postgres foundation
+  -> case-specific reproducibility record
+  -> notebook/checks/findings/report/outputs/caveats
+  -> hard endpoint for the case
+```
+
+A case-specific reproducibility record is not the same thing as a frozen central
+snapshot. The Postgres foundation remains maintained; each case records the
+source coverage, data state, checks, notebook evidence, caveats, and endpoint
+that make that case reproducible.
+
+## Component Status
+
+- **Active**: source acquisition, raw/staging/analytics contracts, validation,
+  operations, read-only notebooks, bounded UPL analytical cases, caveats,
+  reproducibility records, and GitHub-native work discipline.
+- **Retained/frozen**: FastAPI, React, Cloudflare Pages, Render deployment
+  knowledge, frontend design rules, API contracts, and public-product QA
+  lessons. These are assets and references, not mandatory destinations.
+- **Historical**: UPL Goal Timing / UPL Match Intelligence naming, the v1 public
+  product push, the June/July frontend build order, and Goal Timing as the
+  first productized analysis.
+- **Separately decision-gated**: public deployment disposition, project-board
+  semantics, architecture-boundary rewrites, and any future case-to-software
+  promotion.
+
+## Product Dictionary
+
+Use this compact dictionary to keep docs, Issues, PRs, UI copy, and agent
+handoffs consistent during and after the transition.
+
+| Term | Meaning | Use it when |
+|---|---|---|
+| UPL Lens | The unified repository/project name for the maintained UPL data foundation, casework system, and retained software assets. | Naming the repo, docs, Issues, PRs, cases, and retained public surfaces. |
+| Official source | The official Uganda Premier League website and match pages this project reads from. | Explaining provenance, scraping, and source-data limitations. |
+| Source record | The official archived match fact or page. | Distinguishing original records from UPL Lens analysis. |
+| Maintained Postgres foundation | The active raw/staging/analytics database contracts that are refreshed, validated, and used for research access. | Describing the active technical foundation. |
+| Case-specific reproducibility record | The coverage/snapshot/check/evidence/caveat record that makes one closed case reproducible. | Starting or closing a practical UPL analytical case. |
+| Practical UPL case | A bounded football investigation with a question, data record, checks, notebook, findings/report, outputs, caveats, and hard endpoint. | Scoping future UPL analysis work. |
+| Intelligence layer | The analytical meaning UPL Lens adds on top of official source records. | Explaining retained product decisions or current analytical interpretation. |
+| Retained public app | The existing React/FastAPI product code and hosted knowledge from the completed software-product phase. | Maintaining or referencing frontend/API assets. |
+| Featured insight | Historical/product-phase term for a notebook-backed analysis promoted into API/frontend presentation. | Discussing Goal Timing or retained public-product history. |
+| Software promotion | Exceptional, owner-approved movement from a case into SQL/API/frontend presentation. | Deciding whether a case should become software rather than stop as a report/output. |
+| Data-quality caveat | Visible context that prevents a number or finding from looking more certain than it is. | Writing case reports, notebooks, APIs, or retained UI copy. |
+| Available data | A cautious phrase meaning the project is reporting from collected and validated records, not claiming official completeness. | Writing player, lineup, event, leaderboard, or case findings. |
+| Staging data | Cleaned app/research-facing Postgres tables under `staging.*`. | Discussing trusted inputs for research, API, and casework. |
+| Analytics data | Stable reusable summaries, facts, views, or tables under `analytics.*`. | Describing reusable metrics or derived contracts. |
+| Browser-facing API proxy | Historical/retained Cloudflare Pages `/api/*` path from the product phase. #108 disposition is under reconsideration; the surface remains live while a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained code or historical hosted behavior. |
+| Backend origin API | Historical/retained Render-hosted FastAPI origin. Unrestricted public exposure remains live while #108 disposition is under reconsideration and a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained backend code or historical deployment behavior. |
+
+## Strategic Change
+
+The public software-product phase was useful. It proved that UPL Lens could move
+from source pages to a scraper, Postgres, FastAPI, React, hosted operations,
+QA, documentation, GitHub Issues/PRs, and public presentation. It also created
+strong working habits: canonical doc ownership, source-record boundaries,
+fail-closed operations, validation evidence, reproducible notebooks, and owner
+review.
+
+The direction changed because an open-ended public-product roadmap made every
+useful football question feel like it needed release packaging, frontend polish,
+API shape decisions, deployment checks, and long-lived product maintenance. That
+cost can create drift away from the actual analytical value. The engineering
+foundation should be maintained; the automatic product destination should not.
+
+## Former Public-Product Strategy, Retained As Historical Context
+
+The sections below preserve the product-phase lessons and decision rules. Use
+them when maintaining retained frontend/API assets, reviewing the historical
+Goal Timing product path, or considering an explicitly approved future
+presentation surface. Do not treat them as a standing instruction to turn every
+validated notebook into React/FastAPI work.
+
+## Historical Product Definition
+
+During the public-product phase, UPL Lens was defined as an independent
+statistical observatory for the Uganda Premier League (the project previously
+described public-facing work as "UPL Match Intelligence"). It turned official
+match data into trustworthy football intelligence: curated statistical findings,
+reusable analytical features, and deeper exploration for people who wanted to
+understand the league beyond fixtures, results, and tables.
+
+The historical product question was:
 
 ```text
 What do the UPL numbers reveal that the official website does not explain?
 ```
-
-## Product Dictionary
-
-Use this compact dictionary to keep product language, UI copy, Issues, PRs, and
-agent handoffs consistent.
-
-| Term | Meaning | Use it when |
-|---|---|---|
-| UPL Lens | The public product and unified project name. | Naming the app, repo, docs, Issues, PRs, and public surfaces. |
-| Official source | The official Uganda Premier League website and match pages this project reads from. | Explaining provenance, scraping, and source-data limitations. |
-| Source record | The official archived match fact or page. | Distinguishing original records from UPL Lens analysis. |
-| Intelligence layer | The analytical meaning UPL Lens adds on top of official source records. | Explaining why a page, chart, or API endpoint exists. |
-| Match Intelligence Brief | A match detail surface that explains why a match matters through signals, timing, cards, context, or anomalies. | Designing match detail pages or avoiding official match-report clones. |
-| Routine intelligence | Reusable backend-supported signals that appear on normal product pages. | Building team labels, match signals, trends, coverage notes, and comparison modules. |
-| Featured insight | A promoted notebook-backed research product with clear findings, caveats, API support, and frontend presentation. | Promoting analyses such as Goal Timing or future Discipline research. |
-| Feature package | A numbered notebook research folder with `analysis.ipynb`, `research_brief.md`, `product_plan.md`, and outputs. | Starting or reviewing research work. |
-| Promoted metric | A research metric stable enough to become an API, SQL, or frontend contract. | Moving from notebooks into production. |
-| Data-quality caveat | Visible user-facing context that prevents a number from looking more certain than it is. | Showing incomplete timeline, lineup, event, player, or source coverage. |
-| Available data | A cautious phrase meaning the project is reporting from collected and validated records, not claiming official completeness. | Writing player, lineup, event, or leaderboard copy. |
-| Staging data | Cleaned app-facing Postgres tables under `staging.*`. | Discussing trusted inputs for API and research. |
-| Analytics data | Stable reusable summaries, facts, views, or tables under `analytics.*`. | Describing promoted or reusable metrics. |
-| Browser-facing API proxy | The Cloudflare Pages `/api/*` path the public frontend calls. | Configuring hosted frontend requests and avoiding browser extension blocking. |
-| Backend origin API | The Render-hosted FastAPI service behind the proxy. | Debugging backend health or deployment origin behavior. |
-
-When in doubt, use product-facing football language before technical language.
-For example, prefer "available event data" over "rows in staging.events" in UI
-copy, while preserving the precise technical term in docs or implementation
-notes.
-
-## Origin And Growth Philosophy
-
-The project began as a portfolio and passion project for analysing Uganda
-Premier League data. It should still work well as a portfolio project, but the
-public-facing experience should not be about showing off code first.
-
-The preferred growth path is organic:
-
-- Build a credible public product.
-- Share it with football fans, colleagues, and online audiences.
-- Add new analyses when they are useful and validated.
-- Let traffic, public credibility, job opportunities, partnerships, or
-  monetization emerge later if the product earns that attention.
-
-Do not design the product as a large commercial platform too early. Monetization,
-club-facing sales, and advanced scouting workflows are possible future paths,
-but they should not complicate the current product direction.
-
-## What This App Is
-
-This app is:
-
-- An analytical layer on top of official UPL match data.
-- A modern sports statistics product for curious UPL fans.
-- A place for neutral, statistical, sports-science informed football analysis.
-- A public home for notebook-backed insights that have been promoted into
-  reliable product features.
-- A project that quietly demonstrates data engineering, backend, frontend,
-  automation, deployment, and analytical storytelling ability.
-- A product that values accuracy, caveats, and data freshness as part of its
-  credibility.
-
-## What This App Is Not
-
-This app is not:
-
-- A replacement for the official UPL website.
-- A fixtures-first or results-first fan site.
-- A generic league table clone.
-- A personal homepage centered on the author.
-- A developer portfolio page where the stack is the main attraction.
-- A notebook dump, static chart gallery, or exported analysis archive.
-- A full commercial scouting platform at the current stage.
-- A product that hides source-data limitations to look more polished.
-
-The official UPL website remains the source archive. UPL Lens should explain
-patterns, trends, and meaning that are hard to see from official match pages
-alone.
-
 ## Source Record Vs Intelligence Layer
 
-The product boundary is:
+The retained source-record boundary is still active for both casework and retained product surfaces:
 
 ```text
 Official UPL site = source record.
@@ -174,13 +180,13 @@ page intelligence, not as featured research products.
 ## Featured Insights
 
 Featured insights are promoted research products that move through the
-notebook -> validation -> API -> frontend workflow.
+notebook -> validation -> API -> frontend workflow when software promotion was approved.
 
 Examples include:
 
 - Goal Timing
-- future Discipline insight, if researched and promoted
-- future Home Advantage insight, if researched and promoted
+- a future Discipline case or insight, if researched and separately approved for promotion
+- a future Home Advantage case or insight, if researched and separately approved for promotion
 
 Do not force routine page intelligence into `/insights`. Do not replace
 featured insights with shallow dashboard widgets.
@@ -331,7 +337,7 @@ When a workflow risks copying the official website, prefer analytical
 summaries, compact context, and official-source links over reproducing the whole
 source page.
 
-## Feature Philosophy
+## Historical Feature Philosophy
 
 Each important analytical feature should be reusable over time.
 
@@ -339,7 +345,7 @@ When a new analysis is promoted, it should not be a one-off static post. It
 should become a continuing feature that can update as new seasons and matches
 enter the database, when the underlying data supports that.
 
-The preferred flow remains:
+The historical product-phase flow was:
 
 ```text
 notebook research -> research brief -> product plan -> Postgres/FastAPI ->
@@ -498,7 +504,7 @@ Product strategy should shape technical choices.
 - Prefer hands-off scheduled updates, but make failures visible.
 - Do not let automation publish structurally broken or misleading data.
 
-## Minimum Serious Product
+## Historical Minimum Serious Product
 
 A minimum serious public version should include:
 
@@ -512,7 +518,7 @@ A minimum serious public version should include:
 This is not the final product. It is the minimum shape that communicates the
 right identity.
 
-## Deferred Until Later
+## Historically Deferred Product Ideas
 
 These ideas may become useful later, but should not drive the immediate
 redesign:
@@ -528,15 +534,15 @@ redesign:
 
 ## Decision Rules For Future Work
 
-When deciding whether to build something, ask:
+When deciding whether to pursue a case or build software, ask:
 
 1. Does this reveal something meaningful about the UPL?
 2. Is this different from what the official website already provides?
 3. Can the number or claim be traced to trusted data, a query, or a notebook?
 4. Does the UI make caveats visible when they matter?
-5. Will the feature keep working as new seasons are added?
-6. Is this useful to a stats-interested fan before it is useful to a recruiter?
-7. Does the technical work support the product promise, or only add complexity?
+5. Does this need maintained software, or can it close as a bounded reproducible case?
+6. If software is proposed, will it keep working as new seasons are added?
+7. Is this useful as football analysis before it is useful as portfolio evidence?
 8. Are we transforming the official source record, summarizing it for context,
    or linking out instead of duplicating it?
 
@@ -545,7 +551,7 @@ research thinking before implementation.
 
 ## Agent Checklist
 
-Before coding product-facing work, an AI agent should check:
+Before coding product-facing work or starting a practical UPL case, an AI agent should check:
 
 - [START_HERE.md](START_HERE.md)
 - this product strategy document
@@ -553,11 +559,11 @@ Before coding product-facing work, an AI agent should check:
 - the relevant work-area docs
 - the current files for the specific feature or surface being changed
 
-For frontend work, also check:
+For retained or explicitly approved frontend work, also check:
 
 - [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md)
 
-For research promotion work, also check:
+For research, casework, or exceptional promotion work, also check:
 
 - [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md)
 - the relevant feature folder under `notebooks/features/`
@@ -566,5 +572,5 @@ Do not implement a product feature only because it is technically possible.
 Implement it because it advances the product promise:
 
 ```text
-trusted UPL data, turned into meaningful football intelligence
+maintained UPL data, turned into reproducible football intelligence
 ```

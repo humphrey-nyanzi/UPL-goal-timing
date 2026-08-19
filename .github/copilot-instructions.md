@@ -2,54 +2,28 @@
 
 ## Big Picture
 
-This repository is evolving from a UPL goal timing notebook project into an
-open-source Uganda Premier League data platform with **UPL Lens** as the public
-frontend product.
+This repository is **UPL Lens**, a maintained Uganda Premier League analytical
+data foundation and practical casework system. It began as a UPL Goal Timing
+notebook project and later proved a full public-product path with scraper,
+Postgres, FastAPI, React, hosted operations, QA, documentation, Issues, and PRs.
 
-The target architecture is:
+The former public software-product phase is now frozen and retained as useful
+history and code. The active model is:
 
 ```text
-scraper -> raw data/cache -> cleaning/modeling -> Postgres -> FastAPI -> React
+source record -> maintained Postgres foundation -> practical analytical case
 ```
 
-Notebooks remain the research lab. They are where analysis ideas are explored
-and validated before becoming SQL views, API endpoints, or React dashboard
-features.
+Maintain source acquisition, raw/staging/analytics contracts, validation,
+reproducibility, and read-only notebook access. New UPL work should start from a
+bounded football question and end with a case-specific coverage/snapshot record,
+checks, notebook, findings/report, outputs, caveats, and a hard endpoint. Do
+not describe this as a frozen central snapshot; the Postgres foundation remains
+maintained, while each case records its own reproducibility evidence.
 
-Read `AGENTS.md`, `docs/START_HERE.md`, `docs/PRODUCT_STRATEGY.md`, and
-`docs/PROJECT_ROADMAP.md` before making large changes.
-When creating, editing, consolidating, deleting, or depending on project
-documentation, use the installed `docs-steward` skill to keep documentation
-accurate, non-redundant, linked, and aligned with agent guidance.
-When an Issue number is provided, treat the Issue as the active task brief:
-read its body, comments, labels, milestone, Project, checklist, and acceptance criteria before
-editing. Comment or report against the Issue, but do not close important Issues
-or approve releases unless the project owner explicitly instructs it.
-For meaningful Issue or Project work, use an Issue-specific branch and Pull
-Request instead of pushing directly to `main`. Open draft PRs by default, link
-the Issue, include verification, and leave merge/release approval to the owner.
-When opening a PR from an Issue, copy relevant Issue labels, assign the same
-milestone, add the PR to the same Project, set PR status to
-`status: needs-review` only after the Issue checklist and acceptance criteria
-are complete, and use `Closes #<issue-number>` so the Issue closes when the
-owner-reviewed PR is merged. Put useful out-of-scope follow-up in a PR comment
-or follow-up Issue.
-Small, clear, low-risk fixes may skip Issue creation, but they still need a
-branch and PR when they change code, docs, config, or deployment behavior. If a
-direct request is meaningful, risky, unclear, multi-step, milestone-related, or
-useful for another agent to resume, create or request a GitHub Issue before
-implementation. Keep PRs draft until the linked Issue checklist, acceptance
-criteria, PR template, and verification evidence are complete. Include local
-command output, browser notes, preview URL, endpoint evidence, or an N/A reason
-in the PR. After merge, short-lived branches should be deleted unless the owner
-explicitly preserves an experiment. Avoid long-lived fixed branches for routine
-feature or agent work.
-GitHub network operations such as `gh issue`, `gh pr`, `gh project`, and
-`git push` may need to run outside sandboxed environments with approval.
-If the task affects the public frontend relaunch, also read
-`docs/FRONTEND_DESIGN_SYSTEM.md` first and treat it as the frontend, API,
-page-requirements, and launch-precedence guide for UPL Lens UI work.
-
+FastAPI and React are retained assets, not mandatory destinations. Use them for
+maintenance, demonstration, or explicitly approved presentation/software
+promotion only.
 ## Current Project State
 
 - `scripts/data_platform/scrape_upl_matches.py` is the scraper command
@@ -72,7 +46,7 @@ page-requirements, and launch-precedence guide for UPL Lens UI work.
   timing pilot under `notebooks/features/feature_01_goal_timing/`.
 - Raw and processed data are gitignored.
 
-## Product Direction
+## Current Direction
 
 Do not treat the app as a simple clone of the official UPL website. The official
 site is the source/archive. This project should add an intelligence layer:
@@ -86,7 +60,7 @@ site is the source/archive. This project should add an intelligence layer:
 - Match timeline exploration.
 - Season-over-season league changes.
 
-The durable product identity is documented in
+The current identity and retained product-phase lessons are documented in
 `docs/PRODUCT_STRATEGY.md`. The app should feel like an independent UPL football
 intelligence platform: curated statistical insight first, dashboard-style
 drilldowns second, and the technical portfolio story quietly available through
@@ -143,9 +117,9 @@ Use notebooks to:
 
 Do not make notebooks responsible for production serving.
 
-### Public Product
+### Retained Public Product
 
-Owns API and frontend.
+Owns API and frontend only when retained maintenance or explicitly approved presentation work is in scope.
 
 Current pieces:
 
@@ -288,7 +262,7 @@ matches, events, lineups, officials, or stats.
 
 ## API Guidance
 
-FastAPI should stay read-first for public product use.
+FastAPI should stay read-first as a retained public-product asset.
 
 Current endpoint families include:
 
@@ -316,7 +290,7 @@ grows.
 Build a real React analytical app, not another Streamlit-style notebook
 dashboard.
 
-Good first pages:
+Retained product pages include:
 
 - League overview.
 - Goal timing explorer.

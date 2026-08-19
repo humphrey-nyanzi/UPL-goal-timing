@@ -1,21 +1,26 @@
 # Frontend Design System And API Guide
 
-This document is the single product implementation guide for the UPL Lens
-frontend. It now owns frontend design rules, launch decisions, API contract
-notes, page requirements, content wireframes, and seed issue guidance for
-approved UI/UX work.
+This document is the retained product implementation guide for the UPL Lens
+frontend and browser-facing API contract.
 
-This document is the single source of truth for:
+The public software-product phase is frozen as of 2026-08-19. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. The React app,
+FastAPI contract, visual rules, launch decisions, page requirements, and QA
+lessons remain useful retained assets, but they are no longer the automatic
+next destination for every UPL analysis. New practical UPL cases should close
+as reproducible casework unless a current Issue and owner instruction explicitly
+approve software promotion or frontend/API maintenance.
 
-- approved visual direction
-- durable UI and UX rules
+This document remains the single source of truth for retained frontend work:
+
+- approved visual direction from the product phase
+- durable UI and UX rules for retained surfaces
 - frontend-facing API contracts
 - intelligence-layer page requirements
 - text/content wireframes
-- seed issue guidance for approved frontend work
+- seed issue guidance for approved UI/UX work
 - layout, token, and component guidance
 - page templates and product-surface expectations
-- visual acceptance criteria for future frontend work
+- visual acceptance criteria for future retained frontend work
 
 Use this with:
 
@@ -24,20 +29,20 @@ Use this with:
 
 ## Frontend Source Of Truth
 
-The former UPL Lens launch docs have been folded into this file. Use this
-order when frontend guidance conflicts:
+The former UPL Lens launch docs have been folded into this file. Use this order
+when retained frontend guidance conflicts:
 
-1. High-fidelity launch decisions in this file
-2. Intelligence-layer page requirements in this file
-3. API contract notes in this file
-4. Text/content wireframes in this file
-5. Durable design tokens and component rules in this file
-6. Seed issue guidance in this file and `.github/ISSUE_DRAFTS/`
-7. Older roadmap/history docs
+1. Current owner-approved Issue or deployment-disposition decision
+2. High-fidelity launch decisions in this file
+3. Intelligence-layer page requirements in this file
+4. API contract notes in this file
+5. Text/content wireframes in this file
+6. Durable design tokens and component rules in this file
+7. Seed issue guidance in this file and `.github/ISSUE_DRAFTS/`
+8. Older roadmap/history docs
 
 If a future design decision becomes durable, fold it into this document instead
 of creating a new sibling doc.
-
 ## Current Frontend Baseline
 
 The June intelligence-layer implementation order is now historical. The merged
@@ -57,9 +62,9 @@ Future Product Experience work should begin from a GitHub Issue or explicit
 owner request, then use the API contract, page roles, visual rules, and launch
 acceptance checklist below. Do not use the old build order as a live task list.
 
-## Product Architecture Rule
+## Retained Product Architecture Rule
 
-The product path is:
+The retained browser-facing product path is:
 
 ```text
 React UI -> FastAPI endpoint -> Postgres query/view -> JSON -> chart/table
@@ -206,9 +211,9 @@ It should not feel like:
 - a decorative marketing website
 - a purple or cyan glassmorphic template
 
-## Approved Product Surfaces
+## Retained Product Surfaces
 
-These surfaces are approved as part of the public product direction:
+These surfaces were approved and implemented as part of the completed public-product phase. They remain retained frontend/API assets, not an active promise to keep expanding the public product by default:
 
 - League Overview
 - Goal Timing Explorer
@@ -221,9 +226,7 @@ These surfaces are approved as part of the public product direction:
 - Discipline Dashboard as a future promoted or routine intelligence surface
   after research and endpoint needs are clear
 
-The current deployed app is now the v1.0 release foundation. Future work should
-polish, verify, or extend these surfaces rather than restart the page build
-sequence.
+Historically, the deployed app became the v1.0 product-phase foundation. That is retained evidence, not an active release instruction. Future polish, verification, extension, dormancy, archival, or retirement decisions must come from current owner-approved Issues.
 ## Page Roles And Requirements
 
 These roles replace the older split launch-doc structure:
@@ -241,9 +244,7 @@ These roles replace the older split launch-doc structure:
 
 Normal pages can contain routine intelligence modules such as signal labels,
 profile labels, comparison bars, form strips, and data-quality notes. Those
-modules do not turn a page into a promoted insight. Promoted insights remain
-the notebook -> validation -> API -> frontend outputs that live under
-`/insights`.
+modules do not turn a page into a promoted insight. Promoted insights are historical or explicitly approved outputs that live under `/insights`. New cases should not enter this path unless software promotion is separately approved.
 
 ### Overview
 
@@ -785,11 +786,9 @@ where analytical meaning, not dashboard decoration, leads the page.
   horizontal scrolling. Record the routes and states checked, run `npm run
   build`, and include browser findings in the PR.
 
-## UPL Lens Public Launch Acceptance Checklist
+## Historical Public Launch Acceptance Checklist
 
-Use this checklist to confirm a release build is ready for the UPL Lens public
-launch. Every item marked as required must be satisfied or carry an explicit
-acceptance note in the release PR.
+This checklist is retained as historical product-phase evidence. Do not use it as an active public-release instruction unless a current owner-approved Issue reopens public launch or retained frontend QA work.
 
 - Theme and tokens:
   - Editorial Light is implemented as the default theme and matches the
@@ -817,8 +816,7 @@ acceptance note in the release PR.
     document.
   - Mobile-first layouts validated at typical narrow widths.
 
-Document any approved exceptions in the release PR and link the approving
-note or ticket.
+Historically, approved exceptions were documented in the release PR with a link to the approving note or ticket.
 
 ### League Overview Mockup Checklist
 
@@ -855,7 +853,7 @@ mockup direction. The goal is close product feel, not pixel-perfect copying.
 
 ## Frontend Seed Issue List
 
-Active frontend work now belongs in GitHub Issues. This section preserves the
+Retained frontend work now belongs in GitHub Issues. This section preserves the
 approved seed list that was used to build the current intelligence-layer
 frontend. Do not treat this table as the live task tracker.
 
@@ -867,7 +865,7 @@ frontend. Do not treat this table as the live task tracker.
 | Cross-season aggregation and fixed featured-insight framing | implemented | Season-aware API responses and promoted insight scope | All Seasons support is clear, while featured insights keep their research scope. |
 | Improve Insights Library and insight exploration surfaces | implemented | Existing insight endpoint plus static registry until more insight metadata exists | Insights reads as a promoted research library, not a sparse placeholder. |
 | Expand Trends into a multi-visualization surface | implemented | `/trends/seasons` | Trends shows scoring, discipline, result share, high-scoring match share, and data coverage across seasons. |
-| Release QA and follow-up polish | active in GitHub | Public routes, Cloudflare preview, and production app | Owner/browser QA records route coverage, limitations, and any follow-up Issues before release. |
+| Public deployment disposition | under reconsideration in #108 | Public Cloudflare sites, Cloudflare API proxy, unrestricted Render FastAPI exposure | Public surfaces remain live; a dormant/archive demonstration option is being evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. |
 
 Historical implementation order, now complete on `main`:
 
