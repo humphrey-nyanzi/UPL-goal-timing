@@ -401,6 +401,11 @@ Active casework flow:
 ```text
 source record -> maintained Postgres -> read-only notebook/checks -> closed case
 ```
+
+The detailed component classification, active data path, retained public-product
+path, and service-boundary diagrams live in
+[diagram_collection.md](diagram_collection.md). That document is the canonical
+technical architecture owner; this roadmap owns priorities and sequencing.
 ## Continuous Development Areas
 
 Use these four areas for new planning, review, and prioritization.
@@ -1334,9 +1339,9 @@ The next implementation sequence should use current GitHub Issues and the active
 transition boundaries, not the completed June frontend build order or v1 release
 packaging.
 
-1. **Developer Experience & Documentation**: complete Issue #114 by aligning
-   identity, strategy, roadmap, and agent guidance around the maintained data
-   foundation and practical casework model.
+1. **Developer Experience & Documentation**: keep canonical identity,
+   architecture, workflow, and agent guidance aligned as transition work is
+   completed through current Issues.
 2. **Research & Football Intelligence**: define the practical analytical-case
    workflow in the owning docs and Issues. Cards & Discipline can be considered
    as a case candidate, not as an automatic Feature 2 product commitment.
