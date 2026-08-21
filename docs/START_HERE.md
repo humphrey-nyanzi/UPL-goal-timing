@@ -122,7 +122,7 @@ Beginner defaults:
 | [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md) | Research/case workflow, feature history, and exceptional software-promotion rules | You are working in notebooks, starting a bounded UPL case, or checking whether software promotion is explicitly approved. |
 | [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md) | Local setup, verification, operations, automation, troubleshooting | You need to run, validate, refresh, deploy, or debug the system. |
 | [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md) | Retained frontend design, API contract, page requirements, wireframes, seed issue list | You are maintaining retained UI/API assets or working on an explicitly approved frontend/presentation Issue. |
-| [diagram_collection.md](diagram_collection.md) | Visual architecture reference | You need architecture, data-flow, API-flow, database, scraper, or frontend diagrams. |
+| [diagram_collection.md](diagram_collection.md) | Canonical technical architecture, active/retained classification, and visual reference | You need to distinguish active foundation/casework from retained software, or inspect data-flow, API-flow, database, scraper, or frontend diagrams. |
 
 `visual_inspo.png` remains in `docs/` as a visual asset, not a standalone doc.
 

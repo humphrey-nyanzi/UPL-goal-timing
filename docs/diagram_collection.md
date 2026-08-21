@@ -1,249 +1,139 @@
 # UPL Lens - Mermaid Diagram Collection
 
-Status: **visual system overview / retained architecture reference**. Some
-existing diagrams describe the completed public-product phase: data platform,
-FastAPI, and the UPL Lens React frontend. Treat those as retained architecture
-references unless a current Issue explicitly updates the active architecture.
+Status: **canonical technical architecture and visual system reference**.
 
-The active transition model is:
+Use this file to determine which parts of UPL Lens are active analytical
+infrastructure, which parts are retained from the public-product phase, and how
+a practical case reaches trusted data. Detailed case packaging is owned by
+[FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md) and Issue #113;
+database trust and provenance are coordinated through Issue #112.
+
+The active path is deliberately complete without FastAPI or React:
 
 ```text
-source record -> maintained Postgres foundation -> practical analytical case
+official UPL source
+  -> source checks and scraping
+  -> raw.*
+  -> cleaning and validation
+  -> staging.*
+  -> analytics.* only when reuse or semantic value justifies it
+  -> read-only notebook and checks
+  -> findings/report, caveats, outputs
+  -> closed case
 ```
 
-Do not read old public-product diagrams as a requirement that every new case be
-promoted into FastAPI or React.
+FastAPI and React remain useful retained assets, but they are an exceptional,
+owner-approved presentation path rather than the default end of research.
 
-Use this file when you need a high-level visual map of the codebase, data
-pipeline, database shape, API flow, or scraper lifecycle. Keep it accurate when
-code changes affect the architecture, major workflows, endpoints, database
-tables, or known gaps.
+Keep this file accurate when code changes affect architecture, major workflows,
+service boundaries, database tables, or the active/retained classification.
 
 Current planning home: use [START_HERE.md](START_HERE.md) for the four
 continuous development areas and concise recent-history context.
 
 ---
 
-## Diagram 1 — Detailed Two-Flow Data Pipeline
-> Solid lines = primary automated or maintained flow. Dashed lines = retained research/promotion or optional software flow.
-> ⚠️ marks known gaps or areas worth improving.
+## Architecture Classification
+
+This classification follows the current code and service dependencies. A
+classification describes the default maintenance obligation; it does not
+delete code or prevent a separately approved change.
+
+| Classification | Current areas and services | Why |
+|---|---|---|
+| **Active foundation** | `src/scraping/upl/`, `scripts/data_platform/`, `src/db/`, `src/validation/`, `database/migrations/`, raw/staging/analytics schemas, cache and raw artifacts, regression/contract tests | These acquire, preserve, clean, validate, and model the shared data used by every future case. |
+| **Active operations** | `.github/workflows/current-season-update.yml`, `src/operations/`, source-health, routine-refresh, admin-migration, and full-rebuild/backfill modes | Scheduled acquisition and database maintenance run independently of the public app. Issue #84 owns acquisition reliability and season rollover. |
+| **Active case access** | `src/research.read_sql`, read-only research credentials, notebooks, case checks, findings/reports, and case outputs | The default analytical consumer is a bounded case using maintained Postgres without write access. Issue #112 owns the detailed trust/provenance contract; Issue #113 owns the concrete case package and lifecycle. |
+| **Optional shared analytics** | `analytics.*`, migrations that define reusable derived contracts, and supporting tests | Add a named contract only when logic has stable meaning, is reused across cases, or needs centralized validation/performance. A missing analytics object is not automatically a backlog gap. |
+| **Retained/frozen software** | `api/`, `src/api/`, `frontend/`, `render.yaml`, Pages Functions/configuration, `docs/FRONTEND_DESIGN_SYSTEM.md`, and Goal Timing promotion history | These preserve the proven public-product implementation and may receive scoped correctness or maintenance work, but new cases do not flow here automatically. |
+| **Separately governed live surfaces** | Cloudflare Pages sites/proxy and the Render FastAPI service | They remain live while Issue #108 evaluates a dormant/archive option. No provider retirement, archive conversion, or static archive is authorized by this architecture issue. |
+
+Database migrations and tests can support both active and retained consumers.
+Their classification follows the contract they protect: foundation correctness
+is active; endpoint- or UI-only behavior is retained.
+
+## Diagram 1 — Active Foundation And Casework Path
+
+> Solid arrows are the default maintained path. The case ends without requiring
+> an endpoint, route, or deployment.
 
 ```mermaid
-flowchart TD
+flowchart LR
+    SOURCE["Official UPL sources"] --> PREFLIGHT["Source preflight and cache"]
+    PREFLIGHT --> SCRAPE["Scraper and refresh plan"]
+    SCRAPE --> ARTIFACTS["data/raw/<season>/\nsource artifacts"]
+    ARTIFACTS --> LOAD["Validated raw loader\nscoped upserts or explicit rebuild"]
+    LOAD --> RAW["raw.*\nsource-shaped records"]
+    RAW --> BUILD["Cleaning, reconciliation, validation"]
+    BUILD --> STAGING["staging.*\ncleaned source facts"]
+    STAGING --> ACCESS["Read-only research access\nsrc.research.read_sql"]
+    STAGING --> DECISION{"Stable reusable\nsemantic contract?"}
+    DECISION -->|"yes"| ANALYTICS["analytics.*\nshared derived contract"]
+    DECISION -->|"no"| ACCESS
+    ANALYTICS --> ACCESS
+    ACCESS --> CASE["Bounded question\nnotebook and SQL checks"]
+    CASE --> EVIDENCE["Findings/report\noutputs and caveats"]
+    EVIDENCE --> CLOSED["Case closed"]
 
-    %% ═══════════════════════════════
-    %% EXTERNAL SOURCE
-    %% ═══════════════════════════════
-    WEB(["🌐 upl.co.ug\nOfficial UPL website"])
-
-    %% ═══════════════════════════════
-    %% AUTOMATION TRIGGER
-    %% ═══════════════════════════════
-    GA["⚙️ GitHub Actions\nweekly routine-refresh\nmanual admin/source modes"]
-    GA -->|"runs"| ORCH
-
-    ORCH["🎛️ update_hosted_data.py\nmode wrapper\nroutine · source-health\nadmin-migration · full-rebuild"]
-    SUMMARY["📄 hosted update summaries\nJSON + Markdown\noutcome · source/safety counts\nrow mutations · staging run\nuploaded in automation logs"]
-    ORCH -->|"writes"| SUMMARY
-
-    %% ═══════════════════════════════
-    %% STEP 1: SCRAPING
-    %% ═══════════════════════════════
-    ORCH -->|"step 1"| SCRAPER
-
-    subgraph SCRAPING["PRIMARY ① — Scraping"]
-        direction TB
-        SCRAPER["⚙️ scrape_upl_matches.py\ncommand wrapper\n→ src/scraping/upl/*\nclient · parsing · pipeline\npostgres state · dataframes"]
-
-        CACHE[("📦 data/cache/\nHTML per URL\nMD5-keyed files\nPrevents re-download")]
-
-        SCRAPER <-->|"read/write\ncached HTML"| CACHE
-
-        SCRAPER --> PREFLIGHT
-        PREFLIGHT["🛡️ source preflight\nHTTP · HTML type · source URL\nstructure + links vs reviewed baseline\nUPL max 240-match ceiling\nwrites attempt evidence JSON"]
-        PREFLIGHT -->|"passed"| CSV
-        PREFLIGHT -->|"blocked"| SOURCEFAIL
-        SCRAPER -->|"match failure after retries"| FAILED
-
-        CSV[("📁 data/raw/<season>/\nmatches · events · lineups\nstaff · officials · stats\nsource-preflight contract")]
-
-        SOURCEFAIL["⛔ source-health failure\nraw · staging · analytics\nwrites skipped"]
-        FAILED[("📁 upl_failed_matches\n_<season>.csv\nmatch_url · attempt_count\nlast_error · timestamp")]
-    end
-
-    WEB -->|"GET /event/<id>/\nGET /calendar/"| SCRAPER
-
-    NOTE1["ℹ️ Current behavior:\nweekly schedule is locked to\nroutine-refresh with live source.\nMigrations and full rebuilds\nuse explicit manual modes."]
-    SCRAPING -.->|"operator note"| NOTE1
-
-    %% ═══════════════════════════════
-    %% STEP 2: RAW LOAD
-    %% ═══════════════════════════════
-    ORCH -->|"step 2"| RAWLOAD
-
-    subgraph RAW_INGESTION["PRIMARY ② — Raw Ingestion"]
-        direction TB
-        RAWLOAD["📥 load_raw_to_postgres.py\n→ src/db/raw_loader.py\nroutine mode:\n  1. validate full source/identity set\n  2. read scraper refresh plan\n  3. delete affected match IDs only\n  4. upsert affected raw.* rows\nadmin --full-rebuild:\n  delete/reload full season"]
-
-        RAWVERIFY["✅ verify_raw_postgres_counts.py\ncompares CSV row counts\nvs Postgres row counts\nflags mismatches"]
-
-        RAWLOAD --> RAWVERIFY
-    end
-
-    CSV -->|"reads"| RAWLOAD
-    FAILED -->|"reads"| RAWLOAD
-
-    subgraph PGRAW["🐘 Postgres — raw schema"]
-        direction LR
-        R1["raw.matches\n1 row per match\nconflict on match_id"]
-        R2["raw.events\nconflict on event_row_key\n(SHA-256 fingerprint)"]
-        R3["raw.lineups\nraw.staff\nraw.officials\nraw.stats"]
-        R4["raw.failed_matches\nconflict on\nfailed_match_row_key"]
-    end
-
-    RAWLOAD -->|"upserts"| PGRAW
-
-    NOTE2["⚠️ GAP: raw.* tables have\nno foreign keys between\nmatches and child tables.\nIntegrity is checked by\nraw-load safety guards and\nstaging validation."]
-    PGRAW -.->|"known gap"| NOTE2
-
-    %% ═══════════════════════════════
-    %% STEP 3: STAGING
-    %% ═══════════════════════════════
-    ORCH -->|"step 3"| STAGLOAD
-
-    subgraph STAGING_BUILD["PRIMARY ③ — Staging Build"]
-        direction TB
-        STAGLOAD["🧹 build_staging_from_raw.py\n→ src/db/staging/* package\nstaging_loader.py facade\nReads raw.* via SQLAlchemy\nSplits models · IO · transforms\nvalidation · writers · analytics\nLogs issues to validation_runs"]
-
-        STAGVERIFY["✅ verify_staging_outputs.py\nspot-checks staging tables:\n  • row counts\n  • null rates on key columns\n  • season coverage"]
-
-        STAGLOAD --> STAGVERIFY
-    end
-
-    PGRAW -->|"SELECT * FROM raw.*"| STAGLOAD
-
-    subgraph PGSTAGE["🐘 Postgres — staging schema"]
-        direction LR
-        S1["staging.matches\n+result · +winner_team\n+total_goals · +goal_difference\n+match_date (Date)"]
-        S2["staging.events\n+minute_base/added/total\n+minute_period (0-15…90+)\n+is_goal · is_yellow_card\n+is_red_card · is_substitution\n+team_name (resolved from side)"]
-        S3["staging.lineups\nstaging.staff\nstaging.officials\nstaging.stats"]
-        S4["staging.validation_runs\nseverity · check_name\nmatch_id · issue_message"]
-    end
-
-    STAGLOAD -->|"writes cleaned rows"| PGSTAGE
-
-    subgraph PGANALYTICS["🐘 Postgres — analytics schema"]
-        direction LR
-        A1["analytics.team_season_summary\nstored team-season rows\nmatches · goals · wins/draws/losses\nrefreshed after staging rebuild"]
-    end
-
-    STAGLOAD -->|"refreshes summaries"| PGANALYTICS
-
-    NOTE3["⚠️ GAP: Most reusable metrics\nstill need analytics objects.\nDiscipline, official, home/away,\nand match-drama summaries are\nnot promoted yet."]
-    PGANALYTICS -.->|"remaining analytics backlog"| NOTE3
-
-    %% ═══════════════════════════════
-    %% SECONDARY: RESEARCH FLOW
-    %% ═══════════════════════════════
-    subgraph RESEARCH["SECONDARY — Research & Promotion"]
-        direction TB
-        NB["📓 analysis.ipynb\nExploratory queries\nCharts · stats · hypotheses"]
-        RB["📝 research_brief.md\nFootball question defined\nMetric definitions\nCaveats documented"]
-        PP["📋 product_plan.md\nPromotion decision\nSQL design\nAPI shape\nReact UI plan"]
-        REG["📒 docs/FEATURE_PROMOTION_WORKFLOW.md\nLifecycle + backlog\nexperiment → promoted"]
-
-        NB --> RB --> PP --> REG
-    end
-
-    PGSTAGE -.->|"read_sql() queries\nstaging.* for exploration"| NB
-    PP -.->|"defines query\nfor endpoint"| INSIGHTS
-
-    INSIGHTS["📊 Promoted insight\n/insights/goal-timing\nSQL query over staging.events\nintervals · goals · share · peak\n\n⚠️ GAP: No analytics.* view.\nQuery re-runs on every\nAPI call. Should become\na named view or mat. view."]
-
-    NOTE4["⚠️ GAP: Only 1 insight\npromoted so far (goal timing).\nCard trends, official discipline,\nhome/away advantage etc are\nstill research ideas only."]
-    RESEARCH -.->|"backlog"| NOTE4
-
-    %% ═══════════════════════════════
-    %% API LAYER
-    %% ═══════════════════════════════
-    subgraph API["⚡ FastAPI — api/"]
-        direction LR
-        DIRECT["Read queries\nsrc/api/query_services/*\nqueries.py facade\nGET /seasons\nGET /matches\nGET /teams (analytics)\nGET /events\nGET /officials"]
-        INTEL_EP["Routine intelligence endpoints\nGET /trends/seasons\nGET /overview/intelligence\nGET /matches/intelligence\nGET /teams/{slug}/profile\nGET /players/leaderboards\nSee docs/FRONTEND_DESIGN_SYSTEM.md"]
-        INS_EP["Insight endpoints\nGET /insights/goal-timing"]
-        HEALTH["GET /health\ndb ping\nlatest_staging_completed_at"]
-    end
-
-    PGSTAGE -->|"SQL queries\nvia SQLAlchemy"| DIRECT
-    PGANALYTICS -->|"precomputed team summaries"| DIRECT
-    PGSTAGE -->|"signals + caveats"| INTEL_EP
-    PGANALYTICS -->|"team profile summaries"| INTEL_EP
-    INSIGHTS -->|"SQL query"| INS_EP
-    PGSTAGE -->|"latest run check"| HEALTH
-
-    NOTE5["⚠️ GAP: No pagination\ncursor yet. Limit param\nexists but no next-page\ntoken for large seasons."]
-    API -.->|"known gap"| NOTE5
-
-    %% ═══════════════════════════════
-    %% FRONTEND
-    %% ═══════════════════════════════
-    subgraph FRONTEND["⚛️ React — frontend/src/"]
-        direction TB
-        CLIENT["api/client.ts\napiClient fetch() wrappers\nAPI_BASE_URL from .env"]
-        HOOKS["hooks/\nuseDashboardData\nuseHashNavigation\nloadState: idle/loading/success/error"]
-        SHELL["App.tsx shell\nAppShell\nsidebar · top bar · bottom nav\nhash-based page switch"]
-        PAGES["pages/\nOverview · Trends · Insights\nMatches · Match Detail\nTeams · Team Detail\nPlayers · Player Detail\nGoal Timing · About/Methodology"]
-        COMPONENTS["components/\ncharts · common · intelligence\nmatches · overview · players\nnavigation · season · teams"]
-
-        CLIENT --> HOOKS --> SHELL --> PAGES --> COMPONENTS
-    end
-
-    DIRECT -->|"JSON :8000"| CLIENT
-    INTEL_EP -->|"JSON :8000"| CLIENT
-    INS_EP -->|"JSON :8000"| CLIENT
-    HEALTH -->|"JSON :8000"| CLIENT
-
-    NOTE6["ℹ️ Current behavior:\nHash navigation keeps the\nfrontend lightweight.\nA fuller router may be useful\nonce deeper detail pages grow."]
-    FRONTEND -.->|"operator note"| NOTE6
-
-    %% ═══════════════════════════════
-    %% DEPLOY
-    %% ═══════════════════════════════
-    RENDER["🚀 Render.com\nFastAPI service\nrender.yaml"]
-    SUPABASE["🐘 Supabase Postgres\nraw · staging · analytics · app_meta"]
-    API -.->|"deployed to"| RENDER
-    RENDER -.->|"reads from"| SUPABASE
-    PGRAW -.->|"hosted on"| SUPABASE
-    PGSTAGE -.->|"hosted on"| SUPABASE
-    PGANALYTICS -.->|"hosted on"| SUPABASE
-
-    %% ═══════════════════════════════
-    %% STYLES
-    %% ═══════════════════════════════
-    classDef primary   fill:#0c4a6e,stroke:#38bdf8,color:#e0f2fe,stroke-width:2px
-    classDef rawdb     fill:#064e3b,stroke:#34d399,color:#d1fae5,stroke-width:2px
-    classDef stagedb   fill:#14532d,stroke:#4ade80,color:#dcfce7,stroke-width:2px
-    classDef research  fill:#431407,stroke:#fb923c,color:#ffedd5,stroke-width:2px
-    classDef api       fill:#1e1b4b,stroke:#a78bfa,color:#ede9fe,stroke-width:2px
-    classDef frontend  fill:#4a044e,stroke:#e879f9,color:#fae8ff,stroke-width:2px
-    classDef warning   fill:#422006,stroke:#f59e0b,color:#fef3c7,stroke-width:1px,stroke-dasharray:4
-    classDef infra     fill:#1c1917,stroke:#94a3b8,color:#cbd5e1,stroke-width:1px
-    classDef source    fill:#172554,stroke:#93c5fd,color:#dbeafe,stroke-width:3px
-
-    class WEB source
-    class SCRAPER,CACHE,CSV,FAILED,RAWLOAD,RAWVERIFY,STAGLOAD,STAGVERIFY,ORCH,SUMMARY primary
-    class R1,R2,R3,R4 rawdb
-    class S1,S2,S3,S4 stagedb
-    class NB,RB,PP,REG,INSIGHTS research
-    class DIRECT,INTEL_EP,INS_EP,HEALTH,API api
-    class CLIENT,HOOKS,SHELL,PAGES,COMPONENTS frontend
-    class NOTE1,NOTE2,NOTE3,NOTE4,NOTE5,NOTE6 warning
-    class GA,RENDER,SUPABASE infra
+    ACTIONS["GitHub Actions\nroutine and explicit admin modes"] --> PREFLIGHT
+    ACTIONS --> BUILD
+    SUMMARY["Run summaries and validation evidence"]
+    PREFLIGHT --> SUMMARY
+    BUILD --> SUMMARY
 ```
+
+The weekly workflow targets acquisition and Postgres maintenance directly. It
+does not call FastAPI, React, Cloudflare, or Render, so freezing product work
+does not freeze scheduled data maintenance.
+
+### Default Case Access Rules
+
+1. Query `staging.*` for cleaned source facts.
+2. Query `raw.*` only to investigate capture or transformation problems.
+3. Query an existing `analytics.*` object when it already expresses the needed
+   shared metric.
+4. Use `src.research.read_sql` and a database role that cannot write.
+5. Keep case-specific SQL and checks with the case unless the logic has stable
+   meaning beyond that case.
+6. Introduce or change `analytics.*` through a migration and regression tests
+   only when reuse, semantic consistency, centralized validation, or measured
+   performance makes the shared contract worthwhile.
+7. Do not create an analytics view merely to enable a future API or dashboard.
+
+## Diagram 2 — Retained Public-Product Path
+
+> This diagram records the live historical implementation. Dashed arrows mean
+> retained/optional, not a required next step after case validation. Issue #108
+> governs the live public surfaces.
+
+```mermaid
+flowchart LR
+    POSTGRES["Supabase Postgres\nraw · staging · analytics"]
+    QUERY["src/api/query_services/\nread queries"]
+    API["FastAPI\napi/"]
+    RENDER["Render service\npublic origin"]
+    PROXY["Cloudflare Pages Function\n/api proxy and cache"]
+    REACT["React application\nfrontend/"]
+    SITES["Cloudflare Pages sites"]
+
+    POSTGRES -.->|"retained read path"| QUERY
+    QUERY -.-> API
+    API -.-> RENDER
+    RENDER -.-> PROXY
+    PROXY -.-> REACT
+    REACT -.-> SITES
+
+    CASE["Closed analytical case"]
+    CASE -.->|"only with a current Issue\nand owner approval"| QUERY
+```
+
+The source, tests, deployment configuration, and product lessons are retained.
+This issue does not add routes, endpoints, UI work, provider changes, or a
+static archive.
 
 ---
 
-## Diagram 2 — Database Entity Relationship (ERD)
+## Diagram 3 — Database Entity Relationship (ERD)
 > Shows how staging tables relate to each other. All child tables share match_id with staging.matches.
 
 ```mermaid
@@ -346,7 +236,10 @@ erDiagram
 
 ---
 
-## Diagram 3 — API Request Sequence
+## Diagram 4 — Retained API Request Sequence
+
+> Retained implementation reference. This sequence documents how the current
+> browser product works; it is not part of the default casework path.
 > What actually happens between the browser and the database when you open the dashboard.
 
 ```mermaid
@@ -415,7 +308,7 @@ sequenceDiagram
 ```
 ---
 
-## Diagram 4 — Scraper Package & State
+## Diagram 5 — Active Scraper Package & State
 > The internal structure of the scraper and what can happen to each match URL.
 
 ```mermaid

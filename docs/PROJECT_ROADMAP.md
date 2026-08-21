@@ -401,6 +401,11 @@ Active casework flow:
 ```text
 source record -> maintained Postgres -> read-only notebook/checks -> closed case
 ```
+
+The detailed component classification, active data path, retained public-product
+path, and service-boundary diagrams live in
+[diagram_collection.md](diagram_collection.md). That document is the canonical
+technical architecture owner; this roadmap owns priorities and sequencing.
 ## Continuous Development Areas
 
 Use these four areas for new planning, review, and prioritization.
