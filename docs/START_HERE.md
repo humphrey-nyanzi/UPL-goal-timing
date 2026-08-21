@@ -165,12 +165,12 @@ If you want current priorities:
 flowchart TD
     A["UPL Lens"] --> B["Data Reliability & Operations"]
     A --> C["Research & Football Intelligence"]
-    A --> D["Product Experience"]
+    A --> D["Retained Software Stewardship"]
     A --> E["Developer Experience & Documentation"]
 
     B --> B1["scraper, Postgres, validation, automation, deployment health"]
-    C --> C1["notebooks, football questions, feature packages, caveats"]
-    D --> D1["FastAPI, React, UI/UX, charts, filters, browser states"]
+    C --> C1["notebooks, bounded cases, checks, findings, caveats"]
+    D --> D1["retained FastAPI, React, contracts, browser states"]
     E --> E1["onboarding, setup, commands, troubleshooting, doc clarity"]
 ```
 
@@ -192,20 +192,22 @@ are exposed.
 
 ### Research & Football Intelligence
 
-Purpose: discover useful football questions and promote only validated
-insights.
+Purpose: answer bounded football questions with reproducible evidence and close
+cases; software promotion is exceptional and separately approved.
 
 Read first:
 
 - [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md)
 - [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
 
-Escalate when a dashboard metric cannot be traced to a notebook, SQL query, or
-clear product plan.
+Escalate when a finding cannot be traced to source coverage, a notebook or SQL
+check, a clear metric definition, and documented caveats.
 
-### Product Experience
+### Retained Software Stewardship
 
-Purpose: maintain retained FastAPI/React assets and support explicitly approved presentation work. It is no longer the default destination for every validated analysis.
+Purpose: maintain retained FastAPI/React assets and support explicitly approved
+presentation work. It is no longer the default destination for validated
+analysis.
 
 Read first:
 

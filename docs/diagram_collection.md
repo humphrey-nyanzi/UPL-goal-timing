@@ -41,9 +41,10 @@ delete code or prevent a separately approved change.
 
 | Classification | Current areas and services | Why |
 |---|---|---|
-| **Active foundation** | `src/scraping/upl/`, `scripts/data_platform/`, `src/db/`, `src/validation/`, `database/migrations/`, raw/staging/analytics schemas, cache and raw artifacts, regression/contract tests | These acquire, preserve, clean, validate, and model the shared data used by every future case. |
+| **Active foundation** | `src/scraping/upl/`, `scripts/data_platform/`, `src/db/`, `src/db/staging/validation.py`, `database/migrations/`, raw/staging/analytics schemas, cache and raw artifacts, regression/contract tests | These acquire, preserve, clean, validate, and model the shared data used by every future case. |
 | **Active operations** | `.github/workflows/current-season-update.yml`, `src/operations/`, source-health, routine-refresh, admin-migration, and full-rebuild/backfill modes | Scheduled acquisition and database maintenance run independently of the public app. Issue #84 owns acquisition reliability and season rollover. |
-| **Active case access** | `src/research.read_sql`, read-only research credentials, notebooks, case checks, findings/reports, and case outputs | The default analytical consumer is a bounded case using maintained Postgres without write access. Issue #112 owns the detailed trust/provenance contract; Issue #113 owns the concrete case package and lifecycle. |
+| **Active research access** | `src/research.read_sql`, the `upl_research_reader` permission template, and existing notebooks | These provide the current read-only path from maintained Postgres into analysis. Issue #112 owns the detailed trust/provenance contract. |
+| **Prospective case package** | Case checks, findings/reports, outputs, caveats, and closure records | These are the intended casework artifacts, not yet a current repository area. Issue #113 owns their concrete package and lifecycle. |
 | **Optional shared analytics** | `analytics.*`, migrations that define reusable derived contracts, and supporting tests | Add a named contract only when logic has stable meaning, is reused across cases, or needs centralized validation/performance. A missing analytics object is not automatically a backlog gap. |
 | **Retained/frozen software** | `api/`, `src/api/`, `frontend/`, `render.yaml`, Pages Functions/configuration, `docs/FRONTEND_DESIGN_SYSTEM.md`, and Goal Timing promotion history | These preserve the proven public-product implementation and may receive scoped correctness or maintenance work, but new cases do not flow here automatically. |
 | **Separately governed live surfaces** | Cloudflare Pages sites/proxy and the Render FastAPI service | They remain live while Issue #108 evaluates a dormant/archive option. No provider retirement, archive conversion, or static archive is authorized by this architecture issue. |
@@ -61,7 +62,7 @@ is active; endpoint- or UI-only behavior is retained.
 flowchart LR
     SOURCE["Official UPL sources"] --> PREFLIGHT["Source preflight and cache"]
     PREFLIGHT --> SCRAPE["Scraper and refresh plan"]
-    SCRAPE --> ARTIFACTS["data/raw/<season>/\nsource artifacts"]
+    SCRAPE --> ARTIFACTS["data/raw/{season_key}/\nsource artifacts"]
     ARTIFACTS --> LOAD["Validated raw loader\nscoped upserts or explicit rebuild"]
     LOAD --> RAW["raw.*\nsource-shaped records"]
     RAW --> BUILD["Cleaning, reconciliation, validation"]
@@ -71,8 +72,8 @@ flowchart LR
     DECISION -->|"yes"| ANALYTICS["analytics.*\nshared derived contract"]
     DECISION -->|"no"| ACCESS
     ANALYTICS --> ACCESS
-    ACCESS --> CASE["Bounded question\nnotebook and SQL checks"]
-    CASE --> EVIDENCE["Findings/report\noutputs and caveats"]
+    ACCESS --> CASE["Prospective #113 case package\nbounded question, notebook, checks"]
+    CASE --> EVIDENCE["Prospective #113 closure\nfindings/report, outputs, caveats"]
     EVIDENCE --> CLOSED["Case closed"]
 
     ACTIONS["GitHub Actions\nroutine and explicit admin modes"] --> PREFLIGHT
@@ -108,23 +109,30 @@ does not freeze scheduled data maintenance.
 
 ```mermaid
 flowchart LR
-    POSTGRES["Supabase Postgres\nraw · staging · analytics"]
-    QUERY["src/api/query_services/\nread queries"]
-    API["FastAPI\napi/"]
-    RENDER["Render service\npublic origin"]
+    FRONTEND["frontend/\nReact source and build"]
+    SITES["Cloudflare Pages\nstatic site hosting"]
+    REACT["React running\nin the browser"]
     PROXY["Cloudflare Pages Function\n/api proxy and cache"]
-    REACT["React application\nfrontend/"]
-    SITES["Cloudflare Pages sites"]
+    RENDER["Render service\nFastAPI public origin"]
+    QUERY["src/api/query_services/\nread queries"]
+    POSTGRES["Supabase Postgres\nraw · staging · analytics"]
+    API_SOURCE["api/ and src/api/\nretained backend source"]
 
-    POSTGRES -.->|"retained read path"| QUERY
-    QUERY -.-> API
-    API -.-> RENDER
-    RENDER -.-> PROXY
-    PROXY -.-> REACT
-    REACT -.-> SITES
+    FRONTEND -.->|"deployment: static bundle"| SITES
+    SITES -.->|"response: serves React bundle"| REACT
+    REACT -.->|"request: GET /api/*"| PROXY
+    PROXY -.->|"request: forwards to origin"| RENDER
+    API_SOURCE -.->|"deployment: FastAPI service"| RENDER
+    RENDER -.->|"request: route calls"| QUERY
+    QUERY -.->|"request: read-only SQL"| POSTGRES
+
+    POSTGRES -.->|"response: rows"| QUERY
+    QUERY -.->|"response: typed data"| RENDER
+    RENDER -.->|"response: JSON"| PROXY
+    PROXY -.->|"response: cached/proxied JSON"| REACT
 
     CASE["Closed analytical case"]
-    CASE -.->|"only with a current Issue\nand owner approval"| QUERY
+    CASE -.->|"exceptional presentation only\nwith a current Issue and owner approval"| API_SOURCE
 ```
 
 The source, tests, deployment configuration, and product lessons are retained.
@@ -134,7 +142,10 @@ static archive.
 ---
 
 ## Diagram 3 — Database Entity Relationship (ERD)
-> Shows how staging tables relate to each other. All child tables share match_id with staging.matches.
+> Shows physical staging foreign keys and the separate validation-log records.
+> Event, lineup, staff, official, and stats rows physically reference
+> `staging.matches`. Validation associations are logical only; the schema does
+> not declare foreign keys for their `run_id` or optional `match_id` fields.
 
 ```mermaid
 erDiagram
@@ -217,13 +228,27 @@ erDiagram
     }
 
     VALIDATION_RUNS {
+        string  run_id          PK
+        string  seasons
+        json    row_counts
+        json    issue_counts
+        datetime completed_at
+    }
+
+    VALIDATION_ISSUES {
+        bigint  issue_id        PK
         string  run_id
         string  severity
         string  check_name
+        string  schema_name
         string  table_name
-        int     match_id        FK
+        string  season
+        int     match_id
+        string  row_key
+        string  column_name
         string  issue_message
         string  issue_value
+        datetime created_at
     }
 
     MATCHES ||--o{ EVENTS          : "has timeline events"
@@ -231,7 +256,8 @@ erDiagram
     MATCHES ||--o{ STAFF           : "has coaching staff"
     MATCHES ||--o{ OFFICIALS       : "has officials"
     MATCHES ||--o{ STATS           : "has match stats"
-    MATCHES ||--o{ VALIDATION_RUNS : "logged issues"
+    VALIDATION_RUNS ||..o{ VALIDATION_ISSUES : "logical run_id; no FK"
+    MATCHES o|..o{ VALIDATION_ISSUES : "optional match_id; no FK"
 ```
 
 ---
@@ -340,7 +366,7 @@ stateDiagram-v2
 
     CheckpointSaved --> [*] : Match complete
 
-    Failed --> FailedCSV : Written to\nupl_failed_matches\n_2025_26.csv
+    Failed --> FailedCSV : Written to\ndata/raw/{season_key}/\nupl_failed_matches_{season_key}.csv
 
     FailedCSV --> [*]
 
@@ -354,6 +380,6 @@ stateDiagram-v2
     note right of Requesting
         Rate limiter:
         RATE_LIMIT_SECONDS = 0.75
-        MAX_CONCURRENT = 4 threads
+        MAX_CONCURRENT_REQUESTS = 4 threads
     end note
 ```
