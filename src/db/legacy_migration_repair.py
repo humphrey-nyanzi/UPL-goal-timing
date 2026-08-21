@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from src.db.connection import get_psycopg_connection
+from src.db.legacy_migration_contracts import FULL_CONTRACT_CHECKS
 from src.db.migrations import MIGRATIONS_DIR, MIGRATION_SCHEMA, MIGRATION_TABLE
 from src.db.settings import DatabaseSettings
 
@@ -447,7 +448,9 @@ def inspect_legacy_migration_effects(connection) -> tuple[MigrationAssessment, .
                     check.name,
                     bool(connection.execute(check.query).fetchone()[0]),
                 )
-                for check in MIGRATION_CHECKS[filename]
+                for check in (
+                    MIGRATION_CHECKS[filename] + FULL_CONTRACT_CHECKS.get(filename, ())
+                )
             ),
         )
         for filename in TARGET_FILENAMES
