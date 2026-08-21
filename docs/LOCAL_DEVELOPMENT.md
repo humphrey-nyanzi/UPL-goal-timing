@@ -591,6 +591,39 @@ Routine refreshes should not need admin migration privileges. Use:
 Schema changes belong to an admin or migration path. See
 [the operations model above](#operations-model).
 
+### Custom migration ledger does not match the hosted schema
+
+Direct SQL in the hosted SQL editor can change the schema without adding a row
+to this repository's `app_meta.schema_migrations` ledger. Do not run the normal
+admin-migration mode when the ledger is behind: it would execute every migration
+that appears pending, not only the newest file.
+
+Issue #119 provides a bounded recovery command. Its default mode is read-only:
+
+```powershell
+.venv\Scripts\python.exe scripts\data_platform\reconcile_migration_ledger.py
+```
+
+The manual-only `migration-ledger-repair.yml` workflow requires the exact
+owner-authorized commit SHA before database secrets are exposed. It runs the
+same preflight before repair and stores both operator reports as an artifact.
+It shares the `upl-lens-hosted-db-mutation` concurrency group with every mode
+of `current-season-update.yml`, so the repair cannot overlap a routine refresh,
+admin migration, or full rebuild.
+
+The command proves migrations 004, 006, 007, 010, and 011 from durable schema
+effects. The separately confirmed repair transaction then replays the exact
+repository SQL for migrations 008 and 009, verifies their postconditions, and
+records only migrations 004 and 006 through 011. Migration 012, routine refresh,
+and full rebuild are outside this repair.
+
+Do not run repair mode from an ordinary development session. It requires an
+owner-approved production change window, an exact reviewed commit, a captured
+pre-state, and the explicit confirmation shown by `--help`. Any failed check or
+SQL statement rolls back both the 008/009 repair and all ledger inserts. A
+fully proven ledger is a true no-op: it does not replay migrations, refresh
+derived data, insert ledger rows, or commit a transaction.
+
 ## Where To Go Next
 
 - [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md) for notebook
