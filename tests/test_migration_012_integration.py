@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 import os
+from pathlib import Path
 
 import pytest
 
@@ -37,6 +38,69 @@ def test_migration_012_and_query_services_on_disposable_database(monkeypatch) ->
     """Execute migration 012 and read its public contracts from an isolated clone."""
 
     settings = _test_settings()
+    with get_psycopg_connection(settings=settings, autocommit=True) as connection:
+        target = connection.execute("""
+            SELECT event_row_key
+            FROM staging.events
+            WHERE season = '2025_26'
+                AND match_id = 31655
+                AND match_url = 'https://upl.co.ug/event/nec-fc-vs-sc-villa-3/'
+                AND event_type = 'goal'
+                AND team_name = 'SC Villa'
+                AND player_name = 'Geofrey Gagganga'
+            """).fetchall()
+        assert len(target) == 1
+        target_key = target[0][0]
+
+        unrelated = connection.execute("""
+            SELECT event_row_key
+            FROM staging.events
+            WHERE match_id = 31655
+                AND event_type = 'yellow_card'
+                AND player_name = 'Geofrey Gagganga'
+            """).fetchall()
+        assert len(unrelated) == 1
+        unrelated_key = unrelated[0][0]
+
+        hosted_like_minute = (
+            "334",
+            334,
+            0,
+            334,
+            False,
+            "90+",
+        )
+        connection.execute(
+            """
+            UPDATE staging.events
+            SET event_minute_text = %s,
+                minute_base = %s,
+                minute_added = %s,
+                minute_total = %s,
+                is_added_time = %s,
+                minute_period = %s
+            WHERE event_row_key = %s
+            """,
+            (*hosted_like_minute, target_key),
+        )
+        connection.execute(
+            """
+            UPDATE staging.events
+            SET event_minute_text = %s,
+                minute_base = %s,
+                minute_added = %s,
+                minute_total = %s,
+                is_added_time = %s,
+                minute_period = %s
+            WHERE event_row_key = %s
+            """,
+            (*hosted_like_minute, unrelated_key),
+        )
+        connection.execute(
+            "UPDATE raw.events SET event_minute = '334' WHERE event_row_key = %s",
+            (target_key,),
+        )
+
     results = apply_pending_migrations(settings)
     migration = next(
         result
@@ -44,6 +108,52 @@ def test_migration_012_and_query_services_on_disposable_database(monkeypatch) ->
         if result.filename == "012_reconcile_scoreline_goal_contract.sql"
     )
     assert migration.applied is True
+
+    migration_sql = (
+        Path(__file__).resolve().parents[1]
+        / "database"
+        / "migrations"
+        / "012_reconcile_scoreline_goal_contract.sql"
+    ).read_text(encoding="utf-8")
+    with get_psycopg_connection(settings=settings, autocommit=True) as connection:
+        corrected = connection.execute(
+            """
+            SELECT event_minute_text, minute_base, minute_added, minute_total,
+                   is_added_time, minute_period
+            FROM staging.events
+            WHERE event_row_key = %s
+            """,
+            (target_key,),
+        ).fetchone()
+        assert corrected == ("34", 34, 0, 34, False, "31-45")
+        assert connection.execute(
+            "SELECT event_minute FROM raw.events WHERE event_row_key = %s",
+            (target_key,),
+        ).fetchone() == ("334",)
+        assert connection.execute(
+            "SELECT minute_total, minute_period FROM staging.events WHERE event_row_key = %s",
+            (unrelated_key,),
+        ).fetchone() == (334, "90+")
+
+        # Execute the SQL again directly to prove its cardinality guard accepts
+        # the one already-corrected row and remains idempotent.
+        connection.execute(migration_sql)
+        assert (
+            connection.execute(
+                """
+            SELECT event_minute_text, minute_base, minute_added, minute_total,
+                   is_added_time, minute_period
+            FROM staging.events
+            WHERE event_row_key = %s
+            """,
+                (target_key,),
+            ).fetchone()
+            == ("34", 34, 0, 34, False, "31-45")
+        )
+        assert connection.execute(
+            "SELECT minute_total, minute_period FROM staging.events WHERE event_row_key = %s",
+            (unrelated_key,),
+        ).fetchone() == (334, "90+")
 
     @contextmanager
     def test_api_connection():

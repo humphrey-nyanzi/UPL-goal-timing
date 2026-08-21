@@ -155,9 +155,20 @@ def test_scoreline_contract_migration_reconciles_goals_and_points() -> None:
     assert "12 official points" in sql
     assert "https://upl.co.ug/season/2025-26/" in sql
     assert "https://github.com/humphrey-nyanzi/upl-lens/issues/104" in sql
+    assert "match_id = 31655" in sql
+    assert "player_name = 'Geofrey Gagganga'" in sql
+    assert "event_minute_text = '334'" in sql
+    assert "event_minute_text = '34'" in sql
+    assert "known_row_count <> 1" in sql
+    assert "malformed_row_count + corrected_row_count <> 1" in sql
+    assert "UPDATE staging.events" in sql
+    assert "UPDATE raw.events" not in sql
     assert "COALESCE(home_score, 0)::integer AS goals_for" in sql
     assert "COALESCE(away_score, 0)::integer AS goals_against" in sql
-    assert "FROM staging.events" not in sql
+    summary_function_sql = sql.split(
+        "CREATE OR REPLACE FUNCTION analytics.refresh_team_season_summary", 1
+    )[1]
+    assert "FROM staging.events" not in summary_function_sql
 
 
 def test_actions_loader_can_refresh_analytics_tables() -> None:

@@ -176,6 +176,12 @@ and therefore produced the earlier 461 subset count. The owning reconciliation,
 artifact links, and source limitation are documented in
 `notebooks/features/feature_01_goal_timing/research_brief.md`.
 
+Raw-to-staging normalization corrects only that provenance-keyed analytical
+row and leaves `raw.events` unchanged. Migration 012 applies the same exact-key
+repair to an already-hosted staging row and fails unless exactly one malformed
+or already-corrected row exists. Re-running the SQL is safe; other minute-334
+events remain unchanged.
+
 For the Buhimba points adjustment, the official standings source captured on
 16 July 2026 was `https://upl.co.ug/season/2025-26/`; Issue #104 preserves the
 dated audit evidence because that URL later changed content. Migration 012

@@ -6,6 +6,78 @@
 -- The official URL later changed content, so the dated Issue evidence is part
 -- of the provenance for the three-point deduction retained below.
 
+-- Reconcile one known source-shaped minute typo in staging only. July 2026
+-- hosted artifacts recorded Geofrey Gagganga's SC Villa goal in match 31655
+-- as minute 334. A May snapshot, its paired assist, the complete five-goal
+-- timeline, and the 1-4 scoreline support minute 34. raw.events remains the
+-- immutable source record. The guard accepts exactly one malformed row or one
+-- already-corrected row and fails closed for missing, duplicate, or unexpected
+-- state; no other minute-334 event can match this natural key.
+DO $$
+DECLARE
+    known_row_count INTEGER;
+    malformed_row_count INTEGER;
+    corrected_row_count INTEGER;
+BEGIN
+    SELECT
+        COUNT(*),
+        COUNT(*) FILTER (
+            WHERE event_minute_text = '334'
+                AND minute_base = 334
+                AND minute_added = 0
+                AND minute_total = 334
+                AND is_added_time IS FALSE
+                AND minute_period = '90+'
+        ),
+        COUNT(*) FILTER (
+            WHERE event_minute_text = '34'
+                AND minute_base = 34
+                AND minute_added = 0
+                AND minute_total = 34
+                AND is_added_time IS FALSE
+                AND minute_period = '31-45'
+        )
+    INTO known_row_count, malformed_row_count, corrected_row_count
+    FROM staging.events
+    WHERE season = '2025_26'
+        AND match_id = 31655
+        AND match_url = 'https://upl.co.ug/event/nec-fc-vs-sc-villa-3/'
+        AND event_type = 'goal'
+        AND team_name = 'SC Villa'
+        AND player_name = 'Geofrey Gagganga';
+
+    IF known_row_count <> 1 OR malformed_row_count + corrected_row_count <> 1 THEN
+        RAISE EXCEPTION
+            'Migration 012 expected exactly one known Gagganga goal row in malformed or corrected state; found total=%, malformed=%, corrected=%',
+            known_row_count,
+            malformed_row_count,
+            corrected_row_count;
+    END IF;
+
+    UPDATE staging.events
+    SET
+        event_minute_text = '34',
+        minute_base = 34,
+        minute_added = 0,
+        minute_total = 34,
+        is_added_time = FALSE,
+        minute_period = '31-45',
+        staged_at = NOW()
+    WHERE season = '2025_26'
+        AND match_id = 31655
+        AND match_url = 'https://upl.co.ug/event/nec-fc-vs-sc-villa-3/'
+        AND event_type = 'goal'
+        AND team_name = 'SC Villa'
+        AND player_name = 'Geofrey Gagganga'
+        AND event_minute_text = '334'
+        AND minute_base = 334
+        AND minute_added = 0
+        AND minute_total = 334
+        AND is_added_time IS FALSE
+        AND minute_period = '90+';
+END;
+$$;
+
 INSERT INTO analytics.team_season_point_adjustments (
     season,
     team_name,

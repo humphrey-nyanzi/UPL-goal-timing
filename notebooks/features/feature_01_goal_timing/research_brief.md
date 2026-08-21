@@ -74,6 +74,13 @@ artifacts, local snapshot, paired assist, complete
 timeline, and scoreline are the durable evidence; the unavailable original
 page remains a provenance limitation.
 
+The correction is deliberately staging-only. `raw.events` keeps the captured
+source-shaped value, while raw-to-staging normalization and migration 012 use
+the exact match, URL, event type, team, and player key to set every derived
+minute field to the analytical minute 34. Migration 012 fails closed unless it
+finds exactly one known row in either the malformed or already-corrected state;
+unrelated minute-334 events are never rewritten.
+
 ## Final Finding
 
 The original pilot found that the highest-volume regular-time goal window across
