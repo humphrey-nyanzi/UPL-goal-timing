@@ -5,11 +5,15 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-STAGING_MIGRATION = PROJECT_ROOT / "database" / "migrations" / "002_create_staging_foundation.sql"
+STAGING_MIGRATION = (
+    PROJECT_ROOT / "database" / "migrations" / "002_create_staging_foundation.sql"
+)
 ANALYTICS_TEAM_MIGRATION = (
-    PROJECT_ROOT / "database" / "migrations" / "006_create_analytics_team_season_summary.sql"
+    PROJECT_ROOT
+    / "database"
+    / "migrations"
+    / "006_create_analytics_team_season_summary.sql"
 )
 
 
@@ -33,7 +37,10 @@ def test_staging_child_tables_reference_staging_matches() -> None:
 
     for table_name in child_tables:
         table_sql = _table_block(sql, table_name)
-        assert "match_id BIGINT NOT NULL REFERENCES staging.matches (match_id) ON DELETE CASCADE" in table_sql
+        assert (
+            "match_id BIGINT NOT NULL REFERENCES staging.matches (match_id) ON DELETE CASCADE"
+            in table_sql
+        )
 
 
 def test_staging_matches_has_forfeit_flag() -> None:
@@ -83,9 +90,9 @@ def test_staging_matches_has_timeline_coverage_fields() -> None:
 def test_raw_schema_stays_source_tolerant_without_match_foreign_keys() -> None:
     """Raw ingestion should remain looser than staging and avoid child-table FKs."""
 
-    raw_sql = (PROJECT_ROOT / "database" / "migrations" / "001_create_raw_schema.sql").read_text(
-        encoding="utf-8"
-    )
+    raw_sql = (
+        PROJECT_ROOT / "database" / "migrations" / "001_create_raw_schema.sql"
+    ).read_text(encoding="utf-8")
 
     assert "REFERENCES staging.matches" not in raw_sql
     assert "REFERENCES raw.matches" not in raw_sql
@@ -120,7 +127,10 @@ def test_admin_result_migration_adds_official_points_contract() -> None:
     """Official table points should support administrative results and adjustments."""
 
     sql = (
-        PROJECT_ROOT / "database" / "migrations" / "008_add_admin_results_and_official_points.sql"
+        PROJECT_ROOT
+        / "database"
+        / "migrations"
+        / "008_add_admin_results_and_official_points.sql"
     ).read_text(encoding="utf-8")
 
     assert "ADD COLUMN IF NOT EXISTS is_administrative_result" in sql
@@ -131,10 +141,13 @@ def test_admin_result_migration_adds_official_points_contract() -> None:
 
 
 def test_scoreline_contract_migration_reconciles_goals_and_points() -> None:
-    """The release contract should use scorelines and record Buhimba's deduction."""
+    """The retained data contract uses scorelines and records Buhimba's deduction."""
 
     sql = (
-        PROJECT_ROOT / "database" / "migrations" / "012_reconcile_scoreline_goal_contract.sql"
+        PROJECT_ROOT
+        / "database"
+        / "migrations"
+        / "012_reconcile_scoreline_goal_contract.sql"
     ).read_text(encoding="utf-8")
 
     assert "'Buhimba United Saints FC'" in sql
@@ -156,14 +169,21 @@ def test_actions_loader_can_refresh_analytics_tables() -> None:
 
     assert "GRANT USAGE ON SCHEMA analytics TO upl_actions_loader" in permissions_sql
     assert "ON ALL TABLES IN SCHEMA analytics" in permissions_sql
-    assert "ON FUNCTION analytics.refresh_team_season_summary(TEXT[])" in permissions_sql
-    assert "ALTER TABLE IF EXISTS analytics.team_season_summary DISABLE ROW LEVEL SECURITY" in permissions_sql
+    assert (
+        "ON FUNCTION analytics.refresh_team_season_summary(TEXT[])" in permissions_sql
+    )
+    assert (
+        "ALTER TABLE IF EXISTS analytics.team_season_summary DISABLE ROW LEVEL SECURITY"
+        in permissions_sql
+    )
 
 
 def test_team_endpoint_reads_stored_analytics_summary() -> None:
     """Team API queries should not rebuild standings from staging on every request."""
 
-    queries_py = (PROJECT_ROOT / "src" / "api" / "query_services" / "teams.py").read_text(encoding="utf-8")
+    queries_py = (
+        PROJECT_ROOT / "src" / "api" / "query_services" / "teams.py"
+    ).read_text(encoding="utf-8")
 
     assert "FROM analytics.team_season_summary" in queries_py
 
@@ -175,4 +195,7 @@ def test_staging_rebuild_refreshes_team_analytics_summary() -> None:
         encoding="utf-8"
     )
 
-    assert "SELECT analytics.refresh_team_season_summary(CAST(:seasons AS TEXT[]))" in analytics_py
+    assert (
+        "SELECT analytics.refresh_team_season_summary(CAST(:seasons AS TEXT[]))"
+        in analytics_py
+    )

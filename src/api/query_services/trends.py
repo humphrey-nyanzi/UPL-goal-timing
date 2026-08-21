@@ -11,8 +11,7 @@ from src.api.query_services.common import _fetch_all
 def get_season_trends() -> dict[str, Any]:
     """Return chart-ready season comparison rows from staging tables."""
 
-    rows = _fetch_all(
-        """
+    rows = _fetch_all("""
         WITH match_rows AS (
             SELECT *
             FROM staging.matches
@@ -100,8 +99,7 @@ def get_season_trends() -> dict[str, Any]:
         LEFT JOIN anomaly_counts
             ON anomaly_counts.season = match_agg.season
         ORDER BY match_agg.season;
-        """
-    )
+        """)
 
     seasons = [_shape_season_trend_row(row) for row in rows]
     total_matches = sum(row["match_count"] for row in seasons)
@@ -115,7 +113,9 @@ def get_season_trends() -> dict[str, Any]:
         "total_timeline_goals": total_timeline_goals,
         "total_cards": total_cards,
         "average_goals_per_match": safe_rate(total_scoreline_goals, total_matches),
-        "average_timeline_goals_per_match": safe_rate(total_timeline_goals, total_matches),
+        "average_timeline_goals_per_match": safe_rate(
+            total_timeline_goals, total_matches
+        ),
         "average_cards_per_match": safe_rate(total_cards, total_matches),
         "earliest_season": seasons[0]["season"] if seasons else None,
         "latest_season": seasons[-1]["season"] if seasons else None,
@@ -133,18 +133,26 @@ def _shape_season_trend_row(row: dict[str, Any]) -> dict[str, Any]:
         administrative_result_count=row["administrative_result_count"],
         source_anomaly_count=row["source_anomaly_count"],
     )
-    timeline_covered = row["timeline_complete_match_count"] + row["timeline_partial_match_count"]
+    timeline_covered = (
+        row["timeline_complete_match_count"] + row["timeline_partial_match_count"]
+    )
     return {
         **row,
         "total_card_count": total_card_count,
         "goals_per_match": safe_rate(row["scoreline_goal_count"], row["match_count"]),
-        "timeline_goals_per_match": safe_rate(row["timeline_goal_count"], row["match_count"]),
+        "timeline_goals_per_match": safe_rate(
+            row["timeline_goal_count"], row["match_count"]
+        ),
         "cards_per_match": safe_rate(total_card_count, row["match_count"]),
         "home_win_share": safe_rate(row["home_wins"], row["match_count"]),
         "away_win_share": safe_rate(row["away_wins"], row["match_count"]),
         "draw_share": safe_rate(row["draws"], row["match_count"]),
-        "high_scoring_match_share": safe_rate(row["high_scoring_match_count"], row["match_count"]),
-        "goal_heavy_match_share": safe_rate(row["goal_heavy_match_count"], row["match_count"]),
+        "high_scoring_match_share": safe_rate(
+            row["high_scoring_match_count"], row["match_count"]
+        ),
+        "goal_heavy_match_share": safe_rate(
+            row["goal_heavy_match_count"], row["match_count"]
+        ),
         "timeline_coverage_share": safe_rate(timeline_covered, row["match_count"]),
         "data_quality_status": status,
         "data_quality_note": note,

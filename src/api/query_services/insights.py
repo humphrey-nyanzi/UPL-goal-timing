@@ -141,11 +141,14 @@ def get_goal_timing_insight(season: str | None = None) -> dict[str, Any]:
         "timeline_goal_count": scope_meta["timeline_goal_count"],
         "timeline_complete_match_count": scope_meta["timeline_complete_match_count"],
         "timeline_partial_match_count": scope_meta["timeline_partial_match_count"],
-        "timeline_unavailable_match_count": scope_meta["timeline_unavailable_match_count"],
-        "timeline_administrative_result_count": scope_meta["timeline_administrative_result_count"],
+        "timeline_unavailable_match_count": scope_meta[
+            "timeline_unavailable_match_count"
+        ],
+        "timeline_administrative_result_count": scope_meta[
+            "timeline_administrative_result_count"
+        ],
         "timeline_mismatch_match_count": scope_meta["timeline_mismatch_match_count"],
         "total_regular_time_goals": total_regular_time_goals,
         "peak_interval": peak_interval,
         "intervals": interval_rows,
     }
-

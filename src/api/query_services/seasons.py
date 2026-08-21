@@ -11,8 +11,7 @@ from src.api.query_services.common import _fetch_all, _fetch_one
 def list_seasons() -> list[dict[str, Any]]:
     """Return season-level availability from `staging.matches`."""
 
-    return _fetch_all(
-        """
+    return _fetch_all("""
         WITH app_safe_matches AS (
             SELECT *
             FROM staging.matches
@@ -51,8 +50,7 @@ def list_seasons() -> list[dict[str, Any]]:
         LEFT JOIN team_counts AS t
             ON t.season = m.season
         ORDER BY m.season;
-        """
-    )
+        """)
 
 
 def _event_type_label(event_type: str | None) -> str:
@@ -178,4 +176,3 @@ def get_season_overview(season: str | None = None) -> dict[str, Any] | None:
         for row in event_counts
     ]
     return overview
-

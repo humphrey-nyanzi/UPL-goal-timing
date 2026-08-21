@@ -144,7 +144,7 @@ Use this table to avoid guessing.
 
 ### Verify the scoreline and timeline goal contracts
 
-For the frozen 2025/26 retrospective, verify these sources separately:
+For the retained 2025/26 data contract, verify these sources separately:
 
 ```text
 Scorelines -> standings GF/GA/GD, general goals per match, team superlatives
@@ -165,7 +165,7 @@ After applying migrations and rebuilding analytics summaries, check:
   alongside scoreline goals, timeline goals, timeline status counts, and
   mismatch counts.
 
-The release-candidate snapshot reproduced on 18 August 2026 contains 240
+The disposable local verification snapshot reproduced on 18 August 2026 contains 240
 matches, 505 scoreline goals, 496 timeline goals, 462 regular-time Goal Timing
 goals, seven partial timelines, one administrative-result timeline, and four
 scoreline/timeline goal-count mismatches.

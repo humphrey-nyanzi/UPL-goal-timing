@@ -44,7 +44,7 @@ Filters used in the promoted slice:
 ### 2025/26 Count Reconciliation
 
 Issue #104 recorded 461 regular-time goals on 16 July 2026. The reconciled
-release-candidate contract is 462. The one-row difference is match `31655`,
+retained data contract is 462. The one-row difference is match `31655`,
 NEC FC 1-4 SC Villa, where Geofrey Gagganga's SC Villa goal belongs at minute
 `34`.
 
