@@ -16,8 +16,9 @@ official UPL source
   -> raw.*
   -> cleaning and validation
   -> staging.*
-  -> analytics.* only when reuse or semantic value justifies it
-  -> read-only notebook and checks
+  -> analytics.team_season_summary refresh after successful staging writes
+  -> read-only notebook and checks over staging.* or existing analytics.*
+  -> new analytics.* only when reuse or semantic value justifies it
   -> findings/report, caveats, outputs
   -> closed case
 ```
@@ -43,9 +44,10 @@ delete code or prevent a separately approved change.
 |---|---|---|
 | **Active foundation** | `src/scraping/upl/`, `scripts/data_platform/`, `src/db/`, `src/db/staging/validation.py`, `database/migrations/`, raw/staging/analytics schemas, cache and raw artifacts, regression/contract tests | These acquire, preserve, clean, validate, and model the shared data used by every future case. |
 | **Active operations** | `.github/workflows/current-season-update.yml`, `src/operations/`, source-health, routine-refresh, admin-migration, and full-rebuild/backfill modes | Scheduled acquisition and database maintenance run independently of the public app. Issue #84 owns acquisition reliability and season rollover. |
-| **Active research access** | `src/research.read_sql`, the `upl_research_reader` permission template, and existing notebooks | These provide the current read-only path from maintained Postgres into analysis. Issue #112 owns the detailed trust/provenance contract. |
+| **Active research access** | `src/research.read_sql`, the `upl_research_reader` permission template, and `notebooks/features/_feature_template/analysis.ipynb` | These provide the current implemented Postgres-backed notebook example and read-only helper. Existing Feature 1 notebooks still load legacy processed CSVs, so the broader case notebook path remains prospective until implemented under Issue #113. Issue #112 owns the detailed trust/provenance contract. |
 | **Prospective case package** | Case checks, findings/reports, outputs, caveats, and closure records | These are the intended casework artifacts, not yet a current repository area. Issue #113 owns their concrete package and lifecycle. |
-| **Optional shared analytics** | `analytics.*`, migrations that define reusable derived contracts, and supporting tests | Add a named contract only when logic has stable meaning, is reused across cases, or needs centralized validation/performance. A missing analytics object is not automatically a backlog gap. |
+| **Existing shared analytics contract** | `analytics.team_season_summary`, its refresh function and migrations, and the retained team API consumer | Every successful staging write refreshes this summary, so it is an implemented pipeline contract rather than a conditional future promotion. |
+| **Optional new shared analytics** | New `analytics.*` objects, migrations that define reusable derived contracts, and supporting tests | Add a named contract only when logic has stable meaning, is reused across cases, or needs centralized validation/performance. A missing analytics object is not automatically a backlog gap. |
 | **Retained/frozen software** | `api/`, `src/api/`, `frontend/`, `render.yaml`, Pages Functions/configuration, `docs/FRONTEND_DESIGN_SYSTEM.md`, and Goal Timing promotion history | These preserve the proven public-product implementation and may receive scoped correctness or maintenance work, but new cases do not flow here automatically. |
 | **Separately governed live surfaces** | Cloudflare Pages sites/proxy and the Render FastAPI service | They remain live while Issue #108 evaluates a dormant/archive option. No provider retirement, archive conversion, or static archive is authorized by this architecture issue. |
 
@@ -67,9 +69,11 @@ flowchart LR
     LOAD --> RAW["raw.*\nsource-shaped records"]
     RAW --> BUILD["Cleaning, reconciliation, validation"]
     BUILD --> STAGING["staging.*\ncleaned source facts"]
+    STAGING --> TEAM_SUMMARY["analytics.team_season_summary\nrefreshed after each successful staging write"]
     STAGING --> ACCESS["Read-only research access\nsrc.research.read_sql"]
-    STAGING --> DECISION{"Stable reusable\nsemantic contract?"}
-    DECISION -->|"yes"| ANALYTICS["analytics.*\nshared derived contract"]
+    TEAM_SUMMARY --> ACCESS
+    STAGING --> DECISION{"New stable reusable\nsemantic contract?"}
+    DECISION -->|"yes"| ANALYTICS["new analytics.*\nshared derived contract"]
     DECISION -->|"no"| ACCESS
     ANALYTICS --> ACCESS
     ACCESS --> CASE["Prospective #113 case package\nbounded question, notebook, checks"]
@@ -91,8 +95,8 @@ does not freeze scheduled data maintenance.
 
 1. Query `staging.*` for cleaned source facts.
 2. Query `raw.*` only to investigate capture or transformation problems.
-3. Query an existing `analytics.*` object when it already expresses the needed
-   shared metric.
+3. Query `analytics.team_season_summary` or another existing `analytics.*`
+   object when it already expresses the needed shared metric.
 4. Use `src.research.read_sql` and a database role that cannot write.
 5. Keep case-specific SQL and checks with the case unless the logic has stable
    meaning beyond that case.
