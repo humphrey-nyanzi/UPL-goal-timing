@@ -34,6 +34,10 @@ on:
   schedule:
     - cron: "0 6 * * 1"
 
+concurrency:
+  group: upl-lens-hosted-db-mutation
+  cancel-in-progress: false
+
 jobs:
   update-current-season:
     runs-on: ubuntu-latest

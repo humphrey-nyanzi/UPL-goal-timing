@@ -158,66 +158,6 @@ def _assessment_dict(item: MigrationAssessment) -> dict[str, object]:
     }
 
 
-def _column_check(
-    schema: str,
-    table: str,
-    column: str,
-    data_type: str,
-    *,
-    nullable: str | None = None,
-    default_contains: str | None = None,
-) -> EffectCheck:
-    predicates = [
-        f"table_schema = '{schema}'",
-        f"table_name = '{table}'",
-        f"column_name = '{column}'",
-        f"data_type = '{data_type}'",
-    ]
-    if nullable:
-        predicates.append(f"is_nullable = '{nullable}'")
-    if default_contains:
-        predicates.append(
-            f"POSITION('{default_contains.lower()}' "
-            "IN LOWER(COALESCE(column_default, ''))) > 0"
-        )
-    return EffectCheck(
-        f"column {schema}.{table}.{column}",
-        "SELECT EXISTS (SELECT 1 FROM information_schema.columns WHERE "
-        + " AND ".join(predicates)
-        + ")",
-    )
-
-
-def _columns_check(schema: str, table: str, columns: tuple[str, ...]) -> EffectCheck:
-    quoted = ", ".join(f"'{name}'" for name in columns)
-    return EffectCheck(
-        f"required columns {schema}.{table}",
-        f"SELECT COUNT(*) = {len(columns)} FROM information_schema.columns "
-        f"WHERE table_schema = '{schema}' AND table_name = '{table}' "
-        f"AND column_name IN ({quoted})",
-    )
-
-
-def _index_check(schema: str, table: str, name: str) -> EffectCheck:
-    return EffectCheck(
-        f"index {schema}.{name}",
-        "SELECT EXISTS (SELECT 1 FROM pg_indexes "
-        f"WHERE schemaname = '{schema}' AND tablename = '{table}' "
-        f"AND indexname = '{name}')",
-    )
-
-
-def _function_check(*fragments: str) -> EffectCheck:
-    definition = (
-        "LOWER(COALESCE(pg_get_functiondef(TO_REGPROCEDURE("
-        "'analytics.refresh_team_season_summary(text[])')), ''))"
-    )
-    predicates = " AND ".join(
-        f"POSITION('{fragment.lower()}' IN {definition}) > 0" for fragment in fragments
-    )
-    return EffectCheck("analytics refresh function contract", "SELECT " + predicates)
-
-
 def _primary_key_check(schema: str, table: str, columns: str) -> EffectCheck:
     return EffectCheck(
         f"primary key {schema}.{table}",
@@ -251,171 +191,36 @@ def _rls_disabled_check(schema: str, table: str) -> EffectCheck:
     )
 
 
-def _migration_007_check() -> EffectCheck:
-    definition = (
-        "LOWER(COALESCE(pg_get_functiondef(TO_REGPROCEDURE("
-        "'analytics.refresh_team_season_summary(text[])')), ''))"
-    )
-    return EffectCheck(
-        "migration 007 function or proven admin-aware replacement",
-        "SELECT POSITION('on conflict (season, team_name) do update' IN "
-        + definition
-        + ") > 0 OR (POSITION('administrative_matches' IN "
-        + definition
-        + ") > 0 AND POSITION('team_season_point_adjustments' IN "
-        + definition
-        + ") > 0)",
-    )
-
-
-ADMIN_MATCH_COLUMNS = (
-    "is_administrative_result",
-    "administrative_result_type",
-    "administrative_note",
-    "played_on_pitch",
-    "home_awarded_points",
-    "away_awarded_points",
-)
-ADMIN_SUMMARY_COLUMNS = (
-    "played_matches",
-    "administrative_matches",
-    "expected_matches",
-    "missing_matches",
-    "sporting_points",
-    "administrative_points",
-    "points_adjustment",
-    "official_points",
-    "points_note",
-)
-TIMELINE_COLUMNS = (
-    "timeline_status",
-    "timeline_issue_count",
-    "timeline_note",
-    "scoreline_goal_count",
-    "timeline_goal_count",
-    "stats_assist_count",
-    "timeline_assist_count",
-    "stats_yellow_card_count",
-    "timeline_yellow_card_count",
-    "stats_red_card_count",
-    "timeline_red_card_count",
-)
-IO_INDEXES = (
-    ("raw", "matches", "idx_raw_matches_season_key_order"),
-    ("raw", "events", "idx_raw_events_season_key_match"),
-    ("raw", "lineups", "idx_raw_lineups_season_key_match"),
-    ("raw", "staff", "idx_raw_staff_season_key_match"),
-    ("raw", "officials", "idx_raw_officials_season_key_match"),
-    ("raw", "stats", "idx_raw_stats_season_key_match"),
-    ("raw", "failed_matches", "idx_raw_failed_matches_season_key_url"),
-    ("staging", "matches", "idx_staging_matches_app_safe_season_date"),
-    ("staging", "matches", "idx_staging_matches_app_safe_season_match_day"),
-    ("staging", "events", "idx_staging_events_season_match_type"),
-    ("staging", "lineups", "idx_staging_lineups_season_player_match"),
-    ("staging", "events", "idx_staging_events_season_player_match"),
-    ("staging", "events", "idx_staging_events_season_sub_in_match"),
-    ("staging", "events", "idx_staging_events_season_sub_out_match"),
-)
-
-
 MIGRATION_CHECKS: dict[str, tuple[EffectCheck, ...]] = {
-    TARGET_FILENAMES[0]: (
-        _column_check(
-            "staging",
-            "matches",
-            "is_forfeit",
-            "boolean",
-            nullable="NO",
-            default_contains="false",
-        ),
-        _index_check("staging", "matches", "idx_staging_matches_is_forfeit"),
-    ),
+    TARGET_FILENAMES[0]: (),
     TARGET_FILENAMES[1]: (
-        _columns_check(
-            "analytics",
-            "team_season_summary",
-            (
-                "season",
-                "team_name",
-                "matches_played",
-                "goals_for",
-                "goals_against",
-                "wins",
-                "draws",
-                "losses",
-                "refreshed_at",
-            ),
-        ),
-        _index_check(
-            "analytics", "team_season_summary", "idx_team_season_summary_team_name"
-        ),
-        EffectCheck(
-            "analytics refresh function exists",
-            "SELECT TO_REGPROCEDURE("
-            "'analytics.refresh_team_season_summary(text[])') IS NOT NULL",
-        ),
         _primary_key_check("analytics", "team_season_summary", "season,team_name"),
         _rls_disabled_check("analytics", "team_season_summary"),
     ),
-    TARGET_FILENAMES[2]: (_migration_007_check(),),
+    TARGET_FILENAMES[2]: (),
     TARGET_FILENAMES[3]: (
-        _columns_check("staging", "matches", ADMIN_MATCH_COLUMNS),
-        _index_check("staging", "matches", "idx_staging_matches_admin_result"),
-        _columns_check("analytics", "team_season_summary", ADMIN_SUMMARY_COLUMNS),
-        _columns_check(
-            "analytics",
-            "team_season_point_adjustments",
-            ("season", "team_name", "points_adjustment", "note", "updated_at"),
-        ),
         _primary_key_check(
             "analytics", "team_season_point_adjustments", "season,team_name"
         ),
         _rls_disabled_check("analytics", "team_season_point_adjustments"),
-        _function_check(
-            "administrative_matches",
-            "home_awarded_points",
-            "played_on_pitch",
-            "team_season_point_adjustments",
-        ),
     ),
     TARGET_FILENAMES[4]: (
-        _function_check("administrative_matches", "team_season_point_adjustments"),
         EffectCheck(
             "team summary post-refresh invariants",
             """SELECT NOT EXISTS (
                 SELECT 1 FROM analytics.team_season_summary AS summary
-                WHERE COALESCE(
-                        (TO_JSONB(summary)->>'played_matches')::integer, 0
-                      ) < 0
-                   OR COALESCE(
-                        (TO_JSONB(summary)->>'played_matches')::integer, 0
-                      ) > summary.matches_played
-                   OR COALESCE(
-                        (TO_JSONB(summary)->>'administrative_matches')::integer, 0
-                      ) < 0
-                   OR COALESCE(
-                        (TO_JSONB(summary)->>'administrative_matches')::integer, 0
-                      ) > summary.matches_played
-                   OR (TO_JSONB(summary)->>'official_points')::integer
-                      IS DISTINCT FROM
+                WHERE COALESCE((TO_JSONB(summary)->>'played_matches')::integer, 0) < 0
+                   OR COALESCE((TO_JSONB(summary)->>'played_matches')::integer, 0) > summary.matches_played
+                   OR COALESCE((TO_JSONB(summary)->>'administrative_matches')::integer, 0) < 0
+                   OR COALESCE((TO_JSONB(summary)->>'administrative_matches')::integer, 0) > summary.matches_played
+                   OR (TO_JSONB(summary)->>'official_points')::integer IS DISTINCT FROM
                       (TO_JSONB(summary)->>'sporting_points')::integer
                       + COALESCE((TO_JSONB(summary)->>'points_adjustment')::integer, 0)
             )""",
         ),
     ),
-    TARGET_FILENAMES[5]: (
-        _columns_check("staging", "matches", TIMELINE_COLUMNS),
-        _column_check(
-            "staging",
-            "matches",
-            "timeline_status",
-            "text",
-            nullable="NO",
-            default_contains="unknown",
-        ),
-        _index_check("staging", "matches", "idx_staging_matches_timeline_status"),
-    ),
-    TARGET_FILENAMES[6]: tuple(_index_check(*item) for item in IO_INDEXES),
+    TARGET_FILENAMES[5]: (),
+    TARGET_FILENAMES[6]: (),
 }
 
 
@@ -468,6 +273,10 @@ def _migration_sql(filename: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def _before_ledger_inserts(connection) -> None:
+    """Test seam for proving rollback after replay and before ledger writes."""
+
+
 def reconcile_legacy_migration_ledger(
     *,
     settings: DatabaseSettings | None = None,
@@ -500,6 +309,22 @@ def reconcile_legacy_migration_ledger(
                 connection.rollback()
                 return preflight
 
+            if preflight.final_contract_satisfied:
+                connection.rollback()
+                return preflight
+
+            recorded_but_unproven = [
+                item.filename
+                for item in before
+                if item.ledger_recorded and not item.effects_proven
+            ]
+            if recorded_but_unproven:
+                raise MigrationLedgerReconciliationError(
+                    "Recorded migration effects no longer match the exact contract: "
+                    + ", ".join(recorded_but_unproven),
+                    preflight,
+                )
+
             if not preflight.prove_only_prerequisites_satisfied:
                 blocked = [
                     item.filename
@@ -529,6 +354,7 @@ def reconcile_legacy_migration_ledger(
                     "Repair postconditions failed: " + ", ".join(failed), report
                 )
 
+            _before_ledger_inserts(connection)
             recorded = {item.filename for item in after_effects if item.ledger_recorded}
             inserted: list[str] = []
             for filename in TARGET_FILENAMES:

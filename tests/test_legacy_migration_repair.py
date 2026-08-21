@@ -205,9 +205,7 @@ def test_repeat_repair_is_idempotent(monkeypatch) -> None:
 
     connection = FakeConnection()
     _use_connection(monkeypatch, connection)
-    inspections = iter(
-        (_states(recorded=True), _states(recorded=True), _states(recorded=True))
-    )
+    inspections = iter((_states(recorded=True),))
     monkeypatch.setattr(
         repair,
         "inspect_legacy_migration_effects",
@@ -220,6 +218,36 @@ def test_repeat_repair_is_idempotent(monkeypatch) -> None:
         confirmation=repair.REPAIR_CONFIRMATION,
     )
 
+    assert report.executed_filenames == ()
     assert report.inserted_filenames == ()
-    assert report.committed is True
+    assert report.committed is False
+    assert not any(str(item[0]).startswith("SQL::") for item in connection.statements)
     assert not any("INSERT INTO" in str(item[0]) for item in connection.statements)
+    assert connection.commits == 0
+    assert connection.rollbacks == 1
+
+
+def test_failure_after_replay_before_ledger_insert_rolls_back(monkeypatch) -> None:
+    """A fault at the transaction boundary rolls back before ledger insertion."""
+
+    connection = FakeConnection()
+    _use_connection(monkeypatch, connection)
+    inspections = iter((_states(failed=set(repair.REPLAY_FILENAMES)), _states()))
+    monkeypatch.setattr(
+        repair, "inspect_legacy_migration_effects", lambda connection: next(inspections)
+    )
+    monkeypatch.setattr(repair, "_migration_sql", lambda name: f"SQL::{name}")
+
+    def fail_before_ledger(connection) -> None:
+        raise RuntimeError("injected failure before ledger insertion")
+
+    monkeypatch.setattr(repair, "_before_ledger_inserts", fail_before_ledger)
+
+    with pytest.raises(RuntimeError, match="injected failure"):
+        repair.reconcile_legacy_migration_ledger(
+            repair=True, confirmation=repair.REPAIR_CONFIRMATION
+        )
+
+    assert not any("INSERT INTO" in str(item[0]) for item in connection.statements)
+    assert connection.commits == 0
+    assert connection.rollbacks == 1

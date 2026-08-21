@@ -604,8 +604,12 @@ Issue #119 provides a bounded recovery command. Its default mode is read-only:
 .venv\Scripts\python.exe scripts\data_platform\reconcile_migration_ledger.py
 ```
 
-The manual-only `migration-ledger-repair.yml` workflow runs the same preflight
-before repair and stores both operator reports as an artifact.
+The manual-only `migration-ledger-repair.yml` workflow requires the exact
+owner-authorized commit SHA before database secrets are exposed. It runs the
+same preflight before repair and stores both operator reports as an artifact.
+It shares the `upl-lens-hosted-db-mutation` concurrency group with every mode
+of `current-season-update.yml`, so the repair cannot overlap a routine refresh,
+admin migration, or full rebuild.
 
 The command proves migrations 004, 006, 007, 010, and 011 from durable schema
 effects. The separately confirmed repair transaction then replays the exact
@@ -616,7 +620,9 @@ and full rebuild are outside this repair.
 Do not run repair mode from an ordinary development session. It requires an
 owner-approved production change window, an exact reviewed commit, a captured
 pre-state, and the explicit confirmation shown by `--help`. Any failed check or
-SQL statement rolls back both the 008/009 repair and all ledger inserts.
+SQL statement rolls back both the 008/009 repair and all ledger inserts. A
+fully proven ledger is a true no-op: it does not replay migrations, refresh
+derived data, insert ledger rows, or commit a transaction.
 
 ## Where To Go Next
 

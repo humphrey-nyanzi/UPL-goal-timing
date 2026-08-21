@@ -3,6 +3,10 @@ name: Repair legacy migration ledger
 on:
   workflow_dispatch:
     inputs:
+      expected_sha:
+        description: "Exact commit SHA authorized by the owner"
+        required: true
+        type: string
       confirmation:
         description: "Exact owner-approved repair confirmation"
         required: true
@@ -12,27 +16,28 @@ permissions:
   contents: read
 
 concurrency:
-  group: upl-lens-migration-ledger-repair
+  group: upl-lens-hosted-db-mutation
   cancel-in-progress: false
 
 jobs:
   repair-ledger:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
     env:
       PYTHONUNBUFFERED: "1"
+      EXPECTED_SHA: ${{ github.event.inputs.expected_sha }}
       REPAIR_CONFIRMATION: ${{ github.event.inputs.confirmation }}
-      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-      POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_SSLMODE: ${{ secrets.POSTGRES_SSLMODE || 'prefer' }}
-
     steps:
       - name: Check out exact selected ref
         uses: actions/checkout@v6
+
+      - name: Validate exact authorized commit SHA
+        run: |
+          test -n "$EXPECTED_SHA"
+          test "$EXPECTED_SHA" = "$GITHUB_SHA"
+
+      - name: Validate exact owner confirmation
+        run: test "$REPAIR_CONFIRMATION" = "repair-legacy-008-009-and-ledger"
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -44,10 +49,14 @@ jobs:
       - name: Install database dependencies
         run: python -m pip install -r requirements-automation.txt
 
-      - name: Validate exact owner confirmation
-        run: test "$REPAIR_CONFIRMATION" = "repair-legacy-008-009-and-ledger"
-
       - name: Check required database secrets
+        env: &database_env
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_SSLMODE: ${{ secrets.POSTGRES_SSLMODE || 'prefer' }}
         run: |
           missing=0
           for name in POSTGRES_HOST POSTGRES_PORT POSTGRES_DB POSTGRES_USER POSTGRES_PASSWORD; do
@@ -59,9 +68,11 @@ jobs:
           exit "$missing"
 
       - name: Capture read-only preflight
+        env: *database_env
         run: python scripts/data_platform/reconcile_migration_ledger.py
 
       - name: Run bounded transactional repair
+        env: *database_env
         run: >
           python scripts/data_platform/reconcile_migration_ledger.py
           --repair
