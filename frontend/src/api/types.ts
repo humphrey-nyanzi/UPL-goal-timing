@@ -54,6 +54,7 @@ export type SeasonTrendRow = {
   scoreline_goal_count: number;
   timeline_goal_count: number;
   goals_per_match: number | null;
+  timeline_goals_per_match: number | null;
   yellow_card_count: number;
   red_card_count: number;
   total_card_count: number;
@@ -85,6 +86,7 @@ export type SeasonTrendsSummary = {
   total_timeline_goals: number;
   total_cards: number;
   average_goals_per_match: number | null;
+  average_timeline_goals_per_match: number | null;
   average_cards_per_match: number | null;
   earliest_season: string | null;
   latest_season: string | null;
@@ -152,6 +154,14 @@ export type GoalTimingInsightResponse = {
   season_count: number;
   first_match_date: string | null;
   last_match_date: string | null;
+  match_count?: number;
+  scoreline_goal_count?: number;
+  timeline_goal_count?: number;
+  timeline_complete_match_count?: number;
+  timeline_partial_match_count?: number;
+  timeline_unavailable_match_count?: number;
+  timeline_administrative_result_count?: number;
+  timeline_mismatch_match_count?: number;
   total_regular_time_goals: number;
   peak_interval: string | null;
   intervals: GoalTimingInterval[];

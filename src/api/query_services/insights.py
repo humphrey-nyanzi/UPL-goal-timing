@@ -90,6 +90,16 @@ def get_goal_timing_insight(season: str | None = None) -> dict[str, Any]:
         """
         SELECT
             COUNT(DISTINCT season)::integer AS season_count,
+            COUNT(*)::integer AS match_count,
+            COALESCE(SUM(COALESCE(total_goals, 0)), 0)::integer AS scoreline_goal_count,
+            COALESCE(SUM(COALESCE(timeline_goal_count, 0)), 0)::integer AS timeline_goal_count,
+            COUNT(*) FILTER (WHERE timeline_status = 'complete')::integer AS timeline_complete_match_count,
+            COUNT(*) FILTER (WHERE timeline_status = 'partial')::integer AS timeline_partial_match_count,
+            COUNT(*) FILTER (WHERE timeline_status = 'unavailable')::integer AS timeline_unavailable_match_count,
+            COUNT(*) FILTER (WHERE timeline_status = 'administrative_result')::integer AS timeline_administrative_result_count,
+            COUNT(*) FILTER (
+                WHERE scoreline_goal_count IS DISTINCT FROM timeline_goal_count
+            )::integer AS timeline_mismatch_match_count,
             MIN(match_date) AS first_match_date,
             MAX(match_date) AS last_match_date
         FROM staging.matches
@@ -100,7 +110,19 @@ def get_goal_timing_insight(season: str | None = None) -> dict[str, Any]:
     )
 
     if scope_meta is None:
-        scope_meta = {"season_count": 0, "first_match_date": None, "last_match_date": None}
+        scope_meta = {
+            "season_count": 0,
+            "match_count": 0,
+            "scoreline_goal_count": 0,
+            "timeline_goal_count": 0,
+            "timeline_complete_match_count": 0,
+            "timeline_partial_match_count": 0,
+            "timeline_unavailable_match_count": 0,
+            "timeline_administrative_result_count": 0,
+            "timeline_mismatch_match_count": 0,
+            "first_match_date": None,
+            "last_match_date": None,
+        }
     if season is not None and scope_meta["season_count"] == 0:
         raise ValueError(f"Season {season} was not found.")
 
@@ -114,8 +136,19 @@ def get_goal_timing_insight(season: str | None = None) -> dict[str, Any]:
         "season_count": scope_meta["season_count"],
         "first_match_date": scope_meta["first_match_date"],
         "last_match_date": scope_meta["last_match_date"],
+        "match_count": scope_meta["match_count"],
+        "scoreline_goal_count": scope_meta["scoreline_goal_count"],
+        "timeline_goal_count": scope_meta["timeline_goal_count"],
+        "timeline_complete_match_count": scope_meta["timeline_complete_match_count"],
+        "timeline_partial_match_count": scope_meta["timeline_partial_match_count"],
+        "timeline_unavailable_match_count": scope_meta[
+            "timeline_unavailable_match_count"
+        ],
+        "timeline_administrative_result_count": scope_meta[
+            "timeline_administrative_result_count"
+        ],
+        "timeline_mismatch_match_count": scope_meta["timeline_mismatch_match_count"],
         "total_regular_time_goals": total_regular_time_goals,
         "peak_interval": peak_interval,
         "intervals": interval_rows,
     }
-

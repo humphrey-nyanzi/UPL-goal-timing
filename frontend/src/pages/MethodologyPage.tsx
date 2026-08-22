@@ -125,7 +125,7 @@ export function MethodologyPage({
     },
     {
       icon: <Workflow size={16} />,
-      label: "Scoring coverage",
+      label: "Timeline / scoreline goals",
       value:
         overview && overview.scoreline_goal_count > 0
           ? `${overview.timeline_goal_count} of ${overview.scoreline_goal_count}`

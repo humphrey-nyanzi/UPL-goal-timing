@@ -142,6 +142,52 @@ Use this table to avoid guessing.
 | API response shape used by React | Verify the endpoint and run `npm run build`. |
 | Deployment config | Check the local build command and the relevant deployment runbook before changing hosted settings. |
 
+### Verify the scoreline and timeline goal contracts
+
+For the retained 2025/26 data contract, verify these sources separately:
+
+```text
+Scorelines -> standings GF/GA/GD, general goals per match, team superlatives
+Timelines  -> event-led goal counts and timing analysis
+Goal Timing -> regular-time timeline subset after documented exclusions
+```
+
+After applying migrations and rebuilding analytics summaries, check:
+
+- `/seasons/overview?season=2025_26`: `goal_count` and
+  `scoreline_goal_count` agree; `timeline_goal_count` remains separate.
+- `/trends/seasons`: `goals_per_match` uses scoreline goals and
+  `timeline_goals_per_match` preserves the event-derived comparison.
+- `/teams?season=2025_26`: GF, GA, GD, and rate-based superlatives agree with
+  scorelines; Buhimba has 15 sporting points, a `-3` adjustment, 12 official
+  points, and an explanatory note.
+- `/insights/goal-timing?season=2025_26`: the regular-time subset is shown
+  alongside scoreline goals, timeline goals, timeline status counts, and
+  mismatch counts.
+
+The disposable local verification snapshot reproduced on 18 August 2026 contains 240
+matches, 505 scoreline goals, 496 timeline goals, 462 regular-time Goal Timing
+goals, seven partial timelines, one administrative-result timeline, and four
+scoreline/timeline goal-count mismatches.
+
+The 462 Goal Timing total includes Geofrey Gagganga's 34th-minute SC Villa goal
+in match `31655`. July 2026 hosted raw artifacts recorded its minute as `334`
+and therefore produced the earlier 461 subset count. The owning reconciliation,
+artifact links, and source limitation are documented in
+`notebooks/features/feature_01_goal_timing/research_brief.md`.
+
+Raw-to-staging normalization corrects only that provenance-keyed analytical
+row and leaves `raw.events` unchanged. Migration 012 applies the same exact-key
+repair to an already-hosted staging row and fails unless exactly one malformed
+or already-corrected row exists. Re-running the SQL is safe; other minute-334
+events remain unchanged.
+
+For the Buhimba points adjustment, the official standings source captured on
+16 July 2026 was `https://upl.co.ug/season/2025-26/`; Issue #104 preserves the
+dated audit evidence because that URL later changed content. Migration 012
+keeps the public note factual: 15 sporting points, a three-point deduction, and
+12 official points.
+
 ## Testing A Pull Request Before Merge
 
 Use this when you want to test work that is still in a PR before it reaches

@@ -9,6 +9,7 @@ import pandas as pd
 from src import config
 from src.db.staging_loader import (
     _build_staging_tables,
+    _clean_event_rows,
     _has_error_level_issues,
     _clean_match_rows,
     _validate_fixture_completeness,
@@ -121,9 +122,7 @@ def test_scoreline_timeline_goal_mismatch_is_flagged_as_warning() -> None:
                 }
             ]
         ),
-        "events": pd.DataFrame(
-            columns=["match_id", "event_type"]
-        ),
+        "events": pd.DataFrame(columns=["match_id", "event_type"]),
     }
 
     issues = _validate_scoreline_timeline_goal_consistency(staging_tables, "test-run")
@@ -139,7 +138,12 @@ def test_forfeit_text_detection_uses_source_notice_language() -> None:
 
     assert _is_forfeit_text("Police FC lose the match by forfeiture.") is True
     assert _is_forfeit_text("The club failed to turn up for the match.") is True
-    assert _is_forfeit_text("Failure to honour Match pending FUFA Disciplinary Panel Verdict.") is True
+    assert (
+        _is_forfeit_text(
+            "Failure to honour Match pending FUFA Disciplinary Panel Verdict."
+        )
+        is True
+    )
     assert _is_forfeit_text("Pilsner Man of the Match: Jane Doe") is False
 
 
@@ -223,7 +227,9 @@ def _raw_match_fixture() -> dict[str, object]:
     }
 
 
-def _raw_event_fixture(event_index: int, event_type: str, team_side: str = config.SIDE_HOME) -> dict[str, object]:
+def _raw_event_fixture(
+    event_index: int, event_type: str, team_side: str = config.SIDE_HOME
+) -> dict[str, object]:
     """Return a minimal raw event row for timeline coverage tests."""
 
     return {
@@ -250,6 +256,47 @@ def _raw_event_fixture(event_index: int, event_type: str, team_side: str = confi
         "sub_in_player_url": None,
         "ingested_at": pd.Timestamp("2026-05-21T18:00:00Z"),
     }
+
+
+def test_known_gagganga_minute_correction_is_exact_and_staging_only() -> None:
+    """Correct the documented goal without rewriting unrelated minute-334 rows."""
+
+    known_goal = _raw_event_fixture(27, "Goal", team_side=config.SIDE_AWAY)
+    known_goal.update(
+        {
+            "event_row_key": "known-gagganga-goal",
+            "match_id": 31655,
+            "match_url": "https://upl.co.ug/event/nec-fc-vs-sc-villa-3/",
+            "home_team": "NEC FC",
+            "away_team": "SC Villa",
+            "player_name": "Geofrey Gagganga",
+            "event_minute": "334",
+        }
+    )
+    unrelated_goal = _raw_event_fixture(28, "Goal", team_side=config.SIDE_AWAY)
+    unrelated_goal["event_row_key"] = "unrelated-minute-334"
+    unrelated_goal["event_minute"] = "334"
+    raw_events = pd.DataFrame([known_goal, unrelated_goal])
+
+    staged = _clean_event_rows(raw_events)
+    corrected = staged.loc[staged["event_row_key"] == "known-gagganga-goal"].iloc[0]
+    unrelated = staged.loc[staged["event_row_key"] == "unrelated-minute-334"].iloc[0]
+
+    assert raw_events.loc[0, "event_minute"] == "334"
+    assert (
+        corrected["event_minute_text"],
+        corrected["minute_base"],
+        corrected["minute_added"],
+        corrected["minute_total"],
+        corrected["is_added_time"],
+        corrected["minute_period"],
+    ) == ("34", 34, 0, 34, False, "31-45")
+    assert (
+        unrelated["event_minute_text"],
+        unrelated["minute_base"],
+        unrelated["minute_total"],
+        unrelated["minute_period"],
+    ) == ("334", 334, 334, "90+")
 
 
 def _raw_stat_fixture(name: str, home_value: int, away_value: int) -> dict[str, object]:

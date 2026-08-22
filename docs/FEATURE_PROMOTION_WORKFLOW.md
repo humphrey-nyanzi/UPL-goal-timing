@@ -280,6 +280,11 @@ Current example:
 Goal Timing Feature 1 uses a direct query on staging.events.
 ```
 
+Goal Timing counts only non-added-time goal events from minutes 1 through 90.
+Its API contract must also expose the surrounding scoreline total, timeline
+total, and timeline coverage/mismatch counts. This keeps the research subset
+distinct from both the official result record and the full event timeline.
+
 ### Analytics SQL View
 
 Use this when:
@@ -346,7 +351,7 @@ docs.
 
 | Feature | Status | Feature Package | Research Source | Production Source | API Endpoint | Frontend Surface | Notes |
 |---------|--------|-----------------|-----------------|-------------------|--------------|------------------|-------|
-| Feature 1 - Goal Timing | `promoted` (historical/retained) | `notebooks/features/feature_01_goal_timing/` | `staging.events` via notebook and API query | direct query on `staging.events`; no `analytics.*` view yet | `GET /insights/goal-timing?season=...` | Goal Timing Explorer | Historical first research-to-product slice and retained product example. Counts regular-time goal events by 15-minute interval and excludes added time. |
+| Feature 1 - Goal Timing | `promoted` (historical/retained) | `notebooks/features/feature_01_goal_timing/` | `staging.events` via notebook and API query | direct query on `staging.events` joined to app-safe matches; no `analytics.*` view yet | `GET /insights/goal-timing?season=...` | Goal Timing Explorer | Historical first research-to-product slice and retained product example. Counts regular-time goal events by 15-minute interval, excludes added time, and exposes scoreline/timeline coverage context for the subset. |
 | Card Trends And Discipline Case | `candidate` | none yet | likely `staging.events`, `staging.matches`, `staging.officials` | choose during promotion | none yet | case report/output first; software surface only if separately approved | Strong case candidate if card coverage is consistent enough across seasons; not an automatic Feature 2 product commitment. |
 | Feature XX - Template | `idea` | `notebooks/features/_feature_template/` | `staging.*` by default | choose during promotion | none yet | none yet | Copy this package when starting a new experimental feature. |
 

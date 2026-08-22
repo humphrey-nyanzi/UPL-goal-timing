@@ -41,6 +41,46 @@ Filters used in the promoted slice:
 - `minute_total` between `1` and `90`
 - `is_added_time IS NOT TRUE`
 
+### 2025/26 Count Reconciliation
+
+Issue #104 recorded 461 regular-time goals on 16 July 2026. The reconciled
+retained data contract is 462. The one-row difference is match `31655`,
+NEC FC 1-4 SC Villa, where Geofrey Gagganga's SC Villa goal belongs at minute
+`34`.
+
+The raw artifacts from hosted runs
+[29240112495](https://github.com/humphrey-nyanzi/upl-lens/actions/runs/29240112495)
+and
+[29731677864](https://github.com/humphrey-nyanzi/upl-lens/actions/runs/29731677864)
+stored that event as index `27`, minute `334`. The raw-artifact SHA-256 digests
+are:
+
+- run `29240112495`: `5c81dfebec4939be36e1bce3ba0f8c19c44d0712b424df0fc506e14706864ccb`
+- run `29731677864`: `4a56200efab54c0895924f1aaebb70cf59be636ba06566f6ad2274c9b63f6fa1`
+
+That malformed minute excludes the goal from the 1-90 regular-time subset and
+produces 461. The local raw snapshot dated 23 May 2026 has SHA-256
+`b39813c859381c6fcdb998e7aa9d6886305276c252368c6d129ece1989c30c10`. It stores
+the event as index `7`, minute `34`; its paired
+assist is also at minute `34`, and the complete five-goal timeline agrees with
+the 1-4 scoreline. Hassan Mubiru's 87th-minute goal shifts from index `24` to
+`25` between the two event sequences but does not change the count.
+
+The 462 contract therefore treats `334` as a source-shaped minute typo and
+uses the internally reconciled `34` value. The historical match URL was
+`https://upl.co.ug/event/nec-fc-vs-sc-villa-3/`, but the UPL domain later
+changed content and can no longer independently verify the event. The workflow
+artifacts, local snapshot, paired assist, complete
+timeline, and scoreline are the durable evidence; the unavailable original
+page remains a provenance limitation.
+
+The correction is deliberately staging-only. `raw.events` keeps the captured
+source-shaped value, while raw-to-staging normalization and migration 012 use
+the exact match, URL, event type, team, and player key to set every derived
+minute field to the analytical minute 34. Migration 012 fails closed unless it
+finds exactly one known row in either the malformed or already-corrected state;
+unrelated minute-334 events are never rewritten.
+
 ## Final Finding
 
 The original pilot found that the highest-volume regular-time goal window across
@@ -75,6 +115,8 @@ Intervals:
 - The first promoted slice is season-level only; team-level and home/away
   filters can be added later.
 - Current-season results can change after each scheduled data refresh.
+- The 2025/26 total depends on the documented minute-334 to minute-34
+  reconciliation for match `31655`.
 
 ## Evidence
 
