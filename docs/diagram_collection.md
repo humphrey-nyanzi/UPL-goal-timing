@@ -49,7 +49,7 @@ delete code or prevent a separately approved change.
 | **Existing shared analytics contract** | `analytics.team_season_summary`, its refresh function and migrations, and the retained team API consumer | Every successful staging write refreshes this summary, so it is an implemented pipeline contract rather than a conditional future promotion. |
 | **Optional new shared analytics** | New `analytics.*` objects, migrations that define reusable derived contracts, and supporting tests | Add a named contract only when logic has stable meaning, is reused across cases, or needs centralized validation/performance. A missing analytics object is not automatically a backlog gap. |
 | **Retained/frozen software** | `api/`, `src/api/`, `frontend/`, `render.yaml`, Pages Functions/configuration, `docs/FRONTEND_DESIGN_SYSTEM.md`, and Goal Timing promotion history | These preserve the proven public-product implementation and may receive scoped correctness or maintenance work, but new cases do not flow here automatically. |
-| **Separately governed live surfaces** | Cloudflare Pages sites/proxy and the Render FastAPI service | They remain live while Issue #108 evaluates a dormant/archive option. No provider retirement, archive conversion, or static archive is authorized by this architecture issue. |
+| **Dormant retained live surfaces** | Cloudflare Pages sites/proxy and the Render FastAPI service | Issue #108 keeps them live as historical demonstrations with no active-product support promise. Future provider or exposure changes remain owner-gated. |
 
 Database migrations and tests can support both active and retained consumers.
 Their classification follows the contract they protect: foundation correctness
@@ -107,9 +107,10 @@ does not freeze scheduled data maintenance.
 
 ## Diagram 2 — Retained Public-Product Path
 
-> This diagram records the live historical implementation. Dashed arrows mean
-> retained/optional, not a required next step after case validation. Issue #108
-> governs the live public surfaces.
+> This diagram records the live but dormant historical implementation. Dashed
+> arrows mean retained/optional, not a required next step after case validation.
+> Issue #108 settled the current surfaces as retained demonstrations; future
+> provider or exposure changes remain owner-gated.
 
 ```mermaid
 flowchart LR
@@ -140,8 +141,8 @@ flowchart LR
 ```
 
 The source, tests, deployment configuration, and product lessons are retained.
-This issue does not add routes, endpoints, UI work, provider changes, or a
-static archive.
+Dormant status does not add routes, endpoints, UI work, provider changes, a
+static archive, or an active support obligation.
 
 ---
 

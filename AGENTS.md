@@ -456,4 +456,8 @@ GitHub Actions is the preferred automation path for portfolio visibility.
   deployment shape, or known gaps, check whether
   [docs/diagram_collection.md](docs/diagram_collection.md) needs an update.
 - Copilot instructions also exist at `.github/copilot-instructions.md`.
-- Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. Do not alter providers or claim a final disposition until #108 is decided.
+- Issue #108 keeps the public Cloudflare sites/proxy and Render FastAPI origin
+  live as dormant retained demonstrations. This is not an active product
+  roadmap, support promise, or default destination for casework. Do not alter
+  providers, broaden exposure, create a static archive, or restart public-product
+  work without a new explicit owner approval.

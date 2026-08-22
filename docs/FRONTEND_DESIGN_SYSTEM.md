@@ -3,7 +3,11 @@
 This document is the retained product implementation guide for the UPL Lens
 frontend and browser-facing API contract.
 
-The public software-product phase is frozen as of 2026-08-19. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed. The React app,
+The public software-product phase is frozen as of 2026-08-19. Issue #108 keeps
+the public Cloudflare sites/proxy and unrestricted Render FastAPI origin live as
+dormant retained demonstrations, without an active-product support promise or
+automatic maintenance roadmap. Future provider or exposure changes remain
+owner-gated. The React app,
 FastAPI contract, visual rules, launch decisions, page requirements, and QA
 lessons remain useful retained assets, but they are no longer the automatic
 next destination for every UPL analysis. New practical UPL cases should close
@@ -877,7 +881,7 @@ frontend. Do not treat this table as the live task tracker.
 | Cross-season aggregation and fixed featured-insight framing | implemented | Season-aware API responses and promoted insight scope | All Seasons support is clear, while featured insights keep their research scope. |
 | Improve Insights Library and insight exploration surfaces | implemented | Existing insight endpoint plus static registry until more insight metadata exists | Insights reads as a promoted research library, not a sparse placeholder. |
 | Expand Trends into a multi-visualization surface | implemented | `/trends/seasons` | Trends shows scoring, discipline, result share, high-scoring match share, and data coverage across seasons. |
-| Public deployment disposition | under reconsideration in #108 | Public Cloudflare sites, Cloudflare API proxy, unrestricted Render FastAPI exposure | Public surfaces remain live; a dormant/archive demonstration option is being evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. |
+| Public deployment disposition | settled in #108: retain live but dormant | Public Cloudflare sites, Cloudflare API proxy, unrestricted Render FastAPI exposure | Public surfaces remain dormant demonstrations with no support promise; future provider, archive, exposure, or active-product changes require new owner approval. |
 
 Historical implementation order, now complete on `main`:
 
