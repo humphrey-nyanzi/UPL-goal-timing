@@ -47,15 +47,16 @@ that make that case reproducible.
 - **Active**: source acquisition, raw/staging/analytics contracts, validation,
   operations, read-only notebooks, bounded UPL analytical cases, caveats,
   reproducibility records, and GitHub-native work discipline.
-- **Retained/frozen**: FastAPI, React, Cloudflare Pages, Render deployment
-  knowledge, frontend design rules, API contracts, and public-product QA
-  lessons. These are assets and references, not mandatory destinations.
+- **Retained/frozen**: FastAPI, React, frontend design rules, API contracts, and
+  public-product QA lessons. The existing Cloudflare sites/proxy and Render
+  service remain live as dormant demonstrations. These are assets and
+  references, not mandatory destinations or actively supported products.
 - **Historical**: UPL Goal Timing / UPL Match Intelligence naming, the v1 public
   product push, the June/July frontend build order, and Goal Timing as the
   first productized analysis.
-- **Separately decision-gated**: public deployment disposition, project-board
-  semantics, architecture-boundary rewrites, and any future case-to-software
-  promotion.
+- **Separately decision-gated**: any future provider or dormant-surface change,
+  project-board semantics, architecture-boundary rewrites, and any future
+  case-to-software promotion.
 
 ## Product Dictionary
 
@@ -78,8 +79,41 @@ handoffs consistent during and after the transition.
 | Available data | A cautious phrase meaning the project is reporting from collected and validated records, not claiming official completeness. | Writing player, lineup, event, leaderboard, or case findings. |
 | Staging data | Cleaned app/research-facing Postgres tables under `staging.*`. | Discussing trusted inputs for research, API, and casework. |
 | Analytics data | Stable reusable summaries, facts, views, or tables under `analytics.*`. | Describing reusable metrics or derived contracts. |
-| Browser-facing API proxy | Historical/retained Cloudflare Pages `/api/*` path from the product phase. #108 disposition is under reconsideration; the surface remains live while a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained code or historical hosted behavior. |
-| Backend origin API | Historical/retained Render-hosted FastAPI origin. Unrestricted public exposure remains live while #108 disposition is under reconsideration and a dormant/archive option is evaluated; no provider retirement, archive provider change, or static public archive is currently authorized or completed. | Understanding retained backend code or historical deployment behavior. |
+| Browser-facing API proxy | Historical Cloudflare Pages `/api/*` path retained live as a dormant demonstration dependency. It has no active-product support promise; changes remain owner-gated. | Understanding retained code or dormant hosted behavior. |
+| Backend origin API | Historical Render-hosted FastAPI origin retained with unrestricted public exposure as a dormant demonstration dependency. It is not part of the active casework architecture and has no active-product support promise. | Understanding retained backend code or dormant hosted behavior. |
+
+## Dormant Public-Surface Disposition
+
+Issue #108 is settled as **retain live but dormant**. Keeping a surface live is
+not the same as making it an active product, recommending it for public use, or
+promising uptime, support, new features, security maintenance, or fresh
+presentation work.
+
+| Surface | Final decision | Continuing boundary |
+|---|---|---|
+| Hosted Supabase/Postgres foundation | **RETAIN — active, controlled foundation** | Continues to support acquisition, validation, read-only research, and practical cases independently of the public software. |
+| Scheduled ingestion and operations | **RETAIN — active** | Owned by current data-reliability Issues; it does not depend on Cloudflare or Render. |
+| FastAPI source and query-service code | **RETAIN — frozen software asset** | Maintained only for scoped correctness, security, demonstration, or future owner-approved work. |
+| React source and design-system code | **RETAIN — frozen software asset** | Preserved as engineering evidence; new cases do not automatically become routes or UI work. |
+| Primary Cloudflare Pages site | **RETAIN — live dormant demonstration** | No active roadmap, promotion plan, support commitment, or uptime promise. |
+| Legacy Cloudflare Pages site | **RETAIN — live dormant demonstration** | Kept without deletion work; it is not an active fallback commitment. |
+| Cloudflare `/api` proxy and cache | **RETAIN — live dormant dependency** | Exists only to support the retained browser path; it is not a casework interface. |
+| Render FastAPI origin, broad read routes, and generated API documentation | **RETAIN — unrestricted but dormant dependency** | Existing exposure remains by explicit owner decision; no new routes, public API promise, or support obligation follows from retention. |
+| Public GitHub repository | **RETAIN — portfolio and engineering evidence** | Public visibility is not a licence grant for code, official-source data, names, or retained assets. |
+| Static archive replacement | **DO NOT CREATE NOW** | No provider conversion or replacement archive is currently planned. |
+
+The owner accepts continued dormancy rather than provider-deletion work. This
+does **not** resolve or waive the previously recorded structured-source,
+identifiable-record, hero-asset provenance, or licensing questions. Those are
+residual reasons not to market the dormant surfaces as a supported product.
+Before any renewed public promotion, feature work, or material exposure change,
+a separate owner-approved Issue must reassess the relevant rights, privacy,
+asset, security, correction-contact, and maintenance obligations.
+
+Operationally, do not delete, suspend, convert, or broaden these providers by
+default. Critical correctness or security defects may justify a scoped Issue;
+ordinary cold starts, free-tier limits, visual drift, and feature requests do
+not reopen the public-product roadmap automatically.
 
 ## Strategic Change
 

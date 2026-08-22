@@ -335,7 +335,10 @@ rebuild. Use current GitHub Issues and PRs for any reopened status. The release-
   locked to the routine-refresh mode, while the other modes remain explicit
   manual operations.
 
-Any remaining public release, deployment, browser QA, or release-documentation work is separately decision-gated. Use #108 or current GitHub Issues for disposition instead of continuing v1 release packaging by default.
+Issue #108 settled the existing Cloudflare/Render path as live but dormant.
+Any public release, provider change, browser QA, or release-documentation work
+still requires a new owner-approved Issue; do not continue v1 packaging by
+default.
 
 ### Retained Product Experience Loop
 
@@ -442,9 +445,9 @@ Current strengths:
   staging rebuilds
 - validation runs and validation issues are stored in staging
 - current-season automation exists locally and in GitHub Actions
-- the retained hosted React/API/Postgres stack remains live pending #108
-  disposition, but public-app reliability is no longer an automatic active-work
-  priority
+- the retained hosted React/API path remains live as a dormant demonstration,
+  while the maintained Postgres foundation stays active and independent;
+  public-app reliability is not an automatic active-work priority
 
 Known weaknesses:
 
@@ -452,9 +455,8 @@ Known weaknesses:
 - validation coverage is useful but still early
 - stage logs and run summaries should become more consistent
 - unit tests are not yet a real safety net
-- free-tier backend/database behavior can affect retained public surfaces if
-  #108 keeps them live or dormant; this is disposition-scoped work, not a
-  default product-polish priority
+- free-tier backend/database behavior can affect the dormant public surfaces;
+  this does not create a default product-polish or support priority
 
 Next useful work:
 
@@ -551,17 +553,17 @@ Current retained strengths:
 - merged routes now cover Overview, Matches, Match Detail, Teams, Team Detail,
   Players, Player Detail, Insights, Trends, Goal Timing, and About/Methodology.
 - the deployed app proves the full public request flow through Cloudflare Pages,
-  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres; those
-  surfaces remain live while #108 disposition is under owner reconsideration.
+  the Pages `/api/*` proxy, Render FastAPI, and Supabase Postgres; the browser
+  path remains live as an owner-approved dormant demonstration.
 - cross-route QA guidance exists for hierarchy, imagery, navigation, state
   handling, data trust, and responsive/browser verification.
 
 Current constraints and risks:
 
-- #108 remains open and owner disposition is under reconsideration; dormant or
-  archived demonstration is only being evaluated.
-- no provider retirement, archive provider change, static public archive, public
-  product expansion, or browser-facing polish is authorized by default.
+- #108 retains the existing Cloudflare sites/proxy and Render API live as
+  dormant demonstrations; no active-product support or uptime promise follows.
+- no provider change, static public archive, public product expansion, or
+  browser-facing polish is authorized by default.
 - discipline/card intelligence remains a research candidate, not a promoted
   insight or finished dashboard feature, unless a separate Issue explicitly
   approves software promotion.
@@ -580,8 +582,8 @@ Next useful work:
   build, and any affected browser-facing states.
 - promote analytical casework into software only after a separate approval says
   that promotion is the intended destination.
-- use #108 for provider-disposition evidence and avoid provider actions in
-  documentation-only transition work.
+- treat the recorded #108 disposition as the current baseline; use a new
+  owner-approved Issue for any provider or exposure change.
 
 Escalate when:
 
@@ -590,7 +592,8 @@ Escalate when:
 - the frontend needs data that no API endpoint exposes cleanly
 - API response changes can break the dashboard
 - UI presentation makes incomplete data look certain
-- #108 provider disposition is described as complete without verified evidence
+- dormant providers are changed, broadened, or presented as actively supported
+  without a current owner-approved Issue
 
 ### 4. Developer Experience & Documentation
 
@@ -1348,7 +1351,11 @@ packaging.
 3. **Data Reliability & Operations**: continue maintaining source acquisition,
    Postgres contracts, validation, fail-closed refresh behavior, and read-only
    research access.
-4. **Retained Product Experience**: maintain or change FastAPI/React/public deployment only when a current Issue explicitly keeps retained software in scope. Under #108, owner disposition is under reconsideration. Public Cloudflare/Render surfaces remain live, a dormant/archive demonstration option is being evaluated, and no provider retirement, archive provider change, or static public archive is currently authorized or completed.
+4. **Retained Product Experience**: the Cloudflare/Render path remains live as a
+   dormant demonstration under the settled #108 disposition. Maintain or change
+   FastAPI, React, or public providers only when a new owner-approved Issue
+   explicitly scopes that work; dormancy is not an active roadmap or support
+   promise.
 
 This keeps the project growing in stable loops: trustworthy data, bounded
 football cases, retained software knowledge, and documentation that remains

@@ -1,7 +1,7 @@
 # UPL Lens
 
-An open-source Uganda Premier League analytical data foundation and practical
-casework system.
+A public-repository Uganda Premier League analytical data foundation and
+practical casework system.
 
 UPL Lens maintains source acquisition, Postgres data contracts, validation,
 reproducible read-only research access, and bounded football investigations
@@ -33,19 +33,25 @@ knowledge for any future owner-approved presentation work.
 
 ## Retained Hosted Surfaces
 
-Under #108, owner disposition is under reconsideration. The public Cloudflare
-sites, Cloudflare API proxy, and unrestricted Render FastAPI exposure remain
-live for now. A dormant/archive demonstration option is being evaluated because
-the hosted surfaces currently cost nothing. No retirement or archive provider
-change has been completed or authorized, and no static public archive is
-currently authorized or completed.
+The owner-approved #108 disposition keeps the existing Cloudflare sites,
+Cloudflare API proxy, and unrestricted Render FastAPI origin live as
+**dormant retained demonstrations**. They are historical engineering evidence,
+not an actively developed product, supported public service, or destination for
+new analytical cases. No provider deletion or static-archive conversion is
+planned now, and any future provider, API, or frontend change remains
+owner-gated.
 
-The reconsideration preserves source code, tests, Git history, Supabase,
-ingestion, and read-only research access.
+This dormant decision does not assert source-reuse, personal-data, asset, or
+licensing permission. It is not a support or uptime promise. The active
+Supabase/Postgres foundation, scheduled ingestion, validation, and read-only
+casework path remain independent of these public surfaces. The complete
+component-by-component disposition and residual-risk boundary live in
+[docs/PRODUCT_STRATEGY.md](docs/PRODUCT_STRATEGY.md#dormant-public-surface-disposition).
 
 Historical/retained URLs from the public-product phase:
 
 - Frontend: [UPL Lens](https://upl-lens.pages.dev/)
+- Legacy frontend: [UPL Match Intelligence](https://upl-match-intelligence.pages.dev/)
 - App API proxy: [UPL Lens API via Cloudflare](https://upl-lens.pages.dev/api/health)
 - Backend API origin: [UPL Lens API on Render](https://upl-match-intelligence-api.onrender.com/)
 - API liveness check:
@@ -218,6 +224,10 @@ Use these docs instead of trying to learn the whole repository from the README:
 Raw and processed data files are not committed to this repository. The scraper
 and pipeline are included so the methodology can be inspected and rerun against
 the official UPL website for analytical purposes.
+
+Public visibility of this repository is not itself a licence grant for the
+project code, official-source data, names, or retained visual assets. No root
+software licence currently defines broader reuse rights.
 
 ## Author
 

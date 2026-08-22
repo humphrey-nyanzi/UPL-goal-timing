@@ -24,6 +24,13 @@ maintained, while each case records its own reproducibility evidence.
 FastAPI and React are retained assets, not mandatory destinations. Use them for
 maintenance, demonstration, or explicitly approved presentation/software
 promotion only.
+
+Issue #108 keeps the existing Cloudflare sites/proxy and Render FastAPI origin
+live as dormant retained demonstrations. Dormancy is not an active product
+roadmap, uptime/support promise, or permission to change providers or broaden
+public exposure. The active Postgres foundation and practical casework path are
+independent of those surfaces; any future provider or presentation change needs
+a new explicit owner approval.
 ## Current Project State
 
 - `scripts/data_platform/scrape_upl_matches.py` is the scraper command

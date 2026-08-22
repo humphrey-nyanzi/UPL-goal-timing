@@ -295,20 +295,19 @@ was active.
 
 ### Hosted URLs
 
-Under #108, owner disposition is under reconsideration. The public Cloudflare
-sites, Cloudflare API proxy, and unrestricted Render FastAPI exposure remain
-live for now. A dormant/archive demonstration option is being evaluated because
-the hosted surfaces currently cost nothing. No retirement or archive provider
-change has been completed or authorized, and no static public archive is
-currently authorized or completed.
+Issue #108 keeps the public Cloudflare sites, Cloudflare API proxy, and
+unrestricted Render FastAPI exposure live as dormant retained demonstrations.
+They have no active-product support or uptime promise. Do not delete, suspend,
+convert, broaden, or otherwise change these providers without a new explicit
+owner approval.
 
 - Shared frontend URL: `https://upl-lens.pages.dev/`
 - Legacy frontend fallback: `https://upl-match-intelligence.pages.dev/`
 - Browser-facing API proxy: `https://upl-lens.pages.dev/api/`
 - Backend origin API: `https://upl-match-intelligence-api.onrender.com/`
 
-The reconsideration preserves source code, tests, Git history, Supabase,
-ingestion, and read-only research access.
+The active Supabase/Postgres foundation, ingestion, validation, and read-only
+research access remain operationally independent of this dormant browser path.
 
 ### Hosted frontend API proxy
 
@@ -607,7 +606,7 @@ pressure comes from public traffic, routine refreshes, or manual rebuilds.
 
 First checks:
 
-- While #108 disposition is under reconsideration and public surfaces remain live, opening `https://upl-lens.pages.dev/api/health` may confirm whether the retained proxy still responds. If checked, confirm the response includes
+- Because the dormant public surfaces remain live, opening `https://upl-lens.pages.dev/api/health` may confirm whether the retained proxy still responds. If checked, confirm the response includes
   `x-upl-lens-cache`. Repeat safe public requests and look for cache `HIT`
   behavior after the first request.
 - Keep routine hosted refreshes on `season_scope=current`,

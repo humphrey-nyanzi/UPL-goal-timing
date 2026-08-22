@@ -52,22 +52,23 @@ Current active work should focus on:
    and GitHub Issues.
 3. Preserving the useful lessons from the completed product phase without
    treating v1 release packaging or frontend polish as the default next step.
-4. Keeping deployment disposition, project-board semantics, and architecture
-   boundary changes in their own decision-gated Issues.
+4. Keeping any future dormant-deployment change, project-board semantics, and
+   architecture boundary changes in their own decision-gated Issues.
 
 Status labels used across the transition:
 
 - **Active**: source acquisition, Postgres contracts, validation, operations,
   read-only notebooks, bounded UPL analytical cases, GitHub Issue/branch/draft
   PR discipline, and owner-approved closure.
-- **Retained/frozen**: FastAPI, React, Cloudflare/Render deployment knowledge,
-  frontend design rules, API contracts, and the completed public-product
-  lessons. These remain useful references and code assets.
+- **Retained/frozen**: FastAPI, React, frontend design rules, API contracts, and
+  the completed public-product lessons. The existing Cloudflare/Render path is
+  live but dormant, with no active-product support promise. These remain useful
+  references and code assets.
 - **Historical**: the v1 public-release push, old frontend build order, UPL
   Match Intelligence naming, and Goal Timing as the first productized analysis.
-- **Separately decision-gated**: public deployment retain/restrict/retire
-  decisions, project-board/workflow changes, architecture-boundary rewrites, and
-  any future software promotion from a case into API/frontend.
+- **Separately decision-gated**: any future dormant-provider change,
+  project-board/workflow changes, architecture-boundary rewrites, and any future
+  software promotion from a case into API/frontend.
 
 Do not continue v1 release packaging, frontend build-order documentation, public
 product polish, or automatic notebook-to-API-to-React promotion unless a current
@@ -237,6 +238,15 @@ which doc to read first, a command depends on hidden local setup, or a feature
 decision exists in code but not in docs.
 
 ## Recent History
+
+### 2026-08-22
+
+- Settled Issue #108 by retaining the Cloudflare sites/proxy and Render FastAPI
+  origin live as dormant demonstrations, without provider deletion, static
+  archive conversion, active-product support promises, or a reopened public
+  product roadmap.
+- Kept maintained Postgres, scheduled ingestion, validation, read-only research,
+  and practical casework active and independent from the dormant browser path.
 
 ### 2026-08-19
 
