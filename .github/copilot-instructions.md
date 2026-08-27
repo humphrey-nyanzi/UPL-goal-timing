@@ -16,8 +16,9 @@ source record -> maintained Postgres foundation -> practical analytical case
 
 Maintain source acquisition, raw/staging/analytics contracts, validation,
 reproducibility, and read-only notebook access. New UPL work should start from a
-bounded football question and end with a case-specific coverage/snapshot record,
-checks, notebook, findings/report, outputs, caveats, and a hard endpoint. Do
+bounded football question and end with a case-specific data-state/provenance record,
+checks, notebook, findings/report, deliberate outputs, caveats, and a hard
+endpoint. Do
 not describe this as a frozen central snapshot; the Postgres foundation remains
 maintained, while each case records its own reproducibility evidence.
 
@@ -51,6 +52,8 @@ a new explicit owner approval.
 - Older processed goal-only outputs remain under `data/processed/`.
 - Notebook analysis remains useful, especially Feature 1: the original goal
   timing pilot under `notebooks/features/feature_01_goal_timing/`.
+- New practical cases use `cases/_case_template/` and live under
+  `cases/<case-id>-<slug>/`.
 - Raw and processed data are gitignored.
 
 ## Current Direction
@@ -68,10 +71,9 @@ site is the source/archive. This project should add an intelligence layer:
 - Season-over-season league changes.
 
 The current identity and retained product-phase lessons are documented in
-`docs/PRODUCT_STRATEGY.md`. The app should feel like an independent UPL football
-intelligence platform: curated statistical insight first, dashboard-style
-drilldowns second, and the technical portfolio story quietly available through
-docs and methodology rather than driving the main UI.
+`docs/PRODUCT_STRATEGY.md`. Practical cases should turn source records into
+clear football meaning. The retained app preserves the earlier curated-insight
+and drilldown approach, but it is not the default destination for new cases.
 
 Use the source-record boundary consistently:
 
@@ -86,8 +88,8 @@ metadata should be compactly summarized or linked to the official source unless
 UPL Lens adds context such as timing, trends, anomalies, comparisons, or other
 football intelligence.
 
-Prefer features that answer questions a user cannot easily answer from
-individual match pages.
+Prefer cases that answer questions a user cannot easily answer from individual
+match pages.
 
 ## Planned Tracks And Work Areas
 
@@ -111,9 +113,15 @@ Current pieces:
 - Idempotent current-season update and hosted update scripts.
 - Data quality checks and staging validation records.
 - GitHub Actions hosted refresh workflow.
-### Research Lab
+### Practical Casework And Research Lab
 
-Owns exploration.
+Owns bounded football questions, proportionate checks, reproducible analysis,
+standalone reports, and hard closure.
+
+Start committed cases from `cases/_case_template/`. Each package uses
+`README.md`, `analysis.ipynb`, meaningful `checks/`, `report.md`, and deliberate
+`outputs/`. There is no default `product_plan.md`; software presentation needs
+a separate owner-approved Issue.
 
 Use notebooks to:
 
@@ -170,6 +178,10 @@ api/
 
 frontend/
   React app
+
+cases/
+  _case_template/
+  <case-id>-<slug>/
 
 notebooks/
   features/

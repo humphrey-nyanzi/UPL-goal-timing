@@ -69,7 +69,7 @@ handoffs consistent during and after the transition.
 | Official source | The official Uganda Premier League website and match pages this project reads from. | Explaining provenance, scraping, and source-data limitations. |
 | Source record | The official archived match fact or page. | Distinguishing original records from UPL Lens analysis. |
 | Maintained Postgres foundation | The active raw/staging/analytics database contracts that are refreshed, validated, and used for research access. | Describing the active technical foundation. |
-| Case-specific reproducibility record | The coverage/snapshot/check/evidence/caveat record that makes one closed case reproducible. | Starting or closing a practical UPL analytical case. |
+| Case-specific reproducibility record | The data-state, coverage, checks, evidence, and caveats that make one closed case reproducible. | Starting or closing a practical UPL analytical case. |
 | Practical UPL case | A bounded football investigation with a question, data record, checks, notebook, findings/report, outputs, caveats, and hard endpoint. | Scoping future UPL analysis work. |
 | Intelligence layer | The analytical meaning UPL Lens adds on top of official source records. | Explaining retained product decisions or current analytical interpretation. |
 | Retained public app | The existing React/FastAPI product code and hosted knowledge from the completed software-product phase. | Maintaining or referencing frontend/API assets. |
@@ -520,17 +520,21 @@ Product strategy should shape technical choices.
 ### Database And Analytics
 
 - Keep raw, staging, and analytics concerns separate.
-- Use `staging.*` for cleaned app-facing data.
+- Use `staging.*` for cleaned research/app-facing data.
 - Use `analytics.*` views when a metric becomes stable, reusable, or complex.
 - Use direct API queries for small first slices when that is simpler and clear.
 - Do not serve production features from notebooks, CSVs, or exported images.
 
 ### Research
 
-- Keep notebooks as the research lab.
-- Promote only useful, validated findings.
-- Record metric definitions and caveats in feature docs.
-- Treat caveats as product content, not private notes.
+- Start practical UPL work from a bounded football question and a small case
+  contract under `cases/`.
+- Keep notebooks as the reproducible research path inside the case package.
+- Record metric definitions, data state, material checks, limitations, and
+  non-claims in the case contract/report.
+- Let a valid case stop as a notebook, report, and deliberate outputs.
+- Treat software promotion as a separate explicit decision, not the successful
+  default for useful findings.
 
 ### Operations
 
@@ -600,7 +604,8 @@ For retained or explicitly approved frontend work, also check:
 For research, casework, or exceptional promotion work, also check:
 
 - [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md)
-- the relevant feature folder under `notebooks/features/`
+- the relevant case folder under `../cases/`, or the historical feature folder
+  under `../notebooks/features/` when maintaining retained work
 
 Do not implement a product feature only because it is technically possible.
 Implement it because it advances the product promise:

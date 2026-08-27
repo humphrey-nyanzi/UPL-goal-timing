@@ -31,7 +31,7 @@ Official UPL website
 
 The active foundation is maintained Postgres plus case-specific reproducibility
 records. Do not describe the project as a single centrally frozen analytical
-snapshot. Each case should carry its own coverage/snapshot record, checks,
+snapshot. Each case should carry its own data-state/provenance record, checks,
 notebook evidence, outputs, caveats, and hard endpoint.
 
 React and FastAPI are retained legacy assets from the software-product phase.
@@ -48,8 +48,9 @@ Current active work should focus on:
 
 1. Maintaining official-source acquisition, Postgres raw/staging/analytics
    contracts, validation, reproducibility, and read-only research access.
-2. Defining the practical UPL case workflow in the owning research/casework docs
-   and GitHub Issues.
+2. Using the practical UPL case workflow and `cases/_case_template/` for
+   bounded football questions, reproducible analysis, standalone reports, and
+   hard closure.
 3. Preserving the useful lessons from the completed product phase without
    treating v1 release packaging or frontend polish as the default next step.
 4. Keeping any future dormant-deployment change, project-board semantics, and
@@ -140,11 +141,15 @@ If you want to refresh, validate, or troubleshoot data:
 - [LOCAL_DEVELOPMENT.md](LOCAL_DEVELOPMENT.md)
 - [diagram_collection.md](diagram_collection.md)
 
-If you want to add or promote a football insight:
+If you want to start, analyse, review, or close a practical UPL case:
 
 - [FEATURE_PROMOTION_WORKFLOW.md](FEATURE_PROMOTION_WORKFLOW.md)
 - [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
-- the relevant feature folder under `notebooks/features/`
+- `../cases/README.md`
+- the relevant case contract under `../cases/<case-id>-<slug>/README.md`
+
+If a completed case is separately approved for API/frontend presentation, also
+read the new software Issue and [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md).
 
 If you want to improve the app:
 
@@ -238,6 +243,17 @@ which doc to read first, a command depends on hidden local setup, or a feature
 decision exists in code but not in docs.
 
 ## Recent History
+
+### 2026-08-27
+
+- Defined the maintained-database trust and case reproducibility contract,
+  including scoreline/timeline semantics, provenance, read-only access, and
+  exceptional immutable extracts.
+- Added the standard practical-case package under `cases/` and made notebook,
+  report, proportionate checks, limitations, deliberate outputs, and hard
+  closure the default analytical endpoint.
+- Preserved Goal Timing and the old feature template as historical
+  research-to-product evidence rather than the default future workflow.
 
 ### 2026-08-22
 

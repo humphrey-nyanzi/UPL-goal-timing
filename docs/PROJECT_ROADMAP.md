@@ -33,7 +33,7 @@ The active flow is:
 source record -> maintained Postgres foundation -> practical analytical case
 ```
 
-Each practical case should carry its own question, source coverage/snapshot
+Each practical case should carry its own question, data-state/provenance
 record, checks, notebook, findings or report, outputs, caveats, and hard
 endpoint. The maintained Postgres foundation remains live; do not describe the
 new model as a single centrally frozen analytical snapshot.
@@ -483,42 +483,46 @@ dashboard decoration.
 
 Owns:
 
-- feature notebooks
-- research backlog and feature lifecycle notes in
+- practical case contracts, notebooks, checks, reports, and deliberate outputs
+- research backlog and case lifecycle guidance in
   `docs/FEATURE_PROMOTION_WORKFLOW.md`
-- research briefs and product plans
 - metric definitions and source-data caveats
-- feature registry status
-- direct API query versus `analytics.*` view decisions
-- explicit decision on whether a case stops as evidence/report/output or is separately promoted into software
+- #112 data-state/provenance records and proportionate case checks
+- hard case endpoints and follow-up-question boundaries
+- separate decisions about reusable `analytics.*` contracts or exceptional
+  software promotion
 
 Current strengths:
 
-- Feature 1 Goal Timing is the historical first promoted analysis and retained software example
-- feature templates and registry exist
+- Feature 1 Goal Timing is the historical first promoted analysis and retained
+  software example
+- `cases/_case_template/` provides a small practical-case package without a
+  default product plan
 - notebook data-access rules prefer cleaned Postgres `staging.*`
-- analytics promotion rules exist for reusable metrics
+- #112 defines the maintained-database trust and reproducibility contract
 
 Known weaknesses:
 
-- the former promotion model should not define the active casework model
-- the next football feature needs research validation before UI work
-- caveats need to stay visible when source data is incomplete
+- no new practical UPL case has yet completed the new workflow
+- case selection still needs one exact, owner-approved football question
+- coverage caveats must remain proportionate to the fields and seasons used
 
 Next useful work:
 
-- scope the next practical UPL case from a bounded football question, with Cards & Discipline only as a candidate
-- use `docs/FEATURE_PROMOTION_WORKFLOW.md` to compare candidate football
-  questions before creating a feature package
-- validate a second useful football question in a notebook
-- decide whether the metric should use a direct API query or `analytics.*` view
-- close the case with reproducible evidence, outputs, caveats, and a hard endpoint; promote to software only if a separate Issue approves it
+- select and scope the first practical UPL case from a bounded football
+  question, with Cards & Discipline only as a candidate area
+- copy `cases/_case_template/` only after the question, intended use, data
+  availability, non-goals, checks, and done condition are clear
+- close the case with reproducible evidence, a standalone report, limitations,
+  deliberate outputs, and a hard endpoint
+- create a separate Issue only if the completed result justifies reusable
+  analytics, publication, monitoring, API, or frontend work
 
 Escalate when:
 
-- a proposed dashboard metric lacks a reproducible notebook, SQL query, or
-  documented product plan
-- a feature depends on raw data or CSVs without a clear reason
+- a case lacks a bounded question, data-state record, or observable done
+  condition
+- a case depends on raw data or CSVs without a clear reason
 - the source data caveats are too large to present without explanation
 
 ### 3. Retained Software Stewardship
@@ -1171,7 +1175,13 @@ Acceptance criteria:
 - Failed runs provide enough logs to debug.
 - Successful runs update the database or produce a clearly documented artifact.
 
-## Launch Milestone 6 - Promote Notebook Research Into Product Features
+## Historical Launch Milestone 6 - Promote Notebook Research Into Product Features
+
+This section records the completed public-product-era promotion model. It is
+not the active workflow for new practical cases. Use
+`cases/_case_template/` and the active Research & Football Intelligence section
+above; reuse any steps below only when a separate owner-approved Issue scopes
+exceptional software work.
 
 Objective: Build a repeatable path from exploratory analysis to dashboard
 feature.
@@ -1345,9 +1355,10 @@ packaging.
 1. **Developer Experience & Documentation**: keep canonical identity,
    architecture, workflow, and agent guidance aligned as transition work is
    completed through current Issues.
-2. **Research & Football Intelligence**: define the practical analytical-case
-   workflow in the owning docs and Issues. Cards & Discipline can be considered
-   as a case candidate, not as an automatic Feature 2 product commitment.
+2. **Research & Football Intelligence**: use the practical analytical-case
+   workflow for bounded football questions. Cards & Discipline can be
+   considered as a case candidate, not as an automatic Feature 2 product
+   commitment.
 3. **Data Reliability & Operations**: continue maintaining source acquisition,
    Postgres contracts, validation, fail-closed refresh behavior, and read-only
    research access.

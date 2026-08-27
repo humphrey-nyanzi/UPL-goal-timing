@@ -123,6 +123,10 @@ api/
 frontend/
   React app
 
+cases/
+  _case_template/
+  <case-id>-<slug>/
+
 notebooks/
   features/
     feature_01_goal_timing/
@@ -178,36 +182,39 @@ Keep changes area-appropriate and scoped. Do not jump from a documentation,
 research, or data-reliability task into unrelated product UI work unless the
 user explicitly changes the scope.
 
-## Feature Promotion Workflow
+## Practical Case Workflow
 
-Research & Football Intelligence notebook experiments and practical UPL cases
-should use the feature/case package workflow documented in
+Research & Football Intelligence work should use the practical-case workflow
+documented in
 [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md).
-That document also owns notebook data-source rules, feature/case lifecycle
-tracking, research backlog notes, case-specific reproducibility records, and
-the decision guide for when stable metrics should become `analytics.*` views or
-exceptional software work.
+That document owns case lifecycle, notebook data-source rules, case-specific
+reproducibility records, research backlog notes, hard close conditions, and the
+decision guide for exceptional reusable analytics or software work.
 
-When starting a new experimental feature or case, copy:
-
-```text
-notebooks/features/_feature_template/
-```
-
-into a numbered feature folder such as:
+When a bounded UPL football question is scoped and ready, copy:
 
 ```text
-notebooks/features/feature_02_card_trends/
+cases/_case_template/
 ```
 
-Each feature or case package should contain:
+into a numbered case folder such as:
 
-- `analysis.ipynb` for exploratory research.
-- `research_brief.md` for the football question, metric definitions, finding,
-  and caveats.
-- `product_plan.md` for retained promotion history, exceptional software plans,
-  validation notes, and implementation history.
-- `outputs/` for reference notebook exports only.
+```text
+cases/001-post-halftime-conceding/
+```
+
+Each practical case package should contain:
+
+- `README.md` for the question, scope, data state, definitions, checks,
+  non-goals, and done condition.
+- `analysis.ipynb` for the reproducible analytical path.
+- `checks/` for meaningful case-specific evidence only.
+- `report.md` for the standalone answer, evidence, limitations, and non-claims.
+- `outputs/` for deliberate final artifacts cited by the report.
+
+There is no default `product_plan.md`. The old
+`notebooks/features/_feature_template/` and Goal Timing package are retained
+historical product-phase evidence, not the template for normal new cases.
 
 For notebook data access, default to cleaned Postgres `staging.*` tables through
 `src.research.read_sql`. Use `raw.*` only for source-data debugging, CSVs only
