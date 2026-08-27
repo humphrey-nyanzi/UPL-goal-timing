@@ -362,9 +362,13 @@ latest_validation = read_sql(
     """
     SELECT run_id, seasons, row_counts, issue_counts, completed_at
     FROM staging.validation_runs
+    WHERE :season = ANY(
+        string_to_array(replace(seasons, ' ', ''), ',')
+    )
     ORDER BY completed_at DESC
     LIMIT 1
-    """
+    """,
+    {"season": "2025_26"},
 )
 ```
 
@@ -378,8 +382,9 @@ existing case or beginning a new one:
 
 1. Confirm the expected migration filenames and timestamps in
    `app_meta.schema_migrations`.
-2. Inspect the latest `staging.validation_runs` summary and the relevant rows
-   in `staging.validation_issues`.
+2. Inspect the latest relevant `staging.validation_runs` summary covering the
+   case season or seasons, plus the relevant rows in
+   `staging.validation_issues`.
 3. Reconcile the case's core record counts and its coverage-dependent counts;
    for goal cases, keep final-score, recovered-timeline, and eligible-subset
    totals separate.
