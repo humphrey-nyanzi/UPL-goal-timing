@@ -1,14 +1,14 @@
-# Feature Promotion Workflow
+# Practical UPL Case Workflow And Exceptional Promotion
 
 This document is the research and practical-casework playbook for the
 repository's Research & Football Intelligence lane.
 
 It now owns:
 
-- research idea capture
+- practical-case selection and scope
 - practical UPL case lifecycle status
 - historical feature lifecycle status
-- notebook package workflow
+- standard case package workflow
 - notebook data-source rules
 - case-specific reproducibility records
 - decisions for `staging.*` versus `analytics.*`
@@ -24,11 +24,11 @@ bounded evidence package:
 
 ```text
 football question
-  -> source coverage/snapshot record
+  -> scope and explicit non-goals
+  -> database state and proportionate checks
   -> read-only notebook and SQL checks over maintained Postgres
-  -> findings/report and outputs
-  -> caveats
-  -> hard endpoint
+  -> findings, limitations, report, and deliberate outputs
+  -> hard close
 ```
 
 The active data foundation is maintained Postgres plus case-specific
@@ -50,10 +50,9 @@ local database files directly.
 
 Active research or casework should be tracked as GitHub Issues when it moves
 beyond a quick note. Use the Research / Football Intelligence Issue template
-for notebook-first questions, including discipline questions such as
-goal-scoring patterns after red cards. This document owns the durable research
-and case lifecycle; Issues own active work, comments, handoffs, and owner
-review.
+for meaningful, resumable questions. Issue #116 owns its case-oriented wording
+and Project stage mapping. This document owns the durable research and case
+lifecycle; Issues own active work, comments, handoffs, and owner review.
 ## Reading Order
 
 When working in Research & Football Intelligence, read in this order:
@@ -61,101 +60,104 @@ When working in Research & Football Intelligence, read in this order:
 1. [START_HERE.md](START_HERE.md)
 2. [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
 3. this workflow doc
-4. the feature folder under `notebooks/features/`
-5. [START_HERE.md](START_HERE.md) if you need recent repo context
+4. the case contract under `cases/<case-id>-<slug>/README.md`
+5. the owning GitHub Issue
 
 ## Research And Case Lifecycle
 
-Use these statuses consistently for research ideas and feature packages.
-These statuses describe the research feature itself. GitHub Project columns
-describe active workflow state across all work areas.
+Use these lifecycle states inside the case contract. Issue #116 owns how they
+map to GitHub Project fields.
 
 | Status | Meaning | What usually happens next |
 |--------|---------|---------------------------|
-| `idea` | Interesting question, but not ready to work on yet. | Capture notes and leave it parked. |
-| `candidate` | Plausible next research topic. Needs prioritization. | Compare it against other football questions. |
-| `selected` | Chosen as the next feature package, but not created yet. | Copy the template and start a notebook package. |
-| `researching` | Notebook work has started. | Keep experimenting in `analysis.ipynb`. |
-| `validated` | Research produced a useful finding, metric, chart, or case answer. | Write `research_brief.md` and record checks/caveats. |
-| `promotion_ready` | Historical/exceptional status: ready for owner-approved software planning and implementation. | Ask an AI agent or engineer to promote it only when a current Issue explicitly approves software work. |
-| `promoted` | Historical/exceptional status: the feature is available through FastAPI and React. | Track retained follow-up work in `product_plan.md`. |
-| `needs_revision` | The feature exists, but the logic, caveats, data, or UI need review. | Add change requests before more implementation. |
-| closed_case | The bounded case has ended with findings/report, outputs, caveats, and endpoint. | Reopen only through a new Issue. |
-| parked | Keep the idea, but do not work on it soon. | Leave it documented but inactive. |
-| `rejected` | Do not pursue unless revived later. | Keep only as historical context. |
+| `idea` | A football question worth preserving but not yet committed. | Keep it in the neutral intake/backlog. |
+| `scoping` | The question, intended use, data availability, non-goals, and done condition are being defined. | Complete the case contract or stop before analysis. |
+| `ready` | Another contributor can start without reconstructing chat history. | Begin read-only queries and proportionate checks. |
+| `analysis` | Checks, queries, interpretation, and iteration are active. | Produce a defensible answer or explicitly record why the evidence cannot answer it. |
+| `review` | Findings, definitions, provenance, limitations, outputs, and reproducibility are being checked. | Correct the case package or approve closure. |
+| `done` | The bounded case has a standalone answer, retained evidence, limitations, and a hard endpoint. | File it; route accepted follow-up questions into new work. |
 
-## Standard Feature Package
+Learning or assessment cases may share this analytical quality sequence, but
+their curriculum, timed assessment, numeric rubric, evaluator-only material,
+closed-book defence, and learning-method quotas do not belong in UPL Lens.
 
-Each real research feature lives under `notebooks/features/`:
+### Boundary With The Analytical Casework Lab
+
+`Analytical Case Ideas` may act as a neutral pre-commitment intake hub using a
+case-lane field. Once selected, a UPL practical case is governed and executed
+inside this repository; a Learning Assessment case remains in its separate Lab
+system. Both may share the quality kernel of question, scope, provenance,
+proportionate checks, reproducible analysis, findings, limitations, and hard
+closure. Do not share the Lab's assessment machinery or choose a UPL question
+merely to practise a technique. Publication is optional downstream work and is
+not required to close either the UPL case package or its owning Issue.
+Ordinary UPL casework does not displace a live Learning assessment window;
+only an explicit, time-sensitive UPL data/operations need may do so. Delay in
+one lane creates no catch-up debt in the other.
+
+## Standard Practical Case Package
+
+New practical cases live under `cases/`:
 
 ```text
-notebooks/features/
-  feature_02_card_trends/
+cases/
+  001-example-question/
     README.md
     analysis.ipynb
-    research_brief.md
-    product_plan.md
+    checks/
+    report.md
     outputs/
 ```
 
-Use the template folder when starting a new feature:
+Copy the template when a scoped question is ready to become committed work:
 
 ```text
-notebooks/features/_feature_template/
+cases/_case_template/
 ```
 
 Example:
 
 ```powershell
-Copy-Item -Recurse notebooks\features\_feature_template notebooks\features\feature_02_card_trends
+Copy-Item -Recurse cases\_case_template cases\001-post-halftime-conceding
 ```
 
 ## What Each File Does
 
+### `README.md`
+
+This is the case contract. It records the football question, intended use,
+scope, definitions, data state, proportionate checks, non-goals, deliverables,
+done condition, and expansion boundary before substantial analysis begins.
+
 ### `analysis.ipynb`
 
-This is the research lab.
+This is the reproducible analysis path. Exploration may remain while the case
+is active, but before closure its data, checks, final calculations, results,
+interpretation, and limitations must be understandable from top to bottom.
 
-Use it to:
+### `checks/`
 
-- load data
-- test SQL
-- use pandas
-- make charts
-- try multiple metric definitions
-- keep notes on failed attempts
+Keep only case-specific SQL, Python, or recorded evidence that could change
+whether the question is answerable or the finding is credible. Link to shared
+foundation validation instead of copying a full platform audit into every case.
 
-The notebook can be messy while exploring. Before promotion, the final sections
-should clearly show the chosen metric, final chart or table, and caveats.
+### `report.md`
 
-### `research_brief.md`
-
-This is the football-thinking file.
-
-It should answer:
-
-- What question are we answering?
-- Why does it matter?
-- What data did we use?
-- What is the final finding?
-- What are the metric definitions?
-- What caveats should users know?
-- What notebook evidence supports the finding?
-
-### `product_plan.md`
-
-This is the retained product history, exceptional promotion, and implementation handoff.
-
-It has three jobs:
-
-- Case endpoint or exceptional promotion plan: what the case outputs or approved app version should do
-- Change requests: what should change after the case or feature already exists
-- Implementation history: what has already been built and verified
+This is the standalone football answer. It owns the short answer, supporting
+evidence, interpretation, limitations, non-claims, data-state reference,
+follow-up questions, and closure record.
 
 ### `outputs/`
 
-This folder can hold notebook exports or reference charts. These files are
-evidence only. The product dashboard should not depend on them.
+Keep only deliberate final charts, tables, figures, or exports cited by the
+report. Do not use it as an exploratory dump.
+
+There is no default `product_plan.md` in a practical case. Software promotion,
+publication, or recurring monitoring requires separate approval and its own
+scope after the analytical case can already close.
+
+The old `notebooks/features/_feature_template/` and Goal Timing package remain
+historical research-to-product evidence. Do not copy them for normal new cases.
 
 ## Notebook Data Access Rules
 
@@ -170,7 +172,7 @@ Promoted reusable metrics: analytics.*
 
 ### Why `staging.*` Is The Default
 
-Most feature research should start from cleaned Postgres tables:
+Most practical case analysis should start from cleaned Postgres tables:
 
 ```text
 staging.matches
@@ -425,7 +427,7 @@ When maintained data changes, an older conclusion remains tied to its recorded
 state. Re-running it creates a new case result or version; it does not silently
 rewrite the historical conclusion.
 
-## Analytics Promotion Decisions
+## Reusable Analytics And Exceptional Software Decisions
 
 Use this rule:
 
@@ -434,6 +436,9 @@ raw.*       = source-shaped scraped data
 staging.*   = cleaned source facts
 analytics.* = reusable derived product metrics and summaries
 ```
+
+The case package is complete without any of the options below. Use them only
+for existing retained software or work separately approved after the case.
 
 ### Direct API Query
 
@@ -493,16 +498,19 @@ analytics.match_<topic>_summary
 
 Avoid naming data objects after charts.
 
-### Promotion Decision Checklist
+### Reuse And Exceptional Promotion Decision
 
-Before promoting notebook logic, decide:
+A case does not need a new `analytics.*` object or software surface to finish.
+After the analytical answer is stable, make any reuse decision separately:
 
-- Can the result be reproduced from Postgres?
-- Does it use cleaned `staging.*` data where possible?
-- Is this a one-endpoint calculation or a reusable product metric?
-- Would a named `analytics.*` view make the logic easier to maintain?
-- Does the SQL avoid hardcoded seasons, team names, or notebook-only files?
-- Does the frontend still receive JSON from FastAPI instead of reading CSVs?
+- Keep logic inside the case when it is question-specific or unlikely to recur.
+- Use a documented `analytics.*` view or table only when the definition is
+  stable, reusable across cases, or complex enough to need a named contract.
+- Open a separate owner-approved Issue before adding or changing FastAPI,
+  React, a dashboard, publication, or recurring monitoring.
+- If software promotion is approved, reproduce the result from Postgres, keep
+  query logic outside route handlers, and keep React dependent on typed API
+  JSON rather than notebooks, CSVs, or exported images.
 
 ## Research And Case Backlog
 
@@ -517,19 +525,19 @@ docs.
 3. Team Profiles And Home/Away Strength - idea
 ```
 
-### Current Feature Table
+### Current Case And Historical Feature Register
 
-| Feature | Status | Feature Package | Research Source | Production Source | API Endpoint | Frontend Surface | Notes |
-|---------|--------|-----------------|-----------------|-------------------|--------------|------------------|-------|
-| Feature 1 - Goal Timing | `promoted` (historical/retained) | `notebooks/features/feature_01_goal_timing/` | `staging.events` via notebook and API query | direct query on `staging.events` joined to app-safe matches; no `analytics.*` view yet | `GET /insights/goal-timing?season=...` | Goal Timing Explorer | Historical first research-to-product slice and retained product example. Counts regular-time goal events by 15-minute interval, excludes added time, and exposes scoreline/timeline coverage context for the subset. |
-| Card Trends And Discipline Case | `candidate` | none yet | likely `staging.events`, `staging.matches`, `staging.officials` | choose during promotion | none yet | case report/output first; software surface only if separately approved | Strong case candidate if card coverage is consistent enough across seasons; not an automatic Feature 2 product commitment. |
-| Feature XX - Template | `idea` | `notebooks/features/_feature_template/` | `staging.*` by default | choose during promotion | none yet | none yet | Copy this package when starting a new experimental feature. |
+| Item | Status | Package | Likely data | Default endpoint | Notes |
+|------|--------|---------|-------------|------------------|-------|
+| Goal Timing Feature 1 | historical `promoted` | `notebooks/features/feature_01_goal_timing/` | retained CSV/notebook evidence and `staging.events` API query | retained Goal Timing API/React surface | Historical first research-to-product slice. It is evidence, not the template for future case completion. |
+| Card Trends And Discipline | `idea` / candidate question area | none | likely `staging.events`, `staging.matches`, and `staging.officials` | notebook/report and deliberate outputs only | Select one bounded football question before creating a case. It is not mandatory Feature 2 work. |
+| New practical case | begins at `scoping` after selection | `cases/<case-id>-<slug>/` | maintained Postgres, usually `staging.*` | notebook/report and deliberate outputs only | Copy `cases/_case_template/`; any later software work needs a separate decision. |
 
 ### Active Research Ideas
 
 #### Card Trends And Discipline
 
-Status: `candidate`
+Status: `idea` / candidate question area
 
 Football question:
 
@@ -553,12 +561,12 @@ staging.matches
 staging.officials
 ```
 
-Possible product surfaces:
+Possible bounded case questions:
 
 ```text
-Discipline Dashboard
-Team Profile discipline section
-League Overview insight card
+Which teams had the highest cards-per-match rate in a named season?
+Did card rates change materially between two adequately covered seasons?
+How often did red-card matches end differently from comparable no-red-card matches?
 ```
 
 Key caveat:
@@ -637,62 +645,75 @@ small-sample distortion.
 
 ## Human Case Workflow
 
-1. Start with a `selected` or explicitly approved idea in this document.
-2. Copy the notebook template folder.
-3. Rename it with the next feature number and short slug.
-4. Change the feature table row to `researching`.
-5. Work in `analysis.ipynb`.
-6. Write `research_brief.md`.
-7. Fill in the promotion plan and readiness notes in `product_plan.md`.
-8. Close the case with findings/report, outputs, caveats, and hard endpoint, or mark it `promotion_ready` only when software promotion is explicitly approved.
-9. Ask an AI agent to promote the feature only when the owner has approved software promotion.
-10. After implementation or case closure, change the row to `closed_case`, `promoted`, or `needs_revision`.
+1. Start with one genuine, bounded UPL football question.
+2. During `scoping`, confirm intended use, available data, definitions,
+   proportionate checks, non-goals, and observable done condition.
+3. Create the owning GitHub Issue when the work is meaningful or resumable,
+   then copy `cases/_case_template/` into the next case folder.
+4. Record the #112 data-state/provenance fields before material analysis and
+   move to `ready` only when another contributor could begin from the package.
+5. During `analysis`, query maintained Postgres read-only, run only material
+   case checks, and keep the final notebook path understandable.
+6. During `review`, reconcile calculations, definitions, evidence, football
+   interpretation, limitations, non-claims, and deliberate outputs.
+7. Mark `done` when the report stands alone and the case's stated endpoint is
+   met. An evidence-based non-answer may be a valid result.
+8. Route follow-up questions into the backlog or new cases instead of silently
+   expanding the completed case.
+9. Open a separate Issue for publication, recurring monitoring, `analytics.*`
+   reuse, FastAPI, React, or other software work when explicitly approved.
 
 ## Historical/Exceptional Promotion Prompt
 
 ```text
-Promote notebooks/features/feature_02_card_trends into a product feature only if a current Issue explicitly approves software promotion.
+Evaluate a completed UPL practical case for software presentation only because a
+current Issue and owner instruction explicitly approve that separate work.
 
 Read:
 - docs/FEATURE_PROMOTION_WORKFLOW.md
 - docs/PRODUCT_STRATEGY.md
-- notebooks/features/feature_02_card_trends/README.md
-- notebooks/features/feature_02_card_trends/research_brief.md
-- notebooks/features/feature_02_card_trends/product_plan.md
-- notebooks/features/feature_02_card_trends/analysis.ipynb
+- cases/<case-id>-<slug>/README.md
+- cases/<case-id>-<slug>/analysis.ipynb
+- cases/<case-id>-<slug>/report.md
+- cases/<case-id>-<slug>/checks/
+- the separately approved software Issue
 
-Use research_brief.md and product_plan.md as the source of truth.
+Use the case report for the analytical answer and the new Issue for software
+scope. Do not reopen or redefine the completed case silently.
 Keep the frontend API-only.
 Use Postgres/FastAPI/React.
 Do not make React read CSV files or notebook outputs.
 Keep route handlers thin and put query logic in src/api/query_services/ or an
 appropriate query/service module.
 Document how to run and verify the feature end to end.
-After implementation, update product_plan.md implementation history and the
-feature table in docs/FEATURE_PROMOTION_WORKFLOW.md.
+After implementation, update the owning software Issue and affected retained
+software documentation.
 ```
 
 ## AI Agent Workflow
 
-When asked to work on a research feature, practical case, or explicitly approved promotion, an AI agent should:
+When asked to work on a practical case, historical feature, or explicitly
+approved promotion, an AI agent should:
 
 1. Read `AGENTS.md`, `.github/copilot-instructions.md`, and this workflow doc.
 2. Read [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md).
-3. Read the feature folder's `README.md`, `research_brief.md`, and
-   `product_plan.md`.
-4. Inspect the notebook only enough to understand the final metric and
-   supporting evidence.
-5. Confirm whether the notebook used `staging.*`, `raw.*`, CSVs, or
-   `analytics.*`.
-6. Identify the production-safe Postgres source.
-7. Choose direct query, analytics view, or stored table deliberately.
-8. For normal casework, document the final query/checks and endpoint. For approved software promotion, add query logic in the backend query/service layer.
-9. Add or extend a thin FastAPI route only for approved software promotion.
-10. Add typed response models and frontend response types only for approved software promotion.
-11. Add a responsive dashboard component only for approved software promotion.
-12. Update `product_plan.md`, this workflow doc's feature table, and any
-    affected docs.
-13. Run relevant verification commands.
+3. Read the case `README.md`, owning Issue, and existing evidence before
+   changing scope or analysis.
+4. Confirm the question, intended use, data state, definitions, non-goals,
+   material checks, and done condition.
+5. Confirm whether the notebook uses `staging.*`, `raw.*`, CSVs,
+   `analytics.*`, or an approved immutable extract, and preserve #112
+   provenance.
+6. Use the least complex defensible method and keep the final notebook path to
+   reported evidence understandable.
+7. Reconcile the report against notebook outputs, retained checks,
+   limitations, and non-claims before closure.
+8. Stop at the case endpoint. Create a separate backlog item or Issue for a
+   materially different follow-up question.
+9. Add `analytics.*`, FastAPI, React, publication, or monitoring work only when
+   a separate owner-approved Issue explicitly scopes it.
+10. Run relevant verification commands and update only the owning canonical
+    docs.
 
 The AI agent should not:
 
@@ -701,9 +722,11 @@ The AI agent should not:
 - promote a CSV-only analysis without mapping it back to Postgres
 - hide business logic inside route handlers
 - add a database migration when a query over existing staging data is enough
-- ignore caveats from `research_brief.md`
+- ignore caveats or non-claims from the case contract and report
+- import the Analytical Casework Lab's curriculum, assessment clock, rubric,
+  evaluator-only material, or learning-method quotas into UPL practical cases
 
-## Current Feature Packages
+## Historical Feature Packages
 
 ```text
 notebooks/features/_feature_template/
@@ -711,5 +734,6 @@ notebooks/features/feature_01_goal_timing/
 ```
 
 Ideas in notebooks are not considered product features until they are captured
-in `research_brief.md`, described in `product_plan.md`, and served through
-FastAPI to React.
+in a completed case or historical research brief and separately approved for
+software work. Goal Timing remains the retained example; it is not the default
+future path.

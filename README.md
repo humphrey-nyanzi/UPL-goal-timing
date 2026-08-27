@@ -96,10 +96,11 @@ answer from individual match pages:
 - How do cards, lineups, officials, and match events shape outcomes?
 - Which teams, players, and matches stand out across seasons?
 
-New UPL work should end as a closed analytical case: question, source snapshot
-or coverage record, checks, notebook, findings or report, outputs, caveats, and
-a hard endpoint. Goal Timing is the historical first analysis and retained
-product example, not a standing promise that every case becomes a dashboard.
+New UPL work should end as a closed analytical case: question,
+data-state/provenance record, checks, notebook, findings or report, outputs,
+caveats, and a hard endpoint. Goal Timing is the historical first analysis and
+retained product example, not a standing promise that every case becomes a
+dashboard.
 
 ## Current System
 
@@ -130,8 +131,9 @@ For portfolio and recruiting review, this repository demonstrates:
 - **Frontend development**: retained React product routes for overview, trends,
   matches, teams, players, insights, goal timing, methodology, loading states,
   and API status.
-- **Research workflow**: notebooks, case records, research briefs, caveats, and
-  reproducible evidence for bounded UPL questions.
+- **Practical case workflow**: small `cases/` packages with a case contract,
+  reproducible notebook, meaningful checks, standalone report, limitations,
+  deliberate outputs, and a hard endpoint.
 - **Deployment**: Cloudflare Pages, Render, Supabase, GitHub Actions, CORS, and
   environment-based configuration.
 
@@ -162,10 +164,11 @@ Main repository areas:
 
 ```text
 api/          FastAPI app and routers
+cases/        practical UPL case template and completed case packages
 database/     SQL migrations, seeds, and permission templates
-docs/         roadmap, operations, feature workflow, deployment, and doc map
+docs/         roadmap, operations, case workflow, deployment, and doc map
 frontend/     React dashboard
-notebooks/    research feature packages
+notebooks/    historical research feature packages, including Goal Timing
 scripts/      scraping, loading, staging, and automation scripts
 src/          shared Python modules for scraping, db, API, research, validation
 tests/        early pytest coverage for risky logic

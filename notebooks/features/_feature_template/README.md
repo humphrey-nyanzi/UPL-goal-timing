@@ -1,8 +1,13 @@
-# Feature Notebook Template
+# Historical Feature Notebook Template
 
-Copy this folder when starting a new experimental feature.
+This folder preserves the public-product-era research-to-software package. Do
+not copy it for normal new UPL work. Start practical cases from:
 
-Recommended naming:
+```text
+cases/_case_template/
+```
+
+The historical naming pattern was:
 
 ```text
 feature_02_card_trends
@@ -10,14 +15,13 @@ feature_03_home_advantage
 feature_04_official_cards
 ```
 
-Use this folder as the research lab. The notebook can stay exploratory, but the
-two markdown files keep the feature easy to promote or modify later through the
-Postgres -> FastAPI -> React product path.
+The notebook, research brief, and product plan remain useful when maintaining
+Goal Timing or studying how the earlier Postgres -> FastAPI -> React promotion
+path worked.
 
-After copying the folder, add the new feature to
-`docs/FEATURE_PROMOTION_WORKFLOW.md`. Start with status `researching`, then
-update it as
-the feature moves through `validated`, `promotion_ready`, and `promoted`.
+New practical cases instead close with a case contract, reproducible notebook,
+meaningful checks, standalone report, deliberate outputs, and limitations.
+They do not require `product_plan.md` or software promotion.
 
 For data access, start from cleaned Postgres `staging.*` tables unless you have
 a specific reason to debug raw source data. See
@@ -36,7 +40,8 @@ feature_xx_short_name/
   outputs/
 ```
 
-Before asking an AI agent to promote the feature, update:
+For separately approved maintenance or promotion of a historical feature,
+update:
 
 - `research_brief.md` with the football question, finding, metrics, and caveats.
 - `product_plan.md` with what you want the product to do and the readiness
