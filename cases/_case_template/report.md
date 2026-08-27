@@ -28,12 +28,16 @@ alternative explanations, and conclusions the case does not support.
 
 ## Data State And Reproduction
 
-- Database/run reference:
-- Migration/schema state:
-- Tables/views used:
-- Query/notebook version:
-- Extract/checksum, if an immutable extract was justified:
-- Relevant checks:
+- Analysis date and evidence source (maintained database or immutable extract):
+- Database environment and data-state timestamp/run reference:
+- Seasons, tables/views, material fields, and row grain:
+- Query filters, joins, exclusions, and missing-data treatment:
+- Git commit and notebook/script/SQL revision:
+- Applied migration/schema state, when relevant:
+- Latest relevant staging-validation run and issue counts:
+- Case-specific coverage checks and results:
+- Known corrections, source anomalies, limitations, and unresolved semantics:
+- Extract version/checksum, only when an immutable extract was justified:
 
 ## Follow-Up Questions
 

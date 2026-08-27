@@ -96,10 +96,11 @@ answer from individual match pages:
 - How do cards, lineups, officials, and match events shape outcomes?
 - Which teams, players, and matches stand out across seasons?
 
-New UPL work should end as a closed analytical case: question, source snapshot
-or coverage record, checks, notebook, findings or report, outputs, caveats, and
-a hard endpoint. Goal Timing is the historical first analysis and retained
-product example, not a standing promise that every case becomes a dashboard.
+New UPL work should end as a closed analytical case: question,
+data-state/provenance record, checks, notebook, findings or report, outputs,
+caveats, and a hard endpoint. Goal Timing is the historical first analysis and
+retained product example, not a standing promise that every case becomes a
+dashboard.
 
 ## Current System
 

@@ -33,14 +33,18 @@ and is not required for completion.
 
 ## Evidence And Data State
 
-- Database environment or approved extract:
-- Data-state timestamp or run reference:
-- Migration/schema state:
-- Tables/views and important fields:
-- Query/notebook revision:
-- Extract version/checksum, only when required:
-- Seasons and coverage:
-- Known missingness or source limitations:
+- Case ID/title and analysis date:
+- Evidence source: maintained database or approved immutable extract:
+- Database environment and data-state timestamp/run reference:
+- Season or seasons and coverage:
+- Tables/views, material fields, and row grain:
+- Query filters, joins, exclusions, and missing-data treatment:
+- Git commit and notebook/script/SQL revision:
+- Applied migration/schema state, when relevant:
+- Latest relevant staging-validation run and issue counts:
+- Case-specific coverage checks and results:
+- Known corrections, source anomalies, limitations, and unresolved semantics:
+- Extract version/checksum, only when an immutable extract is justified:
 
 Default to maintained Postgres `staging.*` through the read-only research
 access pattern. Use `raw.*` only for source investigation. Use an existing

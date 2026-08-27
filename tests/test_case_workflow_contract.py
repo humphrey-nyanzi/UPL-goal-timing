@@ -41,6 +41,27 @@ def test_case_contract_contains_scope_evidence_and_closure_guards() -> None:
     assert all(term in contract for term in required_terms)
 
 
+def test_case_contract_exposes_the_minimum_data_state_record() -> None:
+    """Keep Issue #112 provenance fields visible to every case author."""
+
+    contract = (TEMPLATE / "README.md").read_text(encoding="utf-8").lower()
+    required_terms = (
+        "analysis date",
+        "maintained database or approved immutable extract",
+        "data-state timestamp",
+        "season or seasons",
+        "row grain",
+        "query filters, joins, exclusions, and missing-data treatment",
+        "git commit and notebook/script/sql revision",
+        "migration/schema state",
+        "staging-validation run and issue counts",
+        "case-specific coverage checks and results",
+        "known corrections, source anomalies, limitations, and unresolved semantics",
+        "extract version/checksum",
+    )
+    assert all(term in contract for term in required_terms)
+
+
 def test_case_notebook_is_valid_notebook_json() -> None:
     """Ensure a copied template opens as a notebook without regeneration."""
 
@@ -79,6 +100,16 @@ def test_case_report_stands_alone_and_closes_without_product_work() -> None:
         "closure",
     )
     assert all(term in report for term in required_terms)
+
+    reproduction_terms = (
+        "analysis date and evidence source",
+        "row grain",
+        "query filters, joins, exclusions, and missing-data treatment",
+        "git commit and notebook/script/sql revision",
+        "staging-validation run and issue counts",
+        "known corrections, source anomalies, limitations, and unresolved semantics",
+    )
+    assert all(term in report for term in reproduction_terms)
 
 
 def test_active_guidance_uses_the_case_template_not_feature_promotion() -> None:
