@@ -255,6 +255,174 @@ Use `analytics.*` when:
 - multiple endpoints or components need the same logic
 - the query is complex enough to deserve a named database contract
 
+## Maintained Database Trust And Case Reproducibility
+
+The maintained Postgres database is the default analytical foundation for UPL
+casework. A completed season does not require a permanent frozen export before
+it can be analysed.
+
+Use this path by default:
+
+```text
+maintained Postgres
+  -> read-only case query
+  -> case-specific coverage and quality checks
+  -> analysis
+```
+
+### Trust Boundaries
+
+Treat the schemas differently:
+
+- `raw.*` preserves source-shaped evidence. Use it to diagnose acquisition or
+  transformation problems, not as the normal analytical contract.
+- `staging.*` contains cleaned and normalized source facts. Core match identity,
+  season, teams, dates, scorelines, and results may be treated as generally
+  reliable only after their owning migration, staging validation, and
+  case-specific checks pass.
+- Events, timelines, cards, lineups, staff, officials, and stats are
+  coverage-dependent. Check relevant row counts, status fields, nulls,
+  mismatches, exclusions, and `staging.validation_issues` before using them.
+- `analytics.*` contains reusable derived contracts. Reuse one only when its
+  grain, source tables, metric semantics, exclusions, correction rules, refresh
+  behavior, and regression evidence are documented.
+- Corrections and exceptions must remain queryable and sourced through database
+  fields or tables, validation evidence, migrations, and their owning Issue or
+  source record. Do not hide a manual correction inside notebook code.
+
+Passing a general staging verification does not prove that every domain is
+complete enough for every case. Each case still owns the checks material to its
+question.
+
+### Final Metric And Correction Semantics
+
+Migration `012_reconcile_scoreline_goal_contract.sql` and Issue #104 establish
+the current interpretation rules. New cases must preserve these distinctions:
+
+- Final match scorelines in `staging.matches` are the source for goals for,
+  goals against, goal difference, match results, standings, and general scoring
+  rates. Do not reconstruct those metrics from event rows.
+- `timeline_goal_count` describes goal events recovered from the source
+  timeline. It is coverage-dependent evidence and must be paired with
+  `timeline_status`, mismatch counts, and any relevant validation issues.
+- Goal Timing is narrower again: it counts eligible goal events in regular time
+  from minutes 1 through 90 and excludes added-time and out-of-window events.
+  It is not interchangeable with either the final-score total or the complete
+  recovered-timeline total.
+- Team table points use `sporting_points` plus an explicit
+  `points_adjustment` to produce `official_points`. Any deduction or award must
+  remain in `analytics.team_season_point_adjustments` with its note, source,
+  and owning migration or Issue evidence.
+- Source corrections preserve `raw.*` as acquired evidence and apply the
+  justified change in `staging.*` through a migration. The minute-334 to
+  minute-34 correction in migration 012 is the reference example; a notebook
+  must not silently repeat or replace that correction.
+
+The verified 2025/26 post-migration baseline was 505 final-score goals, 496
+recovered timeline goals, and 462 Goal Timing regular-time goals. These values
+are verification evidence for that recorded data state, not constants to
+hard-code into future cases. Recheck them after a source refresh, correction,
+or migration.
+
+### Minimum Case Data-State Record
+
+Every practical case should record:
+
+- case ID or title and analysis date
+- season or seasons used
+- tables, views, material fields, and row grain
+- query filters, joins, exclusions, and missing-data treatment
+- Git commit plus notebook, script, or SQL revision
+- applied migration state when it affects interpretation
+- latest relevant staging validation run and issue counts
+- case-specific coverage checks and their results
+- known corrections, source anomalies, limitations, and unresolved semantics
+- whether the maintained database or an immutable extract was queried
+
+The case package structure is owned separately by the practical-case workflow.
+This section defines the data record that package must preserve.
+
+The read-only research role may inspect `app_meta.schema_migrations` as well as
+the three data schemas. The helper in `src.research` also rejects write SQL and
+sets the transaction read-only. Record migration and validation state with
+queries such as:
+
+```python
+from src.research import read_sql
+
+migrations = read_sql(
+    """
+    SELECT filename, applied_at
+    FROM app_meta.schema_migrations
+    ORDER BY filename
+    """
+)
+
+latest_validation = read_sql(
+    """
+    SELECT run_id, seasons, row_counts, issue_counts, completed_at
+    FROM staging.validation_runs
+    WHERE :season = ANY(
+        string_to_array(replace(seasons, ' ', ''), ',')
+    )
+    ORDER BY completed_at DESC
+    LIMIT 1
+    """,
+    {"season": "2025_26"},
+)
+```
+
+After a migration, season rollover, or meaningful pipeline change, rerun the
+relevant staging verification and case-specific coverage queries. A reusable
+`analytics.*` object also needs focused regression evidence and a freshness
+check appropriate to its refresh contract.
+
+Use this lightweight post-change verification sequence before relying on an
+existing case or beginning a new one:
+
+1. Confirm the expected migration filenames and timestamps in
+   `app_meta.schema_migrations`.
+2. Inspect the latest relevant `staging.validation_runs` summary covering the
+   case season or seasons, plus the relevant rows in
+   `staging.validation_issues`.
+3. Reconcile the case's core record counts and its coverage-dependent counts;
+   for goal cases, keep final-score, recovered-timeline, and eligible-subset
+   totals separate.
+4. Re-run focused regression checks for any reused `analytics.*` object or
+   correction rule.
+5. Record the resulting commit, migration state, validation run, query scope,
+   and material counts in the case package before interpreting the result.
+
+A changed count is not automatically a failure. Stop and investigate when the
+change cannot be explained by a documented source update, correction,
+migration, or case-filter change.
+
+### When An Immutable Extract Is Required
+
+Keep querying maintained Postgres when the case can be responsibly revisited
+from its recorded code, migration state, validation run, and query scope.
+
+Create a case-specific immutable extract only when at least one of these is
+material:
+
+- publication, audit, assessment, or handoff requires the exact reviewed rows
+- the source database may change before another reviewer can reproduce the work
+- a third party cannot receive controlled read-only database access
+- the result depends on an exceptional correction or exclusion that needs a
+  preserved evidence package
+- rerunning against corrected maintained data would answer a meaningfully
+  different question
+
+An extract must be limited to the required rows and fields, exclude credentials
+and private operational material, and record its query, schema, creation time,
+source commit/migration state, row count, and cryptographic checksum. Do not
+commit raw working datasets or create a central frozen season snapshot by
+default.
+
+When maintained data changes, an older conclusion remains tied to its recorded
+state. Re-running it creates a new case result or version; it does not silently
+rewrite the historical conclusion.
+
 ## Analytics Promotion Decisions
 
 Use this rule:

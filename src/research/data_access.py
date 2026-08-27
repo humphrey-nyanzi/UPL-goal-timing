@@ -1,8 +1,8 @@
-"""Read-only SQL helpers for feature research notebooks.
+"""Read-only SQL helpers for analytical cases and research notebooks.
 
-Research notebooks should usually read cleaned `staging.*` tables. This module
+Analytical cases should usually read cleaned `staging.*` tables. This module
 keeps that access pattern small and repeatable, while adding a guardrail against
-accidental write statements in notebooks.
+accidental write statements in case queries or notebooks.
 """
 
 from __future__ import annotations
@@ -15,7 +15,6 @@ from sqlalchemy import text
 
 from src.db.connection import create_sqlalchemy_engine
 from src.db.settings import DatabaseSettings
-
 
 READ_ONLY_STARTERS = {"select", "with", "explain"}
 WRITE_KEYWORDS = {
@@ -46,14 +45,16 @@ def _first_sql_word(query: str) -> str:
 
 
 def _validate_read_only_query(query: str) -> None:
-    """Raise a clear error when a notebook query looks unsafe."""
+    """Raise a clear error when an analytical query looks unsafe."""
 
     lowered = query.lower()
-    blocked = [keyword for keyword in WRITE_KEYWORDS if re.search(rf"\b{keyword}\b", lowered)]
+    blocked = [
+        keyword for keyword in WRITE_KEYWORDS if re.search(rf"\b{keyword}\b", lowered)
+    ]
     if blocked:
         blocked_text = ", ".join(sorted(blocked))
         raise ValueError(
-            "Research notebooks should not run write or permission SQL. "
+            "Analytical cases should not run write or permission SQL. "
             f"Blocked keyword(s): {blocked_text}."
         )
 
@@ -61,7 +62,7 @@ def _validate_read_only_query(query: str) -> None:
     if first_word not in READ_ONLY_STARTERS:
         allowed = ", ".join(sorted(READ_ONLY_STARTERS))
         raise ValueError(
-            "Research notebooks should use read-only SQL. "
+            "Analytical cases should use read-only SQL. "
             f"Expected the query to start with one of: {allowed}."
         )
 
@@ -77,7 +78,7 @@ def read_sql(
     ----------
     query : str
         A `SELECT`, `WITH`, or `EXPLAIN` query. Write statements are blocked so
-        feature notebooks do not accidentally modify app data.
+        analytical cases do not accidentally modify maintained data.
     params : dict[str, Any] | None, optional
         Query parameters passed safely to SQLAlchemy and psycopg.
     settings : DatabaseSettings | None, optional
