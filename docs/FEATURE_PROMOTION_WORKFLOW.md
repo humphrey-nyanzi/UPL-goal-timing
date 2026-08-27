@@ -294,6 +294,36 @@ Passing a general staging verification does not prove that every domain is
 complete enough for every case. Each case still owns the checks material to its
 question.
 
+### Final Metric And Correction Semantics
+
+Migration `012_reconcile_scoreline_goal_contract.sql` and Issue #104 establish
+the current interpretation rules. New cases must preserve these distinctions:
+
+- Final match scorelines in `staging.matches` are the source for goals for,
+  goals against, goal difference, match results, standings, and general scoring
+  rates. Do not reconstruct those metrics from event rows.
+- `timeline_goal_count` describes goal events recovered from the source
+  timeline. It is coverage-dependent evidence and must be paired with
+  `timeline_status`, mismatch counts, and any relevant validation issues.
+- Goal Timing is narrower again: it counts eligible goal events in regular time
+  from minutes 1 through 90 and excludes added-time and out-of-window events.
+  It is not interchangeable with either the final-score total or the complete
+  recovered-timeline total.
+- Team table points use `sporting_points` plus an explicit
+  `points_adjustment` to produce `official_points`. Any deduction or award must
+  remain in `analytics.team_season_point_adjustments` with its note, source,
+  and owning migration or Issue evidence.
+- Source corrections preserve `raw.*` as acquired evidence and apply the
+  justified change in `staging.*` through a migration. The minute-334 to
+  minute-34 correction in migration 012 is the reference example; a notebook
+  must not silently repeat or replace that correction.
+
+The verified 2025/26 post-migration baseline was 505 final-score goals, 496
+recovered timeline goals, and 462 Goal Timing regular-time goals. These values
+are verification evidence for that recorded data state, not constants to
+hard-code into future cases. Recheck them after a source refresh, correction,
+or migration.
+
 ### Minimum Case Data-State Record
 
 Every practical case should record:
@@ -342,6 +372,25 @@ After a migration, season rollover, or meaningful pipeline change, rerun the
 relevant staging verification and case-specific coverage queries. A reusable
 `analytics.*` object also needs focused regression evidence and a freshness
 check appropriate to its refresh contract.
+
+Use this lightweight post-change verification sequence before relying on an
+existing case or beginning a new one:
+
+1. Confirm the expected migration filenames and timestamps in
+   `app_meta.schema_migrations`.
+2. Inspect the latest `staging.validation_runs` summary and the relevant rows
+   in `staging.validation_issues`.
+3. Reconcile the case's core record counts and its coverage-dependent counts;
+   for goal cases, keep final-score, recovered-timeline, and eligible-subset
+   totals separate.
+4. Re-run focused regression checks for any reused `analytics.*` object or
+   correction rule.
+5. Record the resulting commit, migration state, validation run, query scope,
+   and material counts in the case package before interpreting the result.
+
+A changed count is not automatically a failure. Stop and investigate when the
+change cannot be explained by a documented source update, correction,
+migration, or case-filter change.
 
 ### When An Immutable Extract Is Required
 

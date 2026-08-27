@@ -26,6 +26,10 @@ BEGIN
 END
 $$;
 
+-- Make read-only the database-session default as well as the notebook helper
+-- default. Object grants below remain the primary least-privilege boundary.
+ALTER ROLE upl_research_reader SET default_transaction_read_only = on;
+
 DO $$
 BEGIN
     EXECUTE format(

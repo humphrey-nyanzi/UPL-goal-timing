@@ -94,6 +94,9 @@ def test_research_reader_can_read_migration_provenance_without_write_grants() ->
     assert "ON app_meta.schema_migrations" in sql
     assert "ON ALL TABLES IN SCHEMA app_meta" not in sql
     assert "ALTER DEFAULT PRIVILEGES IN SCHEMA app_meta" not in sql
+    assert (
+        "ALTER ROLE upl_research_reader SET default_transaction_read_only = on" in sql
+    )
     assert "GRANT INSERT" not in sql
     assert "GRANT UPDATE" not in sql
     assert "GRANT DELETE" not in sql
