@@ -313,10 +313,12 @@ the current interpretation rules. New cases must preserve these distinctions:
   `points_adjustment` to produce `official_points`. Any deduction or award must
   remain in `analytics.team_season_point_adjustments` with its note, source,
   and owning migration or Issue evidence.
-- Source corrections preserve `raw.*` as acquired evidence and apply the
-  justified change in `staging.*` through a migration. The minute-334 to
-  minute-34 correction in migration 012 is the reference example; a notebook
-  must not silently repeat or replace that correction.
+- Source corrections preserve `raw.*` as acquired evidence. Encode a justified
+  correction in the raw-to-staging transformation or another rebuild-safe
+  correction contract so every staging rebuild reapplies it. Use a migration
+  when already-hosted staging or analytics rows also need reconciliation. The
+  minute-334 to minute-34 transform and migration 012 are the reference
+  example; a notebook must not silently repeat or replace that correction.
 
 The verified 2025/26 post-migration baseline was 505 final-score goals, 496
 recovered timeline goals, and 462 Goal Timing regular-time goals. These values
