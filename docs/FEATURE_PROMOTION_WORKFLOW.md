@@ -1,7 +1,7 @@
 # Practical UPL Case Workflow And Exceptional Promotion
 
 This document is the research and practical-casework playbook for the
-repository's Research & Football Intelligence lane.
+repository's UPL Analytical Casework lane.
 
 It now owns:
 
@@ -48,14 +48,15 @@ Postgres staging/analytics
 React must not read CSV files, notebook outputs, exported notebook images, or
 local database files directly.
 
-Active research or casework should be tracked as GitHub Issues when it moves
-beyond a quick note. Use the Research / Football Intelligence Issue template
-for meaningful, resumable questions. Issue #116 owns its case-oriented wording
-and Project stage mapping. This document owns the durable research and case
-lifecycle; Issues own active work, comments, handoffs, and owner review.
+Active casework should be tracked as GitHub Issues when it moves beyond a quick
+note. Use the Practical UPL Analytical Case Issue template for meaningful,
+resumable questions. The `UPL Status` Project field maps `scoping`, `ready`,
+active analysis, `review`, and `done` to the shared repository workflow. This
+document owns the durable analytical lifecycle; Issues own active work,
+comments, handoffs, and owner review.
 ## Reading Order
 
-When working in Research & Football Intelligence, read in this order:
+When working in UPL Analytical Casework, read in this order:
 
 1. [START_HERE.md](START_HERE.md)
 2. [PRODUCT_STRATEGY.md](PRODUCT_STRATEGY.md)
@@ -65,8 +66,9 @@ When working in Research & Football Intelligence, read in this order:
 
 ## Research And Case Lifecycle
 
-Use these lifecycle states inside the case contract. Issue #116 owns how they
-map to GitHub Project fields.
+Use these lifecycle states inside the case contract. Map them to the shared
+Project stages without making publication or software promotion a workflow
+requirement.
 
 | Status | Meaning | What usually happens next |
 |--------|---------|---------------------------|

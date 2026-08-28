@@ -169,12 +169,12 @@ script, notebook, API endpoint, or frontend page end to end.
 
 Use these areas for planning, review, and scoping:
 
-1. **Data Reliability & Operations** - scraper behavior, Postgres, staging
+1. **Data Foundation & Operations** - scraper behavior, Postgres, staging
    validation, automation, deployment health, logs, tests, and escalation.
-2. **Research & Football Intelligence** - notebooks, football questions,
+2. **UPL Analytical Casework** - notebooks, football questions,
    feature/case packages, metric definitions, caveats, reproducibility records, and exceptional promotion decisions.
-3. **Retained Product Experience** - FastAPI endpoints, query/service logic, React pages, UI/UX, filters, tables, charts, and browser-facing states when a current Issue explicitly keeps them in scope.
-4. **Developer Experience & Documentation** - onboarding, setup instructions,
+3. **Retained Product** - FastAPI endpoints, query/service logic, React pages, UI/UX, filters, tables, charts, and browser-facing states when a current Issue explicitly keeps them in scope.
+4. **Project System & Documentation** - onboarding, setup instructions,
    command guides, troubleshooting, repo conventions, and documentation
    navigation.
 
@@ -184,7 +184,7 @@ user explicitly changes the scope.
 
 ## Practical Case Workflow
 
-Research & Football Intelligence work should use the practical-case workflow
+UPL Analytical Casework should use the practical-case workflow
 documented in
 [docs/FEATURE_PROMOTION_WORKFLOW.md](docs/FEATURE_PROMOTION_WORKFLOW.md).
 That document owns case lifecycle, notebook data-source rules, case-specific
@@ -404,9 +404,19 @@ GitHub Actions is the preferred automation path for portfolio visibility.
   instructed.
 - When opening a PR from an Issue, copy the Issue's relevant area/type/priority
   labels, assign the same milestone, add the PR to the same GitHub Project, and
-  set the PR status to `status: needs-review` only when the Issue checklist and
-  acceptance criteria are complete. Use `Closes #<issue-number>` in the PR body
-  so the Issue closes automatically after the owner-reviewed PR is merged.
+  move its `UPL Status` to `Review / QA` only when the Issue checklist and
+  acceptance criteria are complete. The Project field owns workflow state;
+  labels own lane, type, priority, and exceptional blockage. Use
+  `Closes #<issue-number>` in the PR body so the Issue closes automatically
+  after the owner-reviewed PR is merged.
+- Use the existing `UPL Lens Development` Project. Do not create a parallel
+  board. Its normal flow is `Inbox -> Scoping -> Ready -> In Progress -> Review
+  / QA -> Done`, with `Parked` as an alternative endpoint.
+- Keep ordinary practical cases GitHub-only. Create a parent-linked Notion child
+  only after explicit owner commitment when the case has its own substantial
+  scope, deliverable, status, done condition, and independent coordination
+  needs. GitHub continues to own execution details; do not duplicate its task
+  list in Notion.
 - If useful work is discovered outside the Issue scope, do not silently expand
   the PR. Add a PR comment or create a follow-up Issue so the owner can decide
   whether it belongs in a later milestone.

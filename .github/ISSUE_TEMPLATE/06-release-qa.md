@@ -1,14 +1,15 @@
 ---
-name: Release / QA
-about: Release readiness, QA review, milestone closure, or public release notes
+name: Exceptional Release / Transition QA
+about: An explicitly approved release, closure, transition, or milestone decision
 title: "[Release] "
-labels: "type: release, status: needs-triage"
+labels: "type: release"
 assignees: ""
 ---
 
 ## Release Goal
 
-What version, milestone, or release candidate is being reviewed?
+What owner-approved release, closure, transition, or finite milestone is being
+reviewed? Ordinary cases and ongoing operations do not need a release milestone.
 
 ## Scope
 

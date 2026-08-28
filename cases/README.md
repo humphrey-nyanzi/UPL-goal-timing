@@ -35,8 +35,9 @@ cases/<three-digit-id>-<short-slug>/
 ```
 
 Use the next available case ID. Record the owning GitHub Issue in the copied
-case contract. Issue #116 owns Project-stage and Issue-template semantics; this
-directory does not duplicate them.
+case contract. The practical-case Issue template and shared `UPL Status`
+Project stages own intake and workflow semantics; this directory does not
+duplicate them.
 
 ## Hard Boundary
 

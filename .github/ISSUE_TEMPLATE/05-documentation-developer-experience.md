@@ -2,7 +2,7 @@
 name: Documentation / Developer Experience
 about: Docs, onboarding, agent instructions, setup guides, commands, or repo navigation
 title: "[Docs] "
-labels: "area: developer-docs, type: documentation, status: needs-triage"
+labels: "area: project-system, type: documentation"
 assignees: ""
 ---
 

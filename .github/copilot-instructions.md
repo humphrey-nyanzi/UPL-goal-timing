@@ -93,14 +93,14 @@ match pages.
 
 ## Planned Tracks And Work Areas
 
-The production system still has three technical tracks: Data Platform, Research
-Lab, and Public Product. New planning should use the four continuous development
+The repository still contains three technical tracks: Data Platform, Research
+Lab, and retained Public Product. New planning should use the four work lanes
 areas in `docs/START_HERE.md`:
 
-- Data Reliability & Operations
-- Research & Football Intelligence
-- Product Experience
-- Developer Experience & Documentation
+- Data Foundation & Operations
+- UPL Analytical Casework
+- Retained Product
+- Project System & Documentation
 
 ### Data Platform
 
@@ -340,9 +340,8 @@ Before making non-trivial changes:
 - Read `docs/START_HERE.md`.
 - Read `docs/PROJECT_ROADMAP.md`.
 - Inspect the current files touched by the task.
-- Check whether the task belongs to Data Reliability & Operations, Research &
-  Football Intelligence, Product Experience, or Developer Experience &
-  Documentation.
+- Check whether the task belongs to Data Foundation & Operations, UPL
+  Analytical Casework, Retained Product, or Project System & Documentation.
 - Keep the change area-appropriate.
 - Explain each step in beginner-friendly language: what changed, why it matters,
   and how to run or verify it.

@@ -2,7 +2,7 @@
 name: Bug Report
 about: Something is broken, misleading, incorrect, or unexpectedly failing
 title: "[Bug] "
-labels: "type: bug, status: needs-triage"
+labels: "type: bug"
 assignees: ""
 ---
 

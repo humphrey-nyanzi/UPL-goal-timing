@@ -84,23 +84,35 @@ Issues move the work.
 Branches isolate the work.
 Pull Requests review the work.
 Projects show workflow state.
-Milestones define release goals.
+Milestones define finite owner-approved goals.
 Releases record what shipped.
 Agents work from Issues when available.
 The owner approves closure and release.
 ```
 
-The default Project pipeline is:
+The default `UPL Status` Project pipeline is:
 
 ```text
-Inbox -> Research -> Ready -> In Progress -> Review / QA -> Done -> Released -> Parked
+Inbox -> Scoping -> Ready -> In Progress -> Review / QA -> Done
+         \-> Parked
 ```
 
-Use `.github/ISSUE_TEMPLATE/` for new work. The initial frontend and
-discipline-research seed Issues have been created in GitHub, with reusable
-local drafts kept in `.github/ISSUE_DRAFTS/`. Meaningful work should happen on
-an Issue-specific branch and enter `main` through a Pull Request after owner
-review.
+Use `.github/ISSUE_TEMPLATE/` for new work. Templates distinguish practical
+UPL cases, data-foundation work, project-system/docs work, bugs, exceptional
+release/transition QA, and explicitly approved retained-product maintenance.
+The old local seed drafts were removed after their historical Issues were
+created. Meaningful work should happen on an Issue-specific branch and enter
+`main` through a Pull Request after owner review.
+
+The Project field owns workflow stage. Labels own work lane, type, priority,
+and exceptional blockage. A completed case is `Done`; publication is optional
+downstream work, not a `Released` stage.
+
+Ordinary practical cases stay GitHub-only. A case receives a parent-linked
+Notion child record only after explicit owner commitment when it has its own
+substantial scope, deliverable, status, done condition, and independent
+coordination needs. GitHub remains the execution owner; Notion must not duplicate
+the case task list.
 
 Beginner defaults:
 
@@ -169,10 +181,10 @@ If you want current priorities:
 
 ```mermaid
 flowchart TD
-    A["UPL Lens"] --> B["Data Reliability & Operations"]
-    A --> C["Research & Football Intelligence"]
-    A --> D["Retained Software Stewardship"]
-    A --> E["Developer Experience & Documentation"]
+    A["UPL Lens"] --> B["Data Foundation & Operations"]
+    A --> C["UPL Analytical Casework"]
+    A --> D["Retained Product"]
+    A --> E["Project System & Documentation"]
 
     B --> B1["scraper, Postgres, validation, automation, deployment health"]
     C --> C1["notebooks, bounded cases, checks, findings, caveats"]
@@ -180,7 +192,7 @@ flowchart TD
     E --> E1["onboarding, setup, commands, troubleshooting, doc clarity"]
 ```
 
-### Data Reliability & Operations
+### Data Foundation & Operations
 
 Purpose: keep the source data, database, automation, and deployment
 trustworthy.
@@ -196,7 +208,7 @@ Postgres rows, staging validation finds structural errors, the API would
 publish misleading data, routine automation needs admin privileges, or secrets
 are exposed.
 
-### Research & Football Intelligence
+### UPL Analytical Casework
 
 Purpose: answer bounded football questions with reproducible evidence and close
 cases; software promotion is exceptional and separately approved.
@@ -209,7 +221,7 @@ Read first:
 Escalate when a finding cannot be traced to source coverage, a notebook or SQL
 check, a clear metric definition, and documented caveats.
 
-### Retained Software Stewardship
+### Retained Product
 
 Purpose: maintain retained FastAPI/React assets and support explicitly approved
 presentation work. It is no longer the default destination for validated
@@ -227,7 +239,7 @@ Escalate when React needs data that no endpoint exposes cleanly, frontend logic
 starts duplicating durable backend logic, a response shape change can break the
 dashboard, or the UI hides caveats.
 
-### Developer Experience & Documentation
+### Project System & Documentation
 
 Purpose: make the project understandable and repeatable for a junior developer,
 future contributor, reviewer, or AI agent.
