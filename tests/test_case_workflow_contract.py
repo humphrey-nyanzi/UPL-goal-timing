@@ -126,3 +126,13 @@ def test_active_guidance_uses_the_case_template_not_feature_promotion() -> None:
     assert "There is no default `product_plan.md`" in agents
     assert "notebooks/features/_feature_template/" in workflow
     assert "historical" in workflow.lower()
+
+
+def test_canonical_diagram_describes_the_case_workflow_as_active() -> None:
+    """Prevent the completed Issue #113 workflow from becoming prospective again."""
+
+    diagram = (ROOT / "docs" / "diagram_collection.md").read_text(encoding="utf-8")
+
+    assert "Active practical case package" in diagram
+    assert "Closed-case evidence" in diagram
+    assert "Prospective #113" not in diagram

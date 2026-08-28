@@ -76,8 +76,8 @@ flowchart LR
     DECISION -->|"yes"| ANALYTICS["new analytics.*\nshared derived contract"]
     DECISION -->|"no"| ACCESS
     ANALYTICS --> ACCESS
-    ACCESS --> CASE["Prospective #113 case package\nbounded question, notebook, checks"]
-    CASE --> EVIDENCE["Prospective #113 closure\nfindings/report, outputs, caveats"]
+    ACCESS --> CASE["Active practical case package\nbounded question, notebook, checks"]
+    CASE --> EVIDENCE["Closed-case evidence\nfindings/report, outputs, caveats"]
     EVIDENCE --> CLOSED["Case closed"]
 
     ACTIONS["GitHub Actions\nroutine and explicit admin modes"] --> PREFLIGHT
