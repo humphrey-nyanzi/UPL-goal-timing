@@ -114,6 +114,10 @@ substantial scope, deliverable, status, done condition, and independent
 coordination needs. GitHub remains the execution owner; Notion must not duplicate
 the case task list.
 
+`Inbox` preserves uncommitted requests and football questions without promising
+execution. `Scoping` is where the question, evidence, risk, and close condition
+become clear; only then should accepted work move to `Ready`.
+
 Beginner defaults:
 
 - No file change: no branch is needed.

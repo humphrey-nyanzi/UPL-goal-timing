@@ -39,6 +39,8 @@ def test_project_workflow_uses_the_casework_transition_pipeline() -> None:
     assert 'name: "Active Work"' in workflow
     assert 'name: "Workflow"' in workflow
     assert 'name: "History"' in workflow
+    assert "status_meanings:" in workflow
+    assert "no execution commitment" in workflow
     assert "notion_boundary:" in workflow
     assert "GitHub owns execution details" in workflow
 
@@ -62,6 +64,7 @@ def test_labels_separate_work_type_from_project_status() -> None:
         "area: research-intelligence",
         "area: product-experience",
         "area: developer-experience",
+        "area: developer-docs",
         "type: feature",
         "type: research",
         "status: ready",
@@ -72,6 +75,8 @@ def test_labels_separate_work_type_from_project_status() -> None:
         assert f'- name: "{obsolete_label}"' not in labels
 
     assert '- name: "legacy-status: needs-review"' in labels
+    assert '- name: "legacy-area: research-intelligence"' in labels
+    assert '- name: "legacy-type: research"' in labels
     assert "the UPL Status Project field" in labels
 
 

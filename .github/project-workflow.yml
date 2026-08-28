@@ -8,6 +8,14 @@ statuses:
   - "Review / QA"
   - "Done"
   - "Parked"
+status_meanings:
+  Inbox: "Uncommitted request, problem, or football question worth preserving; no execution commitment."
+  Scoping: "Clarify the question, evidence, risk, owner decision, and done condition."
+  Ready: "Accepted, bounded, and ready for execution when capacity is available."
+  In Progress: "Implementation, investigation, or analysis is actively underway."
+  Review / QA: "The proposed result is complete enough for verification and owner review."
+  Done: "Accepted work is closed with the required evidence; publication is optional."
+  Parked: "Intentionally deferred or declined without deleting its context."
 views:
   - name: "Active Work"
     layout: "table"

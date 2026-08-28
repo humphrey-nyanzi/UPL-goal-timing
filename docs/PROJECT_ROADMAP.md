@@ -97,6 +97,16 @@ filed cases, documentation, and approved retained-product maintenance.
 Publication is optional downstream work, not a separate workflow stage. Project
 status does not replace Issue bodies, acceptance criteria, or owner review.
 
+| UPL Status | Meaning |
+|---|---|
+| `Inbox` | Preserve an uncommitted request, problem, or football question without promising execution. |
+| `Scoping` | Clarify the question, evidence, risk, owner decision, and done condition. |
+| `Ready` | The work is accepted, bounded, and can start when capacity is available. |
+| `In Progress` | Implementation, investigation, or analysis is actively underway. |
+| `Review / QA` | The proposed result is complete enough for verification and owner review. |
+| `Done` | Accepted work is closed with its required evidence; publication is optional. |
+| `Parked` | Work is intentionally deferred or declined without deleting its context. |
+
 Use three views over the same existing Project rather than another board:
 
 - **Active Work**: open items in a table.
@@ -270,7 +280,10 @@ Use these labels for filtering and agent handoffs:
 | Exceptional state | `status: blocked` |
 
 Old workflow labels are retained as `legacy-status:*` only to preserve existing
-Issue/PR history. Do not assign them to new work.
+Issue/PR history. The old mixed research labels are retained as
+`legacy-area: research-intelligence` and `legacy-type: research` because their
+historical assignments include data-contract and disposition work, not only
+analytical cases. Do not assign any `legacy-*` label to new work.
 
 ### Historical Milestones
 
@@ -450,8 +463,8 @@ Use these four areas for new planning, review, and prioritization.
 
 ### 1. Data Foundation & Operations
 
-Purpose: keep the data platform trustworthy from source scrape to public
-deployment.
+Purpose: keep the data platform trustworthy from source acquisition through
+maintained Postgres, validation, automation, and read-only research access.
 
 Owns:
 
