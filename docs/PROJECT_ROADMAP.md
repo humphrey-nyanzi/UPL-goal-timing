@@ -70,28 +70,48 @@ Issues move the work.
 Branches isolate the work.
 Pull Requests review the work.
 Projects show workflow state.
-Milestones define release goals.
+Milestones define finite owner-approved goals.
 Releases record what shipped.
 Agents work from Issues when available.
 The owner approves closure and release.
 ```
 
 Create a GitHub Issue when work exceeds a small quick fix, requires planning,
-affects documentation, changes product behavior, introduces functionality, fixes
-a defect, or needs research. Use `.github/ISSUE_TEMPLATE/` for new Issues. The
-initial seed Issues have been created in GitHub, with reusable local drafts kept
-in `.github/ISSUE_DRAFTS/`.
+affects documentation, changes behavior, introduces functionality, fixes a
+defect, or needs a bounded analytical case. Use `.github/ISSUE_TEMPLATE/` for
+new Issues. Historical seed drafts were removed after their Issues were created;
+GitHub Issues now preserve that history without a parallel local queue.
 
 ### Project Pipeline
 
-Use this simplified UPL Project pipeline:
+Use this shared `UPL Status` pipeline:
 
 ```text
-Inbox -> Research -> Ready -> In Progress -> Review / QA -> Done -> Released -> Parked
+Inbox -> Scoping -> Ready -> In Progress -> Review / QA -> Done
+         \-> Parked
 ```
 
-Project columns describe workflow state. They do not replace Issue bodies,
-labels, acceptance criteria, or owner review.
+The Project field owns workflow state. Labels own work lane, type, priority,
+and exceptional blockage. `Done` is the terminal state for completed data work,
+filed cases, documentation, and approved retained-product maintenance.
+Publication is optional downstream work, not a separate workflow stage. Project
+status does not replace Issue bodies, acceptance criteria, or owner review.
+
+| UPL Status | Meaning |
+|---|---|
+| `Inbox` | Preserve an uncommitted request, problem, or football question without promising execution. |
+| `Scoping` | Clarify the question, evidence, risk, owner decision, and done condition. |
+| `Ready` | The work is accepted, bounded, and can start when capacity is available. |
+| `In Progress` | Implementation, investigation, or analysis is actively underway. |
+| `Review / QA` | The proposed result is complete enough for verification and owner review. |
+| `Done` | Accepted work is closed with its required evidence; publication is optional. |
+| `Parked` | Work is intentionally deferred or declined without deleting its context. |
+
+Use three views over the same existing Project rather than another board:
+
+- **Active Work**: open items in a table.
+- **Workflow**: open items grouped by `UPL Status`.
+- **History**: closed items retained for evidence and context.
 
 ### Branch And Pull Request Workflow
 
@@ -105,9 +125,9 @@ Issue -> branch -> work -> commit -> push branch -> Pull Request -> owner test/r
 Use branch names that identify the worker and Issue:
 
 ```text
-codex/issue-1-api-client-sync
-codex/issue-8-red-card-research
-humphrey/issue-3-trends-rebuild
+codex/issue-84-season-rollover
+codex/issue-116-github-workflow-transition
+humphrey/issue-130-example-case
 ```
 
 Agents should open draft PRs by default unless the user explicitly asks for a
@@ -141,7 +161,7 @@ flowchart TD
     A["Request, bug, or idea"] --> B{"Small, clear, and low-risk?"}
     B -->|"Yes"| C["Branch + PR; Issue optional"]
     B -->|"No"| D["Create or use a GitHub Issue"]
-    D --> E["Add labels, milestone, Project, and acceptance criteria"]
+    D --> E["Add labels, Project stage, and acceptance criteria"]
     E --> F["Branch + PR with Closes #issue"]
 ```
 
@@ -151,7 +171,7 @@ Create an Issue before coding when any of these are true:
 
 - the task needs acceptance criteria or a checklist
 - the work should appear on the Project board
-- the work belongs to a milestone or release goal
+- the work belongs to a finite milestone or release goal
 - another agent or future session may need to resume it
 - the task changes public product behavior, API shape, data interpretation, or
   deployment behavior
@@ -237,8 +257,9 @@ so work remains visible in GitHub views:
 - Copy relevant Issue labels, especially area, type, and priority labels.
 - Add the PR to the same GitHub Project as the Issue.
 - Assign the same milestone when the Issue has one.
-- Set the PR status label to `status: needs-review` when it is ready for owner
-  review, and `status: validated` only after verification evidence supports it.
+- Move the PR to `Review / QA` in the `UPL Status` field only when it is ready
+  for owner review. Record validation evidence in the PR rather than duplicating
+  it as a workflow label.
 - Use `Closes #<issue-number>` in the PR body so GitHub closes the Issue when
   the reviewed PR is merged.
 
@@ -253,10 +274,16 @@ Use these labels for filtering and agent handoffs:
 
 | Group | Labels |
 |---|---|
-| Area | `area: data-reliability`, `area: research-intelligence`, `area: product-experience`, `area: developer-docs` |
-| Type | `type: bug`, `type: feature`, `type: research`, `type: documentation`, `type: api-contract`, `type: release` |
+| Area | `area: data-foundation`, `area: analytical-casework`, `area: retained-product`, `area: project-system` |
+| Type | `type: bug`, `type: change`, `type: analytical-case`, `type: documentation`, `type: api-contract`, `type: release` |
 | Priority | `priority: critical`, `priority: high`, `priority: medium`, `priority: low` |
-| Status | `status: needs-triage`, `status: ready`, `status: blocked`, `status: needs-review`, `status: validated` |
+| Exceptional state | `status: blocked` |
+
+Old workflow labels are retained as `legacy-status:*` only to preserve existing
+Issue/PR history. The old mixed research labels are retained as
+`legacy-area: research-intelligence` and `legacy-type: research` because their
+historical assignments include data-contract and disposition work, not only
+analytical cases. Do not assign any `legacy-*` label to new work.
 
 ### Historical Milestones
 
@@ -266,7 +293,28 @@ Use these labels for filtering and agent handoffs:
 - `v0.5 Feature 2 Discipline Research`
 - `v1.0 Public UPL Lens Release`
 
-These milestones describe the former public-product release plan. New transition milestones or Project semantics should be changed only through the project-system transition Issue.
+These milestones describe the former public-product release plan and are closed
+as historical records. Issue #84 continues without the v1 milestone. Do not
+create a standing foundation or casework milestone: milestones are for finite,
+owner-approved goals only.
+
+### GitHub And Notion Boundary
+
+Ordinary small and medium UPL cases stay GitHub-only. GitHub owns the Issue,
+branch, case folder, PR, verification, and closure evidence.
+
+Create a parent-linked Notion child only after Humphrey explicitly commits
+execution capacity and the case has all of these:
+
+- its own substantial scope and named deliverable
+- an independent status and done condition
+- coordination needs beyond a single repository Issue, such as several Issues,
+  an external dependency or stakeholder, portfolio-level scheduling, or a
+  separately managed public/commercial deliverable
+
+Multi-session work alone does not justify a Notion child. When a child exists,
+Notion owns project-level status and coordination; GitHub still owns execution
+details. Do not duplicate the GitHub task list in Notion.
 
 ### Definition Of Ready
 
@@ -286,16 +334,16 @@ closes important Issues and approves releases.
 
 Use Issues to give agents bounded coworker roles:
 
-- **Research Analyst Agent**: research-intelligence Issues; notebooks, SQL,
-  caveats, and promotion recommendations.
-- **Data Reliability Agent**: data-reliability Issues; scraper, staging,
+- **Analytical Case Agent**: analytical-casework Issues; bounded questions,
+  notebooks, SQL, checks, findings, caveats, and hard closure.
+- **Data Foundation Agent**: data-foundation Issues; scraper, staging,
   validation, automation, and hosted health.
-- **Product Experience Agent**: product-experience Issues; API-facing React
-  pages, charts, UI states, and browser verification.
-- **Docs Steward Agent**: developer-docs Issues; documentation, navigation,
+- **Retained Product Agent**: retained-product Issues only when a current owner
+  instruction approves bounded API/frontend maintenance and verification.
+- **Project System Agent**: project-system Issues; documentation, navigation,
   issue hygiene, and agent instructions.
-- **QA / Release Agent**: release Issues; acceptance criteria, verification,
-  known limitations, and release notes.
+- **QA / Transition Agent**: explicitly approved release or transition Issues;
+  acceptance criteria, verification, known limitations, and closure evidence.
 
 ## Historical Intelligence-Layer Frontend Maturation
 
@@ -340,7 +388,7 @@ Any public release, provider change, browser QA, or release-documentation work
 still requires a new owner-approved Issue; do not continue v1 packaging by
 default.
 
-### Retained Product Experience Loop
+### Retained Product Loop
 
 Future Product Experience work should come only from owner-approved retained-maintenance needs, deployment disposition decisions, public usability findings that remain relevant, or explicitly approved software promotion. The durable page roles, API contract, and launch acceptance
 checks live in [FRONTEND_DESIGN_SYSTEM.md](FRONTEND_DESIGN_SYSTEM.md).
@@ -413,10 +461,10 @@ technical architecture owner; this roadmap owns priorities and sequencing.
 
 Use these four areas for new planning, review, and prioritization.
 
-### 1. Data Reliability & Operations
+### 1. Data Foundation & Operations
 
-Purpose: keep the data platform trustworthy from source scrape to public
-deployment.
+Purpose: keep the data platform trustworthy from source acquisition through
+maintained Postgres, validation, automation, and read-only research access.
 
 Owns:
 
@@ -476,7 +524,7 @@ Escalate when:
 - routine automation requires admin database privileges
 - credentials or secrets are exposed
 
-### 2. Research & Football Intelligence
+### 2. UPL Analytical Casework
 
 Purpose: turn UPL data into validated football insight instead of ungrounded
 dashboard decoration.
@@ -525,7 +573,7 @@ Escalate when:
 - a case depends on raw data or CSVs without a clear reason
 - the source data caveats are too large to present without explanation
 
-### 3. Retained Software Stewardship
+### 3. Retained Product
 
 Purpose: preserve the FastAPI and React implementation as retained software
 assets, and maintain them only when a current owner-approved Issue explicitly
@@ -599,7 +647,7 @@ Escalate when:
 - dormant providers are changed, broadened, or presented as actively supported
   without a current owner-approved Issue
 
-### 4. Developer Experience & Documentation
+### 4. Project System & Documentation
 
 Purpose: keep the project readable, runnable, and teachable for a junior
 developer, reviewer, future contributor, or AI agent.
@@ -1179,7 +1227,7 @@ Acceptance criteria:
 
 This section records the completed public-product-era promotion model. It is
 not the active workflow for new practical cases. Use
-`cases/_case_template/` and the active Research & Football Intelligence section
+`cases/_case_template/` and the active UPL Analytical Casework section
 above; reuse any steps below only when a separate owner-approved Issue scopes
 exceptional software work.
 
@@ -1352,17 +1400,17 @@ The next implementation sequence should use current GitHub Issues and the active
 transition boundaries, not the completed June frontend build order or v1 release
 packaging.
 
-1. **Developer Experience & Documentation**: keep canonical identity,
+1. **Project System & Documentation**: keep canonical identity,
    architecture, workflow, and agent guidance aligned as transition work is
    completed through current Issues.
-2. **Research & Football Intelligence**: use the practical analytical-case
+2. **UPL Analytical Casework**: use the practical analytical-case
    workflow for bounded football questions. Cards & Discipline can be
    considered as a case candidate, not as an automatic Feature 2 product
    commitment.
-3. **Data Reliability & Operations**: continue maintaining source acquisition,
+3. **Data Foundation & Operations**: continue maintaining source acquisition,
    Postgres contracts, validation, fail-closed refresh behavior, and read-only
    research access.
-4. **Retained Product Experience**: the Cloudflare/Render path remains live as a
+4. **Retained Product**: the Cloudflare/Render path remains live as a
    dormant demonstration under the settled #108 disposition. Maintain or change
    FastAPI, React, or public providers only when a new owner-approved Issue
    explicitly scopes that work; dormancy is not an active roadmap or support

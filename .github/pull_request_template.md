@@ -13,7 +13,7 @@ Closes #
 - [ ] PR has the relevant Issue area/type/priority labels.
 - [ ] PR is assigned to the same milestone as the linked Issue, when applicable.
 - [ ] PR is added to the same GitHub Project as the linked Issue, when applicable.
-- [ ] PR status is `status: needs-review` only because the linked Issue checklist and acceptance criteria are complete.
+- [ ] PR is in `Review / QA` in the UPL Status Project field only because the linked Issue checklist and acceptance criteria are complete.
 
 ## Summary
 

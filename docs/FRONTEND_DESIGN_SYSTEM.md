@@ -42,7 +42,7 @@ when retained frontend guidance conflicts:
 4. API contract notes in this file
 5. Text/content wireframes in this file
 6. Durable design tokens and component rules in this file
-7. Seed issue guidance in this file and `.github/ISSUE_DRAFTS/`
+7. Historical seed-Issue context in this file and the closed GitHub Issues
 8. Older roadmap/history docs
 
 If a future design decision becomes durable, fold it into this document instead
