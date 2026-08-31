@@ -83,8 +83,9 @@ TRUSTED_SEASON_CALENDAR_BASELINES = {
         "version": "2026-08-31",
         "evidence": (
             "owner-approved 18-team 2026/27 double round-robin maximum; official "
-            "calendar source-health passed with 54 links in GitHub Actions run "
-            "33403343867 while fixtures are published in rounds"
+            "calendar discovery found canonical structure and 54 links in GitHub "
+            "Actions run 33403343867, then correctly failed because this baseline "
+            "did not yet exist while fixtures are published in rounds"
         ),
     },
 }

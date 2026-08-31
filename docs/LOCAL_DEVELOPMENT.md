@@ -451,10 +451,13 @@ the candidate season without hosted database writes:
 Only update the current season after that run proves the official calendar URL
 is live, canonical, structurally valid, non-empty, and at or below that
 season's reviewed maximum. The 2026/27 baseline records the 18-team
-double-round-robin inference and source-health evidence from run `33403343867`;
-it does not authorize any future season. A 404, zero-link page, malformed page,
-non-canonical response, or over-maximum response is a blocked rollover, not an
-operator override case.
+double-round-robin inference and the canonical-structure/54-link discovery
+evidence from run `33403343867`. That pre-baseline run correctly failed with
+`trusted_season_baseline_missing`; after the reviewed baseline is merged, run
+source-health again at the exact merged head and require it to pass before the
+first hosted write. The baseline does not authorize any future season. A 404,
+zero-link page, malformed page, non-canonical response, or over-maximum response
+is a blocked rollover, not an operator override case.
 
 The normal hosted command should not use the override:
 

@@ -7,7 +7,7 @@ scripts instead of creating a second version of the data pipeline.
 Usage examples
 --------------
 python scripts/data_platform/update_current_season.py
-python scripts/data_platform/update_current_season.py --season 2025-26
+python scripts/data_platform/update_current_season.py --season 2026-27
 python scripts/data_platform/update_current_season.py --mode artifact-only
 python scripts/data_platform/update_current_season.py --skip-scrape
 python scripts/data_platform/update_current_season.py --skip-scrape --skip-raw-load
@@ -79,7 +79,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--season",
         default=CURRENT_SEASON,
-        help=f"Season to update, for example 2025-26. Defaults to {CURRENT_SEASON}.",
+        help=f"Season to update, for example {CURRENT_SEASON}. Defaults to {CURRENT_SEASON}.",
     )
     parser.add_argument(
         "--mode",
