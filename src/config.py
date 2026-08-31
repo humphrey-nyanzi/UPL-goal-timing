@@ -61,11 +61,14 @@ SCRAPER_STATUS_FORCELIST = (429, 500, 502, 503, 504)
 MIN_CALENDAR_MATCH_LINKS = 1
 MIN_RAW_SEASON_MATCH_ROWS = 1
 MIN_RAW_SEASON_MATCH_RATIO = 0.5
-UPL_MAX_SEASON_MATCH_COUNT = 240
+UPL_MAX_SEASON_MATCH_COUNT = 306
 # Trusted baselines are reviewed operational data, not values learned from the
 # current HTTP response. Rotate a baseline only after validating a known-good
 # official calendar snapshot and recording the evidence in the same code review.
-# Uganda Premier League seasons should not exceed the 240-match league maximum.
+# This is an absolute scraper safety ceiling, not a default league format. The
+# reviewed baseline below remains the authoritative maximum for each season.
+# It is 306 only because the owner confirmed an 18-team double round-robin for
+# 2026/27. Future seasons still fail closed until they receive their own review.
 TRUSTED_SEASON_CALENDAR_BASELINES = {
     "2025_26": {
         "expected_match_count": 240,
@@ -73,6 +76,15 @@ TRUSTED_SEASON_CALENDAR_BASELINES = {
         "evidence": (
             "validated official 2025-26 calendar snapshot and hosted raw match "
             "identity set from GitHub Actions run 28786442845"
+        ),
+    },
+    "2026_27": {
+        "expected_match_count": 306,
+        "version": "2026-08-31",
+        "evidence": (
+            "owner-approved 18-team 2026/27 double round-robin maximum; official "
+            "calendar source-health passed with 54 links in GitHub Actions run "
+            "33403343867 while fixtures are published in rounds"
         ),
     },
 }
@@ -120,7 +132,7 @@ SEASONS = ["2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"]
 
 # Phase 5 automation starts with the active season. Keep this centralized so
 # local scripts and GitHub Actions use the same default season value.
-CURRENT_SEASON = "2025-26"
+CURRENT_SEASON = "2026-27"
 
 RAW_TABLE_FILE_PREFIXES = {
     "matches": "upl_matches",

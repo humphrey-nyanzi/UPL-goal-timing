@@ -253,7 +253,7 @@ def test_fresh_host_early_season_input_can_proceed(monkeypatch, tmp_path) -> Non
 
 
 def test_input_above_league_maximum_blocks_before_delete(monkeypatch, tmp_path) -> None:
-    """A source or CSV cannot authorize more than the 240-match UPL ceiling."""
+    """A source or CSV cannot authorize more than the absolute UPL ceiling."""
 
     connection = FakeConnection()
     deleted_tables: list[str] = []
@@ -400,11 +400,11 @@ def test_loader_accepts_hyphenated_source_url_for_normalized_season(
                 "target_season": "2025-26",
                 "source_url": "https://upl.co.ug/calendar/2025-26-fixtures-results/",
                 "source_structure_valid": True,
-                "expected_match_count": raw_loader.UPL_MAX_SEASON_MATCH_COUNT,
-                "observed_link_count": raw_loader.UPL_MAX_SEASON_MATCH_COUNT,
+                "expected_match_count": 240,
+                "observed_link_count": 240,
                 "minimum_link_count": 1,
                 "baseline_version": "2026-07-08",
-                "match_urls": _match_urls(raw_loader.UPL_MAX_SEASON_MATCH_COUNT),
+                "match_urls": _match_urls(240),
             }
         ),
         encoding="utf-8",
@@ -419,10 +419,10 @@ def test_loader_accepts_hyphenated_source_url_for_normalized_season(
         "2025_26"
     )
 
-    assert expected == raw_loader.UPL_MAX_SEASON_MATCH_COUNT
+    assert expected == 240
     assert source_url == "https://upl.co.ug/calendar/2025-26-fixtures-results/"
     assert valid is True
-    assert len(urls) == raw_loader.UPL_MAX_SEASON_MATCH_COUNT
+    assert len(urls) == 240
 
 
 def test_loader_rejects_baseline_above_league_maximum(monkeypatch, tmp_path) -> None:

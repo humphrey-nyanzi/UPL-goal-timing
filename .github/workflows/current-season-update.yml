@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       season:
-        description: "Used when season_scope=custom. Comma-separated, e.g. 2024-25,2025-26"
+        description: "Used when season_scope=custom. Comma-separated, e.g. 2025-26,2026-27"
         required: false
-        default: "2025-26"
+        default: "2026-27"
       season_scope:
         description: "Which seasons should this manual run target?"
         required: true
@@ -46,7 +46,7 @@ jobs:
     env:
       PYTHONUNBUFFERED: "1"
       SEASON_SCOPE: ${{ github.event_name == 'schedule' && 'current' || github.event.inputs.season_scope || 'current' }}
-      CUSTOM_SEASONS: ${{ github.event.inputs.season || '2025-26' }}
+      CUSTOM_SEASONS: ${{ github.event.inputs.season || '2026-27' }}
       RUN_TYPE: ${{ github.event_name == 'schedule' && 'routine-refresh' || github.event.inputs.run_type || 'routine-refresh' }}
       USE_CACHE: ${{ github.event_name == 'schedule' && 'false' || github.event.inputs.use_cache || 'false' }}
       POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
