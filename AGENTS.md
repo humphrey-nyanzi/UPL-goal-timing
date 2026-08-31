@@ -143,14 +143,14 @@ structure only when the current area of work needs it.
 Current workflow:
 
 - Install Python deps: `pip install -r requirements.txt`
-- Run scraper: `python scripts/data_platform/scrape_upl_matches.py --season 2025-26`
+- Run scraper: `python scripts/data_platform/scrape_upl_matches.py --season 2026-27`
 - Build Feature 1 goal timing dataset: `python scripts/features/feature_01_goal_timing/build_goal_timing_dataset.py`
 - Apply database migrations: `python scripts/data_platform/apply_db_migrations.py`
 - Full raw-season rebuild (admin/backfill): `python scripts/data_platform/load_raw_to_postgres.py --season 2025-26 --full-rebuild`
 - Verify raw Postgres counts: `python scripts/data_platform/verify_raw_postgres_counts.py`
 - Build cleaned staging tables: `python scripts/data_platform/build_staging_from_raw.py`
 - Verify staging outputs: `python scripts/data_platform/verify_staging_outputs.py`
-- Run the current-season refresh: `python scripts/data_platform/update_current_season.py --season 2025-26 --skip-migrations`
+- Run the current-season refresh: `python scripts/data_platform/update_current_season.py --season 2026-27 --skip-migrations`
 - Run tests: `python -m pytest`
 - Run the FastAPI dev server: `python -m uvicorn api.main:app --reload`
 - Build the React frontend: from `frontend/`, run `npm run build`

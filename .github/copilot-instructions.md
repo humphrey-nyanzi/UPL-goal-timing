@@ -197,7 +197,7 @@ current work area needs it.
 ## Current Commands
 
 - Install Python deps: `pip install -r requirements.txt`
-- Run scraper: `python scripts/data_platform/scrape_upl_matches.py --season 2025-26`
+- Run scraper for the configured current season: `python scripts/data_platform/scrape_upl_matches.py`
 - Build Feature 1 goal timing dataset: `python scripts/features/feature_01_goal_timing/build_goal_timing_dataset.py`
 - Apply database migrations: `python scripts/data_platform/apply_db_migrations.py`
 - Full raw-season rebuild (admin/backfill): `python scripts/data_platform/load_raw_to_postgres.py --season 2025-26 --full-rebuild`

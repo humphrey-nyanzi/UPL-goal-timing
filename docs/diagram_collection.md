@@ -62,7 +62,7 @@ is active; endpoint- or UI-only behavior is retained.
 
 ```mermaid
 flowchart LR
-    SOURCE["Official UPL sources"] --> PREFLIGHT["Source preflight and cache"]
+    SOURCE["Official UPL sources"] --> PREFLIGHT["Source preflight, reviewed season contract, and cache"]
     PREFLIGHT --> SCRAPE["Scraper and refresh plan"]
     SCRAPE --> ARTIFACTS["data/raw/{season_key}/\nsource artifacts"]
     ARTIFACTS --> LOAD["Validated raw loader\nscoped upserts or explicit rebuild"]

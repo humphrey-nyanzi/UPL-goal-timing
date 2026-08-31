@@ -6,6 +6,7 @@ import argparse
 import json
 
 from src.config import (
+    CURRENT_SEASON,
     DATA_RAW,
     raw_season_dir,
     raw_season_file,
@@ -65,7 +66,10 @@ def main() -> int:
     """Main entry point."""
     parser = argparse.ArgumentParser(description="Scrape structured UPL event data")
     parser.add_argument(
-        "--season", type=str, default="2025-26", help="Season to scrape (e.g., 2025-26)"
+        "--season",
+        type=str,
+        default=CURRENT_SEASON,
+        help=f"Season to scrape, for example {CURRENT_SEASON}.",
     )
     parser.add_argument(
         "--refresh-source",

@@ -408,20 +408,23 @@ not trustworthy:
   plausible number of official event links
 - authorization uses the reviewed baseline in
   `TRUSTED_SEASON_CALENDAR_BASELINES`, never a count learned from the current
-  response; the 2025-26 baseline is 240 as a maximum, the UPL league
-  maximum is 240, and routine weekly runs may load a smaller non-empty
-  early-season calendar
+  response; the preserved 2025-26 baseline is 240, while the reviewed 2026-27
+  baseline is 306. The 306 absolute scraper ceiling is an owner-approved,
+  season-specific 18-team double-round-robin inference, not a default for
+  future seasons. Routine runs may load a smaller non-empty early-season
+  calendar as official fixtures are published in rounds
 - every attempt writes `data/raw/<season>/upl_source_preflight_<season>.json`
   as evidence, but a failed, malformed, or over-limit attempt cannot create or
   rotate the version-controlled baseline
 - the loader independently checks the report's baseline maximum/version, counts
   distinct validated match URLs, rejects duplicate match records, and blocks
-  sources above the 240-match maximum before any delete
+  sources above the reviewed seasonal maximum or the 306 absolute safety ceiling
+  before any delete
 - when hosted rows already exist, routine mode reads their distinct match URLs
   and requires every hosted identity to remain in the incoming set; additions
   are allowed, but shrinkage or same-count substitution is blocked
-- a smaller early-season source is allowed only when it is non-empty, under
-  the 240-match maximum, and does not remove hosted match identities
+- a smaller early-season source is allowed only when it is non-empty, under its
+  reviewed seasonal maximum, and does not remove hosted match identities
 - after fetching candidates, the scraper compares each payload with hosted raw
   rows and writes `upl_raw_refresh_plan_<season>.json`; unchanged candidates do
   not enter the affected match-ID set
@@ -446,9 +449,15 @@ the candidate season without hosted database writes:
 ```
 
 Only update the current season after that run proves the official calendar URL
-is live, canonical, structurally valid, non-empty, and at or below the reviewed
-league maximum. A 404, zero-link page, malformed page, non-canonical response,
-or over-maximum response is a blocked rollover, not an operator override case.
+is live, canonical, structurally valid, non-empty, and at or below that
+season's reviewed maximum. The 2026/27 baseline records the 18-team
+double-round-robin inference and the canonical-structure/54-link discovery
+evidence from run `33403343867`. That pre-baseline run correctly failed with
+`trusted_season_baseline_missing`; after the reviewed baseline is merged, run
+source-health again at the exact merged head and require it to pass before the
+first hosted write. The baseline does not authorize any future season. A 404,
+zero-link page, malformed page, non-canonical response, or over-maximum response
+is a blocked rollover, not an operator override case.
 
 The normal hosted command should not use the override:
 
@@ -482,7 +491,7 @@ The GitHub workflow exposes operator-level choices:
 | Input | Normal value | Meaning |
 |------|--------------|---------|
 | `season_scope` | `current` | Use `current`, `all`, or `custom`. |
-| `season` | `2025-26` | Only used when `season_scope=custom`; pass comma-separated seasons. |
+| `season` | `2026-27` | Only used when `season_scope=custom`; pass comma-separated seasons. |
 | `run_type` | `routine-refresh` | Select exactly one mode from the table below. |
 | `use_cache` | `false` | Source-health/dev only; routine and full-rebuild modes fail before work if cache is enabled. |
 
