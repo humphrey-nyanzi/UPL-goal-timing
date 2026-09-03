@@ -105,7 +105,15 @@ def _match_payload_changed(
             for row in existing_tables[table_name]
             if row.get("match_url") == match_url
         ]
-        incoming_rows = match_payload.get(table_name, [])
+        # Parser payloads use the singular ``match`` key for the one match
+        # record and plural keys for its child tables. Treating ``matches`` as
+        # a normal plural payload key makes a new unplayed fixture look like
+        # an empty hosted row, so it is omitted from an initial refresh plan.
+        if table_name == "matches":
+            match_row = match_payload.get("match")
+            incoming_rows = [match_row] if match_row else []
+        else:
+            incoming_rows = match_payload.get(table_name, [])
         if _canonical_match_rows(existing_rows) != _canonical_match_rows(incoming_rows):
             return True
     return False

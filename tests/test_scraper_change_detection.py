@@ -109,16 +109,14 @@ def test_match_payload_comparison_treats_equivalent_values_as_unchanged() -> Non
         "stats": [],
     }
     incoming = {
-        **{table_name: [] for table_name in existing},
-        "matches": [
-            {
-                "match_id": 7,
-                "match_url": url,
-                "date": "2026-07-03",
-                "time": "15:00",
-                "home_score": 1,
-            }
-        ],
+        **{table_name: [] for table_name in existing if table_name != "matches"},
+        "match": {
+            "match_id": 7,
+            "match_url": url,
+            "date": "2026-07-03",
+            "time": "15:00",
+            "home_score": 1,
+        },
     }
 
     assert _match_payload_changed(existing, incoming, url) is False
@@ -136,8 +134,41 @@ def test_match_payload_comparison_detects_changed_child_rows() -> None:
         "stats": [],
     }
     incoming = {
-        **{table_name: list(rows) for table_name, rows in existing.items()},
+        **{
+            table_name: list(rows)
+            for table_name, rows in existing.items()
+            if table_name != "matches"
+        },
+        "match": {"match_id": 7, "match_url": url},
         "events": [{"match_id": 7, "match_url": url, "event_type": "red_card"}],
+    }
+
+    assert _match_payload_changed(existing, incoming, url) is True
+
+
+def test_match_payload_comparison_marks_new_unplayed_fixture_as_affected() -> None:
+    """A fixture without child rows must seed an empty new hosted season."""
+    url = "https://upl.co.ug/event/future/"
+    existing = {
+        "matches": [],
+        "events": [],
+        "lineups": [],
+        "staff": [],
+        "officials": [],
+        "stats": [],
+    }
+    incoming = {
+        "match": {
+            "match_id": 99,
+            "match_url": url,
+            "home_score": None,
+            "away_score": None,
+        },
+        "events": [],
+        "lineups": [],
+        "staff": [],
+        "officials": [],
+        "stats": [],
     }
 
     assert _match_payload_changed(existing, incoming, url) is True
